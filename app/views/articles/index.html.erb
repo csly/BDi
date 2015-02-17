@@ -1,0 +1,18 @@
+  <div class='container-eight'> 
+  <div class="news">
+<h1>News</h1><br />
+<% @articles.each do |article| %>
+<div class="news-list">
+<div class="col-md-2">
+<%= image_tag article.image.url %>
+</div>
+<div class="col-md-10">
+<h3><%= link_to article.title, article_path(article) %><br /><small><%= article.created_at.strftime('%-d %B %Y ') %></small></h3><br />
+<p><%= article.newspreview %></p>
+<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
+   </div>
+   </div> 
+   <div class="clear"></div> <br /><hr><br />
+<% end %>
+ </div>
+ </div>

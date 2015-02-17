@@ -1,0 +1,15 @@
+<h1><%= @artist.name %></h1>
+ <%= image_tag @artist.photo.url %><br />
+    <%= @artist.biog %><br /><br />
+
+Articles: <%= link_to(article_path(@artist)) do %>
+
+  <%= @artist.articles.pluck(:title).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %><% end %><br />
+ 
+
+
+  
+<%= link_to "Back To Artists", artists_path, :class =>  "btn-primary", :method => :get  %>  
+
+
+

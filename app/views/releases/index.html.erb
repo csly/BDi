@@ -1,0 +1,41 @@
+  <div class='container-eight'> 
+  <div class="news">
+<h1>Releases</h1><br />
+<%= simple_form_for :release, url: url_for(releases_path),  
+     method: 'get' do |f| %>
+
+<table class="tablesearch">
+
+<tr>
+<td>
+  <%= f.input :query, input_html: {name: 'q', class: 'special'}, label: "Keywords", placeholder: 'Search...', required: false %>
+  </td>
+  <td>
+  <%= f.input :genre, input_html: {name: 'genre'},  collection: Genre.order('name ASC').used, include_blank: 'All', required: false %> 
+  </td>
+<td>
+  <%= f.input :artist, input_html: {name: 'artist'},  collection: Artist.order('name ASC').used, include_blank: 'All', required: false %> 
+  </td>
+  <td>
+  <%= f.input :production, input_html: {name: 'production'},  collection: Production.order('name ASC').used, include_blank: 'All', required: false %> 
+  </td>
+  <td class="last">
+  <%= f.submit 'Search', class: 'btn btn-primary searcharticles' %>
+
+  </td></tr></table>
+<% end %><hr><br />
+<% @releases.each do |release| %>
+<div class="news-list">
+<div class="col-md-2">
+  <%= image_tag release.photo.url %>
+</div>
+<div class="col-md-10">
+<h3><%= release.title %><br /><small>Release Date: <%= release.date.strftime('%-d %B %Y ') %></small></h3><br />
+<p>  <%= release.newspreview %></p> <p><%= release.links.html_safe %></p><p><b>Genres:</b> <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+   </div>
+   </div> 
+   <div class="clear"></div> <br /><hr><br />
+<% end %>
+ </div>
+ </div>
+ 

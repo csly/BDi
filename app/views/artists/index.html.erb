@@ -1,0 +1,35 @@
+<h1>Artists</h1>
+<%= simple_form_for :artist, url: url_for(artists_path),  
+     method: 'get' do |f| %>
+
+<table class="tablesearch">
+
+<tr>
+<td>
+  <%= f.input :query, input_html: {name: 'q', class: 'special'}, label: "Keywords", placeholder: 'Search...', required: false %>
+  </td>
+  <td>
+  <%= f.input :genre, input_html: {name: 'genre'},  collection: Genre.order('name ASC').used, include_blank: 'All', required: false %> 
+  </td>
+  <td>
+  <%= f.input :type, input_html: {name: 'type'},  collection: Type.order('name ASC').used, include_blank: 'All', required: false %> 
+  </td>
+
+  <td>
+  <%= f.submit 'Search', class: 'btn btn-primary searcharticles' %>
+
+  </td></tr></table>
+<% end %>
+
+<% @artists.each do |artist| %>
+  <ul>
+   <li>
+  <%= image_tag artist.photo.url %><br />
+     <%= link_to artist.name, artist_path(artist) %><br />
+     <%= artist.biog %>
+   </li>
+  </ul>
+<% end %>
+ 
+
+

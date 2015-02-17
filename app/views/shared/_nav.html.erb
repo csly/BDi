@@ -1,0 +1,37 @@
+<div id="navmenu">
+<nav class="navbar navbar-default navbar-fixed-top normal">
+ <div class="logo-img">
+  <span class="left">  
+<%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "navbar-brand logo"), root_path %>
+ </span></div><div class="navmenubar navbar-collapse collapse navbar-right">
+<span class="right"> 
+<% if current_user %>
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => "btn btn-default btn-sm"  %>
+  
+  <% if current_user.admin? %>
+    <%= link_to 'Admin', admin_path, :class => "btn btn-default btn-sm"  %>
+  <% end %>
+ <% if current_user.client? %>
+    <%= link_to 'Client', clients_path, :class => "btn btn-default btn-sm"  %>
+  <% end %>
+  <% else %>
+ <%= link_to 'Client Sign In', new_user_session_path, :class => "btn btn-default btn-sm"  %>
+ <% end %>
+ <br />
+
+<%= link_to 'Home', root_path, :class => "btn btn-default btn-sm" %>
+<%= link_to 'About', abouts_path, :class => "btn btn-default btn-sm"  %> 
+<%= link_to 'News', articles_path, :class => "btn btn-default btn-sm"  %>  
+<%= link_to 'Artists', artists_path, :class => "btn btn-default btn-sm"  %> 
+<%= link_to 'Releases', releases_path, :class => "btn btn-default btn-sm"  %> 
+<%= link_to 'Awards', awards_path, :class => "btn btn-default btn-sm"  %> 
+<%= link_to 'Press', presses_path, :class => "btn btn-default btn-sm"  %>
+<%= link_to 'Contact', '#', :class => "btn btn-default btn-sm"  %><br /><br />
+</div> 
+</span>
+<br /><br />
+ 
+</nav> 
+ </div>
+ 
+ 

@@ -1,0 +1,11 @@
+<h1><%= @award.title %></h1> 
+  <%= image_tag @award.photo.url %><br />
+    <%= @award.body %><br /><br />
+<p><b>Artist:</b> <%= @award.artists.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+
+  
+<%= link_to "Back To Awards", admin_awards_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_award_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>

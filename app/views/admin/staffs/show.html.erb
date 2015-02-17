@@ -1,0 +1,11 @@
+<h1><%= @staff.name %></h1> 
+  <%= image_tag @staff.photo.url %><br />
+    <%= @staff.biog %><br /><br />
+
+  
+  
+<%= link_to "Back To About", admin_staffs_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_staff_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>

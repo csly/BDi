@@ -1,0 +1,28 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Users</h4><%= link_to "+ New", new_admin_user_path, class: "btn btn-primary"  %>
+<table>
+  <tr>
+  <th class="id">ID</th>
+  <th class="useremail">Email</th> 
+  <th class="usercreated"> Created at</th>
+  <th class="userlast">Last Signed In at</th>
+  <th class="usercount">Sign In Count</th>
+  <th class="edit"></th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+  <td class="id"><%= user.id %></td>
+  <td class="useremail">  <%= user.email %></td>
+  <td class="usercreated"> <%= user.created_at.strftime('%d-%m-%Y') %></td>
+  <td class="userlast"><%= user.last_sign_in_at %></td>
+  <td class="usercount"> <%= user.sign_in_count %></td>
+  <td class="edit"> <%= link_to "Edit", edit_admin_user_path(user), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_user_path(user), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table>
+</div> 
+</div>

@@ -1,0 +1,18 @@
+ <div class='container-eight'> 
+  <div class="news">
+<h1>Awards</h1><br />
+<% @awards.each do |award| %>
+<div class="news-list">
+<div class="col-md-2">
+<%= image_tag award.photo.url %>
+</div>
+<div class="col-md-10">
+<h3><%= link_to award.title, award_path(award) %><br /><small><%= award.created_at.strftime('%-d %B %Y ') %></small></h3><br />
+<p>  <%= award.newspreview %></p>
+<%= link_to "Read More", award_path(award), :class => "btn btn-default" %>
+   </div>
+   </div> 
+   <div class="clear"></div> <br /><hr><br />
+<% end %>
+ </div>
+ </div>

@@ -1,0 +1,9 @@
+<%= simple_form_for([:admin, @artist], html: {multipart: true}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :biog %>
+  <%= f.input :links %>
+  <%= f.association :genres, collection: Genre.order('name ASC') %>
+  <%= f.association :types, collection: Type.order('name ASC') %>
+  <%= f.file_field :photo %><br />
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

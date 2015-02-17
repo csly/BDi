@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BDiMusicLtd</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+ <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+   <%= yield(:head) %>
+</head>
+<body>
+
+ 
+  <%= render 'shared/nav' %>
+  <div class="clear"></div>
+  <br/> 
+ 
+  <%= yield %> 
+    
+<br /><br />
+
+  <%= render 'shared/footer' %>
+<script>
+     
+    
+     $(window).scroll(function() {
+      if ($(document).scrollTop() > 150) {
+      $('.navbar').addClass('shrink');
+    $('img.navbar-brand')
+                .css({'width':'auto','height':'80px'})
+                .attr('src','http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg');
+      }
+      else {
+      $('.navbar').removeClass('shrink'); 
+    $('img.navbar-brand')
+                .css({'width':'auto','height':'150px'})
+                .attr('src','http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg');
+        }
+      }); 
+
+    </script>
+
+</body>
+</html>
+                
+                 
+
+
+
+   

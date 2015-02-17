@@ -1,0 +1,8 @@
+<%= simple_form_for([:admin, @user], html: {multipart: true}) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :client %> 
+  <%= f.input :admin %> 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

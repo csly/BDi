@@ -1,0 +1,14 @@
+<h1><%= @release.title %></h1>
+ <%= image_tag @release.photo.url %><br />
+  <%=  @release.productions %><br />
+    <%= @release.body %><br /><br />
+
+Artists:  
+ 
+
+
+  
+<%= link_to "Back To releases", releases_path, :class =>  "btn-primary", :method => :get  %>  
+
+
+

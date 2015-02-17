@@ -1,0 +1,19 @@
+  <div class='container-eight'> 
+  <div class="news">
+<h1><%= @article.title %></h1><br /> 
+<div class="news-list">
+<div class="col-md-2">
+ <%= image_tag @article.image.url %>
+</div>
+<div class="col-md-10">
+ 
+<p> <%= @article.body %></p>
+
+<p><b>Artist:</b> <%= @article.artists.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+ 
+   </div>
+   </div> 
+   <div class="clear"></div> <br /><hr><br />
+ 
+ </div>
+ </div>

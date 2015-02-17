@@ -1,0 +1,31 @@
+
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of News</h4><%= link_to "+ New", new_admin_article_path, class: "btn btn-primary"  %>
+<table>
+  <tr>
+  <th class="id">ID</th>
+  <th class="title">Title</th>
+  <th class="body">Body</th>
+  <th class="created"> Created at</th>
+  <th class="updated">Updated at</th>
+  <th class="image">Image</th>
+  <th class="edit"></th>
+  </tr>
+<% @articles.each do |article| %>
+  <tr>
+  <td class="id"><%= article.id %></td>
+  <td class="title">  <%= link_to article.title, admin_article_path(article) %></td>
+  <td class="body"><%= article.body %></td>
+  <td class="created"> <%= article.created_at.strftime('%d-%m-%Y') %></td>
+  <td class="updated"><%= article.updated_at.strftime('%d-%m-%Y') %></td>
+  <td class="image"> <%= image_tag article.image.url, :class =>  "imagethumb" %></td>
+  <td class="edit"> <%= link_to "Edit", edit_admin_article_path(article), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_article_path(article), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table>
+</div>
+</div>

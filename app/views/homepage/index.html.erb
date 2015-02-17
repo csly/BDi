@@ -1,0 +1,15 @@
+ <div class='homepagecontainer'> 
+  <% @articles.each do |article| %>
+  <span class="homepage">
+  <div class="col-md-4">
+   <div class="imagehome"> <%= image_tag article.image.url %></div>
+     <div class="home-text"><hr>
+     <h5><%= link_to article.title, article_path(article) %></h5>
+     <p><%= article.preview %>...<%= link_to "Read More", article_path(article) %></p><hr>
+     </div>
+     </div>
+     </span>
+<% end %> 
+   </div>  
+
+

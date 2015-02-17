@@ -1,0 +1,7 @@
+<%= simple_form_for([:admin, @press], html: {multipart: true}) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.association :artists, collection: Artist.order('name ASC') %>
+  <%= f.file_field :photo %><br />
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

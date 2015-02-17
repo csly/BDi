@@ -1,0 +1,11 @@
+<h1><%= @artist.name %></h1> 
+  <%= image_tag @artist.photo.url %><br />
+    <%= @artist.biog %><br /><br />
+
+  <%= @artist.articles.pluck(:title).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %>
+  
+<%= link_to "Back To Artists", admin_artists_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_artist_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>

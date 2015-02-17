@@ -1,0 +1,18 @@
+ <div class='container-eight'> 
+  <div class="news">
+<h1>Press</h1><br />
+<% @presses.each do |press| %>
+<div class="news-list">
+<div class="col-md-2">
+  <%= image_tag press.photo.url %>
+</div>
+<div class="col-md-10">
+<h3><%= link_to press.title, press_path(press) %><br /><small><%= press.created_at.strftime('%-d %B %Y ') %></small></h3><br />
+<p>  <%= press.newspreview %></p>
+<%= link_to "Read More", press_path(press), :class => "btn btn-default" %>
+   </div>
+   </div> 
+   <div class="clear"></div> <br /><hr><br />
+<% end %>
+ </div>
+ </div>

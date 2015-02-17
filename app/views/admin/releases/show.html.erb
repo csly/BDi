@@ -1,0 +1,12 @@
+<h1><%= @release.title %></h1> 
+  <%= image_tag @release.photo.url %><br />
+    <%= @release.body %><br /><br />
+<p><b>Artist:</b> <%= @release.artists.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+
+<%= @release.date %><br />
+  <%= @release.links %><br />
+<%= link_to "Back To release", admin_releases_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_release_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>

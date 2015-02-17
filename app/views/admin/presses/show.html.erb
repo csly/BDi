@@ -1,0 +1,11 @@
+<h1><%= @press.title %></h1> 
+  <%= image_tag @press.photo.url %><br />
+    <%= @press.body %><br /><br />
+<p><b>Artist:</b> <%= @press.artists.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+
+  
+<%= link_to "Back To press", admin_presses_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_press_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>
