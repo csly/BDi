@@ -1,29 +1,43 @@
+
+  <br />  <br />  <div class='container-eight'> 
+  <div class="page-title">
+<h2>About</h2>
+</div> 
 <div class="about">
 <% @abouts.each do |about| %>
-  
-  <div class="col-md-12">
+ 
+  <div class="container about">
+  <div class="col-md-4"><div class="logo">
+            <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "mainlogo"), root_path %> 
+          </div></div>
+  <div class="col-md-8">
      <%= about.body.html_safe %>
   </div>
-   
-<% end %>
-<div class="clear"></div>
-
-<% @staffs.each do |staff| %>
-
-   <div class="col-md-3">
-    <%= image_tag(staff.photo.url, :class => "aboutimage") %><hr>
-    <h3 class="staff-info"><%= staff.name %> </h3> <h4 class="staff-info"><%= staff.role %></h4>
-    <hr>
-    <h5 class="staff-info">E: <%= staff.email %></h5>
-    <h5 class="staff-info">T: <%= staff.phone %></h5>
-    
-       <hr>
    </div>
-   <div class="col-md-9">  
+<% end %> 
+<div class="clear"></div>
+ 
+<% @staffs.each do |staff| %><div class="container about">
+<div class="aboutstaff"> 
+
+   <div class="col-md-4">
+   <%= image_tag staff.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive aboutimage' %> 
+   <hr> 
+    <h3 class="staff-info"><%= staff.name %> </h3>   
+    <h4 class="staff-info"><%= staff.role %></h4>    <hr> 
+    <h5 class="staff-info">E: <%= staff.email %></h5>     
+    <h5 class="staff-info">T: <%= staff.phone %></h5>
+  
+     <hr>
+       
+   </div>
+   <div class="col-md-8">  
    <%= staff.biog.html_safe %>
   
-     </div>
-   <div class="clear"></div> <br /> 
-<% end %> 
-
+     </div></div></div> 
+   
+<% end %>  
 </div>
+ </div>  
+<div class="clear"></div>  <br><br><br>
+ 

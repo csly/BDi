@@ -1,4 +1,9 @@
-<h1>Artists</h1>
+
+  <br />  <br />  <div class='container-eight'> 
+  <div class="page-title">
+<h2>Artists</h2>
+</div> <br />  <br />  
+  <div class="news"> 
 <%= simple_form_for :artist, url: url_for(artists_path),  
      method: 'get' do |f| %>
 
@@ -15,21 +20,19 @@
   <%= f.input :type, input_html: {name: 'type'},  collection: Type.order('name ASC').used, include_blank: 'All', required: false %> 
   </td>
 
-  <td>
+  <td class="last">
   <%= f.submit 'Search', class: 'btn btn-primary searcharticles' %>
 
   </td></tr></table>
-<% end %>
+<% end %><hr><br />
+<% @artists.each do |artist| %> 
+<div class="col-md-3">
+<%= link_to(artist_path(artist)) do %>
+ <%= image_tag artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistimage' %> 
+  <%= artist.name %><br />
+  <br />
+  <% end %>
+</div> 
+ <% end %><div id="clear"></div>
 
-<% @artists.each do |artist| %>
-  <ul>
-   <li>
-  <%= image_tag artist.photo.url %><br />
-     <%= link_to artist.name, artist_path(artist) %><br />
-     <%= artist.biog %>
-   </li>
-  </ul>
-<% end %>
- 
-
-
+ </div> </div>

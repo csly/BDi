@@ -1,15 +1,37 @@
- <div class='homepagecontainer'> 
-  <% @articles.each do |article| %>
-  <span class="homepage">
-  <div class="col-md-4">
-   <div class="imagehome"> <%= image_tag article.image.url %></div>
-     <div class="home-text"><hr>
-     <h5><%= link_to article.title, article_path(article) %></h5>
-     <p><%= article.preview %>...<%= link_to "Read More", article_path(article) %></p><hr>
-     </div>
-     </div>
-     </span>
-<% end %> 
-   </div>  
+<br><br><br>
 
+<div class="clear"></div>
+<div class="portfolio-items grid" style="padding:10px;">
+  <ul id="grid-items" class="cs-style-3" id="gallery">
+   <% @articles.each do |article| %>
+   
 
+    <li class="col-md-4" >
+    <%= link_to(article_path(article)) do %>
+<figure >
+
+<div class="blur pic">
+
+<%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
+
+</div> 
+<div class="arrow-up"></div>
+ 
+<figcaption>
+<h4><%= link_to(article_path(article)) do %><%= article.title %><% end %></h4>
+<div class="date"><%= article.created_at.strftime("Added on %d/%m/%Y") %></div>
+<p><%= article.homepreview %><%= link_to(article_path(article)) do %> Read More<% end %>
+</p>
+</figcaption>
+</figure>
+<% end %>
+</a>
+  </li>
+  <% end %> 
+    </ul> 
+   
+    </div>
+<div class="clear"></div>
+
+ 
+ 

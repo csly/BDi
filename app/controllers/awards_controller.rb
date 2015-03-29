@@ -1,7 +1,7 @@
 class AwardsController < ApplicationController
 
 def index
-  @awards = Award.all
+  @awards = Award.all.paginate(page: params[:page], per_page: 15).order('awards.created_at DESC')
 end
 
 def show

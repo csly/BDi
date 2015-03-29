@@ -1,18 +1,27 @@
- <div class='container-eight'> 
-  <div class="news">
-<h1>Awards</h1><br />
-<% @awards.each do |award| %>
-<div class="news-list">
-<div class="col-md-2">
-<%= image_tag award.photo.url %>
+
+  <br />  <br /> <div class='container-eight'> 
+  <div class="page-title">
+<h2>Awards</h2>
 </div>
-<div class="col-md-10">
-<h3><%= link_to award.title, award_path(award) %><br /><small><%= award.created_at.strftime('%-d %B %Y ') %></small></h3><br />
-<p>  <%= award.newspreview %></p>
-<%= link_to "Read More", award_path(award), :class => "btn btn-default" %>
+  <div class="news"> 
+<% @awards.each do |award| %>
+<div class="container">
+
+<div class="news-list">
+<div class="col-md-3 icon-container" > 
+  
+  <%= image_tag award.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
+</div>
+<div class="col-md-9">
+<h3><%= link_to award.title, award_path(award) %><br /><small><%= award.created_at.strftime('%-d %B %Y ') %></small></h3> 
+<p><%= award.newspreview %></p> 
    </div>
    </div> 
-   <div class="clear"></div> <br /><hr><br />
+   </div><div class="more">
+<%= link_to "Read More", award_path(award), :class => "btn btn-default" %></div>
+   <div class="clear"></div>  
 <% end %>
  </div>
  </div>
+ <br />  <br /> 
+  

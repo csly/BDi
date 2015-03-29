@@ -1,7 +1,7 @@
 class PressesController < ApplicationController
 
 def index
-  @presses = Press.all
+  @presses = Press.all.paginate(page: params[:page], per_page: 15).order('presses.created_at DESC')
 end
 
 def show

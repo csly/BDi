@@ -1,37 +1,107 @@
-<div id="navmenu">
-<nav class="navbar navbar-default navbar-fixed-top normal">
- <div class="logo-img">
-  <span class="left">  
-<%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "navbar-brand logo"), root_path %>
- </span></div><div class="navmenubar navbar-collapse collapse navbar-right">
-<span class="right"> 
-<% if current_user %>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => "btn btn-default btn-sm"  %>
-  
-  <% if current_user.admin? %>
-    <%= link_to 'Admin', admin_path, :class => "btn btn-default btn-sm"  %>
+ 
+
+   <nav>
+      <div class="container2">
+        <div class="nav-top clearfix">
+          <div class="logo">
+            <h1><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "mainlogo"), root_path %></h1>
+          </div>
+          <div class="search hidden-xs">
+          
+
+<span class="right">
+<div class="leftsearch">
+ 
+</div>
+<div class="rightnav"><ul class="client">
+
+ <% if current_user %>
+   <li class="">
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+   </li>
+ <% if current_user.admin? %>
+     <li class="">
+      <%= link_to 'Admin', admin_path %>
+    </li>
   <% end %>
  <% if current_user.client? %>
-    <%= link_to 'Client', clients_path, :class => "btn btn-default btn-sm"  %>
+    <li class="">
+    <%= link_to 'Client', clients_path  %>
+    </li>
   <% end %>
   <% else %>
- <%= link_to 'Client Sign In', new_user_session_path, :class => "btn btn-default btn-sm"  %>
+   <li class="">
+    <%= link_to 'Client Sign In', new_user_session_path %>
+  </li>
  <% end %>
- <br />
-
-<%= link_to 'Home', root_path, :class => "btn btn-default btn-sm" %>
-<%= link_to 'About', abouts_path, :class => "btn btn-default btn-sm"  %> 
-<%= link_to 'News', articles_path, :class => "btn btn-default btn-sm"  %>  
-<%= link_to 'Artists', artists_path, :class => "btn btn-default btn-sm"  %> 
-<%= link_to 'Releases', releases_path, :class => "btn btn-default btn-sm"  %> 
-<%= link_to 'Awards', awards_path, :class => "btn btn-default btn-sm"  %> 
-<%= link_to 'Press', presses_path, :class => "btn btn-default btn-sm"  %>
-<%= link_to 'Contact', '#', :class => "btn btn-default btn-sm"  %><br /><br />
-</div> 
+  
+ </ul> 
+</div>
+<br />
+<br />
 </span>
-<br /><br />
+
+
+</div> 
  
-</nav> 
- </div>
+             
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="main-nav navbar-collapse collapse">
+        <div class="container2">
+          <div class="minilogo">
+            <h1>
+              BDi Music
+            </h1>
+          </div>
+          <ul class="nav nav-justified">
+         
+
+
+
+            <li class="<%= 'active' if current_page?(root_path) %>">
+              <%= link_to 'Home', root_path %>
+            </li>
+          <li class="<%= 'active' if current_page?(abouts_path) %>">
+              <%= link_to 'About', abouts_path  %> 
+
+            </li>
+           <li class="<%= 'active' if current_page?(articles_path) %>">
+              <%= link_to 'News', articles_path  %>  
+
+            </li>
+           <li class="<%= 'active' if current_page?(artists_path) %>">
+            <%= link_to 'Artists', artists_path  %> 
+
+            </li>
+            <li class="<%= 'active' if current_page?(releases_path) %>">
+           <%= link_to 'Releases', releases_path  %> 
+
+            </li>
+            <li class="<%= 'active' if current_page?(awards_path) %>">
+            <%= link_to 'Awards', awards_path %> 
+
+            </li>
+            <li class="<%= 'active' if current_page?(presses_path) %>">
+            <%= link_to 'Press', presses_path  %>
+
+            </li> <li class="<%= 'active' if current_page?(contact_index_path) %>">
+             <%= link_to 'Contact', contact_index_path %>
+
+
+            </li>
+
+ <li class="socials"><a href="#"><div class="facebook"></div></a></li>
+  <li class="socials"><a href="#"><div class="twitter"></div></a></li>
+   <li class="socials"><a href="#"><div class="movement"></div></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
  
- 
+ <style>
+ li.socials {width:0.1%;}
+ </style>

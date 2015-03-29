@@ -2,6 +2,8 @@
   <%= f.input :name %>
   <%= f.input :biog %>
   <%= f.input :links %>
+  <%= f.input :facebook %>
+  <%= f.input :twitter %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :types, collection: Type.order('name ASC') %>
   <%= f.file_field :photo %><br />

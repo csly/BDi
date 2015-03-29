@@ -1,18 +1,30 @@
-  <div class='container-eight'> 
-  <div class="news">
-<h1>News</h1><br />
-<% @articles.each do |article| %>
-<div class="news-list">
-<div class="col-md-2">
-<%= image_tag article.image.url %>
+ <br />  <br /> 
+
+ <div class='container-eight'> 
+ <div class="page-title">
+<h2>News</h2>
 </div>
-<div class="col-md-10">
-<h3><%= link_to article.title, article_path(article) %><br /><small><%= article.created_at.strftime('%-d %B %Y ') %></small></h3><br />
-<p><%= article.newspreview %></p>
-<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
+  <div class="news"> 
+<% @articles.each do |article| %>
+<div class="container">
+<div class="news-list">
+<div class="col-md-3 icon-container" > 
+  
+  <%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
+</div>
+<div class="col-md-9">
+<h3><%= link_to article.title, article_path(article) %><br /><small><%= article.created_at.strftime('%-d %B %Y ') %></small></h3> 
+<p><%= article.newspreview %></p> 
+
    </div>
    </div> 
-   <div class="clear"></div> <br /><hr><br />
+   </div><div class="more">
+<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
+</div>
+   <div class="clear"></div>  
 <% end %>
  </div>
+ <%= will_paginate @articles, :page_links => false %>
  </div>
+ <br />  <br /> 
+ 

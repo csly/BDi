@@ -11,6 +11,7 @@ resources :awards
 resources :presses
 resources :releases
 resources :abouts
+resources :contact
 
 
 namespace :admin do

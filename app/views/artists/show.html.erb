@@ -1,15 +1,132 @@
-<h1><%= @artist.name %></h1>
- <%= image_tag @artist.photo.url %><br />
-    <%= @artist.biog %><br /><br />
-
-Articles: <%= link_to(article_path(@artist)) do %>
-
-  <%= @artist.articles.pluck(:title).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %><% end %><br />
  
+   <br />  <br /> 
+  <div class='container-eight'> 
+  <div class="page-title">
+<h2><%= @artist.name %></h2>
+</div> 
+<br />
+  <div class="newslist">
+
+<div class="news-list"> 
+<div class="col-md-4"> 
+
+ <%= image_tag @artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>  
+
+ 
+  <div class="artistinfo">   
+ <br />
+
+<% if @artist.twitter.blank? %>
+      <% else %>
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/twit.png", :class => "twitter", :style => "width:40px; height:40px"), 'http://' + @artist.twitter %> <% end %>
+
+ <% if @artist.facebook.blank? %>
+      <% else %>
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/face.png", :class => "twitter", :style => "width:40px; height:40px"), 'http://' + @artist.facebook %> <% end %>
+ 
+ <br /><br />
+<h4>Genres: <small><% @artist.genres.each do |genre| %>
+<%= genre.name %> /
+<% end %><% @artist.types.each do |type| %>
+<%= type.name %> /
+<% end %></small></h4> 
+
+ <% if @artist.articles.blank? %>
+ <% else %> <br />
+ <div class="newsstories">
+ <h4>Related News Stories: </h4>
+ <ol><hr>
+ <% @artist.articles.each do |article| %>
+ <li>
 
 
-  
-<%= link_to "Back To Artists", artists_path, :class =>  "btn-primary", :method => :get  %>  
+   <b> <%= link_to article.title, article_path(article) %></b>: <%= article.artistpreview %><%= link_to(article_path(article)) do %> Read More<% end %>
+  </p> <br /></li>
+ <% end %>
+  <% end %></ol></div>
+ </div>
+ 
+</div>
+
+<div class="col-md-8">
+ 
+<p> <%= @artist.biog.html_safe %></p>
+
+
+
+   </div>
+   </div> 
+
+   
+
+   <div class="clear"></div>  
+   <br /> 
+</div>
+
+  <br />
+ <div class="newslist title">
+<h3>Releases:</h3>  
+</div> <br />
+<div class="newslist releaseartist">
+ <% @artist.releases.each do |release| %>
+ <div class="col-md-3">
+
+
+ 
+ <%= link_to (image_tag release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsartist'), release_path(release) %>
+
+    <%= link_to release.title, release_path(release) %>
+ </div><% end %>
+ </div>
+
+<div class="clear"></div>  
+ 
+ 
+ 
+  <br />
+ <div class="newslist title">
+<h3>Related News:</h3>  
+</div> <br />
+<div class="newslist articleartist">
+ <% @artist.articles.each do |article| %>
+ <div class="col-md-3">
+
+
+ 
+ <%= link_to (image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsartist'), article_path(article) %>
+
+    <%= link_to article.title, article_path(article) %>
+  </p>
+  </div><% end %>
+</div>
+
+<div class="clear"></div>  
+ 
+ 
+ 
+  <br />
+ <div class="newslist title">
+<h3>Related Press:</h3>  
+</div> <br />
+<div class="newslist articleartist">
+ <% @artist.presses.each do |press| %>
+ <div class="col-md-3">
+
+
+ 
+ <%= link_to (image_tag press.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsartist'), press_path(press) %>
+
+    <%= link_to press.title, press_path(press) %>
+  </p>
+  </div><% end %>
+</div>
+
+
+</div>
+
+
+<div class="clear"></div>   
+
 
 
 

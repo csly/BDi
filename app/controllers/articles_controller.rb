@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
 
 def index
-  @articles = Article.all
+  @articles = Article.paginate(page: params[:page], per_page: 10).order('articles.created_at DESC')
 end
 
 def show
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:id]) 
+    
   end
 
 

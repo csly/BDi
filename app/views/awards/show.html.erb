@@ -1,13 +1,52 @@
-<h1><%= @award.title %></h1>
- <%= image_tag @award.photo.url %><br />
-    <%= @award.body %><br /><br />
-
-Artists:  
  
 
+ <br />  <br /> 
+  <div class='container-eight'> 
+  <div class="page-title">
+<h2><%= @award.title %></h2>
+</div> 
+<br />
+ 
+  <div class="newslist">
 
-  
-<%= link_to "Back To Awards", awards_path, :class =>  "btn-primary", :method => :get  %>  
+<div class="news-list">
+<div class="col-md-4"> 
+ <%= image_tag @award.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> <br /> 
+
+ 
+</div>
+
+<div class="col-md-8">
+ 
+<p> <%= @award.body %></p>
+
+
+
+   </div>
+   </div> 
+
+   <div class="clear"></div>  
+ 
+ </div>  <br />
+ 
+ <div class="newslist title">
+<h3>Related Artists:</h3>  
+</div> <br /><div class="newslist arti">
+ <% @award.artists.each do |artist| %>
+ <div class="col-md-3">
+ 
+ <%= link_to (image_tag artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsartist'), artist_path(artist) %>
+
+    <%= link_to artist.name, artist_path(artist) %>
+ </p>
+  </div> <% end %>
+ </div>
+</div>
+<div class="clear"></div>  
+
+
+
+
 
 
 

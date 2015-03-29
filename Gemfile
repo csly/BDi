@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby 
 gem "paperclip", "~> 4.2"
 
 gem 'devise'
@@ -21,8 +21,9 @@ gem 'simple_form', '3.1.0.rc2'
 
 gem 'bootstrap-sass'
 gem 'pry-rails'
-gem 'cancancan'  
-gem 'carrierwave' 
+gem 'cancancan'   
+
+gem 'carrierwave'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
