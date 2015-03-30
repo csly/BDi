@@ -8,6 +8,10 @@ before_action :authenticate_user!
 def show
     @about = About.find(params[:id])
   end
+   def new
+    @about = About.new
+  end
+ 
  
 def edit
     @about = About.find(params[:id])
