@@ -13,8 +13,8 @@
  *= require_self
  */
 
-$bdi-green: #767c60;
-$dark-green: #525740;
+$bdi-green: #767c60 ; 
+$dark-green: #525740; 
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
@@ -66,9 +66,18 @@ padding:0.5em;  color:$bdi-green; font-weight:normal;}
 -ms-filter: brightness(1);}
 .blur h4 a { }
  .blur h4 { max-width: 340px; width:auto; float:left; z-index: 1;    font-weight:900; top:10px; position:absolute;  color:white!important;  text-transform: capitalize;}
-span.title {  float: left;
+span.title2line {  float: left;
   margin-top: 20px;
-  margin-left: -10px;}
+  margin-left: -10px;
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid;
+  border-bottom-color: #ccc;
+  border-bottom-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+padding:0.5em;  color:$bdi-green; font-weight:normal;}
   /******** NAV ********/
       .sectone {padding: 0.5em 1.5em; float:right; display:inline-block; background-color:$bdi-green;color:white }
        .secttwo {padding: 0.5em 1.5em; float:right; display:inline-block;background-color:$bdi-green;color:white }
@@ -124,4 +133,32 @@ tr:nth-child(even) { background-color: #e7e7e7; }
 textarea {min-height:200px;} 
 hr { margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #a5a898;}
 .btn-success { background-color: $bdi-green !important; border-color: $bdi-green !important; }
+
+nav li a:hover {color:$bdi-green !important;}
+ul.dropdown-menu li a {color:$bdi-green !important;}
+ a.dropdown-toggle:hover {background-color:white !important; color: $bdi-green   !important}
+ 
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+ 
+
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+li.social{ transition: all .2s ease-in-out; }
+li.social:hover { transform: scale(1.2); background-color:$bdi-green!important;}
+
+li.social:hover {}
 

@@ -2,9 +2,9 @@
   <div class="container">
 
      <ul class="nav navbar-nav navbar-right">
-       <li><img width="30px" style="margin:0.5em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdface.png"></li>
-        <li><img width="30px"   style="margin:0.5em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdtwit.png"></li>
-         <li><img width="30px"    style="margin:0.5em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/move.png"></li>
+       <li class="social"><img width="30px" style="margin:0.5em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdface.png"></li>
+        <li class="social"><img width="30px"   style="margin:0.5em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdtwit.png"></li>
+         <li class="social"><img width="30px"    style="margin:0.5em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/move.png"></li>
  
         <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -26,10 +26,19 @@
               <%= link_to 'News', articles_path  %>  
 
             </li>
-           <li class="<%= 'active' if current_page?(artists_path) %>">
+           
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roster <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+           <li>
             <%= link_to 'Artists', artists_path  %> 
-
             </li>
+            <li class="divider"></li>
+            <li><a href="#">Composers</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Songwriters</a></li>
+          </ul>
+        </li>
             <li class="<%= 'active' if current_page?(releases_path) %>">
            <%= link_to 'Releases', releases_path  %> 
 
