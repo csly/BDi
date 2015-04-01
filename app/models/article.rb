@@ -26,5 +26,11 @@ class Article < ActiveRecord::Base
     def artistpreview
     body[0..100]  +  ".."
     end 
+    def homepreview2
+    body[0..129]  +  "..."
+    end 
+ 
 end
+
+
 

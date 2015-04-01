@@ -1,67 +1,20 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+
+     <ul class="nav navbar-nav navbar-right">
+       <li><img width="30px" style="margin:0.5em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdface.png"></li>
+        <li><img width="30px"   style="margin:0.5em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdtwit.png"></li>
+         <li><img width="30px"    style="margin:0.5em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/move.png"></li>
  
-
-   <nav>
-      <div class="container2">
-        <div class="nav-top clearfix">
-          <div class="logo">
-            <h1><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "mainlogo"), root_path %></h1>
-          </div>
-          <div class="search hidden-xs">
-          
-
-<span class="right">
-<div class="leftsearch">
- 
-</div>
-<div class="rightnav"><ul class="client">
-
- <% if current_user %>
-   <li class="">
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-   </li>
- <% if current_user.admin? %>
-     <li class="">
-      <%= link_to 'Admin', admin_path %>
-    </li>
-  <% end %>
- <% if current_user.client? %>
-    <li class="">
-    <%= link_to 'Client', clients_path  %>
-    </li>
-  <% end %>
-  <% else %>
-   <li class="">
-    <%= link_to 'Client Sign In', new_user_session_path %>
-  </li>
- <% end %>
-  
- </ul> 
-</div>
-<br />
-<br />
-</span>
-
-
-</div> 
- 
-             
-          </div>
-          
+        <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
         </div>
-      </div>
-
-      <div class="main-nav navbar-collapse collapse">
-        <div class="container2">
-          <div class="minilogo">
-            <h1>
-              BDi Music
-            </h1>
-          </div>
-          <ul class="nav nav-justified">
-         
-
-
-
+        <button type="submit" class="btn btn-default search">Submit</button>
+      </form>
+      </ul> 
+       <ul class="nav navbar-nav navbar-left" style=" padding-left:15px;color: white !important">
+       
             <li class="<%= 'active' if current_page?(root_path) %>">
               <%= link_to 'Home', root_path %>
             </li>
@@ -93,15 +46,44 @@
 
 
             </li>
-
- <li class="socials"><a href="#"><div class="facebook"></div></a></li>
-  <li class="socials"><a href="#"><div class="twitter"></div></a></li>
-   <li class="socials"><a href="#"><div class="movement"></div></a></li>
           </ul>
-        </div>
-      </div>
-    </nav>
- 
- <style>
- li.socials {width:0.1%;}
- </style>
+  </div>
+</nav>
+
+<nav class="navbar navbar-default bottnav">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "mainlogo"), root_path %></a>
+    
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <br />   <br /> 
+      <ul class="nav navbar-nav navbar-right">
+       
+           <div class="sectone " style="">
+           <h3>Welcome To The BDi Music Ltd Website</h3>
+           </div><br /><br /><br />  
+           <div class="secttwo ">
+           <h3>International Music Publisher </h3>
+           </div>
+          </ul> 
+          </div>
+  
+     
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<style> 
+.hidden {display:none;} 
+</style>

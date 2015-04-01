@@ -1,27 +1,32 @@
-<br><br><br>
+ <div class="container">
 
-<div class="clear"></div>
-<div class="portfolio-items grid" style="padding:10px;">
+<div class="portfolio-items grid">
   <ul id="grid-items" class="cs-style-3" id="gallery">
    <% @articles.each do |article| %>
-   
-
-    <li class="col-md-4" >
-    <%= link_to(article_path(article)) do %>
+        <li class="col-md-4" >
+           
 <figure >
 
 <div class="blur pic">
 
-<%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
-
-</div> 
-<div class="arrow-up"></div>
+<%= link_to(article_path(article)) do %>
+<%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive homeimage' %>
+<h4>
+<span class="htext">
+<%= link_to(article_path(article)) do %>
+<%= simple_format word_wrap(article.title, :line_width => 28).gsub("\n", "</p><span class='title'>"), :class => 'title' %> <% end %>
+</span>
+</h4>
+</div>  
  
 <figcaption>
-<h4><%= link_to(article_path(article)) do %><%= article.title %><% end %></h4>
+
 <div class="date"><%= article.created_at.strftime("Added on %d/%m/%Y") %></div>
-<p><%= article.homepreview %><%= link_to(article_path(article)) do %> Read More<% end %>
-</p>
+<p><%= article.homepreview2 %>
+
+
+</p><br />
+<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
 </figcaption>
 </figure>
 <% end %>
@@ -30,8 +35,7 @@
   <% end %> 
     </ul> 
    
-    </div>
+    </div> 
 <div class="clear"></div>
-
  
- 
+ </div> 

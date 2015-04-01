@@ -25,3 +25,8 @@ $( ".main-nav li" ).hover(
     $( this ).removeClass( "active" );
   }
 );
+
+
+$(document).ready(function () {
+    $('div.bgvinyl').fadeIn(2000).removeClass('hidden');
+});
