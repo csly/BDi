@@ -1,0 +1,38 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Tracks</h4><%= link_to "+ New", new_admin_track_path, class: "btn btn-success"  %>
+<table>
+  <tr>
+  <th class="id">Catalogue No.</th>
+  <th class="title">Title</th>
+  <th class="body">Origin</th>
+  <th class="created"> Created at</th>
+  <th class="updated">Updated at</th> 
+  <th class="image">Composers</th> 
+  <th class="edit"></th>
+  </tr>
+<% @tracks.each do |track| %>
+  <tr>
+  <td class="id"><%= track.catalogue %></td>
+  <td class="title">  <%= track.title %></td>
+  <td class="body"><%= track.origin %></td>
+  <td class="created"> <%= track.created_at.strftime('%d-%m-%Y') %></td>
+  <td class="updated"><%= track.updated_at.strftime('%d-%m-%Y') %></td>
+  <td class="image"> <%= track.track_composer %></td>
+  <td class="edit"> <%= link_to "Edit", edit_admin_track_path(track), :class =>  "btn btn-success", :method => :get  %> 
+   <%= link_to 'Delete', admin_track_path(track), method: :delete, class: "btn btn-success"  %></td>
+
+  </tr>
+
+<% end %>
+</table>
+<br />
+<%= link_to 'Back To Tracks', admin_tracks_path, class: "btn btn-success "  %>
+</div>
+
+
+
+</div>
+
+<br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br />

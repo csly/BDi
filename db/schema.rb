@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317101321) do
+ActiveRecord::Schema.define(version: 20150427112657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150317101321) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image"
+    t.text     "youtube"
   end
 
   create_table "artist_genres", force: :cascade do |t|
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150317101321) do
     t.datetime "photo_updated_at"
     t.string   "twitter"
     t.string   "facebook"
+    t.boolean  "composer"
+    t.boolean  "songwriter"
   end
 
   create_table "award_artists", force: :cascade do |t|
@@ -92,6 +95,18 @@ ActiveRecord::Schema.define(version: 20150317101321) do
   end
 
   create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "instrumentations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "moods", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -179,11 +194,62 @@ ActiveRecord::Schema.define(version: 20150317101321) do
     t.string   "phone"
   end
 
+  create_table "styles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "track_instrumentations", force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "instrumentation_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "track_moods", force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "mood_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "track_productions", force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "production_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "track_styles", force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "style_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "catalogue"
+    t.string   "oldtitle"
+    t.string   "origin"
+    t.string   "track_composer"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "types", force: :cascade do |t|
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+  end
+
+  create_table "user_tracks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "track_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -201,6 +267,7 @@ ActiveRecord::Schema.define(version: 20150317101321) do
     t.datetime "updated_at"
     t.boolean  "admin"
     t.boolean  "client"
+    t.string   "company"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

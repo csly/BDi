@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   has_many :artists, through: :article_artists
 
   has_attached_file :image, :default_url => "/images/:style/missing.png"
- 
+ attr_accessor :query 
    
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
@@ -29,7 +29,21 @@ class Article < ActiveRecord::Base
     def homepreview2
     body[0..129]  +  "..."
     end 
+
+  def embed(youtube)
+         youtube_id = youtube.split("=").last
+         content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
+   end
+   
+     class << self
+      def search(query)
+        where('title ILIKE ? or body ILIKE ?', query, query) if query
+       
+      end
+    end
  
+
+
 end
 
 

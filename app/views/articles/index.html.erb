@@ -1,30 +1,70 @@
- <br />  <br /> 
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'News', articles_path %>   
+<br /><br /> 
+<span class="artist-name-main">
+News</span> <br />  <br />
 
- <div class='container-eight'> 
- <div class="page-title">
-<h2>News</h2>
-</div>
-  <div class="news"> 
-<% @articles.each do |article| %>
-<div class="container">
-<div class="news-list">
-<div class="col-md-3 icon-container" > 
-  
-  <%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
-</div>
-<div class="col-md-9">
-<h3><%= link_to article.title, article_path(article) %><br /><small><%= article.created_at.strftime('%-d %B %Y ') %></small></h3> 
-<p><%= article.newspreview %></p> 
-
-   </div>
-   </div> 
-   </div><div class="more">
-<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
-</div>
-   <div class="clear"></div>  
-<% end %>
  </div>
+</div> 
+  <br />  <br /> 
+
+ <div class='containernohome'> 
+ 
+<% @articles.each do |article| %>
+<div class="news"> 
+ 
+ <div class="col-md-2">
+<%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+ </div>
+
+ <div class="col-md-10">
+ <div class="button-holder">
+  <div class="center-content"> 
+
+    <a href="<%= article_path(article) %>" class="type-1">
+      <span> Read More </span>
+      <span> Read More </span>
+    </a> 
+    </div>
+    </div>
+<h3><%= link_to article.title, article_path(article) %><br /><small><%= article.created_at.strftime('%-d %B %Y ') %></small></h3><br />
+ 
+<p><%= article.newspreview.html_safe %></p>  
+
+
+ </div>
+
+  </div>
+   <div class="clear"></div>   
+<% end %>
+
  <%= will_paginate @articles, :page_links => false %>
  </div>
  <br />  <br /> 
  
+ <style>
+ .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+.col-md-2{ padding:15px;}
+.col-md-10{  padding:15px;}
+.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-1 a {display:block;
+  -webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+writing-mode: lr-tb;
+font-size:120%;
+margin-top:80px;
+color:white;
+ }   
+hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
+
+.page-title2 {border: 2px solid #767c60; text-align:center;}
+
+
+ </style>
+
+
+
+
+

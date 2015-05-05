@@ -42,8 +42,14 @@ class Artist < ActiveRecord::Base
         artists = artists.where(genres: {id: genre}) if !genre.empty?
         artists = artists.where(types: {id: type}) if !type.empty?
         artists = artists.where('name LIKE ? or biog LIKE ?', query, query) if query
-        artists
+        artists  
       end
+  end
+
+  def composer_artist(artist)
+    if artist.composer
+     "".html_safe
+    end
   end
  
 end

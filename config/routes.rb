@@ -12,11 +12,14 @@ resources :presses
 resources :releases
 resources :abouts
 resources :contact
+resources :composers
+resources :songwriters
 
 
 namespace :admin do
      resource :home
     resources :articles
+    resources :tracks
     resources :artists
     resources :awards
     resources :presses
@@ -27,6 +30,9 @@ namespace :admin do
     resources :staffs
     resources :types
     resources :productions  
+    resources :styles
+    resources :instrumentations
+    resources :moods
   end 
  get 'admin' => 'admin/homes#show'
 end

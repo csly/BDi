@@ -1,0 +1,37 @@
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Composers', composers_path %> 
+</span>
+<br /><br />
+<span class="artist-name-main">
+Composers
+</span>
+
+ <br /><br /></div>
+</div> 
+  <br />  <br /> 
+
+ <div class='containernohome'> 
+ 
+  <div class="artists"> 
+ 
+<ul class="grid-items">
+ <% if defined?(@composer_artists) %>
+  <% @composer_artists.each do |artist| %>
+<li class="col-md-2 ">
+<div class="artistmain">
+<%= link_to(artist_path(artist)) do %>
+ <%= image_tag artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistimage' %> 
+  <h5 style="font-size:120%"><%= artist.name %></h5>
+  <br />
+  <% end %>
+  </div>
+</li> 
+ <% end %><% end %>
+</ul> 
+ </div> 
+</div>
+
+  <div class="clear"></div><br /><br >
+
+ 

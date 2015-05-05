@@ -1,5 +1,5 @@
   <div class='container'> 
- <div class="col-md-3" style="height:700px;">
+ <div class="col-md-3" style="">
  <h2> Admin Panel</h2>
   <div class="nav">
 <%= link_to 'Dashboard', admin_path, class: "btn btn-success btn-lg btn-block" %>
@@ -11,9 +11,19 @@
 <%= link_to 'Press', admin_presses_path, class: "btn btn-success btn-lg btn-block"  %>
 <%= link_to 'Users', admin_users_path, class: "btn btn-success btn-lg btn-block"  %>
 <hr>
+ <h2> Artist Tags</h2>
 <%= link_to 'Genres', admin_genres_path, class: "btn btn-success btn-lg btn-block" %>
 <%= link_to 'Types', admin_types_path, class: "btn btn-success btn-lg btn-block" %>
-<%= link_to 'Productions', admin_productions_path, class: "btn btn-success btn-lg btn-block" %>
+
+<hr>
+ <h2> Production Tracks</h2>
+ <%= link_to 'Tracks', admin_tracks_path, class: "btn btn-success btn-lg btn-block" %>
+  <%= link_to 'Styles', admin_styles_path, class: "btn btn-success btn-lg btn-block" %>
+  <%= link_to 'Instrumentations', admin_instrumentations_path, class: "btn btn-success btn-lg btn-block" %>
+  <%= link_to 'Moods', admin_moods_path, class: "btn btn-success btn-lg btn-block" %>
+  <%= link_to 'Productions', admin_productions_path, class: "btn btn-success btn-lg btn-block" %>
 <br /><br />
+<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-success btn-lg btn-block" %>
+
 </div>
 </div> 

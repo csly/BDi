@@ -1,0 +1,24 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Instrumentation Tags</h4><%= link_to "+ New", new_admin_instrumentation_path, class: "btn btn-primary"  %>
+<table>
+  <tr>
+  <th class="title">Name</th> 
+  <th class="edit"></th>
+  </tr>
+<% @instrumentations.each do |instrumentation| %>
+  <tr>
+  <td class="title">  <%= link_to instrumentation.name, admin_instrumentation_path(instrumentation) %></td> 
+  <td class="edit">  
+   <%= link_to 'Delete', admin_instrumentation_path(instrumentation), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table>
+</div>
+
+
+
+
+</div>

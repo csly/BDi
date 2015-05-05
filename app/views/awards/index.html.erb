@@ -1,27 +1,74 @@
+ 
 
-  <br />  <br /> <div class='container-eight'> 
-  <div class="page-title">
-<h2>Awards</h2>
-</div>
-  <div class="news"> 
-<% @awards.each do |award| %>
-<div class="container">
-
-<div class="news-list">
-<div class="col-md-3 icon-container" > 
-  
-  <%= image_tag award.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
-</div>
-<div class="col-md-9">
-<h3><%= link_to award.title, award_path(award) %><br /><small><%= award.created_at.strftime('%-d %B %Y ') %></small></h3> 
-<p><%= award.newspreview %></p> 
-   </div>
-   </div> 
-   </div><div class="more">
-<%= link_to "Read More", award_path(award), :class => "btn btn-default" %></div>
-   <div class="clear"></div>  
-<% end %>
+ <div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Awards', awards_path %>   
+<br /><br /> 
+<span class="artist-name-main">
+Awards 
+</span><br />  <br />
  </div>
+</div> 
+  <br />  <br /> 
+
+ <div class='containernohome'> 
+ 
+<% @awards.each do |award| %>
+<div class="news"> 
+ 
+ <div class="col-md-2">
+<%= image_tag award.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+ </div>
+
+ <div class="col-md-10">
+ <div class="button-holder">
+  <div class="center-content"> 
+
+    <a href="<%= award_path(award) %>" class="type-1">
+      <span> Read More </span>
+      <span> Read More </span>
+    </a> 
+    </div>
+    </div>
+<h3><%= link_to award.title, award_path(award) %><br /><small><%= award.created_at.strftime('%-d %B %Y ') %></small></h3><br />
+ 
+<p><%= award.newspreview.html_safe %></p>  
+
+
+ </div>
+
+  </div>
+   <div class="clear"></div>   
+<% end %>
+
+ <%= will_paginate @awards, :page_links => false %>
  </div>
  <br />  <br /> 
+ 
+ <style>
+ .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+.col-md-2{ padding:15px;}
+.col-md-10{  padding:15px;}
+.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-1 a {display:block;
+  -webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+writing-mode: lr-tb;
+font-size:120%;
+margin-top:80px;
+color:white;
+ }   
+hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
+
+.page-title2 {border: 2px solid #767c60; text-align:center;}
+
+
+ </style>
+
+
+
+
+
+
   

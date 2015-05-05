@@ -53,7 +53,7 @@ def create
 
 
 def article_params
-    params.require(:article).permit(:title, :body, :image, artist_ids: [])
+    params.require(:article).permit(:title, :body, :youtube, :image, artist_ids: [])
   end
 
 

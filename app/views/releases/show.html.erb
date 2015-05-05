@@ -1,62 +1,70 @@
-
-
-
-
- 
-<br />  <br /> 
-  <div class='container-eight'> 
-  <div class="page-title">
-<h2><%= @release.title %></h2>
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <span class="artname"> <%= @release.title %>
+</span>
+</span>
+<br /><br />
+<span class="artist-name-main">
+<%= @release.title %>
+</span> <br /><br /></div>
 </div> 
-<br />
-   
-  <div class="newslist">
+  <br />  <br /> 
 
+ <div class='containernohome'> 
+  <div class="news"> <br />
+ 
+
+    
+<div class="container">
 <div class="news-list">
-<div class="col-md-4"> 
- <%= image_tag @release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> <br /> 
+<div class="col-md-3 icon-container" > 
+  
+  <%= image_tag @release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
 
- 
 </div>
-
-<div class="col-md-8">
- 
- 
-
+<div class="col-md-9">
+<h2 style="margin-top:10px; "><%= @release.title %>
 <% if @release.itunes.blank? %>
+<% else %>  
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:40px; margin-top:-10px; float:right; margin-left:10px;"),  @release.itunes, target: "_blank" %> 
+<% end %>
+ <% if @release.amazon.blank? %>
 <% else %> 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:6%; "),    @release.itunes, target: "_blank" %> <% end %>
- <% if  @release.amazon.blank? %>
-<% else %> 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:6%;  "),   @release.amazon, target: "_blank" %> <% end %>
-</h3> 
-
- <br /><br /> 
-<p><%=  @release.body %></p> 
-<p><b>Release Date:</b><%=  @release.date.strftime('%-d %B %Y ') %></p> 
-<p><%=  @release.links.html_safe %></p><p><b>Genres:</b> <%= link_to @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
-
-
-   </div>
-   </div> 
-
-   <div class="clear"></div>  
  
- </div>  <br />
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:40px; margin-top:-10px;  float:right"),  @release.amazon, target: "_blank" %> 
+<% end %>
+</h2> 
  
- <div class="newslist title">
-<h3>Related Artists:</h3>  
-</div> <br /><div class="newslist arti">
- <% @release.artists.each do |artist| %>
- <div class="col-md-3">
  
-  <%= link_to (image_tag artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsartist'), artist_path(artist) %>
+<p><%= @release.body %></p> 
+<p><b>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></p> 
+ <p><b>Genres:</b> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+
+
+ 
+
+
+
+<p><b>Related Artists:</b>
+<% @release.artists.each do |artist| %>
+ <div class="col-md-2" style="padding:0px; margin-right:-20px;">
+
+
+ 
+ <%= link_to (image_tag artist.photo.url, :style => 'width:100px; height:100px;', :class => 'img-responsive releaseartist'), artist_path(artist) %>
 
     <%= link_to artist.name, artist_path(artist) %>
- </p>
-  </div> <% end %>
+    </div>
+    <% end %> 
+  </p>
+
+ 
+   </div>
+   </div>
+   </div> <br /><br />
+   <div class="clear"></div>  
+ 
  </div>
-</div>
-<div class="clear"></div>  
+ </div> 
 
 

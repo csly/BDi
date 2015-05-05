@@ -1,77 +1,115 @@
-  <br />  <br />  <div class='container-eight'> 
-  <div class="page-title">
-<h2>Releases</h2>
-</div> <br />  <br /> 
-  <div class="news"> <br />
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>   
+<br /><br /> 
+<span class="artist-name-main">
+Releases</span> 
+
+<div style="float:right; width:600px;    margin-top: -30px;">
 <%= simple_form_for :release, url: url_for(releases_path),  
      method: 'get' do |f| %>
 
-<table class="tablesearch">
+<table class="tablesearch2">
 
 <tr>
-<td>
+<td class="one">
   <%= f.input :query, input_html: {name: 'q', class: 'special'}, label: "Keywords", placeholder: 'Search...', required: false %>
   </td>
-  <td>
+<td class="one">
   <%= f.input :genre, input_html: {name: 'genre'},  collection: Genre.order('name ASC').used, include_blank: 'All', required: false %> 
   </td>
-<td>
+<td class="one">
   <%= f.input :artist, input_html: {name: 'artist'},  collection: Artist.order('name ASC').used, include_blank: 'All', required: false %> 
   </td>
-  <td>
+ <td class="one">
   <%= f.input :production, input_html: {name: 'production'},  collection: Production.order('name ASC').used, include_blank: 'All', required: false %> 
   </td>
   <td class="last">
   <%= f.submit 'Search', class: 'btn btn-primary searcharticles' %>
 
   </td></tr></table>
-<% end %><hr>
-
-   
-<% @releases.each do |release| %>
-<div class="container">
-<div class="news-list">
-<div class="col-md-3 icon-container" > 
-  
-  <%= image_tag release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
-
+<% end %>
 </div>
-<div class="col-md-9">
-<h3 style="margin-top:0px;"><%= release.title %>
-  
-<% if release.itunes.blank? %>
-<% else %> 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:6%; float:right; margin-left:10px;"),  release.itunes, target: "_blank" %> <% end %>
+
+<br />  <br />
+
+ </div>
+</div> 
+  <br />  <br /> 
+
+ <div class='containernohome'> 
+ 
+<% @releases.each do |release| %>
+<div class="news"> 
+ 
+ <div class="col-md-2">
+<%= image_tag release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+ </div>
+
+ <div class="col-md-10">
+ <div class="button-holder">
+  <% if release.itunes.blank? %>
+<% else %>  
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:40px; margin-top:-10px; float:right; margin-left:10px;"),  release.itunes, target: "_blank" %> 
+<% end %>
  <% if release.amazon.blank? %>
 <% else %> 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:6%; float:right"),  release.amazon, target: "_blank" %> <% end %>
-</h3> 
-
  
-<p><%= release.newspreview %></p> 
-<p><b>Release Date:</b><%= release.date.strftime('%-d %B %Y ') %></p> 
-<p><%= release.links.html_safe %></p><p><b>Genres:</b> <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
-
-<p><b>Related Artists:</b>
-<% release.artists.each do |artist| %>
- <div class="col-md-2" style="padding:0px; margin-right:10px;">
-
-
- 
- <%= link_to (image_tag artist.photo.url, :style => 'width:100px; height:100px;', :class => 'img-responsive releaseartist'), artist_path(artist) %>
-
-    <%= link_to artist.name, artist_path(artist) %>
-    </div>
-    <% end %> 
-  </p>
-
- 
-   </div>
-   </div>
-   </div> <br /><br />
-   <div class="clear"></div>  
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:40px; margin-top:-10px;  float:right"),  release.amazon, target: "_blank" %> 
 <% end %>
+    </div>
+<h3><%= link_to release.title, release_path(release) %><br /> </h3> 
+ 
+<p><p><%= release.body %></p> 
+<p><b> Release Date: </b><%= release.date.strftime('%-d %B %Y ') %></p> 
+ <p><b>Genres:</b> <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p></p>  
+
+
+  <% if release.artists.blank? %>
+<br />
+ <% else %>
+ <div class="">Related Artists: 
+ 
+ <%= artist_list_for(release.artists) %>
+
+    
+ <% end %></div> 
+
  </div>
+
+  </div>
+   <div class="clear"></div>   
+<% end %>
+
+ <%= will_paginate @releases, :page_links => false %>
  </div>
- <br />  <br />  <br />  <br /> 
-  
+ <br />  <br /> 
+ 
+ <style>
+ .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+.col-md-2{ padding:15px;}
+.col-md-10{  padding:15px;}
+.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-1 a {display:block;
+  -webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+writing-mode: lr-tb;
+font-size:120%;
+margin-top:80px;
+color:white;
+ }   
+hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
+
+.page-title2 {border: 2px solid #767c60; text-align:center;}
+
+
+ </style>
+
+
+
+
+
+
+
+

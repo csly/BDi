@@ -3,9 +3,11 @@
   <%= f.input :biog %>
   <%= f.input :links %>
   <%= f.input :facebook %>
-  <%= f.input :twitter %>
+  <%= f.input :twitter %>  
+  <%= f.input :composer %>
+  <%= f.input :songwriter %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :types, collection: Type.order('name ASC') %>
   <%= f.file_field :photo %><br />
   <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<% end %> 

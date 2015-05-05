@@ -1,5 +1,52 @@
-  <div class='container'> 
-<div class="col-md-9">
-<h4> Clients</h4> 
+  <div class='containernohome'>  
+ Welcome  
+ 
+ <h5>Styles</h5> 
+
+ <% @styles.each do |style| %>
+ <button type="button" class="btn btn-success filter" id="<%= style.name.downcase! %>"><%= style.name %></button>
+ <% end %> 
+<br /><br />
+ <h5>Moods</h5>
+ <% @moods.each do |mood| %>
+ <button type="button" class="btn btn-success filter" id="<%= mood.name.downcase! %>"><%= mood.name %></button> 
+ <% end %> 
+<br /><br />
+ <h5>Instumentation</h5>
+ <% @instrumentations.each do |instrumentation| %>
+ <button type="button" class="btn btn-success filter" id="<%= instrumentation.name.downcase! %>"><%= instrumentation.name %></button> 
+ <% end %> 
+<br /><br />
+<h4> List Of Tracks</h4>
+<table class="tracktabs">
+  <tr class="<%= @styles.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %> <%= @moods.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %> <%= @instrumentations.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %>">
+  <th class="cat">Catalogue No.</th>
+  <th class="tit">Track Title</th>
+  <th class="len">Length</th>
+  <th class="comp">Composer(s)</th>
+  <th class="prod">Production</th>
+  <th class="tags"> Tags</th>
+  <th class="play">Play</th> 
+  <th class="down">Download</th> 
+  </tr>
+<% @tracks.each do |track| %>
+  <tr class="<%= track.styles.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %> <%= track.moods.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %> <%= track.instrumentations.pluck(:name).map{|n| n.split(' ').map!(&:downcase).join(' ')}.join(' ') %>" id="multiple">
+  <td class="cat"  ><%= track.catalogue %></td>
+  <td class="tit">  <%= track.title %></td>
+  <td class="len">00:15</td>
+  
+  <td class="comp"> <%= track.track_composer %></td>
+  <td class="prod"> <%= track.productions.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></td>
+  <td class="tags"> <%= track.styles.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %><br /> <%= track.moods.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %><br /><%= track.instrumentations.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></td>
+  <td class="play">Play</td>
+  <td class="down"> Download</td>
+
+  </tr>
+
+<% end %>
+</table>
+   <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-success btn-lg btn-block" %>
 
 </div></div>
+ 
+ 

@@ -6,6 +6,8 @@ end
 
 def show
     @press = Press.find(params[:id])
+    @articles = Article.paginate(page: params[:page], per_page: 5).order('articles.created_at DESC')
+    @awards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
   end
 
 

@@ -48,7 +48,7 @@ def create
  
 
 def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :company, :client, :admin, track_ids: [])
   end
 
 

@@ -14,7 +14,7 @@
 <h4>
 <span class="htext">
 <%= link_to(article_path(article)) do %>
-<%= simple_format word_wrap(article.title, :line_width => 32).gsub("\n", "</p><span class='title2line'>"), :class => 'title' %> <% end %>
+<%= simple_format word_wrap(article.title, :line_width => 28).gsub("\n", "</p><span class='title2line'>"), :class => 'title' %> <% end %>
 </span>
 </h4>
 </div>  
@@ -25,9 +25,17 @@
 <p><%= article.homepreview2 %>
 
 
-</p><br />
-<%= link_to "Read More", article_path(article), :class => "btn btn-default" %>
-</figcaption>
+</p> 
+ 
+ <div class="button-holder2">
+  <div class="center-content"> 
+    <a href="<%= article_path(article) %>" class="type-2">
+      <span> Read More </span>
+      <span> Read More </span>
+    </a> 
+    </div>
+    </div>
+<br /><br /></figcaption>
 </figure>
 <% end %>
 </a>
@@ -39,3 +47,5 @@
 <div class="clear"></div>
  
  </div> 
+
+

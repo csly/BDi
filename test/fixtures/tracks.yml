@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  catalogue: MyString
+  oldtitle: MyString
+  origin: MyString
+  track_composer: MyString
+
+two:
+  title: MyString
+  catalogue: MyString
+  oldtitle: MyString
+  origin: MyString
+  track_composer: MyString
