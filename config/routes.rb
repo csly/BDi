@@ -15,6 +15,8 @@ resources :contact
 resources :composers
 resources :songwriters
 
+get '/search', to: 'search#index'
+
 
 namespace :admin do
      resource :home

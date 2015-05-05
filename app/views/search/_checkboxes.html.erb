@@ -1,0 +1,14 @@
+<%= f.label klass.to_s.pluralize %>
+<br/>
+<% checkbox_id = "#{klass.to_s.downcase}_ids" %>
+<% previous_selection = @previous_params[checkbox_id.to_sym] || [] %>
+<% klass.find_each do |p| %>
+  <% available = collection.include?(p) %>
+  <% checked = previous_selection.include?(p.id.to_s) %>
+  <div class="<%= (available ? 'available' : 'unavailable') %> checkboxes switch">
+    <%= f.check_box(checkbox_id, { checked: checked, multiple: true, disabled: !available }, p.id, nil) %>
+    <label>
+      <%= p.name %>
+    </label>
+  </div>
+<% end %>

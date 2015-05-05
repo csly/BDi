@@ -1,0 +1,93 @@
+<h1>Search all the things</h1>
+<%= link_to 'Reset', search_path %>
+<%= form_for :q, url: search_path, method: :get, html: { id: 'search_form' } do |f| %>
+  <%= f.label 'Title' %>
+  <br/>
+  <%= f.text_field :track_title %>
+  <br/>
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Production, collection: @productions }) %>
+  <br/>
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Mood, collection: @moods }) %>
+  <br/>
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Instrumentation, collection: @instrumentations }) %>
+  <br/>
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Style, collection: @styles }) %>
+  <br/>
+  <%= f.submit "Search" %>
+<% end %>
+<div id="tracks">
+  <% @tracks.each do |track| %>
+    <h3>
+      <%= track.title %>
+    </h3>
+    <p>
+      <%= track.oldtitle %>
+    </p>
+    <p>
+      <%= track.catalogue %>
+    </p>
+    <% track.productions.each do |production| %>
+    <p>
+      <%= production.name %>
+    </p>
+  <% end %>
+  <% end %>
+</div>
+<%= content_for :extra_footer do %>
+  <script>
+
+    $(document).ready(function() {
+      var lastKeyPress = null;
+      $('input:checkbox').change(filterResults);
+      $('#q_track_title').keyup(filterResults);
+    });
+
+    function filterResults(e) {
+      var formValues = $('form').serialize();
+      $.get("/search.json", formValues, function(data) {
+        updateFilters(data);
+        $tracks = $('#tracks').html('');
+        data.tracks.forEach(function(track) {
+          productions = track.productions.map(function(production) {
+            return '<p>'+production.name+'</p>'
+          });
+          trackData = [
+            '<h3>'+track.title+'</h3>',
+            '<p>' + track.oldtitle + '</p>',
+            '<p>' + track.catalogue + '</p>'
+          ]
+          trackView = trackData.concat(productions).join('\n');
+          $tracks.append(trackView);
+        });
+      });
+    }
+
+    function updateFilters(data) {
+      var filters = ['style', 'production', 'mood', 'instrumentation'];
+      filters.forEach(function(filter) {
+        updateFilter(filter, data[filter+"s"]);
+      });
+    }
+
+    function updateFilter(type, ids) {
+      checkboxes = $('input[name="q['+type+'_ids][]"]')
+      checkbox_ids = ids.map(function(e) {
+        return "q_"+type+"_ids_"+e.id;
+      });
+      checkboxes.each(function() {
+        var $this = $(this).parent();
+        if (checkbox_ids.indexOf(this.id) > -1) {
+          $(this).removeAttr("disabled");
+          $this.addClass('available');
+          $this.removeClass('unavailable');
+        } else {
+          $(this).attr("disabled", true);
+          $this.addClass('unavailable');
+          $this.removeClass('available');
+        }
+      });
+    }
+
+
+  </script>
+<% end %>

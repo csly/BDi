@@ -12,8 +12,19 @@ class Track < ActiveRecord::Base
   has_many :track_productions, dependent: :destroy
   has_many :productions, through: :track_productions
 
-attr_accessor :users
+  class << self
+    def search(params)
+      tracks = Track.where('title ILIKE ?', "%#{params[:track_title]}%") if params[:track_title]
+      %w(production mood instrumentation style).each do |model|
+        table = "#{model}s"
+        reference = table.to_sym
+        data = params["#{model}_ids".to_sym]
+        if data
+          tracks = tracks.includes(reference).where("#{table}.id IN (?)", data).references(reference)
+        end
+      end
+      tracks
+    end
+  end
 
-
-   
 end

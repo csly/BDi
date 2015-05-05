@@ -24,6 +24,8 @@ gem 'pry-rails'
 gem 'cancancan'   
 gem 'seed_dump'
 gem 'carrierwave'
+gem 'active_model_serializers'
+gem 'responders'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
