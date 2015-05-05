@@ -6,7 +6,7 @@ class Release < ActiveRecord::Base
   has_many :release_productions, dependent: :destroy
   has_many :productions, through: :release_productions
 
-  attr_accessor :query, :genre, :artist, :production
+  attr_accessor :query, :genre, :artist
 
   has_attached_file :photo
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
@@ -23,6 +23,8 @@ class Release < ActiveRecord::Base
     def newspreview
       body[0..465] + ".."
     end
+
+    
    class << self
       def search(query, genre, artist, production)
         query = (query && !query.empty?) ? "%#{query}%" : nil

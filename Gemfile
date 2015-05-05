@@ -22,7 +22,7 @@ gem 'simple_form', '3.1.0.rc2'
 gem 'bootstrap-sass'
 gem 'pry-rails'
 gem 'cancancan'   
-
+gem 'seed_dump'
 gem 'carrierwave'
 
 # Use jquery as the JavaScript library

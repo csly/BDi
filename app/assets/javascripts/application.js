@@ -41,6 +41,51 @@
 });
 
 
+$(document).ready(function() {
+    // Configure/customize these variables.
+    var showChar = 1400;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = " Show More ";
+    var lesstext = " Show Less ";
+    
+
+    $('.more').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+             var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<div class="button-holderart"><a href="" class="morelink">' + moretext + '</a></div></span>';
+ 
+            $(this).html(html);
+
+
+           
+        
+        }
+ 
+    });
+  
+
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+            $(".moreellipses").removeClass("nodots");
+
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+            $(".moreellipses").addClass("nodots");
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+
+        return false;
+    });
+});
 
 
 
@@ -50,36 +95,4 @@ $( ".main-nav li" ).hover(
   }, function() {
     $( this ).removeClass( "active" );
   }
-);
-$(function(){ /* to make sure the script runs after page load */
-
-  $('.item').each(function(event){ /* select all divs with the item class */
-  
-    var max_length = 1400; /* set the max content length before a read more link will be added */
-    
-    if($(this).html().length > max_length){ /* check for content length */
-      
-      var short_content   = $(this).html().substr(0,max_length); /* split the content in two parts */
-      var long_content  = $(this).html().substr(max_length);
-      
-      $(this).html(short_content+
-            
-             '<span class="more_text" style="display:none;">'+long_content+'<br class="something"> <br class="something"> </span>'); /* Alter the html to allow the read more functionality */
-             
-      $(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
- 
-        event.preventDefault(); /* prevent the a from changing the url */
-        $(this).hide(); /* hide the read more button */
-        $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
-        $('.button-holderart').css('display', 'none'); 
-        $('.center-content').css('display', 'none'); 
-        $('br.something').css('display', 'none'); 
-      });
-      
-    }
-    
-  });
- 
- 
-});
-
+); 

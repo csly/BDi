@@ -424,12 +424,13 @@ a.backto {color:white;}
 
  }
 
- .button-holderart > div > div, .button-holderart > div > a {
+ .button-holderart, .button-holderart > a {
+ margin-top:10px;
+  margin-bottom:30px;
   float: right;
   display: block;
   width: 100%;
-  top:0;
-
+  top:0; 
   height: 42px;
   font-size: 120%;  
   position: relative;
@@ -437,6 +438,39 @@ a.backto {color:white;}
   -moz-box-sizing: border-box; 
 
  }
+
+ a.morelink  {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  background: transparent;
+}
+
+ a.morelink:hover {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  background: $bdi-green;
+  color:white;
+  
+}
+
+a.morelink {position: absolute; font-size:100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0;
+  opacity: 1;
+  left: 0;
+  box-sizing: border-box;
+  background: #ececec;
+  border: 2px solid #767c60;
+  color: #767c60;
+  -moz-box-sizing: border-box;
+  padding: 6px 0;
+  text-align: center;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;}
 
 .button-holder div a {
   text-decoration: none;
@@ -528,7 +562,7 @@ table.tablesearch2 td.last {
   background-color:white;
 }
 
-.related {background-color:#e0e0e0; width:100%; padding:0.3em; color: #767c60; font-size:110%;}
+.related {background-color:#e0e0e0; width:100%; padding:0.3em; color: #767c60; font-size:110%; clear:both}
 
 .related2 {background-color:white; width:100%; padding:0.3em; color: #767c60; font-size:110%;}
 
@@ -618,3 +652,13 @@ margin: 0px !important;
  td.two{ width:35%}
  td.three{width:40%;}
  td.four{width:20%;}
+
+ .morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+.nodots {display:none;}
+
+.morede {margin-bottom:50px;}

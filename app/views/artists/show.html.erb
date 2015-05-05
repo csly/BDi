@@ -64,23 +64,12 @@
 
 <div class="col-md-8"> 
 
-<div class="item">
-<div class="related">Biography</div><br />
-     <p>  <%= @artist.biog.html_safe %></p> 
- 
-     <div class="button-holderart" style="margin-top:20px;">
-  <div class="center-content"> 
 
-    <a href="#" class="type-1 read_more">
-      <span> Read More </span>
-      <span> Read More </span>
-    </a> 
-    </div>
-    </div>
- 
-</div>  
-
- 
+<span class="more">
+      <%= @artist.biog.html_safe %> 
+    </span><br /> 
+<br /><br />
+  
 
 
 <% if @artist.releases.blank? %>
