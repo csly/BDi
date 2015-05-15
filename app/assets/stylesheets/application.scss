@@ -92,7 +92,25 @@ span.title2line {  float: left;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
 padding:0.5em;  color:$bdi-green; font-weight:normal;}
-  
+
+
+.navbar-right2 {  padding: 0px;}
+
+span.titlehead {  float: right;
+font-size:1.5em;
+  margin-top: 15px;
+  margin-left: -10px;
+  position: relative;
+  padding: 10px 0;
+  border-right: 3px solid $bdi-green;
+  border-bottom: 1px solid;
+  border-bottom-color: $bdi-green;
+  border-bottom-color: rgba(132, 143, 129, 1);
+  background-color: rgba(132, 143, 129, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+padding:0.8em;  color:white; font-weight:normal;}
+  span.titlehead p {text-transform:capitalize; margin:0px; padding-right:20px;}
  /******** HOMEPAGE ********/
 
  figure {background-color:white; margin-bottom:2em; border-bottom: solid 1px #ccc;}

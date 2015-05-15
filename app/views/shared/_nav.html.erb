@@ -56,13 +56,19 @@
             </li>
         
       </ul>
-<ul class="nav navbar-nav navbar-right">
-     
-       <li class="social"><img width="30px" style="margin:0.5em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdface.png"></li>
-        <li class="social"><img width="30px"   style="margin:0.5em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/bdtwit.png"></li>
-         <li class="social"><img width="30px"    style="margin:0.5em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/move.png"></li>
-    
- </ul>
+
+      <div class="navbar-right2">
+  <div class="row">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+  </div>
+
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 
@@ -75,12 +81,50 @@
     <div class="navbar-header">
      
      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/02/BDI-logo.jpeg", :class => "mainlogo"), root_path %> 
-    
+   
  
   </div> 
+  <div class="navbar-right2">
+<ul class="nav navbar-nav navbar-right">
+     
+       <li class="social2"><img width="50px" style="margin:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"></li>
+        <li class="social2"><img width="50px"   style="margin:0.4em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdtwit1.png"></li>
+         <li class="social2"><img width="50px"    style="margin:0.4em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/move1.png"></li>
+    
+ </ul>
+  </div>
+
+   <!--<div class="navbar-right2">
+   <span class="titlehead">
+   <p>International Music Publisher</p>
+   </span><br /><br /><br /><br />
+   <span class="titlehead">
+   <p>For over 20 Years</p>
+   </span>
+  </div>-->
+  
+
 </nav>
 <div class="wrapper">
 
-<style>
+<style> 
+
+li.social2{ transition: all .2s ease-in-out;  } 
+li.social2:hover { transform: scale(1.1); }
+
+
+input.form-control:focus{
+    outline: 0 !important;
+}
+.navbar-right2 {width:30%; float:right; padding-top:8px; padding-right:15px; }
+.navbar-right2 .btn {border:none;}
+input.form-control {border:none; box-shadow:none; background-color:#e5e7e4; color:#848f81;   }
+.form-control::-webkit-input-placeholder { color: #848f81; }
+.form-control:-moz-placeholder { color: #848f81;}
+.form-control::-moz-placeholder { color: #848f81; }
+.form-control:-ms-input-placeholder { color: #848f81; }
+.col-lg-6 input {float:right;}
 ul.nav .input-group:hover {background-color:transparent !important;}
+
+.input-group-btn .btn-default {background-color:#ced3cd; color:#848f81;}
 </style>
