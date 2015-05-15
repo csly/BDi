@@ -2,7 +2,16 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+     <div class="socialmobile" style="float:left">
+<ul>
+     
+       <li class="social2"><img width="50px" style="margin:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"></li>
+        <li class="social2"><img width="50px"   style="margin:0.4em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdtwit1.png"></li>
+         <li class="social2"><img width="50px"    style="margin:0.4em;"src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/move1.png"></li>
+    
+ </ul>
+  </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -54,6 +63,16 @@
 
 
             </li>
+            <li class="searchmobile">
+            <div class="searchmobile">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span> </div>
+   
+  </div>
+  </li>
         
       </ul>
 
@@ -111,7 +130,7 @@
 
 li.social2{ transition: all .2s ease-in-out;  } 
 li.social2:hover { transform: scale(1.1); }
-
+.searchmobile {display:none;}
 
 input.form-control:focus{
     outline: 0 !important;
@@ -128,3 +147,4 @@ ul.nav .input-group:hover {background-color:transparent !important;}
 
 .input-group-btn .btn-default {background-color:#ced3cd; color:#848f81;}
 </style>
+ 

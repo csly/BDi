@@ -302,9 +302,13 @@ a.backto {color:white;}
   background-color: white; }
 .nav > li:hover { color: $bdi-green;
   background-color: white; }
-
+.socialmobile {display:none;}
 
 @media screen and (max-width: 750px) {
+
+.navbar-header {margin: 0px !important}
+button.navbar-toggle { margin-right:30px !important;  margin-top:12px;}
+  img.mainlogo {padding:0px;}
   .navbar-collapse li {
         padding-left:20px;
     }
@@ -314,6 +318,14 @@ a.backto {color:white;}
      .navbar-collapse li.social:hover {
         transform: none; background-color:$bdi-green!important;
     }
+    .navbar-collapse { margin-right: 0px !important}
+     .navbar-collapse li.active {background-color:white; width:100%}
+    .navbar-right2 {display:none;}
+      li.searchmobile:hover {background-color: $bdi-green !important;}
+    .socialmobile {display:inline !important;}
+
+    .socialmobile li{display:inline !important;}
+    .searchmobile {display:inline !important; max-width: 50px;width:100% !important;}
     .container-fluid {  padding-left:15px !important;}
  .imgmain{text-align:left !important; padding:0px !important}
  .col-md-8 {padding:0px !important}
