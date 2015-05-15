@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
 def index
     
     if params[:q]
-      @articles = Article.search(params[:q]).paginate(page: params[:page], per_page: 10).order('articles.title ASC')
+      @articles = Article.search(params[:q]).paginate(page: params[:page], per_page: 10).order('articles.created_at DESC')
       if @articles.blank?
               redirect_to articles_path(@article), notice: "There are no Projects that match your search requirements. Please try again"
       end
     else
       params[:limit] ||= 10
-      @articles = Article.paginate(:page => params[:page], :per_page => params[:limit]).order('articles.title ASC')
+      @articles = Article.paginate(:page => params[:page], :per_page => params[:limit]).order('articles.created_at DESC')
  
     end
 end
