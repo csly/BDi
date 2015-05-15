@@ -48,7 +48,7 @@ def create
  
 
 def staff_params
-    params.require(:staff).permit(:name, :biog, :photo, :role, :email, :phone)
+    params.require(:staff).permit(:name, :biog, :image, :role, :email, :phone)
   end
 
 

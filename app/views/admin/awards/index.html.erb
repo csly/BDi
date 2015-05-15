@@ -18,7 +18,7 @@
   <td class="body"><%= award.body %></td>
   <td class="created"> <%= award.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= award.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag award.photo.url, :class =>  "imagethumb" %></td>
+  <td class="image"> <%= image_tag award.image.artistmain.url, :class =>  "imagethumb" %></td>
   <td class="edit"> <%= link_to "Edit", edit_admin_award_path(award), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_award_path(award), method: :delete, class: "btn btn-primary"  %></td>
 

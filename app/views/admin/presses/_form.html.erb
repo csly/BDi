@@ -2,6 +2,6 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
-  <%= f.file_field :photo %><br />
+  <%= f.file_field :image %><br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -48,7 +48,7 @@ def create
  
 
 def award_params
-    params.require(:award).permit(:title, :body, :photo, artist_ids: [])
+    params.require(:award).permit(:title, :body, :image, artist_ids: [])
   end
 
 

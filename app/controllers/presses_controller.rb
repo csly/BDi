@@ -13,7 +13,7 @@ def show
 
 
  def press_params
-    params.require(:press).permit(:title, :body, :photo, artist_ids: [])
+    params.require(:press).permit(:title, :body, :image, artist_ids: [])
   end
 end
 

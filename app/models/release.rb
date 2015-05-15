@@ -8,8 +8,7 @@ class Release < ActiveRecord::Base
 
   attr_accessor :query, :genre, :artist
 
-  has_attached_file :photo
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+      mount_uploader :image, ImageUploader
 
    def preview
       body[0..200]  +  "  "

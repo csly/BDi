@@ -1,7 +1,6 @@
 <%= simple_form_for([:admin, @about], html: {multipart: true}) do |f| %>
  
-  <%= f.input :body %>
-  <%= f.file_field :photo %><br/>
+  <%= f.input :body %> 
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 

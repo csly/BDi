@@ -18,7 +18,7 @@
   <td class="body"><%= press.body %></td>
   <td class="created"> <%= press.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= press.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag press.photo.url, :class =>  "imagethumb" %></td>
+  <td class="image"> <%= image_tag press.image.artistmain.url, :class =>  "imagethumb" %></td>
   <td class="edit"> <%= link_to "Edit", edit_admin_press_path(press), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_press_path(press), method: :delete, class: "btn btn-primary"  %></td>
 

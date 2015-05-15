@@ -23,6 +23,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_and_crop: 200
   end
 
+  version :photomain do
+    process resize_and_crop_photo: 200
+  end
+
   version :articlehome do
     process resize_and_crop: 600
   end
@@ -70,6 +74,20 @@ class ImageUploader < CarrierWave::Uploader::Base
       end
       image.resize("#{size}x#{size}")
       image
+    end
+  end
+
+  def resize_and_crop_photo(size)  
+    manipulate! do |photo|                 
+      if photo[:width] < photo[:height]
+        remove = ((photo[:height] - photo[:width])/2).round 
+        photo.shave("0x#{remove}") 
+      elsif photo[:width] > photo[:height] 
+        remove = ((photo[:width] - photo[:height])/2).round
+        photo.shave("#{remove}x0")
+      end
+      photo.resize("#{size}x#{size}")
+      photo
     end
   end
 

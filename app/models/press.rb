@@ -2,8 +2,7 @@ class Press < ActiveRecord::Base
    has_many :press_artists, dependent: :destroy
   has_many :artists, through: :press_artists
 
-  has_attached_file :photo
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+   mount_uploader :image, ImageUploader
 
    def preview
       body[0..200]  +  "  "

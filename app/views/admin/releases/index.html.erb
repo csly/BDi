@@ -18,7 +18,7 @@
   <td class="body"><%= release.body %></td>
   <td class="created"> <%= release.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= release.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag release.photo.url, :class =>  "imagethumb" %></td>
+  <td class="image"> <%= image_tag release.image.artistmain.url, :class =>  "imagethumb" %></td>
   <td class="edit"> <%= link_to "Edit", edit_admin_release_path(release), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_release_path(release), method: :delete, class: "btn btn-primary"  %></td>
 
