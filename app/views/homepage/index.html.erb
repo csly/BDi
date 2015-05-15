@@ -10,7 +10,7 @@
 <div class="blur pic">
 
 <%= link_to(article_path(article)) do %>
-<%= image_tag article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive homeimage' %>
+<%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive homeimage' %>
 <h4>
 <span class="htext">
 <%= link_to(article_path(article)) do %>

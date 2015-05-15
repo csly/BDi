@@ -27,12 +27,12 @@ class Release < ActiveRecord::Base
     
    class << self
       def search(query, genre, artist, production)
-        query = (query && !query.empty?) ? "%#{query}%" : nil
+        query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
         releases = Release.includes(:genres, :artists, :productions)  
         releases = releases.where(genres: {id: genre}) if !genre.empty?
         releases = releases.where(artists: {id: artist}) if !artist.empty?        
         releases = releases.where(productions: {id: production}) if !production.empty?    
-        releases = releases.where('title LIKE ? or body LIKE ?', query, query) if query
+        releases = releases.where('lower(title) LIKE ? or lower(body) LIKE ?', query, query) if query
         releases
       end
     end

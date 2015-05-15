@@ -7,7 +7,7 @@
   
   <%= f.association :styles, collection: Style.order('name ASC') %>
   <%= f.association :instrumentations, collection: Instrumentation.order('name ASC') %>
-  <%= f.association :users, :collection => User.where(client: true).order('company ASC'), :label_method => :company,  :include_blank => false %>
+  
 
   <%= f.association :moods, collection: Mood.order('name ASC') %>
   <%= f.association :productions, collection: Production.order('name ASC') %>

@@ -11,11 +11,25 @@ class Track < ActiveRecord::Base
   has_many :moods, through: :track_moods
   has_many :track_productions, dependent: :destroy
   has_many :productions, through: :track_productions
+  has_many :production_companies, through: :productions
+
+  belongs_to :publisher
+  has_many :composer_tracks
+  has_many :composers, through: :composer_tracks
+
+  scope :for_company, -> (company) {
+    if company
+      includes(:production_companies).where('production_companies.id = ?', company.id).references(:production_companies)
+    else
+      all
+    end
+  }
+
 
   class << self
-    def search(params)
-      tracks = Track.where('title ILIKE ?', "%#{params[:track_title]}%") if params[:track_title]
-      %w(production mood instrumentation style).each do |model|
+    def search(params, company: nil)
+      tracks = Track.for_company(company).where('title ILIKE ?', "%#{params[:track_title]}%") if params[:track_title]
+      %w(production mood instrumentation).each do |model|
         table = "#{model}s"
         reference = table.to_sym
         data = params["#{model}_ids".to_sym]

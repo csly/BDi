@@ -4,6 +4,7 @@ class Production < ActiveRecord::Base
 
   has_many :track_productions, dependent: :destroy
   has_many :tracks, through: :track_productions
+  belongs_to :production_company
 
   class << self
     def used

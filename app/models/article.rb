@@ -2,11 +2,10 @@ class Article < ActiveRecord::Base
   has_many :article_artists, dependent: :destroy
   has_many :artists, through: :article_artists
 
-  has_attached_file :image, :default_url => "/images/:style/missing.png"
+    mount_uploader :image, ImageUploader
  attr_accessor :query 
    
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-
+   
    def preview
       body[0..120]  +  "  "
     end 

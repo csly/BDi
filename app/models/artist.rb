@@ -12,8 +12,9 @@ class Artist < ActiveRecord::Base
    has_many :press_artists, dependent: :destroy
   has_many :presses, through: :press_artists
 
-  has_attached_file :photo
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  # has_attached_file :photo
+  mount_uploader :image, ImageUploader
+  # validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
  
   attr_accessor :query, :genre, :type
 
@@ -37,11 +38,11 @@ class Artist < ActiveRecord::Base
 
   class << self
       def search(query, genre, type)
-        query = (query && !query.empty?) ? "%#{query}%" : nil
+        query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
         artists = Artist.includes(:genres, :types)  
         artists = artists.where(genres: {id: genre}) if !genre.empty?
         artists = artists.where(types: {id: type}) if !type.empty?
-        artists = artists.where('name LIKE ? or biog LIKE ?', query, query) if query
+        artists = artists.where('lower(name) LIKE ? or lower(biog) LIKE ?', query, query) if query
         artists  
       end
   end

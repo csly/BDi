@@ -6,7 +6,7 @@ before_action :require_client
     @styles = Style.all
     @moods = Mood.all 
     @instrumentations = Instrumentation.all
-@users = User.all
+    @users = User.all
   end
 
   def show

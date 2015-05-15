@@ -1,14 +1,13 @@
 # encoding: utf-8
-
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -16,8 +15,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
- version :thumb do
-    process :resize_to_limit => [200, 200]
+  version :thumbnail do
+    process :resize_to_fit => [50, 50]
+  end
+
+  version :artistmain do
+    process resize_and_crop: 200
+  end
+
+  version :articlehome do
+    process resize_and_crop: 600
   end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -50,5 +57,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  private
+
+  def resize_and_crop(size)  
+    manipulate! do |image|                 
+      if image[:width] < image[:height]
+        remove = ((image[:height] - image[:width])/2).round 
+        image.shave("0x#{remove}") 
+      elsif image[:width] > image[:height] 
+        remove = ((image[:width] - image[:height])/2).round
+        image.shave("#{remove}x0")
+      end
+      image.resize("#{size}x#{size}")
+      image
+    end
+  end
 
 end

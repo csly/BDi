@@ -9,11 +9,11 @@
 <div class="socart">
 <% if @artist.twitter.blank? %>
       <% else %>
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/04/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:60px; height:60px"), 'http://' + @artist.twitter %> <% end %>
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter %> <% end %>
 
  <% if @artist.facebook.blank? %>
       <% else %>
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/04/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:60px; height:60px"), 'http://' + @artist.facebook %> <% end %>
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook %> <% end %>
   
  </div><br /><br /></div>
 </div> 
@@ -24,7 +24,7 @@
  
 
 
- <%= image_tag @artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive news-main' %>  
+ <%= image_tag @artist.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive news-main' %>  
 
  <% if @artist.articles.blank? %>
  <% else %> <br /> 

@@ -46,7 +46,7 @@ Artists
 <li class="col-md-2 col-xs-6">
 <div class="artistmain">
 <%= link_to(artist_path(artist)) do %>
- <%= image_tag artist.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistimage' %> 
+ <%= image_tag artist.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
   <h5 style="font-size:120%"><%= artist.name %></h5>
   <br />
   <% end %>

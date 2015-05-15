@@ -58,7 +58,7 @@ Releases</span>
  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:40px; margin-top:-10px;  float:right"),  release.amazon, target: "_blank" %> 
 <% end %>
     </div>
-<h3><%= link_to release.title, release_path(release) %><br /> </h3> 
+<h3><%= release.title %><br /> </h3> 
  
 <p><p><%= release.body %></p> 
 <p><b> Release Date: </b><%= release.date.strftime('%-d %B %Y ') %></p> 

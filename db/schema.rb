@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427112657) do
+ActiveRecord::Schema.define(version: 20150506135917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150427112657) do
     t.string   "facebook"
     t.boolean  "composer"
     t.boolean  "songwriter"
+    t.string   "image"
   end
 
   create_table "award_artists", force: :cascade do |t|
@@ -92,6 +93,19 @@ ActiveRecord::Schema.define(version: 20150427112657) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "composer_tracks", force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "composer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "composers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
@@ -137,7 +151,22 @@ ActiveRecord::Schema.define(version: 20150427112657) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "production_companies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "productions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "production_company_id"
+  end
+
+  add_index "productions", ["production_company_id"], name: "index_productions_on_production_company_id", using: :btree
+
+  create_table "publishers", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -183,12 +212,8 @@ ActiveRecord::Schema.define(version: 20150427112657) do
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
     t.text     "biog"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "role"
     t.string   "email"
     t.string   "phone"
@@ -236,6 +261,7 @@ ActiveRecord::Schema.define(version: 20150427112657) do
     t.string   "track_composer"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "publisher_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -267,10 +293,11 @@ ActiveRecord::Schema.define(version: 20150427112657) do
     t.datetime "updated_at"
     t.boolean  "admin"
     t.boolean  "client"
-    t.string   "company"
+    t.integer  "production_company_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["production_company_id"], name: "index_users_on_production_company_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

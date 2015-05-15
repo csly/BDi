@@ -1,37 +1,55 @@
-<h1>Search all the things</h1>
-<%= link_to 'Reset', search_path %>
+  <div class='containernohome'>  
+<div class="row"> <P> <b>Welcome Company</b><br /><%= link_to 'Reset', search_path  %> </P>
+ 
+
+ 
+
 <%= form_for :q, url: search_path, method: :get, html: { id: 'search_form' } do |f| %>
-  <%= f.label 'Title' %>
-  <br/>
-  <%= f.text_field :track_title %>
-  <br/>
-  <%= render(partial: 'checkboxes', locals: { f: f, klass: Production, collection: @productions }) %>
-  <br/>
-  <%= render(partial: 'checkboxes', locals: { f: f, klass: Mood, collection: @moods }) %>
-  <br/>
-  <%= render(partial: 'checkboxes', locals: { f: f, klass: Instrumentation, collection: @instrumentations }) %>
-  <br/>
-  <%= render(partial: 'checkboxes', locals: { f: f, klass: Style, collection: @styles }) %>
-  <br/>
-  <%= f.submit "Search" %>
+ 
+  <div class="sbox"><%= f.label 'Title', :class => 'hello' %> 
+  <%= f.text_field :track_title %> </div><br /><br />
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Production, collection: @productions }) %> 
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Mood, collection: @moods }) %> 
+  <%= render(partial: 'checkboxes', locals: { f: f, klass: Instrumentation, collection: @instrumentations }) %> 
+  <%= f.submit "Search" %> 
 <% end %>
-<div id="tracks">
+</div> 
+<div id="tracks"><table>
+<tr>
+<td>Catalogue No. </td>
+<td> Title</td>
+<td>Old Title </td>
+<td> Production</td> 
+</tr></table><table>
   <% @tracks.each do |track| %>
-    <h3>
+  <tr>
+  <td>
+   
+      <%= track.catalogue %>
+    
+    </td>
+    <td>
+    <p>
       <%= track.title %>
-    </h3>
+    </p>
+    </td>
+    <td>
     <p>
       <%= track.oldtitle %>
     </p>
-    <p>
-      <%= track.catalogue %>
-    </p>
-    <% track.productions.each do |production| %>
+    </td>
+    <td>
+    <% track.composers.each do |production| %>
     <p>
       <%= production.name %>
     </p>
+    </td>
+    
   <% end %>
-  <% end %>
+  </tr>
+  <% end %></table>
+</div>
+</div>
 </div>
 <%= content_for :extra_footer do %>
   <script>
@@ -42,19 +60,26 @@
       $('#q_track_title').keyup(filterResults);
     });
 
+    var target = null;
+
     function filterResults(e) {
+      target = e.target;
       var formValues = $('form').serialize();
       $.get("/search.json", formValues, function(data) {
         updateFilters(data);
+        updateChecked(target);
         $tracks = $('#tracks').html('');
         data.tracks.forEach(function(track) {
           productions = track.productions.map(function(production) {
-            return '<p>'+production.name+'</p>'
+            return '<td>'+production.name+'</td>'
           });
           trackData = [
-            '<h3>'+track.title+'</h3>',
-            '<p>' + track.oldtitle + '</p>',
-            '<p>' + track.catalogue + '</p>'
+          
+            '<table><tr><td>' + track.catalogue + '</td>',
+            '<td>'+track.title+'</td>',
+            '<td>' + track.oldtitle + '</td>',
+            '<td>' + track.composers + '</td></tr></table>'
+          
           ]
           trackView = trackData.concat(productions).join('\n');
           $tracks.append(trackView);
@@ -63,7 +88,7 @@
     }
 
     function updateFilters(data) {
-      var filters = ['style', 'production', 'mood', 'instrumentation'];
+      var filters = ['production', 'mood', 'instrumentation'];
       filters.forEach(function(filter) {
         updateFilter(filter, data[filter+"s"]);
       });
@@ -88,6 +113,16 @@
       });
     }
 
+    function updateChecked(e) {
+      $e = $(e);
+      if ($e.is('input[type="checkbox"')) {
+        var c = $e.prop('checked') ? '#424632' : '#767c60';      
+        var label = $e.parent();
+        label.css('background-color', c);
+      }
+    }
+
 
   </script>
 <% end %>
+</div>

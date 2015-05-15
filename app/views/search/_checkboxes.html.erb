@@ -1,14 +1,44 @@
-<%= f.label klass.to_s.pluralize %>
-<br/>
+<div class="related">
+<%= f.label klass.to_s.pluralize, :class => 'hello' %> 
+</div>
+<div class="clear"></div>
+
+ <br />
 <% checkbox_id = "#{klass.to_s.downcase}_ids" %>
-<% previous_selection = @previous_params[checkbox_id.to_sym] || [] %>
-<% klass.find_each do |p| %>
+<% previous_selection = @previous_params[checkbox_id.to_sym] || [] %> 
+ 
+<% klass.find_each do |p| %> 
+ 
   <% available = collection.include?(p) %>
   <% checked = previous_selection.include?(p.id.to_s) %>
-  <div class="<%= (available ? 'available' : 'unavailable') %> checkboxes switch">
-    <%= f.check_box(checkbox_id, { checked: checked, multiple: true, disabled: !available }, p.id, nil) %>
-    <label>
-      <%= p.name %>
-    </label>
+  <div class="<%= (available ? 'available' : 'unavailable') %>  switch">
+  <label  class="btn btn-primary">
+      
+   
+    <%= f.check_box(checkbox_id, { checked: checked, multiple: true, disabled: !available }, p.id, nil) %><%= p.name %>
+     </label>  
   </div>
-<% end %>
+
+<% end %>  <div class="clear"></div>  <br /><br />
+<%= content_for :extra_footer do %>
+ <style>
+input[type="checkbox"] {display: none;}
+.available label {background-color:#767c60 }
+.unavailable label {background-color:#cdd1bd !important;color:#767c60 !important; border:1px solid #cdd1bd  !important;}
+.btn .btn-primary .available {background-color:green }
+label.available  {background-color:#767c60}
+label.unavailable  {background-color:#cdd1bd !important; color:#767c60 !important; border:1px solid #cdd1bd  !important;}
+label {float:left; margin:0.5em;}
+input:checked label {
+   font-weight: bold !important;
+}
+label.hello {float:none; margin:0px;} 
+ .rightreset {float:right;}
+ .sbox {float:right;}
+ </style>
+ 
+ 
+ 
+ 
+ 
+<% end %> 

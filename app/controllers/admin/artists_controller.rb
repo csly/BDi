@@ -48,7 +48,7 @@ def create
  
 
 def artist_params
-    params.require(:artist).permit(:name, :biog, :photo, :links, :composer, :songwriter, :twitter, :facebook,  article_ids: [], award_ids: [], genre_ids: [], type_ids: [])
+    params.require(:artist).permit(:name, :biog, :image, :links, :composer, :songwriter, :twitter, :facebook,  article_ids: [], award_ids: [], genre_ids: [], type_ids: [])
   end
 
 

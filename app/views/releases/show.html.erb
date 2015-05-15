@@ -13,18 +13,15 @@
  <div class='containernohome'> 
   <div class="news"> <br />
  
+ 
+ 
+ <div class="col-md-2">
+<%= image_tag @release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+ </div>
 
-    
-<div class="container">
-<div class="news-list">
-<div class="col-md-3 icon-container" > 
-  
-  <%= image_tag @release.photo.url, :style => 'width:100%; height:100%;', :class => 'img-responsive newsimage' %> 
-
-</div>
-<div class="col-md-9">
-<h2 style="margin-top:10px; "><%= @release.title %>
-<% if @release.itunes.blank? %>
+ <div class="col-md-10">
+ <div class="button-holder">
+  <% if @release.itunes.blank? %>
 <% else %>  
  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:40px; margin-top:-10px; float:right; margin-left:10px;"),  @release.itunes, target: "_blank" %> 
 <% end %>
@@ -33,38 +30,54 @@
  
  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:40px; margin-top:-10px;  float:right"),  @release.amazon, target: "_blank" %> 
 <% end %>
-</h2> 
- 
- 
-<p><%= @release.body %></p> 
-<p><b>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></p> 
- <p><b>Genres:</b> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
-
-
- 
-
-
-
-<p><b>Related Artists:</b>
-<% @release.artists.each do |artist| %>
- <div class="col-md-2" style="padding:0px; margin-right:-20px;">
-
-
- 
- <%= link_to (image_tag artist.photo.url, :style => 'width:100px; height:100px;', :class => 'img-responsive releaseartist'), artist_path(artist) %>
-
-    <%= link_to artist.name, artist_path(artist) %>
     </div>
-    <% end %> 
-  </p>
-
+<h3><%= link_to @release.title, release_path(@release) %><br /> </h3> 
  
-   </div>
-   </div>
-   </div> <br /><br />
+<p><p><%= @release.body %></p> 
+<p><b> Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></p> 
+ <p><b>Genres:</b> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p></p>  
+
+
+  <% if @release.artists.blank? %>
+<br />
+ <% else %>
+ <div class="">Related Artists: 
+ 
+ <%= artist_list_for(@release.artists) %>
+
+    
+ <% end %></div> 
+
+ </div>
+
+  </div>
+   
    <div class="clear"></div>  
  
  </div>
- </div> 
+ </div>  
+
+<style>
+ .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+.col-md-2{ padding:15px;}
+.col-md-10{  padding:15px;}
+.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-1 a {display:block;
+  -webkit-transform: rotate(270deg);
+-moz-transform: rotate(270deg);
+-o-transform: rotate(270deg);
+writing-mode: lr-tb;
+font-size:120%;
+margin-top:80px;
+color:white;
+ }   
+hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
+
+.page-title2 {border: 2px solid #767c60; text-align:center;}
+
+
+ </style>
+
+
 
 

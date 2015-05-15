@@ -13,18 +13,19 @@
  *= require_self
  */
 
-$bdi-green: #767c60    ; 
+$bdi-green: #848f81    ; 
+$idea:  #ce6200; 
 $dark-green: #525740; 
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 /******** GENERAL ********/
-
+label.hello {color: #767c60  !important;}
 html {height:100%; }
-body { height:100%; min-height:100%; width:100% !important;  background-color: #ececec    ; font-family: 'Roboto', sans-serif !important; font-size:14px; line-height:1.5; }
+body { height:100%; min-height:100%; width:100% !important;  background-color: #eeefee    ; font-family: 'Roboto', sans-serif !important; font-size:14px; line-height:1.5; }
  body p {text-align:justify;}
-a { text-decoration:none !important; color:#767c60 ;}
+a { text-decoration:none !important; color:#848f81 ;}
 a:hover { text-decoration:none !important; color: $dark-green;} 
 ul { list-style-type: none; padding: 0;}
 .clear { clear: both; }
@@ -156,8 +157,8 @@ tr:nth-child(even) { background-color: #e7e7e7; }
 textarea {min-height:200px;} 
 hr { margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #a5a898;}
 .btn-success { background-color: $bdi-green !important; border-color: $bdi-green !important; }
-.btn-primary { background-color: $bdi-green !important; border-color: $bdi-green !important; }
-
+.btn-primary { background-color: $bdi-green  ; border-color: $bdi-green !important; }
+.btn-primary:hover { background-color: $bdi-green  ; border-color: $bdi-green !important; }
 
 nav li a:hover {color:$bdi-green !important;}
 
@@ -219,7 +220,8 @@ button {border:0; outline:none !important;}
 .aboutboxes {background-color:white !important;}
 .aboutboxes .col-md-12 {padding:0em !important; }
 .aboutboxes .col-md-4 {padding:0px 2em 0px 0px !important; background-color:transparent !important;}
-.aboutboxes .col-md-3 {padding:0px 2em 0px 0px !important}
+.aboutboxes .col-md-3 {padding: 2em !important;
+  background: #fff;}
 .aboutboxes .col-md-9 {padding:0px 2em 0px 0px !important}
 .aboutboxes .col-md-8 {padding:0px 0 0px 2em !important;  background-color:transparent !important;}
 .contactbox .col-md-9 {padding:0px !important}
@@ -307,7 +309,7 @@ a.backto {color:white;}
 
 
 .type-1 {
-  background: #767c60;
+  background: #848f81;
 }
 
 .type-1 span {
@@ -320,7 +322,7 @@ a.backto {color:white;}
   left: 0;
   box-sizing: border-box;
   
-  background: #fff;border: 2px solid #767c60; color: #767c60;
+  background: #fff;border: 2px solid #848f81; color: #848f81;
   -moz-box-sizing: border-box;
   padding: 6px 0;
   text-align: center;
@@ -333,13 +335,13 @@ a.backto {color:white;}
   transform: rotateX(90deg);
   transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
-  background: #767c60;
+  background: #848f81;
 }
 
 .type-1:hover span:last-of-type {
   -webkit-transform: rotateX(0deg);
   transform: rotateX(0deg);
-  background: #767c60;
+  background: #848f81;
   color:white;
   
 }
@@ -350,7 +352,7 @@ a.backto {color:white;}
 }
 
 .type-2 {
-  background: #767c60;
+  background: #848f81;
 }
 
 .type-2 span {
@@ -363,7 +365,7 @@ a.backto {color:white;}
   left: 0;
   box-sizing: border-box;
   
-  background: #fff;border: 2px solid #767c60; color: #767c60;
+  background: #fff;border: 2px solid #848f81; color: #848f81;
   -moz-box-sizing: border-box;
   padding: 6px 0;
   text-align: center;
@@ -376,13 +378,13 @@ a.backto {color:white;}
   transform: rotateX(90deg);
   transform-origin: 0 0;
   -webkit-transform-origin: 0 0;
-  background: #767c60;
+  background: #848f81;
 }
 
 .type-2:hover span:last-of-type {
   -webkit-transform: rotateX(0deg);
   transform: rotateX(0deg);
-  background: #767c60;
+  background: #848f81;
   color:white;
   
 }
@@ -505,12 +507,12 @@ a.next_page {float:right;  padding:5px; border:2px solid $bdi-green}
 
  .imgmain{text-align:right; padding-left:0px;}
 .col-md-8 {text-align:justify;}
-.main-page-header {background-color:#e0e0e0; padding:15px; margin: 0 auto; margin-top:-40px;   width:100%; }
+.main-page-header {background-color:#d8dcd7; padding:5px 15px 10px 15px;  margin: 0 auto; margin-top:-40px;   width:100%; }
 span.break {padding-left:7px; padding-right:7px; color: #9d9d9d;}
 span.artname {color: #9d9d9d;}
 span.artist-name-main {font-family: inherit;
   font-weight: 500;
-  line-height: 1.1; font-size:2.5em; color: $bdi-green;}
+  line-height: 1.1; font-size:2em; color: $bdi-green;}
   .m-p-h {max-width:1220px; margin:0 auto;}
 
 
@@ -562,9 +564,11 @@ table.tablesearch2 td.last {
   background-color:white;
 }
 
-.related {background-color:#e0e0e0; width:100%; padding:0.3em; color: #767c60; font-size:110%; clear:both}
+.related {background-color:#e0e0e0; width:100%; padding:0.3em; color: #848f81; font-size:110%; clear:both}
 
-.related2 {background-color:white; width:100%; padding:0.3em; color: #767c60; font-size:110%;}
+.related2 {background-color:white; width:100%; padding:0.3em 0.3em 0.3em 0; color: #848f81; font-size:110%;}
+
+
 
 a.next_page { 
     float:right !important;
