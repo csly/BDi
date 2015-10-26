@@ -4,5 +4,6 @@ class ChangeColumns < ActiveRecord::Migration
     change_column :artists, :biog, :text
     change_column :awards, :body, :text
     change_column :releases, :body, :text
+    change_column :releases, :highest_chart, :integer
   end
 end

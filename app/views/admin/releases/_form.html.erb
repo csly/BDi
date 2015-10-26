@@ -5,6 +5,7 @@
   <%= f.input :links %>
   <%= f.input :amazon %>
   <%= f.input :itunes %>
+  <%= f.input :chart_position, collection: 1..100, label: 'Highest Chart Position' %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :productions, collection: Production.order('name ASC') %>

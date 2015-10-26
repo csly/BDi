@@ -39,6 +39,14 @@ class Track < ActiveRecord::Base
       end
       tracks
     end
+
+    def for_user(user)
+      return all if user.admin?
+      production_company = user.production_company
+      productions = production_company.productions.pluck(:id)
+      track_ids = TrackProduction.where(production_id: productions).pluck(:track_id)
+      Track.find(track_ids)
+    end
   end
 
 end

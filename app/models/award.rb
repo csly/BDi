@@ -14,7 +14,17 @@ class Award < ActiveRecord::Base
       body[0..22]  +  ".."
     end 
     def newspreview
-    body[0..465]  +  ".."
+    body[0..300]  +  ".."
     end 
+
+    class << self
+      def search(query)
+        query = (query && !query.empty?) ? "%#{query}%" : nil 
+        awards = Award.all
+        awards = awards.where('title ILIKE ? or body ILIKE ?', query, query) if query
+        awards
+      end
+    end
+
 end
 

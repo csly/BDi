@@ -1,9 +1,59 @@
-<div class="push"></div>
-  </div>
-<div class="clear"></div>  
-<div class="footer">
-  <div class="container">
-   &copy;  <%= Time.now.year %> BDi Music Ltd. All Rights Reserved 
-  </div>
-</div>
+<footer class="page-footer">
+   <div class="containernohome">
+      <div class="row vdivide">
+         <div class="col-md-3 first">
+         <h3 class="foot">Contact Us </h3>
+            <p class="footp">Onward House<br />
+            11 Uxbridge Street <br />
+            London<br />
+            W8 7TQ<br /><br />
 
+            T: 0207 243 4101 <br />
+            E: info@bdimusic.com</p>
+         </div> 
+         <div class="col-md-3">
+         <h3 class="foot">Quick Links </h3>
+          <p class="footp">
+          News<br />
+          Roster<br />
+          Songwriters<br />
+          Composers<br />
+          Contact<br />
+          </p>
+         </div> 
+         <div class="col-md-3">
+         <h3 class="foot">Be Social </h3>
+          <p class="footp">
+          Facebook<br />
+          Twitter<br />
+          Instagram<br />
+
+          </p>
+           <h3 class="foot">The Movement </h3>
+          <p class="footp">
+          Website<br />
+          Twitter<br />
+          </p>
+         </div> 
+         <div class="col-md-3 last">
+         <h3 class="foot">newsletter sign up </h3>
+          <p class="footp">
+          </p>
+         </div>
+      </div>
+    </div><br /><br />
+    <div class="footer-copyright">
+        <div class="containernohome">
+          &copy;  <%= Time.now.year %> BDi Music Ltd. All Rights Reserved 
+           <div class="right">Privacy Policy</div>
+        </div>
+    </div>
+</footer>
+ 
+ <script>
+
+  $('#nav').affix({
+      offset: {
+        top: $('header').height()
+      }
+}); </script>

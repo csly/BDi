@@ -13,13 +13,14 @@ def index
 
 
 def show
-    @artist = Artist.find(params[:id]) 
+    @artist = Artist.find(params[:id])  
+    @related_artists = Artist.where.not(id: @artist.id).order('RANDOM()').limit(3)
   end
 
 
 
  def artist_params
-    params.require(:artist).permit(:name, :biog, :photo, :links, :composer, :songwriter, :twitter, :facebook, article_ids: [], award_ids: [], genre_ids: [], type_ids: [])
+    params.require(:artist).permit(:name, :biog, :photo, :links, :composer, :songwriter, :twitter, :facebook, article_ids: [], award_ids: [], genre_ids: [], type_ids: [], release_ids: [])
   end
 end
 

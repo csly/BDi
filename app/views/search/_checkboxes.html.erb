@@ -1,9 +1,8 @@
 <div class="related">
-<%= f.label klass.to_s.pluralize, :class => 'hello' %> 
+<h5><%= f.label klass.to_s.pluralize, :class => 'hello' %> </h5>
 </div>
 <div class="clear"></div>
 
- <br />
 <% checkbox_id = "#{klass.to_s.downcase}_ids" %>
 <% previous_selection = @previous_params[checkbox_id.to_sym] || [] %> 
  

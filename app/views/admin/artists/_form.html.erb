@@ -1,6 +1,6 @@
 <%= simple_form_for([:admin, @artist], html: {multipart: true}) do |f| %>
   <%= f.input :name %>
-  <%= f.input :biog %>
+    <%= f.input :biog, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :links %>
   <%= f.input :facebook %>
   <%= f.input :twitter %>  

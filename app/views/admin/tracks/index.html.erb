@@ -1,6 +1,6 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
-<h4> List Of Tracks</h4><%= link_to "+ New", new_admin_track_path, class: "btn btn-success"  %>
+<h4> List Of Tracks</h4><%= link_to "+ New", new_admin_track_path, class: "btn btn-primary"  %>
 <table>
   <tr>
   <th class="id">Catalogue No.</th>
@@ -19,20 +19,19 @@
   <td class="created"> <%= track.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= track.updated_at.strftime('%d-%m-%Y') %></td>
   <td class="image"> <%= track.track_composer %></td>
-  <td class="edit"> <%= link_to "Edit", edit_admin_track_path(track), :class =>  "btn btn-success", :method => :get  %> 
-   <%= link_to 'Delete', admin_track_path(track), method: :delete, class: "btn btn-success"  %></td>
+  <td class="edit"> <%= link_to "Edit", edit_admin_track_path(track), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_track_path(track), method: :delete, class: "btn btn-primary"  %></td>
 
   </tr>
 
 <% end %>
 </table>
 <br />
-<%= link_to 'Back To Tracks', admin_tracks_path, class: "btn btn-success "  %>
+<%= link_to 'Back To Tracks', admin_tracks_path, class: "btn btn-primary "  %>
 </div>
 
 
 
 </div>
 
-<br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br />
+<%= render 'shared/adminnavfooter' %>

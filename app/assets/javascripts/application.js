@@ -12,9 +12,10 @@
 //
 //= require jquery   
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap-sprockets 
+//= require materialize-sprockets
 //= require_tree .
-
+//= require ckeditor/init
 
 
 
@@ -96,3 +97,7 @@ $( ".main-nav li" ).hover(
     $( this ).removeClass( "active" );
   }
 ); 
+
+
+
+  

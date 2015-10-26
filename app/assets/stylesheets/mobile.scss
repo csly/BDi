@@ -1,0 +1,71 @@
+$bdi-green: #848f81    ; 
+$idea:  #ce6200; 
+$dark-green: #687065; 
+
+/******** ADMIN PANEL ********/
+
+.imagethumb { max-width: 120px; }
+
+table th.id { width: 3%; }
+table th.title { width: 14%; 
+  
+  border-bottom: 1px solid;
+  border-bottom-color: #c5c5c5; 
+  background-color: transparent;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+color: #333 !important;
+padding:0px !important;  font-weight:normal;
+}
+
+table td.title { width: 14%; 
+  
+  border-bottom: 1px solid;
+  border-bottom-color: #c5c5c5; 
+  background-color: transparent;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+color: #333 !important;
+  font-weight:normal;
+
+vertical-align: top;
+  max-width: 120px;
+  padding: 10px;
+  border-bottom: 1px solid #c5c5c5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+table th.body { width: 22%; }
+table th.created { width: 12%; }
+table th.updated { width: 12%; }
+table th.image { width: 18%; }
+table th.edit { width: 19%; }
+table th.useremail { width: 23%; } 
+table th.usercreated { width: 17%; }
+table th.userlast { width: 27%; }
+table th.usercount { width: 14%; }  
+table th.relbody { width: 50%; }
+table th.relimage { width: 18%; }
+
+table { width: 100%; overflow: hidden; white-space: nowrap; }
+table td { vertical-align: top; max-width:120px; padding:10px; border-bottom: 1px solid #c5c5c5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+table th { padding:10px; border-bottom: 1px solid #c5c5c5; }
+tr:nth-child(even) { background-color: #e7e7e7; }
+
+ 
+textarea {min-height:200px;} 
+hr { margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #a5a898;}
+.btn-success { background-color: $bdi-green !important; border-color: $bdi-green !important; }
+.btn-primary { background-color: $bdi-green  ; border-color: $bdi-green !important; }
+.btn-primary:hover { background-color: $bdi-green  ; border-color: $bdi-green !important; }
+
+table.tracktabs {width:100%}
+  table.tracktabs th {font-weight:bold; color:$bdi-green}
+  table.tracktabs td.cat { width: 5%; }
+  table.tracktabs td.tit { width: 20%; }
+  table.tracktabs td.len { width: 5%; }
+  table.tracktabs td.tags { width: 20%; }
+  table.tracktabs td.comp { width: 20%; }
+  table.tracktabs td.prod { width: 20%; }
+  table.tracktabs td.play { width: 5%; }
+  table.tracktabs td.down { width: 5%; }

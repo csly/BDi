@@ -23,6 +23,7 @@ class Release < ActiveRecord::Base
       body[0..465] + ".."
     end
 
+     
     
    class << self
       def search(query, genre, artist, production)

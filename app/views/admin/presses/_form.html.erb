@@ -1,6 +1,6 @@
 <%= simple_form_for([:admin, @press], html: {multipart: true}) do |f| %>
   <%= f.input :title %>
-  <%= f.input :body %>
+    <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.file_field :image %><br />
   <%= f.submit class: 'btn btn-primary' %>

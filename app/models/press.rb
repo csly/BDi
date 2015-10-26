@@ -9,7 +9,16 @@ class Press < ActiveRecord::Base
     end 
 
     def newspreview
-      body[0..465] + " "
+      body[0..300] + " "
     end
      
+
+     class << self
+      def search(query)
+        query = (query && !query.empty?) ? "%#{query}%" : nil 
+        presses = Press.all
+        presses = presses.where('title ILIKE ? or body ILIKE ?', query, query) if query
+        presses
+      end
+    end
 end

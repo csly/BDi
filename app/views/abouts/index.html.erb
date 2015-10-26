@@ -1,61 +1,57 @@
 <div class="main-page-header">
-<div class="m-p-h">
-<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'About', abouts_path %>  
-</span>
-<br /> <br /> 
-<span class="artist-name-main">
-About
-</span> <br /> <br /> </div>
+  <div class="m-p-h"> 
+    <%= link_to 'Home', root_path %>  <span class="break">></span>  
+    <%= link_to  'About', @page_title %>   
+    <br /><br /> 
+      <span class="artist-name-main">About</span> 
+    <br /><br />
+  </div>
 </div> 
-  <br />  <br /> 
-
- <div class='containernohome'> 
-
+  <br />  <br />  
+<div class="containernohome">
 <% @abouts.each do |about| %>
- <div class="col-md-12">
-     <p><%= about.body.html_safe %></p><br /> 
+<div class="col-md-12">
+     <p><%= about.body.html_safe %></p><br /><br /> 
   </div>
   <% end %>
-<div class="portfolio-items grid">
-  <ul id="grid-items" class="cs-style-3" id="gallery">
+  <div class="col-md-12">
    <% @staffs.each do |staff| %>
-        <li class="col-md-4" >
-           
-<figure >
+      <div class="col-md-12 col-xs-12">
+        <div class="col-md-4 col-xs-12 new-image">
+           <%= image_tag staff.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+        </div>
+         <div class="col-md-8">
+           <h3 class="arttit">
+            <%=  staff.name %><small><br /><%= staff.role %><br />E: <%= staff.email %> | T: <%= staff.phone %></small>
+           </h3>
+           <div class="artp about">
+            <p><%= staff.biog.html_safe %></p>
+            <br /><br />
+             
+           </div>
+          </div>
+        <div class="clear"></div>
+        <br /><hr><br />
+      </div>
+    <% end %>
 
+
+
+    
+</div>
  
 
- 
-<%= image_tag staff.image.artistmain.url, :style => 'width:90%; margin:auto auto; padding-top:20px;', :class => 'img-responsive homeimage' %>
- 
- 
- 
-<figcaption>
-
-  <h3 class="staff-info"><%= staff.name %> </h3>   
-    <h4 class="staff-info"><%= staff.role %></h4>    <hr> 
-    <h5 class="staff-info">E: <%= staff.email %></h5>     
-    <h5 class="staff-info">T: <%= staff.phone %></h5>
+</div>
+    <div class="clear"></div>
+    <style>
+    .col-md-12 {padding:0px;}
+    .about {text-align:justify;}
+    hr { display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cecece;
+    margin: 1em 0;
+    padding: 0; }
+    .col-md-4 {padding-left:0px;}
+    </style>
   
-     <hr>
-      <p style="text-align:justify"> <%= staff.biog.html_safe %></p>
-
- <br />
- 
-</figcaption>
-</figure>
-
-</a>
-  </li>
-  <% end %> 
-    </ul> 
-   
-    </div> 
-<div class="clear"></div>
- 
- </div> 
-
-<style>
-.col-md-12 {padding:0px;}
-.col-md-4 {padding-left:0px;}
-</style>

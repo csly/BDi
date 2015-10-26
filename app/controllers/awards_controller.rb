@@ -1,7 +1,22 @@
 class AwardsController < ApplicationController
 
 def index
-  @awards = Award.all.paginate(page: params[:page], per_page: 15).order('awards.created_at DESC')
+    
+    if params[:q]
+      @awards = Award.search(params[:q]).paginate(page: params[:page], per_page: 10).order('awards.created_at DESC')
+      @recentnews = Article.paginate(page: params[:page], per_page: 5).order('articles.created_at DESC')
+      @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')      
+      @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
+      if @awards.blank?
+              redirect_to awards_path(@award), notice: "There are no Awards that match your search requirements. Please try again"
+      end
+    else
+      params[:limit] ||= 10
+      @awards = Award.paginate(:page => params[:page], :per_page => params[:limit]).order('awards.created_at DESC')
+      @recentnews = Article.paginate(page: params[:page], per_page: 5).order('articles.created_at DESC')
+      @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')      
+      @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
+    end
 end
 
 def show

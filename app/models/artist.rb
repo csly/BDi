@@ -52,5 +52,10 @@ class Artist < ActiveRecord::Base
      "".html_safe
     end
   end
+  def genre_artist(artist)
+    if artist.genre
+     "".html_safe
+    end
+  end
  
 end

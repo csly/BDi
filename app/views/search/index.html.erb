@@ -1,53 +1,50 @@
   <div class='containernohome'>  
-<div class="row"> <P> <b>Welcome Company</b><br /><%= link_to 'Reset', search_path  %> </P>
+ 
+
+<h4>Welcome Company</h4>
+
+<%= link_to 'Reset', search_path  %> 
  
 
  
 
 <%= form_for :q, url: search_path, method: :get, html: { id: 'search_form' } do |f| %>
- 
-  <div class="sbox"><%= f.label 'Title', :class => 'hello' %> 
+   <div class="sbox"><%= f.label 'Title', :class => 'hello' %> 
   <%= f.text_field :track_title %> </div><br /><br />
+
   <%= render(partial: 'checkboxes', locals: { f: f, klass: Production, collection: @productions }) %> 
   <%= render(partial: 'checkboxes', locals: { f: f, klass: Mood, collection: @moods }) %> 
   <%= render(partial: 'checkboxes', locals: { f: f, klass: Instrumentation, collection: @instrumentations }) %> 
   <%= f.submit "Search" %> 
 <% end %>
-</div> 
-<div id="tracks"><table>
+  
+<div id="tracks">
+<table width="100%">
 <tr>
-<td>Catalogue No. </td>
-<td> Title</td>
-<td>Old Title </td>
-<td> Production</td> 
-</tr></table><table>
-  <% @tracks.each do |track| %>
-  <tr>
-  <td>
-   
-      <%= track.catalogue %>
-    
-    </td>
-    <td>
-    <p>
-      <%= track.title %>
-    </p>
-    </td>
-    <td>
-    <p>
-      <%= track.oldtitle %>
-    </p>
-    </td>
-    <td>
-    <% track.composers.each do |production| %>
-    <p>
-      <%= production.name %>
-    </p>
-    </td>
-    
+<td width="20%">Catalogue No. </td>
+<td width="20%">Title</td>
+<td width="20%">Origin</td>
+<td width="20%">Composer(s)</td> 
+<td width="20%">Buttons</td>
+</tr>
+</table>
+<table width="100%">
+<% @tracks.each do |track| %>
+<tr>
+  <td width="20%" class="tracktable"><%= track.catalogue %></td>
+  <td width="20%" class="tracktable"><%= track.title %></td>
+  <td width="20%" class="tracktable"><%= track.origin %></td>
+  <td width="20%" class="tracktable"><% track.composers.each do |production| %><%= production.name %></td>
+  <td width="20%" class="tracktable"> 
+  <i class="material-icons">play_circle_filled</i>
+  <i class="material-icons">info</i>
+  <i class="material-icons">album</i>
+  <i class="material-icons">label</i>
+  </td>
   <% end %>
   </tr>
-  <% end %></table>
+<% end %>
+</table>
 </div>
 </div>
 </div>

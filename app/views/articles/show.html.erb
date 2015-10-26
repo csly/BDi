@@ -3,76 +3,105 @@
 <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'News', articles_path %>  <span class="break">></span>  <span class="artname"> <%= @article.title %>
 </span>
 <br /><br />
-<span class="artist-name-main">
-<%= @article.title %> 
-</span> <br /><br /></div>
+<span class="artist-name-main" style="float:left">
+<%= @article.title %>  
+   
+</span>  
+<span class="artist-name-main" style="float:right; padding-right:15px;">
+<small><%= @article.created_at.strftime('%-d %B %Y ') %></small>
+</span>
+<br /><br /></div>
 </div> 
   <br />  <br /> 
 
- <div class='containernohome'> 
-<div class="container" >
-<div class="col-md-3 imgmain"> 
- <%= image_tag @article.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive news-main' %> <br />  
- <div class="related">Recent News</div><br />
- <ul>
- <% @articles.each do |article| %>
- <li class="recent"><%= link_to article.title, article_path(article) %> 
- </li>
- <% end %>
- </ul>
- <br /> 
- <div class="related">Recent Press</div><br />
- <ul>
- <% @presses.each do |press| %>
- <li class="recent"><%= link_to press.title, press_path(press) %>
- </li>
- <% end %>
- </ul> 
-</div>
- 
- 
+ <div class='containernohome news'>  
 
-<div class="col-md-9">
- 
-<p> <br /><%= @article.body.html_safe %></p>
-
- <% if @article.youtube.present? %>
-    <p> <div class="embed-container"><%= embed(@article.youtube) %>  </div><br /></p> 
-    
-<% end %>
- 
- <% if @article.artists.blank? %>
+<div class="col-md-3">
+<%= image_tag @article.image.url, :class => 'img-responsive newsimage' %><br />
+<% if @article.artists.blank? %>
 <br />
  <% else %>
- <div class="related2">Related Artists:</div><br />
+<div class="extras">
+ <h5>Related Artists:</h5></div>
+<br />
  <% @article.artists.each do |artist| %>
- <div class="col-md-2  col-xs-6" style="padding-left:0px;">
+ <div class="col-md-6" style="padding-left:0px;">
  
- <%= link_to (image_tag artist.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive '), artist_path(artist) %>
+ <%= link_to (image_tag artist.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), artist_path(artist) %>
 
-    <%= link_to artist.name, artist_path(artist), :class =>'artist-name' %>
+    <p class="morearticles"><%= link_to artist.name, artist_path(artist), :class =>'artist-name' %></p>
  </p>
   </div> <% end %>
 <% end %>
-
-   </div>
-   </div> 
-
-   <div class="clear"></div>  
- 
-  <br />
-
-  <div class="newslist arti">
- 
- </div>
 </div>
-<div class="clear"></div>  
- <style>
- .imgmain{text-align:right; padding-left:0px;} 
-img.news-main {border:1em solid white;}
-.col-md-9 {background-color:white;} 
-</style>
+<div class="col-md-9 newsblur">
+<div class="mainblurb"> 
+<p><%= @article.body.html_safe %></p>
+</div>
+</div>
+</div>
+<div class="clear"></div> 
+<div class="container-bottomnews">
+<div class="bottom-news">
+<div class="col-md-12 extras">
+<div class="col-md-3">
+ 
+
+  <h5>Share This News Story</h5>
+    <ul class="sharesocial social-buttons">
+      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
+      <li class="social2"><div class="entypo-twitter"><span class="normalfont"> Twitter</span></div></li>
+      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
+    </ul>
+</div>
+ <% if @article.artists.blank? %>
+ 
+ <% else %>
+<div class="col-md-3">
+  <h5>Related Stories</h5>
+    <ul class="sharesocial">
+      <% @articles.each do |article| %>
+      <li><%= link_to article.titlepreviewnews, article_path(article) %></li>
+      <% end %>
+    </ul>
+</div>
+<% end %>
+
+
+<div class="col-md-6">
+  <h5>More News</h5><br />
+    <div class="col-md-6">
+      <% if @article.previous %>
+        <%= link_to(article_path(@article.previous)) do %>
+          <div class="previous" style="background-image:url('<%= @article.previous.image.morenews.url %>'); background-size:cover; opacity: 0.3;"> </div>
+
+           <div class="arrow"></div>
+         <p class="morearticles"> <%= link_to @article.previous.title, article_path(@article.previous) %> </p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <% if @article.next %>
+        <%= link_to(article_path(@article.next)) do %>
+          <div class="next" style="background-image:url('<%= @article.next.image.morenews.url %>'); background-size:cover; opacity:0.3;"></div>
+
+           <div class="arrownext"></div>
+        <p class="morearticles"> <%= link_to @article.next.title, article_path(@article.next) %></p> 
+        <% end %>
+      <% end %>
+      </div>
+</div>
 
 
 
+</div>
+</div>
+ <div class="clear"></div> 
+
+  
+</div>
+
+
+
+ 
 
