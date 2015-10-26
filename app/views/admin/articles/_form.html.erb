@@ -4,7 +4,34 @@
   <%= f.input :youtube, hint: 'Video: please use the video url. Youtube only'  %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.file_field :image %><br /> 
-  
+    <% if f.object.persisted? && f.object.image.present? %>
+    <%= image_tag f.object.image, class: 'persisted-image-preview' %>
+  <% end %>
+  <img src="" class="image-preview" /><Br /><Br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %> 
+
+<%= content_for :extra_footer do %>
+<script>
+$(document).ready(function(){
+  $('input[type="file"]').change(readURL);
+});
+
+function readURL(e) {
+  var input = e.target;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('.image-preview')
+        .attr('src', e.target.result)
+        .width(150)
+        .height(200);
+      $('.persisted-image-preview').hide();
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+<% end %>
+  
 

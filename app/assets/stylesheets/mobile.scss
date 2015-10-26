@@ -17,24 +17,7 @@ color: #333 !important;
 padding:0px !important;  font-weight:normal;
 }
 
-table td.title { width: 14%; 
-  
-  border-bottom: 1px solid;
-  border-bottom-color: #c5c5c5; 
-  background-color: transparent;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
-color: #333 !important;
-  font-weight:normal;
 
-vertical-align: top;
-  max-width: 120px;
-  padding: 10px;
-  border-bottom: 1px solid #c5c5c5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-}
 table th.body { width: 22%; }
 table th.created { width: 12%; }
 table th.updated { width: 12%; }

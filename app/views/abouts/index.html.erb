@@ -17,10 +17,10 @@
   <div class="col-md-12">
    <% @staffs.each do |staff| %>
       <div class="col-md-12 col-xs-12">
-        <div class="col-md-4 col-xs-12 new-image">
+        <div class="col-md-3 col-xs-12 new-image">
            <%= image_tag staff.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
         </div>
-         <div class="col-md-8">
+         <div class="col-md-9">
            <h3 class="arttit">
             <%=  staff.name %><small><br /><%= staff.role %><br />E: <%= staff.email %> | T: <%= staff.phone %></small>
            </h3>

@@ -11,7 +11,7 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">
-            <h5><%= article.title %> </h5> 
+            <h5><%= article.title %> <br /><small><%= article.created_at.strftime("%B  %d, %Y") %></small></h5> 
             <i class="material-icons right">add</i>
           </span>
           <p>
