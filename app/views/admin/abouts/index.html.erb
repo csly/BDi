@@ -2,7 +2,7 @@
 <div class="col-md-9">
 <h4> About</h4>
 <%= link_to "+ New", new_admin_about_path, class: "btn btn-primary"  %>
-<table>
+<table class="about">
   <tr>
   <th class="id">ID</th> 
   <th class="relbody">Body</th> 
@@ -11,7 +11,7 @@
 <% @abouts.each do |about| %>
   <tr>
   <td class="id"><%= about.id %></td> 
-  <td class="body"><%= about.body %></td>  
+  <td class="body"><%= about.body.html_safe %></td>  
   <td class="edit"> <%= link_to "Edit", edit_admin_about_path(about), :class =>  "btn btn-primary", :method => :get  %>  </td>
 
   </tr>
@@ -20,7 +20,7 @@
 </table>
  <br />
 <h4> List Of Staff</h4><%= link_to "+ New", new_admin_staff_path, class: "btn btn-primary"  %>
-<table>
+<table class="about">
   <tr>
   <th class="id">ID</th>
   <th class="title">Name</th>
@@ -37,7 +37,7 @@
   <td class="body"><%= staff.biog %></td>
   <td class="created"> <%= staff.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= staff.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag staff.image.artistmain.url, :class =>  "imagethumb" %></td>
+  <td class="image"> <%= image_tag staff.photo.artistmain.url, :class =>  "imagethumb" %></td>
   <td class="edit"> <%= link_to "Edit", edit_admin_staff_path(staff), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_staff_path(staff), method: :delete, class: "btn btn-primary"  %></td>
 
@@ -48,6 +48,18 @@
 </div>
  
 <%= render 'shared/adminnavfooter' %>
+
+<style>
+table.about {
+width:100%;
+th.id {width:10%;}
+th.relbody {width:50%;}
+th.edit {width:40%;}
+td.id {width:10%;}
+td.body {width:50%;}
+td.edit {width:40%;}
+}
+</style> 
 
 
 

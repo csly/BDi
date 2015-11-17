@@ -16,21 +16,33 @@ def edit
     @press = Press.find(params[:id])
   end
 
+
 def create
-     @press = Press.new(press_params)
-      if @press.save
-        redirect_to admin_presses_path(@press)
+    @press = Press.new(press_params)
+    if @press.save
+      if params[:press][:image].present?
+        render :crop  ## Render the view for cropping
       else
-        render :new
+        redirect_to admin_presses_path(@press), notice: 'press was successfully created.'
+      end
+    else
+      render :new
+    end
+  end  
+  
+  def update
+    @press = Press.find(params[:id]) 
+    @press.update(press_params)
+    if params[:press][:image].present?
+      render :crop  ## Render the view for cropping
+    else
+      redirect_to admin_presses_path(@press)
     end
   end
-   def update
-    @press = Press.find(params[:id])
-    @press.update(press_params)
 
-    redirect_to admin_presses_path(@press)
-      
-  end
+  
+ 
+ 
 
 
 
@@ -48,8 +60,13 @@ def create
  
 
 def press_params
-    params.require(:press).permit(:title, :body, :image, artist_ids: [])
+    params.require(:press).permit(:title, :body, :image, :image_crop_x,
+                                    :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
 
 
 end
+
+
+
+

@@ -18,7 +18,7 @@
   <td class="body"><%= artist.biog %></td>
   <td class="created"> <%= artist.created_at.strftime('%d-%m-%Y') %></td>
   <td class="updated"><%= artist.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag artist.image.thumbnail.url, :class =>  "imagethumb" %></td>
+  <td class="image"> <%= image_tag artist.photo.thumbnail.url, :class =>  "imagethumb" %></td>
   <td class="edit"> <%= link_to "Edit", edit_admin_artist_path(artist), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_artist_path(artist), method: :delete, class: "btn btn-primary"  %></td>
 

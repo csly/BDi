@@ -1,0 +1,10 @@
+<%= form_for [:admin, @staff] do |f| %>
+  <%= f.cropbox :photo %>
+  <%= f.previewbox :photo %>
+  <%= f.submit 'Crop' %>
+<% end %>
+ 
+
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'staffs' %>
+<% end %>

@@ -6,9 +6,12 @@ class Release < ActiveRecord::Base
   has_many :release_productions, dependent: :destroy
   has_many :productions, through: :release_productions
 
+  mount_uploader :image, ReleaseUploader
+  crop_uploaded :image
+
   attr_accessor :query, :genre, :artist
 
-      mount_uploader :image, ImageUploader
+
 
    def preview
       body[0..200]  +  "  "

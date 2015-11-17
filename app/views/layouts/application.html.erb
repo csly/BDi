@@ -4,15 +4,9 @@
   <title>BDi Music Ltd <%= content_for?(:title) ? content_for(:title) : " " %></title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+ 
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet"> 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <%= csrf_meta_tags %>
@@ -25,23 +19,16 @@
   <%= render 'shared/nav' %>
   <div class="clear"></div>
   
+  
   <%= yield %> 
     
 <br /><br />
 
   <%= render 'shared/footer' %>
-<script>
-     
-   $(document).on("scroll", function() {
-  if ($(document).scrollTop() > 120) {
-    $("nav").addClass("small");
-  } else {
-    $("nav").removeClass("small");
-  }
-});
-    </script>
+ 
 
   <%= yield :extra_footer %>
+  
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+<div class="containernohome">
+<div class="col-md-12 cropit">
+<h4>Crop Your Image </h4>
+<%= form_for [:admin, @article] do |f| %>
+  <%= f.cropbox :image %>
+  <%= f.previewbox :image %>
+  <%= f.submit 'Crop', class: 'btn btn-primary' %>
+<% end %>
+</div>
+</div>
+<div class="clear"></div>
+<style>
+.crop {} 
+</style>
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'articles' %>
+<% end %>

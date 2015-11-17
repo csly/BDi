@@ -21,13 +21,13 @@
 <% if @article.artists.blank? %>
 <br />
  <% else %>
-<div class="extras">
+<div class="extras relateartist">
  <h5>Related Artists:</h5></div>
 <br />
  <% @article.artists.each do |artist| %>
- <div class="col-md-6" style="padding-left:0px;">
+ <div class="col-md-6 relateartist" style="padding-left:0px;">
  
- <%= link_to (image_tag artist.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), artist_path(artist) %>
+ <%= link_to (image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), artist_path(artist) %>
 
     <p class="morearticles"><%= link_to artist.name, artist_path(artist), :class =>'artist-name' %></p>
  </p>
@@ -44,7 +44,7 @@
 <div class="container-bottomnews">
 <div class="bottom-news">
 <div class="col-md-12 extras">
-<div class="col-md-3">
+<div class="col-md-3 relateartist">
  
 
   <h5>Share This News Story</h5>
@@ -57,7 +57,7 @@
  <% if @article.artists.blank? %>
  
  <% else %>
-<div class="col-md-3">
+<div class="col-md-3 relateartist">
   <h5>Related Stories</h5>
     <ul class="sharesocial">
       <% @articles.each do |article| %>

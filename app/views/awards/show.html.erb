@@ -43,7 +43,7 @@
  <% @award.artists.each do |artist| %>
  <div class="col-md-2  col-xs-6" style="padding-left:0px;">
  
- <%= link_to (image_tag artist.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive '), artist_path(artist) %>
+ <%= link_to (image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive '), artist_path(artist) %>
 
     <%= link_to artist.name, artist_path(artist), :class =>'artist-name' %>
  </p>

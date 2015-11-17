@@ -1,12 +1,12 @@
-<div class="container-fluid main-body">
+<div class="container-fluid main-body"><br /><br />
 <div class="portfolio-items grid">
   <div class="row" style="margin:0px !important;">
   <% @articles.each do |article| %>
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="card"  >
         <div class="card-image waves-effect waves-block waves-light">
           <%= link_to(article_path(article), :class => 'hello') do %>
-            <%= image_tag article.image.testingplease.url, :class => 'img-responsive homepage' %>
+            <%= image_tag article.image.articlehome.url, :class => 'img-responsive homepage' %>
           <% end %>
         </div>
         <div class="card-content">
@@ -28,11 +28,11 @@
           </h4>
           <%= article.homepreview2.html_safe %> <br /><br /><br />
             <% if article.artists.blank? %>
-            <% else %>
+            <% else %><h6 class="arttit">Related Artists:</h6>
             <% article.artists.each do |artist| %>
               <div class="chip">
               <%= link_to(artist_path(artist)) do %>
-              <%= image_tag artist.image.url %>
+              <%= image_tag artist.photo.articlehome.url %>
               <%= artist.name %><% end %>
               </div>
             <% end %>
@@ -49,4 +49,6 @@
 </div>
 <div class="clear"></div>
 </div>
-
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'materialize' %>
+<% end %>

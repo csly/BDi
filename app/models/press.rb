@@ -1,8 +1,9 @@
 class Press < ActiveRecord::Base
-   has_many :press_artists, dependent: :destroy
+  has_many :press_artists, dependent: :destroy
   has_many :artists, through: :press_artists
 
-   mount_uploader :image, ImageUploader
+  mount_uploader :image, PressUploader
+  crop_uploaded :image
 
    def preview
       body[0..200]  +  "  "

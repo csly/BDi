@@ -4,14 +4,17 @@
  <br />
 
 <div class="related">Latest News Posts (showing latest 3 of <%= @articles.count %>)</div> <br />
-<table>
+<table width="100%" class="admin-table">
 <tr>
-<td class="one">ID</td><td class="two">Title</td><td class="three">Body</td><td class="four">Links</td>
+<td class="one">ID</td>
+<td class="two">Title</td>
+<td class="three">Body</td>
+<td class="four">Links</td>
 <% @articles.each do |article| %>
 <tr>
-<td class="one"><%= article.id %></td>
-<td class="two"><%= link_to article.title, edit_admin_article_path(article)  %></td>
-<td class="three"><%= article.body %></td>
+<td class="one"><p><%= article.id %></p></td>
+<td class="two"><p><%= link_to article.title, edit_admin_article_path(article)  %></p></td>
+<td class="three"><%= article.artistpreview.html_safe %></td>
 <td class="four"><%= link_to "Edit", edit_admin_article_path(article), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_article_path(article), method: :delete, class: "btn btn-primary"  %> </td>
    </tr>
@@ -20,14 +23,14 @@
 </table>
  <br /> <br />
 <div class="related">Latest Artists Added (showing latest 3 of <%= @artists.count %>)</div> <br />
-<table>
+<table width="100%" class="admin-table">
 <tr>
-<td class="one">ID</td><td class="two">Name</td><td class="three">Body</td><td class="four">Links</td>
+<td class="one">ID</td><td class="two">Name</td><td class="three">Biog</td><td class="four">Links</td>
 <% @artists.each do |artist| %>
 <tr>
 <td class="one"><%= artist.id %></td>
 <td class="two"><%= link_to artist.name, edit_admin_artist_path(artist)  %></td>
-<td class="three"><%= artist.biog %></td>
+<td class="three"><%= artist.biog.html_safe %></td>
 <td class="four"><%= link_to "Edit", edit_admin_artist_path(artist), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_artist_path(artist), method: :delete, class: "btn btn-primary"  %> </td>
    </tr>
@@ -37,14 +40,14 @@
  <br /> <br />
 
 <div class="related">Latest Releases Added (showing latest 3 of <%= @releases.count %>)</div> <br />
-<table>
+<table width="100%" class="admin-table">
 <tr>
 <td class="one">ID</td><td class="two">Name</td><td class="three">Body</td><td class="four">Links</td>
 <% @releases.each do |release| %>
 <tr>
 <td class="one"><%= release.id %></td>
 <td class="two"><%= link_to release.title, edit_admin_release_path(release)  %></td>
-<td class="three"><%= release.body %></td>
+<td class="three"><%= release.body.html_safe %></td>
 <td class="four"><%= link_to "Edit", edit_admin_release_path(release), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_release_path(release), method: :delete, class: "btn btn-primary"  %> </td>
    </tr>
@@ -54,14 +57,14 @@
  <br /> <br />
 
 <div class="related">Latest Awards Added (showing latest 3 of <%= @awards.count %>)</div> <br />
-<table>
+<table width="100%" class="admin-table">
 <tr>
 <td class="one">ID</td><td class="two">Name</td><td class="three">Body</td><td class="four">Links</td>
 <% @awards.each do |award| %>
 <tr>
 <td class="one"><%= award.id %></td>
 <td class="two"><%= link_to award.title, edit_admin_award_path(award)  %></td>
-<td class="three"><%= award.body %></td>
+<td class="three"><%= award.body.html_safe %></td>
 <td class="four"><%= link_to "Edit", edit_admin_award_path(award), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_award_path(award), method: :delete, class: "btn btn-primary"  %> </td>
    </tr>
@@ -71,14 +74,14 @@
  <br /> <br />
 
 <div class="related">Latest Press Added (showing latest 3 of <%= @presses.count %>)</div> <br />
-<table>
+<table width="100%" class="admin-table">
 <tr>
 <td class="one">ID</td><td class="two">Name</td><td class="three">Body</td><td class="four">Links</td>
 <% @presses.each do |press| %>
 <tr>
 <td class="one"><%= press.id %></td>
 <td class="two"><%= link_to press.title, edit_admin_press_path(press)  %></td>
-<td class="three"><%= press.body %></td>
+<td class="three"><%= press.body.html_safe %></td>
 <td class="four"><%= link_to "Edit", edit_admin_press_path(press), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_press_path(press), method: :delete, class: "btn btn-primary"  %> </td>
    </tr>

@@ -1,7 +1,9 @@
-<div id="one">
-  <div class="containernohome" id="banner">
-   <div class="row"> 
-    <div style="float:left">
+
+<nav class="navbar navbar-default navbar-fixed-top normal">
+  <div id="one">
+    <div class="topheader">
+    <div class="row homerow"> 
+    <div style="float:left" class="loginsection"> 
         <ul class="loginetc">
           <li>
             <%= link_to 'Login', new_user_session_path, :class => 'btn-flat ' %>
@@ -19,10 +21,14 @@
      <section>
       <ul class="social-buttons" id="demo3">
         <li class="social">
+          <a href="https://www.facebook.com/BDiMusicUK/" target="_blank">
           <div class="entypo-facebook"></div>
+          </a>
         </li>
         <li class="social">
+          <a href="https://twitter.com/bdimusic" target="_blank">
           <div class="entypo-twitter"></div>
+          </a>
         </li>
         <li class="social">
           <div class="entypo-vimeo"></div>
@@ -32,21 +38,27 @@
         </li>
       </ul>
     </section>
+    </div>
     </div> 
    </div>
-  </div>
-</div>
+   </div><div class="containernohome navtest">
   
-<div id="nav">
-  <div class="navbar navbar-inverse navbar-static-top">
-    <div class="containernohome" >
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="glyphicon glyphicon-bar"></span>
-        <span class="glyphicon glyphicon-bar"></span>
-        <span class="glyphicon glyphicon-bar"></span>
-      </a>
-      <%= link_to image_tag("http://www.fabcampbell.com/test/bdilogonew.png", :class => "navbar-brand img-responsive"), root_path %> 
-      <div class="navbar-collapse collapse">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><%= image_tag("http://www.remarquablerecords.com/bdilogo.png",  :class => "navbar-bra") %></a>
+    </div>
+
+
+
+        
+
+      <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
         </ul> 
         <ul class="nav pull-right navbar-nav">
@@ -86,19 +98,31 @@
         </ul> 
       </div>    
     </div>
-  </div> 
-</div>
-
-<style> 
+</nav>  
+<div class="clear"></div>
  
 
-</style>
-<script>
 
-$('#nav').affix({
-      offset: {
-        top: $('#banner').height() 
-      }
-}); 
+    
+
+    <style> 
+
+
+
+ 
+</style>
+
+
+
+<script  type='text/javascript'>
+$(document).ready(function(){
+    $(".navbar-bra").hover(
+        function() {$(this).attr("src","http://www.bucksmusicgroup.com/wp-content/uploads/2015/11/bdiblinking.gif");},
+        function() {$(this).attr("src","http://www.remarquablerecords.com/bdilogo.png");
+    });
+});
+</script>
+
   
-</script> 
+
+ 

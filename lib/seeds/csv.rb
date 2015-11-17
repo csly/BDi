@@ -2,42 +2,33 @@ require 'csv'
 class Seeds::CSV
   def import
     CSV.foreach(file, headers: true) do |row|
-      instrumentations = create_from_row("Instrumentation", row["Track Instrumentation / Style"])
-      moods = create_from_row("Mood", row["Track Mood"])
-      composers = create_composers(row["Composer(s)"])
-      publisher = create_publisher(row["Publisher"])
-      productions = create_productions(row["Programme Origin"])
+      name = create_name(row["Name"])
+      biog = create_biog(row["Biog"])
+      facebook = create_facebook(row["Facebook"])
+      twitter = create_twitter(row["Twitter"]) 
       
-      create_track(row, {
-        instrumentations: instrumentations, 
-        moods: moods, 
-        composers: composers, 
-        publisher: publisher, 
-        productions: productions
+      create_artist(row, {
+        name: name, 
+        biog: biog, 
+        facebook: facebook, 
+        twitter: twitter 
         })
     end
   end
 
   private
 
-  def create_track(row, options)
+  def create_artist(row, options)
     return unless row["New Title"]
-    track = Track.find_or_initialize_by(catalogue: row['Catalogue Number'])
-    track.title = row['New Title'].strip
-    track.oldtitle = row['Original Title '].strip
-    track.instrumentations = options[:instrumentations] if options[:instrumentations]
-    track.moods = options[:moods] if options[:moods]
-    track.composers = options[:composers] if options[:composers]
-    track.publisher = options[:publisher] if options[:publisher]
-    track.productions = [options[:productions]] if options[:productions]
-    track.save!
-    puts "created #{row['New Title']}"
+    artist = Artist.find_or_initialize_by(id: row['Id'])
+    artist.name = row['Name'].strip
+    artist.biog = row['Biog'].strip
+    artist.facebook = options[:facebook] if options[:facebook]
+    artist.twitter = options[:twitter] if options[:twitter] 
+    artist.save!
+    puts "created #{row['Name']}"
   end
 
-  def create_productions(productions)
-    return unless productions
-    Production.find_or_create_by(name: productions.strip)
-  end
 
   def create_from_row(klass, data)
     return unless data
@@ -47,22 +38,31 @@ class Seeds::CSV
       klass.constantize.find_or_create_by(name: record)
     end
   end
-
-  def create_composers(composers)
-    return unless composers
-    composers.split(',').map do |composer|
-      return unless composer.strip
-      Composer.find_or_create_by(name: composer.strip)
-    end
+  def create_name(name)
+    return unless name
+    return unless name.strip
+    Name.find_or_create_by(name: name.strip)
   end
 
-  def create_publisher(publisher)
-    return unless publisher
-    return unless publisher.strip
-    Publisher.find_or_create_by(name: publisher.strip)
+  def create_biog(biog)
+    return unless biog
+    return unless biog.strip
+    Biog.find_or_create_by(biog: biog.strip)
   end
+  def create_facebook(facebook)
+    return unless facebook
+    return unless facebook.strip
+    Facebook.find_or_create_by(facebook: facebook.strip)
+  end
+
+  def create_twitter(twitter)
+    return unless twitter
+    return unless twitter.strip
+    Twitter.find_or_create_by(twitter: twitter.strip)
+  end
+
 
   def file
-    Rails.root.join('lib', 'seeds', 'production.csv')
+    Rails.root.join('lib', 'seeds', 'artists.csv')
   end
 end

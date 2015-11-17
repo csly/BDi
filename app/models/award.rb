@@ -2,7 +2,8 @@ class Award < ActiveRecord::Base
   has_many :award_artists, dependent: :destroy
   has_many :artists, through: :award_artists
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, AwardUploader
+  crop_uploaded :image
 
    def preview
       body[0..200]  +  "  "

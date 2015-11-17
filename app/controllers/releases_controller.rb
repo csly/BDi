@@ -3,6 +3,9 @@ class ReleasesController < ApplicationController
 def index
   if params[:q]
       @releases = Release.search(params[:q], params[:genre], params[:artist], params[:production]).paginate(page: params[:page], per_page: 15).order('releases.date DESC') 
+      if @releases.blank?
+              redirect_to releases_path(@release), notice: "There are no Releases that match your search requirements. Please try again"
+      end
     else
       params[:limit] ||= 10
       @releases = Release.paginate(page: params[:page], per_page: 15).order('releases.date DESC')

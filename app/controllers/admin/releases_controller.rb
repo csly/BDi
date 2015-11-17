@@ -17,21 +17,27 @@ def edit
   end
 
 def create
-     @release = Release.new(release_params)
-      if @release.save
-        redirect_to admin_releases_path(@release)
+    @release = Release.new(release_params)
+    if @release.save
+      if params[:release][:image].present?
+        render :crop  ## Render the view for cropping
       else
-        render :new
+        redirect_to admin_releases_path(@release), notice: 'release was successfully created.'
+      end
+    else
+      render :new
+    end
+  end  
+  
+  def update
+    @release = Release.find(params[:id]) 
+    @release.update(release_params)
+    if params[:release][:image].present?
+      render :crop  ## Render the view for cropping
+    else
+      redirect_to admin_releases_path(@release)
     end
   end
-   def update
-    @release = Release.find(params[:id])
-    @release.update(release_params)
-
-    redirect_to admin_releases_path(@release)
-      
-  end
-
 
 
   
@@ -48,8 +54,14 @@ def create
  
 
 def release_params
-    params.require(:release).permit(:title, :body, :image, :date, :links,:amazon, :chart_position, :itunes, artist_ids: [], genre_ids: [], production_ids: [])
+    params.require(:release).permit(:title, :body, :image, :image_crop_x,
+                                    :image_crop_y, :image_crop_w, :image_crop_h, :date, :links,:amazon, :chart_position, :itunes, artist_ids: [], genre_ids: [], production_ids: [])
   end
 
 
 end
+
+
+
+
+

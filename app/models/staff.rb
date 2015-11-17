@@ -1,3 +1,4 @@
 class Staff < ActiveRecord::Base
-      mount_uploader :image, ImageUploader
+      mount_uploader :photo, AboutUploader
+      crop_uploaded :photo
 end

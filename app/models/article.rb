@@ -2,31 +2,17 @@ class Article < ActiveRecord::Base
   has_many :article_artists, dependent: :destroy
   has_many :artists, through: :article_artists
 
-    mount_uploader :image, ImageUploader
- attr_accessor :query 
+  mount_uploader :image, ImageUploader
+  crop_uploaded :image
+  attr_accessor :query 
    
    
-   def preview
-      body[0..120]  +  "  "
-    end 
-
-    def titlepreview
-      title[0..11]  +  ".."
-    end
     def titlepreviewnews
       title[0..30]  +  ".."
     end 
-    def titlepreviewnext
-      title[0..16]  +  ".."
-    end 
-    def bodypreview
-      body[0..22]  +  ".."
-    end 
+  
     def newspreview
     body[0..300]  +  ".."
-    end 
-    def homepreview
-    body[0..54]  +  ".."
     end 
     
     def artistpreview
@@ -35,9 +21,7 @@ class Article < ActiveRecord::Base
     def homepreview2
     body[0..220]  +  "..."
     end 
-    def homepreview3
-    "<h5>" + title[0..11]  +  ".."  + "</h5>" + body[0..129]  +  "..."
-    end 
+    
 
   def embed(youtube)
          youtube_id = youtube.split("=").last

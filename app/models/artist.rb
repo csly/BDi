@@ -9,13 +9,11 @@ class Artist < ActiveRecord::Base
   has_many :genres, through: :artist_genres 
   has_many :artist_types, dependent: :destroy
   has_many :types, through: :artist_types 
-   has_many :press_artists, dependent: :destroy
+  has_many :press_artists, dependent: :destroy
   has_many :presses, through: :press_artists
 
-  # has_attached_file :photo
-  mount_uploader :image, ImageUploader
-  # validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
- 
+  mount_uploader :photo, ArtistUploader
+  crop_uploaded :photo
   attr_accessor :query, :genre, :type
 
  def namepreview
