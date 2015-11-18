@@ -8,33 +8,38 @@
 <span class="artist-name-main">
 Artists
 </span>
-<div style="float:right; width:600px;    margin-top: -30px;">
-<%= simple_form_for :artist, url: url_for(artists_path),  
-     method: 'get' do |f| %>
-
-<table class="tablesearch2">
-
-<tr>
-<td class="one">
-  <%= f.input :query, input_html: {name: 'q', class: 'special'}, label: "Keywords", placeholder: 'Search...', required: false %>
-  </td>
-<td class="one">
-  <%= f.input :genre, input_html: {name: 'genre'},  collection: Genre.order('name ASC').used, include_blank: 'All', required: false %> 
-  </td>
-<td class="one">
-  <%= f.input :type, input_html: {name: 'type'},  collection: Type.order('name ASC').used, include_blank: 'All', required: false %> 
-  </td>
-
-  <td class="last">
-  <%= f.submit 'Search', class: 'btn btn-primary searcharticles' %>
-
-  </td></tr></table>
-<% end %>
-
-</div>
+ 
 
  <br /><br /></div>
 </div> 
+<div class="main-page-header-search col-md-12">
+ <div class="m-p-h-s">
+<%= simple_form_for :artist, url: url_for(artists_path),  
+     method: 'get' do |f| %>
+
+<table class="releases-search" >
+
+<tr>
+<td class="one keywords">
+  <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, placeholder: 'Search...', required: false, label: false  %>
+  </td>
+<td class="one genre">
+  <%= f.input :genre, input_html: {name: 'genre', class: 'form-control custom'},  collection: Genre.order('name ASC').used, include_blank: 'All', include_blank: 'Genre', required: false, label: false  %> 
+  </td>
+<td class="one artist">
+  <%= f.input :type, input_html: {name: 'type', class: 'form-control custom'},  collection: Type.order('name ASC').used, include_blank: 'All', include_blank: 'Type', required: false, label: false  %> 
+  </td>
+  
+  <td class="last search">
+  <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
+
+  </td></tr></table>
+<% end %>
+ </div>
+
+</div>
+
+
   <br />  <br /> 
 
  <div class='containernohome'> 
@@ -59,9 +64,45 @@ Artists
 
   <div class="clear"></div><br /><br >
 
- <Style>
+ <style>
 
+
+  .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+      .search-query button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+input.release-searching {    margin-top: -10px;
+    height: 32px;
+    line-height: 32px;}
  td.one {border-bottom:0px;}
 td.last {border-bottom:0px; padding-top: 33px;}
-</Style>
+</style>
  
