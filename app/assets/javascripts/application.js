@@ -16,6 +16,48 @@
 //= require jquery.jcrop 
 
 //= require ckeditor/init
+     $(window).scroll(function() {
+      if ($(document).scrollTop() > 27) {
+      $('.navbar').addClass('shrink');
+      }
+      else {
+      $('.navbar').removeClass('shrink'); }
+      });
+
+      /* affix the navbar after scroll below header */
+ 
+
+  
+
+
+
+ jQuery(function ($) {
+
+    var filter;
+    $('.filter').click(function () {
+
+       
+    $(this).addClass("fcurrent").siblings().removeClass("fcurrent");
+       
+        if (filter == this.id) {
+            $('tr').show()
+            filter = undefined;
+        } else {
+            $('tr:not(.' + this.id + ')').hide();
+            $('tr.' + this.id).show(); 
+            filter = this.id;
+        }
+
+    });
+
+});
+
+
+
+
+
+
+ 
 
 $(document).ready(function(){
   $( ".nav li a" ).hover(
@@ -31,17 +73,12 @@ $(document).ready(function(){
   $(this).addClass("fcurrent").siblings().removeClass("fcurrent");   
     if (filter == this.id) {
       $('tr').show()
-      filter = null;
+      filter = undefined;
     } else {
-      $('tr:not(.' + this.id + ')').hide();
-      $('tr.' + this.id).show(); 
-      filter = this.id;
+        $('tr:not(.' + this.id + ')').hide();
+        $('tr.' + this.id).show(); 
+        filter = this.id;
     }
-  });
 
-  if ($(document).scrollTop() > 27) {
-    $('.navbar').addClass('shrink');
-  } else {
-    $('.navbar').removeClass('shrink'); 
-  }
+  });
 });

@@ -24,6 +24,19 @@
 <div class="col-md-3">
 <%= image_tag @artist.photo.url, :class => 'img-responsive ' %><br />
 <h3 class="arttit">Genre(s): <small><% @artist.genres.each do |genre| %><%= genre.name %><% end %></small></h3><br />
+
+<% if @artist.biography.present? %>
+ <h3 class="arttit">Download:<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h3><br />
+<% end %>
+
+</div>
+<div class="col-md-9 newsblur">
+<div class="mainblurb"> 
+            <%= @artist.biog.html_safe %> 
+            
+ 
+
+</div><br />
   <% if @artist.releases.blank? %>
 <br />
  <% else %>
@@ -31,7 +44,7 @@
 <h3 class="arttit">Releases:</h3></div>
 <br />
  <% @artist.releases.each do |release| %>
- <div class="col-md-6" style="padding-left:0px;">
+ <div class="col-md-2" style="padding-left:0px;">
  
  <%= link_to (image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), release_path(release) %>
 
@@ -39,16 +52,9 @@
  </p>
   </div> <% end %><% end %>
 </div>
-<div class="col-md-9 newsblur">
-<div class="mainblurb">
- 
-<p><%= @artist.biog.html_safe %></p> 
-<% if @artist.biography.present? %>
-  <%= link_to 'Download biography', download_artist_path(@artist) %>
-<% end %>
 
-</div>
-</div>
+
+
 </div>
 <div class="clear"></div> 
 <div class="container-bottomnews">
@@ -101,7 +107,8 @@
   
 </div>
 
-
-
  
 
+
+   
+    
