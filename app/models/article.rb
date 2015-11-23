@@ -33,6 +33,7 @@ class Article < ActiveRecord::Base
         where('title ILIKE ? or body ILIKE ?', query, query) if query
        
       end
+
     end
  
   
@@ -53,6 +54,7 @@ class << self
         articles
       end
     end
+
 
 end
 

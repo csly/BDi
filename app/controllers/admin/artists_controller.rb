@@ -1,8 +1,7 @@
 class Admin::ArtistsController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @artists = Artist.all.order('created_at DESC')
+    @artists = Artist.paginate(page: params[:page], per_page: 20).order('artists.created_at DESC')
   end
 def show
     @artist = Artist.find(params[:id])
@@ -58,7 +57,7 @@ def create
  
 
 def artist_params
-    params.require(:artist).permit(:name, :biog, :photo, :photo,  :photo_crop_x,
+    params.require(:artist).permit(:name, :biog, :photo, :photo, :biography, :photo_crop_x,
                                     :photo_crop_y, :photo_crop_w, :photo_crop_h, :links, :composer, :songwriter, :twitter, :facebook,  article_ids: [], award_ids: [], genre_ids: [], type_ids: [])
   end
 

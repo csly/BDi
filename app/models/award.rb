@@ -18,6 +18,10 @@ class Award < ActiveRecord::Base
     body[0..300]  +  ".."
     end 
 
+    def artistpreview
+      body[0..100]  +  ".."
+    end 
+
     class << self
       def search(query)
         query = (query && !query.empty?) ? "%#{query}%" : nil 

@@ -1,8 +1,7 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @users = User.all.order('created_at DESC')
+    @users = User.paginate(page: params[:page], per_page: 20).order('users.created_at DESC')
   end
 def show
     @user = User.find(params[:id])

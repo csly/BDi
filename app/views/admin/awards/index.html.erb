@@ -1,32 +1,39 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Awards</h4><%= link_to "+ New", new_admin_award_path, class: "btn btn-primary"  %>
-<table>
-  <tr>
-  <th class="id">ID</th>
-  <th class="title">Title</th>
-  <th class="body">Body</th>
-  <th class="created"> Created at</th>
-  <th class="updated">Updated at</th>
-  <th class="image">Image</th>
-  <th class="edit"></th>
-  </tr>
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+
+  <th class="a-three"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
 <% @awards.each do |award| %>
-  <tr>
-  <td class="id"><%= award.id %></td>
-  <td class="title">  <%= link_to award.title, admin_award_path(award) %></td>
-  <td class="body"><%= award.body %></td>
-  <td class="created"> <%= award.created_at.strftime('%d-%m-%Y') %></td>
-  <td class="updated"><%= award.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag award.image.artistmain.url, :class =>  "imagethumb" %></td>
-  <td class="edit"> <%= link_to "Edit", edit_admin_award_path(award), :class =>  "btn btn-primary", :method => :get  %> 
+  <tr> 
+  <td class="a-one"><p><%= award.id %></p></td>
+  <td class="a-one"> <%= image_tag award.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  
+  <td class="a-two" style="padding-right:10px;"><p><%= link_to award.title, award_path(award) %></p></td> 
+  
+  <td class="a-threes"><p><%= award.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_award_path(award), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_award_path(award), method: :delete, class: "btn btn-primary"  %></td>
 
   </tr>
 
 <% end %>
-</table>
-</div></div>
+</table><br /><br />
+<div class="col-md-10"> 
+    <div class="middle">
+      <%= will_paginate @awards, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %>
+      </div>
+    </div>
+</div>
+</div> 
 
 
 

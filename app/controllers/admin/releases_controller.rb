@@ -1,8 +1,7 @@
 class Admin::ReleasesController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @releases = Release.all.order('created_at DESC')
+    @releases = Release.paginate(page: params[:page], per_page: 20).order('releases.created_at DESC')
   end
 def show
     @release = Release.find(params[:id])

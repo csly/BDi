@@ -1,6 +1,5 @@
 class Admin::StaffsController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
     @staffs = Staff.all
   end

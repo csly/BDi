@@ -1,18 +1,17 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> About</h4>
-<%= link_to "+ New", new_admin_about_path, class: "btn btn-primary"  %>
-<table class="about">
+<table class="admin-table-about">
   <tr>
-  <th class="id">ID</th> 
-  <th class="relbody">Body</th> 
-  <th class="edit"></th>
+  <th class="a-one"><p>ID</p></th> 
+  <th class="a-full"><p>Body</p></th> 
+  <th class="a-two"><p>Links</p></th>
   </tr>
 <% @abouts.each do |about| %>
   <tr>
-  <td class="id"><%= about.id %></td> 
-  <td class="body"><%= about.body.html_safe %></td>  
-  <td class="edit"> <%= link_to "Edit", edit_admin_about_path(about), :class =>  "btn btn-primary", :method => :get  %>  </td>
+  <td class="a-one"><p><%= about.id %></p></td> 
+  <td class="a-full"><p><%= about.body.html_safe %></p></td>  
+  <td class="a-two"> <%= link_to "Edit", edit_admin_about_path(about), :class =>  "btn btn-primary", :method => :get  %>  
 
   </tr>
 
@@ -20,31 +19,37 @@
 </table>
  <br />
 <h4> List Of Staff</h4><%= link_to "+ New", new_admin_staff_path, class: "btn btn-primary"  %>
-<table class="about">
-  <tr>
-  <th class="id">ID</th>
-  <th class="title">Name</th>
-  <th class="body">Biog</th>
-  <th class="created"> Created at</th>
-  <th class="updated">Updated at</th>
-  <th class="image">Image</th>
-  <th class="edit"></th>
-  </tr>
+ 
+
+
+
+<table class="admin-table">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Name</p></th> 
+
+  <th class="a-two"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
 <% @staffs.each do |staff| %>
-  <tr>
-  <td class="id"><%= staff.id %></td>
-  <td class="title">  <%= link_to staff.name, admin_staff_path(staff) %></td>
-  <td class="body"><%= staff.biog %></td>
-  <td class="created"> <%= staff.created_at.strftime('%d-%m-%Y') %></td>
-  <td class="updated"><%= staff.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= image_tag staff.photo.artistmain.url, :class =>  "imagethumb" %></td>
-  <td class="edit"> <%= link_to "Edit", edit_admin_staff_path(staff), :class =>  "btn btn-primary", :method => :get  %> 
+  <tr> 
+  <td class="a-one"><p><%= staff.id %></p></td>
+  <td class="a-one"> <%= image_tag staff.photo.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  
+  <td class="a-two"><p><%= link_to staff.name, admin_staff_path(staff) %></p></td> 
+  
+  <td class="a-two"><p><%= staff.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_staff_path(staff), :class =>  "btn btn-primary", :method => :get  %> 
    <%= link_to 'Delete', admin_staff_path(staff), method: :delete, class: "btn btn-primary"  %></td>
 
   </tr>
 
 <% end %>
-</table> 
+</table>
+
 </div>
  
 <%= render 'shared/adminnavfooter' %>

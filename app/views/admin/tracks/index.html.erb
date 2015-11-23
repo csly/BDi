@@ -1,37 +1,42 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Tracks</h4><%= link_to "+ New", new_admin_track_path, class: "btn btn-primary"  %>
-<table>
-  <tr>
-  <th class="id">Catalogue No.</th>
-  <th class="title">Title</th>
-  <th class="body">Origin</th>
-  <th class="created"> Created at</th>
-  <th class="updated">Updated at</th> 
-  <th class="image">Composers</th> 
-  <th class="edit"></th>
-  </tr>
+ 
+
+
+
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>Cat No.</p></th>
+  <th class="a-three"><p>Title</p></th>
+  <th class="a-three"><p>Origin</p></th> 
+  <th class="a-three"><p>Composers</p></th>
+  <th class="a-three"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
 <% @tracks.each do |track| %>
-  <tr>
-  <td class="id"><%= track.catalogue %></td>
-  <td class="title">  <%= track.title %></td>
-  <td class="body"><%= track.origin %></td>
-  <td class="created"> <%= track.created_at.strftime('%d-%m-%Y') %></td>
-  <td class="updated"><%= track.updated_at.strftime('%d-%m-%Y') %></td>
-  <td class="image"> <%= track.track_composer %></td>
-  <td class="edit"> <%= link_to "Edit", edit_admin_track_path(track), :class =>  "btn btn-primary", :method => :get  %> 
+  <tr> 
+  <td class="a-one"><p><%= track.catalogue %></p></td>
+  <td class="a-three"><p><%= track.title %></p></td>
+  
+  <td class="a-three"><p><%= track.origin %></p></td> 
+  <td class="a-three"><p><%= track.track_composer %></p></td> 
+  <td class="a-three"><p><%= track.created_at.strftime('%d/%m/%Y   %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_track_path(track), :class =>  "btn btn-primary", :method => :get  %> <br /><br />
    <%= link_to 'Delete', admin_track_path(track), method: :delete, class: "btn btn-primary"  %></td>
 
   </tr>
 
 <% end %>
-</table>
-<br />
-<%= link_to 'Back To Tracks', admin_tracks_path, class: "btn btn-primary "  %>
+</table><br /><br />
+<div class="col-md-10"> 
+    <div class="middle">
+      <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %>
+      </div>
+    </div>
 </div>
-
-
-
-</div>
+</div> 
 
 <%= render 'shared/adminnavfooter' %>

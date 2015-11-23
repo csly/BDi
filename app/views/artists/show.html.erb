@@ -43,6 +43,9 @@
 <div class="mainblurb">
  
 <p><%= @artist.biog.html_safe %></p> 
+<% if @artist.biography.present? %>
+  <%= link_to 'Download biography', download_artist_path(@artist) %>
+<% end %>
 
 </div>
 </div>

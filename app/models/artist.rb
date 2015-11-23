@@ -13,6 +13,7 @@ class Artist < ActiveRecord::Base
   has_many :presses, through: :press_artists
 
   mount_uploader :photo, ArtistUploader
+  mount_uploader :biography, PDFUploader
   crop_uploaded :photo
   attr_accessor :query, :genre, :type
 
@@ -21,6 +22,13 @@ class Artist < ActiveRecord::Base
     end 
   def biogpreview
       biog[0..22]  +  ".."
+    end 
+     def artistpreview
+      biog[0..100]  +  ".."
+    end 
+
+     def adminpreview
+      biog[0..50]  +  ".."
     end 
 
   def count

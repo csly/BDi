@@ -1,25 +1,13 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Production Tags</h4><%= link_to "+ New", new_admin_production_path, class: "btn btn-primary"  %>
-<table>
-  <tr>
-  <th class="title">Name</th> 
-  <th class="edit"></th>
-  </tr>
+<br /><br />
 <% @productions.each do |production| %>
-  <tr>
-  <td class="title">  <%= link_to production.name, admin_production_path(production) %></td> 
-  <td class="edit">  
-   <%= link_to 'Delete', admin_production_path(production), method: :delete, class: "btn btn-primary"  %></td>
-
-  </tr>
-
+   <div class="col-md-3" style="padding-left:0px; padding-top:10px;">
+   <%= link_to production.name, admin_production_path(production) %> <br />
+   <%= link_to 'Delete', admin_production_path(production), method: :delete, class: "btn btn-primary"  %>
+   </div> 
 <% end %>
-</table>
-</div>
-
-
-
-
+ 
 </div>
 <%= render 'shared/adminnavfooter' %>

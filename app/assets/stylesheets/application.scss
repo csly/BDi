@@ -631,6 +631,10 @@ ul.pull-right {
       cursor: pointer; 
       }
 
+.newsletter {
+      color: $bdi-green;
+      }
+
 .btn-flat {
       background-color:white;    
       height: 26px;
@@ -806,6 +810,7 @@ footer.page-footer .footer-copyright {
 
 
 /************************ Homepage ************************/
+
 
 a.readmorehome {
       padding: 10px; 
@@ -1139,6 +1144,10 @@ h6.arttit {
       }
 
 /************************ News/Awards/Press ************************/
+
+.mainblurb p{
+      margin-top:-15px !important;
+      }
 
 .m-p-h {
       max-width:1250px; 
@@ -1544,6 +1553,99 @@ background-size: 100%;
       }
 
 /************************ Admin Panel ************************/
+table.admin-table-about {
+      th.a-one {
+      width: 10%;
+      }
+      th.a-two {
+      width: 30%;
+      }
+      th.a-full {
+      width: 70%;
+      }
+      td.a-one {
+      width: 10%;
+      vertical-align:top; 
+      }
+      td.a-two {
+      width: 30%; 
+      vertical-align:top; 
+      }
+      td.a-full {
+      width: 70%; 
+      vertical-align:top; 
+      padding-right:10px;
+      }
+
+}
+table.admin-table {
+      width:100%;
+      th.a-one {
+      width: 10%;
+      }
+      th.a-two {
+      width: 30%;
+      }
+      th.a-three {
+      width:20%;
+      }
+      th.a-four {
+      width: 20%;
+      }
+      td.a-one {
+      width:5%;
+      border-bottom: 1px solid #d9d9d9;
+      }
+      td.a-two {
+      width: 20%;
+      border-bottom: 1px solid #d9d9d9;
+      }
+      td.a-three {
+      width:20%;
+      }
+      td.a-four {
+      width: 20%;
+      border-bottom: 1px solid #d9d9d9;
+      }
+}
+
+
+table.admin-table-news {
+      width:100%;
+      th.a-one {
+      width: 5%;
+      }
+      th.a-two {
+      width: 30%;
+      padding-right:10px;
+      }
+      th.a-three {
+      width:20%;
+      }
+      th.a-four {
+      width: 20%;
+      }
+      td.a-one {
+      width:5%; 
+      }
+      td.a-two {
+      width: 20%;
+      padding-right:10px; 
+      }
+      td.a-three {
+      width:20%; 
+      }
+      td.a-four {
+      width: 20%; 
+      }
+      tr:nth-child(even) {
+      background-color: #fff;
+      }
+      td,th  {
+      padding:10px;
+      }
+}
+
 
 table.admin-table {
       width:100%; 
@@ -1773,3 +1875,22 @@ footer.page-footer {text-align:center;}
 }
 btn:focus  {outline:0 !important;}
 button:focus {outline:0 !important;}
+
+/************************ SEARCH ************************/
+
+.search-related h5 {
+      color: $bdi-green;
+      line-height: 48px;
+      font-size: 100%;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.2em;
+      border-bottom: 1px solid $bdi-green;
+      }
+
+
+
+
+
+
+

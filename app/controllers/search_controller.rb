@@ -13,7 +13,7 @@ class SearchController < ApplicationController
     @moods = Mood.for_tracks(@tracks)
     @instrumentations = Instrumentation.for_tracks(@tracks)
     respond_to do |format|
-      format.json { render json: serialized_tracks, status: :ok }
+      format.json { render json: { tracks: serialized_tracks, new_url: request.url }, status: :ok }
       format.html
     end
   end

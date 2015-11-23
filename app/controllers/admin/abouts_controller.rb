@@ -1,6 +1,5 @@
 class Admin::AboutsController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
     @abouts = About.all
     @staffs = Staff.all
@@ -32,8 +31,7 @@ def create
     redirect_to admin_abouts_path(@about)
       
   end
-
-
+ 
 
    
 

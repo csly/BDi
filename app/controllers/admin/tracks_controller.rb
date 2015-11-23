@@ -1,8 +1,7 @@
 class Admin::TracksController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @tracks = Track.all.order('created_at DESC')
+    @tracks = Track.paginate(page: params[:page], per_page: 20).order('tracks.created_at DESC')
   end
 def show
     @track = Track.find(params[:id])

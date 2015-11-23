@@ -1,3 +1,4 @@
+require 'open-uri'
 class ArtistsController < ApplicationController
 
 def index
@@ -15,6 +16,17 @@ def index
 def show
     @artist = Artist.find(params[:id])  
     @related_artists = Artist.where.not(id: @artist.id).order('RANDOM()').limit(3)
+end
+
+  def download
+    @artist = Artist.find(params[:id])
+    data = open(@artist.biography.file.url).read
+    send_data(
+      data,
+      disposition: 'attachment',
+      filename: "#{@artist.name}_biography.pdf",
+      type: "application/pdf"
+    )
   end
 
 

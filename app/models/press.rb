@@ -12,6 +12,10 @@ class Press < ActiveRecord::Base
     def newspreview
       body[0..300] + " "
     end
+
+    def artistpreview
+      body[0..100]  +  ".."
+    end 
      
 
      class << self

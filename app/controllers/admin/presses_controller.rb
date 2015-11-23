@@ -1,8 +1,7 @@
 class Admin::PressesController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @presses = Press.all.order('created_at DESC')
+    @presses = Press.paginate(page: params[:page], per_page: 20).order('presses.created_at DESC')
   end
 def show
     @press = Press.find(params[:id])

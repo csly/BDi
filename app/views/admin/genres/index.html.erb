@@ -1,21 +1,14 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Genre Tags</h4><%= link_to "+ New", new_admin_genre_path, class: "btn btn-primary"  %>
-<table>
-  <tr>
-  <th class="title">Name</th> 
-  <th class="edit"></th>
-  </tr>
+ <br /><br />
 <% @genres.each do |genre| %>
-  <tr>
-  <td class="title">  <%= link_to genre.name, admin_genre_path(genre) %></td> 
-  <td class="edit">  
-   <%= link_to 'Delete', admin_genre_path(genre), method: :delete, class: "btn btn-primary"  %></td>
-
-  </tr>
-
+   <div class="col-md-2" style="padding-left:0px; padding-top:10px;">
+   <%= link_to genre.name, admin_genre_path(genre) %> <br />
+   <%= link_to 'Delete', admin_genre_path(genre), method: :delete, class: "btn btn-primary"  %>
+   </div> 
 <% end %>
-</table>
+ 
 </div>
 
 

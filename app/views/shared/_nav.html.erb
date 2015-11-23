@@ -5,12 +5,19 @@
     <div class="row homerow"> 
     <div style="float:left" class="loginsection"> 
         <ul class="loginetc">
+          
+          <% if current_user %>
           <li>
-            <%= link_to 'Login', new_user_session_path, :class => 'btn-flat ' %>
-          </li> 
+            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => 'btn-flat' %>
+            </li>
           <li>
             <%= link_to 'Admin', admin_path, :class => 'btn-flat' %>
           </li>
+          <% else %>
+          <li>
+            <%= link_to 'Login', new_user_session_path, :class => 'btn-flat ' %>
+          </li> 
+          <% end %>
           <li>
             <a class="btn-flat">Support</a>
           </li>
@@ -117,7 +124,7 @@
 <script  type='text/javascript'>
 $(document).ready(function(){
     $(".navbar-bra").hover(
-        function() {$(this).attr("src","http://www.bucksmusicgroup.com/wp-content/uploads/2015/11/bdiblinking.gif");},
+        function() {$(this).attr("src","http://www.remarquablerecords.com/wp-content/uploads/2015/11/bdiblinkingopt2.gif");},
         function() {$(this).attr("src","http://www.remarquablerecords.com/bdilogo.png");
     });
 });

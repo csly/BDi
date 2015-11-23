@@ -1,22 +1,16 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Type Tags</h4><%= link_to "+ New", new_admin_type_path, class: "btn btn-primary"  %>
-<table>
-  <tr>
-  <th class="title">Name</th> 
-  <th class="edit"></th>
-  </tr>
+ <br /><br />
 <% @types.each do |type| %>
-  <tr>
-  <td class="title">  <%= type.name %></td> 
-  <td class="edit">  
-   <%= link_to 'Delete', admin_type_path(type), method: :delete, class: "btn btn-primary"  %></td>
-
-  </tr>
-
+   <div class="col-md-2" style="padding-left:0px; padding-top:10px;">
+   <%= link_to type.name, admin_type_path(type) %> <br />
+   <%= link_to 'Delete', admin_type_path(type), method: :delete, class: "btn btn-primary"  %>
+   </div> 
 <% end %>
-</table>
+ 
 </div>
+
 
 
 

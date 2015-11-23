@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 root 'homepage#index'
 
 #resources :admin
-resources :clients
 resources :articles 
-resources :artists 
+resources :artists do
+  member do
+    get :download
+  end
+end 
 resources :awards
 resources :presses
 resources :releases

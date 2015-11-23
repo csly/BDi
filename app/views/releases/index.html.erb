@@ -17,7 +17,7 @@ Releases</span>
 <table class="releases-search" >
 
 <tr>
-<td class="one keywords">
+<td class="one keywords" style="padding-left:0px">
   <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, label: "Keywords", placeholder: 'Search...', required: false, label: false  %>
   </td>
 <td class="one genre">
@@ -29,7 +29,7 @@ Releases</span>
  <td class="one production">
   <%= f.input :production, input_html: {name: 'production', class: 'form-control custom'},  collection: Production.order('name ASC').used, include_blank: 'Production', required: false, label: false  %> 
   </td>
-  <td class="last search">
+  <td class="last search" style="padding-right:0px;">
   <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
 
   </td></tr></table>
@@ -138,7 +138,7 @@ Releases</span>
     }
 input.release-searching {    margin-top: -10px;
     height: 32px;
-    line-height: 32px;}
+    line-height: 32px; width:90%;}
  .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
 }
 .col-md-2{ padding:15px;}

@@ -8,11 +8,14 @@
   <%= f.input :songwriter %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :types, collection: Type.order('name ASC') %>
+  PDF Upload:<%= f.file_field :biography %><br />
+  Main Image Upload:
   <%= f.file_field :photo %><br />
   <% if f.object.persisted? && f.object.image.present? %>
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>
   <% end %>
   <img src="" class="image-preview" /><Br /><Br />
+
   <%= f.submit class: 'btn btn-primary' %>
 <% end %> 
 

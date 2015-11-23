@@ -1,9 +1,8 @@
 class Admin::AwardsController < Admin::BaseController
-  before_action :require_admin
-before_action :authenticate_user!
+  before_action :require_admin 
   def index
-    @awards = Award.all.order('created_at DESC')
-  end
+    @awards = Award.paginate(page: params[:page], per_page: 20).order('awards.created_at DESC')
+  end 
 def show
     @award = Award.find(params[:id])
   end

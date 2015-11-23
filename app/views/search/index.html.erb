@@ -21,7 +21,7 @@
 <div id="tracks">
 <table width="100%">
 <tr>
-<td width="20%">Catalogue No. </td>
+<td width="20%">Catalogue No.</td>
 <td width="20%">Title</td>
 <td width="20%">Origin</td>
 <td width="20%">Composer(s)</td> 
@@ -62,7 +62,9 @@
     function filterResults(e) {
       target = e.target;
       var formValues = $('form').serialize();
-      $.get("/search.json", formValues, function(data) {
+      $.get("/search.json", formValues, function(response) {
+        var data = response.tracks;
+        history.pushState(null, null, response.new_url.replace('.json', ''));
         updateFilters(data);
         updateChecked(target);
         $tracks = $('#tracks').html('');
@@ -72,10 +74,10 @@
           });
           trackData = [
           
-            '<table><tr><td>' + track.catalogue + '</td>',
-            '<td>'+track.title+'</td>',
-            '<td>' + track.oldtitle + '</td>',
-            '<td>' + track.composers + '</td></tr></table>'
+            '<table width="100%"><tr><td width="20%" class="tracktable">' + track.catalogue + '</td>',
+            '<td width="20%" class="tracktable">'+track.title+'</td>',
+            '<td width="20%" class="tracktable">' + track.oldtitle + '</td>',
+            '<td width="20%" class="tracktable">' + track.composers + '</td></tr></table>'
           
           ]
           trackView = trackData.concat(productions).join('\n');

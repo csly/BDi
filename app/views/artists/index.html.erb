@@ -20,7 +20,7 @@ Artists
 <table class="releases-search" >
 
 <tr>
-<td class="one keywords">
+<td class="one keywords" style="padding-left:0px;">
   <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, placeholder: 'Search...', required: false, label: false  %>
   </td>
 <td class="one genre">
@@ -30,7 +30,7 @@ Artists
   <%= f.input :type, input_html: {name: 'type', class: 'form-control custom'},  collection: Type.order('name ASC').used, include_blank: 'All', include_blank: 'Type', required: false, label: false  %> 
   </td>
   
-  <td class="last search">
+  <td class="last search" style="padding-right:0px">
   <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
 
   </td></tr></table>
@@ -65,7 +65,7 @@ Artists
   <div class="clear"></div><br /><br >
 
  <style>
-
+ ul.grid-items li {padding-left:0px;}
 
   .search-query {
         padding-right: 3px;
@@ -101,7 +101,7 @@ Artists
     }
 input.release-searching {    margin-top: -10px;
     height: 32px;
-    line-height: 32px;}
+    line-height: 32px; width:90%;}
  td.one {border-bottom:0px;}
 td.last {border-bottom:0px; padding-top: 33px;}
 </style>
