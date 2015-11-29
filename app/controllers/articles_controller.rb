@@ -21,7 +21,7 @@ end
 
 
 def show
-    @article = Article.find(params[:id]) 
+    @article = Article.unscoped.find(params[:id]) 
     @articles = Article.paginate(page: params[:page], per_page: 5).order('articles.created_at DESC')
     @presses = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
   end

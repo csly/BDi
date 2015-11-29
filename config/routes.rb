@@ -20,6 +20,10 @@ resources :composers
 resources :songwriters
 resources :tweets
 
+require 'sidekiq/web'
+require 'sidetiq/web'
+mount Sidekiq::Web => '/sidekiq'
+
 get '/search', to: 'search#index'
 
 
@@ -33,6 +37,7 @@ namespace :admin do
     resources :tracks
     resources :artists
     resources :awards
+    resources :audios
     resources :presses
     resources :releases
     resources :abouts    

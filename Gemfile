@@ -31,6 +31,11 @@ gem 'active_model_serializers'
 gem 'responders'
 gem 'dotenv'
 gem 'twitter'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'sidekiq'
+gem 'sidetiq'
+gem 'sinatra', :require => nil
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -45,6 +50,7 @@ gem 'passenger'
 gem 'mini_magick'
 gem 'will_paginate', '~> 3.0'
 gem 'ckeditor'
+gem 'audiojs-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

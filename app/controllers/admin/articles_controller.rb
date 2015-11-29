@@ -19,7 +19,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def publish
     @article = Article.unscoped.find(params[:id])
-    @article.update_attribute(:status, :published)
+    @article.update_attributes({status: :published, scheduled_at: nil})
     redirect_to admin_articles_path(@article)
   end
 
@@ -38,6 +38,9 @@ class Admin::ArticlesController < Admin::BaseController
   
   def update
     @article = Article.unscoped.find(params[:id]) 
+    if (article_params[:scheduled_at])
+      params[:article][:scheduled_at] = DateTime.strptime(article_params[:scheduled_at], "%m/%d/%Y %l:%M %p")
+    end
     @article.update(article_params)
     if params[:article][:image].present?
       render :crop  ## Render the view for cropping
@@ -53,7 +56,6 @@ class Admin::ArticlesController < Admin::BaseController
   def destroy
     @article = Article.unscoped.find(params[:id])
     @article.destroy
-
     
 
     redirect_to admin_articles_path
@@ -63,8 +65,8 @@ class Admin::ArticlesController < Admin::BaseController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :youtube, :image, :image_crop_x,
+    params.require(:article).permit(:title, :body, :scheduled_at, :youtube, :image, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h,
-                                    artist_ids: [])
+                                    artist_ids: [],)
   end
 end

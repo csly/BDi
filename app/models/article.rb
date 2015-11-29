@@ -12,6 +12,9 @@ class Article < ActiveRecord::Base
     where(status: 1)
   end
 
+  def self.to_publish(time = Time.now)
+    unscoped.where('status = 0 AND scheduled_at < ?', time)    
+  end
 
   def titlepreviewnews
     title[0..30]  +  ".."

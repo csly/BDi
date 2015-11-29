@@ -1,92 +1,99 @@
 <div class="main-page-header">
-<div class="m-p-h">
-<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Artists', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
-</span>
-<br /><br />
-<span class="artist-name-main">
-<%= @artist.name %> 
-</span> 
-<div class="socart">
-<% if @artist.twitter.blank? %>
-      <% else %>
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter %> <% end %>
+  <div class="m-p-h">
+    <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Artists', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
+  </span>
+  <br /><br />
+  <span class="artist-name-main">
+    <%= @artist.name %> 
+  </span> 
+  <div class="socart">
+    <% if @artist.twitter.blank? %>
+    <% else %>
+    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter %> <% end %>
 
- <% if @artist.facebook.blank? %>
-      <% else %>
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook %> <% end %>
-  
- </div> <br /><br /></div>
+    <% if @artist.facebook.blank? %>
+    <% else %>
+    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook %> <% end %>
+
+  </div> <br /><br /></div>
 </div> 
-  <br />  <br /> 
+<br />  <br /> 
 
- <div class='containernohome'>  
+<div class='containernohome'>  
 
-<div class="col-md-3">
-<%= image_tag @artist.photo.url, :class => 'img-responsive ' %><br />
-<h3 class="arttit">Genre(s): <small><% @artist.genres.each do |genre| %><%= genre.name %>, <% end %></small> <small><% @artist.types.each do |type| %><%= type.name %>, <% end %></small></h3><br />
+  <div class="col-md-3">
+    <%= image_tag @artist.photo.url, :class => 'img-responsive ' %><br />
+    <h3 class="arttit">Genre(s): <small><% @artist.genres.each do |genre| %><%= genre.name %>, <% end %></small> <small><% @artist.types.each do |type| %><%= type.name %>, <% end %></small></h3><br />
 
-<% if @artist.biography.present? %>
- <h3 class="arttit">Download:<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h3><br />
-<% end %>
-<br />
-<h3 class="arttit">Listen:</h3>
-<div id="player"></div>
+    <% if @artist.biography.present? %>
+    <h3 class="arttit">Download:<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h3><br />
+    <% end %>
+    <br />
+    <% if @artist.audios.any? %>
+    <h3 class="arttit">Listen:</h3>
+    <audio preload=""></audio>
+    <ol>
+    <% @artist.audios.each do |audio| %>
+      <li><a href="#" data-src=<%= audio.track.url %>><%= audio.name %></a></li>
+    <% end %>
+    </ol>
+    <% end %>
 
-</div> 
-<div class="col-md-9 newsblur">
-<div class="mainblurb"> 
-            <%= @artist.biog.html_safe %> 
-            
- 
+  </div> 
+  <div class="col-md-9 newsblur">
+    <div class="mainblurb"> 
+      <%= @artist.biog.html_safe %> 
 
-</div><br />
-  <% if @artist.releases.blank? %>
-<br />
- <% else %>
-<div class="extras">
-<h3 class="arttit">Releases:</h3></div>
-<br />
- <% @artist.releases.each do |release| %>
- <div class="col-md-2" style="padding-left:0px;">
- 
- <%= link_to (image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), release_path(release) %>
 
-    <p class="morearticles"><%= link_to release.artpreview, release_path(release), :class =>'release-name' %></p>
- </p>
-  </div> <% end %><% end %>
-</div>
+
+    </div><br />
+    <% if @artist.releases.blank? %>
+    <br />
+    <% else %>
+    <div class="extras">
+      <h3 class="arttit">Releases:</h3></div>
+      <br />
+      <% @artist.releases.each do |release| %>
+      <div class="col-md-2" style="padding-left:0px;">
+
+       <%= link_to (image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), release_path(release) %>
+
+       <p class="morearticles"><%= link_to release.artpreview, release_path(release), :class =>'release-name' %></p>
+     </p>
+   </div> <% end %><% end %>
+ </div>
 
 
 
 </div>
 <div class="clear"></div> 
 <div class="container-bottomnews">
-<div class="bottom-news">
-<div class="col-md-12 extras">
-<div class="col-md-3">
-  <h5>Share This Artist</h5>
-    <ul class="sharesocial">
-      <li><img width="30px" style="padding-right:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"> Facebook</li>
-      <li><img width="30px"   style="padding-right:0.4em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdtwit1.png"> Twitter</li>
-      <li><img width="30px" style="padding-right:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"> Email</li>
-    </ul>
-</div>
- <% if @artist.articles.blank? %>
- 
- <% else %>
-<div class="col-md-3">
-  <h5>Related Articles</h5>
-    <ul class="sharesocial">
-        <% @artist.articles.each do |article| %>
-        <li>
-<%= link_to article.title, article_path(article), :class =>'artist-name' %>
-        </li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
-<div class="col-md-6">
-  <h5>Discover</h5><br />
+  <div class="bottom-news">
+    <div class="col-md-12 extras">
+      <div class="col-md-3">
+        <h5>Share This Artist</h5>
+        <ul class="sharesocial">
+          <li><img width="30px" style="padding-right:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"> Facebook</li>
+          <li><img width="30px"   style="padding-right:0.4em;" src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdtwit1.png"> Twitter</li>
+          <li><img width="30px" style="padding-right:0.4em;"  src="http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/bdface1.png"> Email</li>
+        </ul>
+      </div>
+      <% if @artist.articles.blank? %>
+
+      <% else %>
+      <div class="col-md-3">
+        <h5>Related Articles</h5>
+        <ul class="sharesocial">
+          <% @artist.articles.each do |article| %>
+          <li>
+            <%= link_to article.title, article_path(article), :class =>'artist-name' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="col-md-6">
+        <h5>Discover</h5><br />
       <!--<ul class="sharesocial">
         <% if defined?(@composer_artists) %>
        <% @genre_artists.each do |artist| %>
@@ -94,70 +101,90 @@
 <%= link_to artist.name, artist_path(artist), :class =>'artist-name' %>
         </li>
         <% end %> <% end %>
-    </ul>--> 
+      </ul>--> 
 
-    <% @related_artists.each do |artist| %><div class="col-md-4">
-    <%= link_to(artist_path(artist)) do %>
-    <%= image_tag artist.photo.artistmain.url, :class => 'img-responsive newsimage' %>
-    <%= artist.name %></div><% end %>
-    <% end %>
+      <% @related_artists.each do |artist| %><div class="col-md-4">
+      <%= link_to(artist_path(artist)) do %>
+      <%= image_tag artist.photo.artistmain.url, :class => 'img-responsive newsimage' %>
+      <%= artist.name %></div><% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+<div class="clear"></div> 
+
+
 </div>
 
-</div>
-</div>
- <div class="clear"></div> 
 
-  
-</div>
-
- 
 <style>
-a.release-name{
-  color: #848f81;
+  a.release-name{
+    color: #848f81;
     font-size: 80%;
     letter-spacing: 1px;
     text-align: left;
   }
   .next {    background-color: transparent;}
-p.morearticles{padding-top:0px;} 
-   .td.player .tdicon-td_logo-link {display:none;}
- .player-next.next {
-width: 10px;
+  p.morearticles{padding-top:0px;} 
+  .td.player .tdicon-td_logo-link {display:none;}
+  .player-next.next {
+    width: 10px;
     height: 10px;}
 
     .tdbody {background-color: white;
-    font-size: 100%;}
-    .track-info-name {font-size:12px;}
-    .td.player.shrink .playlist {max-height: 125px}
- </style>
+      font-size: 100%;}
+      .track-info-name {font-size:12px;}
+      .td.player.shrink .playlist {max-height: 125px}
+    </style>
 
- <script>
-   (function() {
-      var script = document.createElement('script');
- 
-      script.type = 'text/javascript';
-      script.async = true;
-      script.src = 'http://sd.toneden.io/production/toneden.loader.js'
- 
-      var entry = document.getElementsByTagName('script')[0];
-      entry.parentNode.insertBefore(script, entry);
-   }());
- 
-   ToneDenReady = window.ToneDenReady || [];
-   ToneDenReady.push(function() {
-      // This is where all the action happens:
-      ToneDen.player.create({
-         dom: '#player',
-         urls: [
-            'https://soundcloud.com/edsheeran/i-see-fire',
-            'https://soundcloud.com/iamjakeisaac/home',
-            'https://soundcloud.com/edsheeran/sing',
-            'https://soundcloud.com/edsheeran/thinking-out-loud-20syl-remix'
-         ]
+    <script>
+     $(document).ready(function() {
+
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = $('ol li.playing').next();
+            if (!next.length) next = $('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', next).attr('data-src'));
+            audio.play();
+          }
+        });
+        
+        // Load in the first track
+        var audio = a[0];
+        first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        $('ol li').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('playing').siblings().removeClass('playing');
+          audio.load($('a', this).attr('data-src'));
+          audio.play();
+        });
+        // Keyboard shortcuts
+        $(document).keydown(function(e) {
+          var unicode = e.charCode ? e.charCode : e.keyCode;
+             // right arrow
+             if (unicode == 39) {
+              var next = $('li.playing').next();
+              if (!next.length) next = $('ol li').first();
+              next.click();
+            // back arrow
+          } else if (unicode == 37) {
+            var prev = $('li.playing').prev();
+            if (!prev.length) prev = $('ol li').last();
+            prev.click();
+            // spacebar
+          } else if (unicode == 32) {
+            audio.playPause();
+          }
+        })
       });
-   });
 </script>
 
 
 
-  

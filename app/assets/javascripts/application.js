@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets 
+//= require moment
+//= require bootstrap-datetimepicker
+//= require audiojs
 //= require jquery.jcrop 
 
 //= require ckeditor/init

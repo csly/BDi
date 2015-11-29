@@ -8,16 +8,24 @@
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>
   <% end %>
   <img src="" class="image-preview" /><Br /><Br />
+    <div class='input-group date' id='datetimepicker1'>
+      <%= f.input :scheduled_at, as: :string %>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+  </div>
   <%= f.submit class: 'btn btn-primary' %>
   <% if @article.persisted? %>
     <%= link_to 'Publish', publish_admin_article_path(@article), method: :put, class: 'btn' %>
-  <% end %>
+    <% end %>
+  
 <% end %> 
 
 <%= content_for :extra_footer do %>
 <script>
 $(document).ready(function(){
   $('input[type="file"]').change(readURL);
+   $('#datetimepicker1').datetimepicker();
 });
 
 function readURL(e) {

@@ -1,0 +1,21 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Name</p></th>
+  <th class="a-one"><p>Arist</p></th>
+  </tbody>
+<% @audios.each do |audio| %>
+  <tr> 
+  <td class="a-one"><p><%= audio.id %></p></td>
+  <td class="a-one"><p><%= audio.name %></p></td>
+  <td class="a-one"><p><%= audio.artist.name %></p></td>
+  </tr>
+
+<% end %>
+</table>
+</div>
+
+
+<%= render 'shared/adminnavfooter' %>
