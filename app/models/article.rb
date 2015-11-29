@@ -4,59 +4,50 @@ class Article < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   crop_uploaded :image
-  attr_accessor :query 
-   
-   
-    def titlepreviewnews
-      title[0..30]  +  ".."
-    end 
+  attr_accessor :query
+
+  enum status: { drafted: 0, published: 1 }
+
+  def self.default_scope
+    where(status: 1)
+  end
+
+
+  def titlepreviewnews
+    title[0..30]  +  ".."
+  end 
   
-    def newspreview
+  def newspreview
     body[0..300]  +  ".."
-    end 
-    
-    def artistpreview
+  end 
+
+  def artistpreview
     body[0..100]  +  ".."
-    end 
-    def homepreview2
-    body[0..220]  +  "..."
-    end 
-    
+  end 
+
+  def homepreview2
+    body[0..120]  +  "..."
+  end 
 
   def embed(youtube)
-         youtube_id = youtube.split("=").last
-         content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
-   end
-   
-     class << self
-      def search(query)
-        where('title ILIKE ? or body ILIKE ?', query, query) if query
-       
-      end
+   youtube_id = youtube.split("=").last
+   content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
+  end
 
-    end
- 
-  
-
-  def previous
+ def previous
   Article.limit(1).order("id DESC").where("id < ?", id).first
-end
+ end
 
-def next
+ def next
   Article.limit(1).order("id ASC").where("id > ?", id).first
-end
- 
+ end
+
 class << self
-      def search(query)
-        query = (query && !query.empty?) ? "%#{query}%" : nil 
-        articles = Article.all
-        articles = articles.where('title ILIKE ? or body ILIKE ?', query, query) if query
-        articles
-      end
-    end
-
-
+  def search(query)
+    query = (query && !query.empty?) ? "%#{query}%" : nil 
+    articles = Article.all
+    articles = articles.where('title ILIKE ? or body ILIKE ?', query, query) if query
+    articles
+  end
 end
-
-
-
+end

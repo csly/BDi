@@ -30,7 +30,7 @@ gem 'fog-aws'
 gem 'active_model_serializers'
 gem 'responders'
 gem 'dotenv'
-
+gem 'twitter'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -28,6 +28,9 @@ class Release < ActiveRecord::Base
     def artistpreview
       body[0..100] + ".."
     end
+    def artpreview
+    title[0..18]  +  ".."
+    end 
 
      
     

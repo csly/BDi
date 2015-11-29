@@ -2,11 +2,11 @@ class Admin::ArticlesController < Admin::BaseController
   before_action :require_admin 
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 20).order('articles.created_at DESC')
+    @articles = Article.unscoped.all.paginate(page: params[:page], per_page: 20).order('articles.created_at DESC')
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.unscoped.find(params[:id])
   end
 
   def new
@@ -14,7 +14,13 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.unscoped.find(params[:id])
+  end
+
+  def publish
+    @article = Article.unscoped.find(params[:id])
+    @article.update_attribute(:status, :published)
+    redirect_to admin_articles_path(@article)
   end
 
   def create
@@ -31,7 +37,7 @@ class Admin::ArticlesController < Admin::BaseController
   end  
   
   def update
-    @article = Article.find(params[:id]) 
+    @article = Article.unscoped.find(params[:id]) 
     @article.update(article_params)
     if params[:article][:image].present?
       render :crop  ## Render the view for cropping
@@ -45,7 +51,7 @@ class Admin::ArticlesController < Admin::BaseController
   
 
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.unscoped.find(params[:id])
     @article.destroy
 
     

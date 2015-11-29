@@ -12,7 +12,7 @@
 <div class="col-md-9" style="padding: 0px;">
 <%= flash_messages %></div>
 <div class="clear"></div>
-  <div class="col-md-10 col-sm-12 col-xs-12">  
+  <div class="col-md-9 col-sm-12 col-xs-12">  
 
    <% @articles.each do |article| %>
       <div class="col-md-11 col-sm-6 col-xs-12">
@@ -39,13 +39,13 @@
 
     <div class="clear"></div>
 
-    <div class="col-md-10"> 
+    <div class="col-md-9"> 
     <div class="middle">
       <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %>
       </div>
     </div>
 </div>
-<div class="col-md-2 col-sm-12 sidebar">
+<div class="col-md-3 col-sm-12 sidebar">
   <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
@@ -56,4 +56,6 @@
         </div>
    </div>
  <%= render 'shared/mainpagesidebar' %>
+
+
  

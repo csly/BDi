@@ -1,64 +1,113 @@
 <div class="main-page-header">
 <div class="m-p-h">
-<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <span class="artname"> <%= @release.title %>
-</span>
-</span>
-<br /><br />
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <%= @release.title %> 
+<br /><br /> 
 <span class="artist-name-main">
-<%= @release.title %>
-</span> <br /><br /></div>
+ <%= @release.title %></span> 
+
+<br />  <br />
+
+ </div>
 </div> 
-  <br />  <br /> 
+<br />  <br />
+
+ <div class="clear"></div>
 
  <div class='containernohome'> 
-  <div class="news"> <br />
  
+<div class="news" style="width:100%"> 
  
- 
- <div class="col-md-2">
-<%= image_tag @release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+ <div class="col-md-3"> 
+<%= image_tag @release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
+
  </div>
 
- <div class="col-md-10">
- <div class="button-holder">
-  <% if @release.itunes.blank? %>
-<% else %>  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:40px; margin-top:-10px; float:right; margin-left:10px;"),  @release.itunes, target: "_blank" %> 
-<% end %>
- <% if @release.amazon.blank? %>
-<% else %> 
+ <div class="col-md-9"  style="padding-top:20px; padding-right:25px;">
+ <% if @release.chart_position == 1 %>
+<div class="numberone">Chart Position: No.1</div> <% else %> <% end %>
+<h3 class="arttit"><%= @release.title %><br /><small>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></small> </h3> 
  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:40px; margin-top:-10px;  float:right"),  @release.amazon, target: "_blank" %> 
-<% end %>
-    </div>
-<h3><%= link_to @release.title, release_path(@release) %><br /> </h3> 
+<p><%= @release.body %></p>  
+<h5 class="arttit">Genres:<small> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small></h5>  
+ <% if @release.chart_position.blank? %>
+<% else %>
+<h5 class="arttit">Highest Chart Position: 
  
-<p><p><%= @release.body %></p> 
-<p><b> Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></p> 
- <p><b>Genres:</b> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p></p>  
+ <small><%= @release.chart_position %></small></h5>
 
+<% end %>
 
   <% if @release.artists.blank? %>
 <br />
  <% else %>
- <div class="">Related Artists: 
+<h5 class="arttit">Related Artists: 
  
- <%= artist_list_for(@release.artists) %>
-
+ <small><%= artist_list_for(@release.artists) %></small></h5>
+ <div class="buylinks">
+  <% if @release.itunes.blank? %>
+<% else %>  
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  @release.itunes, target: "_blank" %> 
+<% end %>
+ <% if @release.amazon.blank? %>
+<% else %> 
+ 
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  @release.amazon, target: "_blank" %> 
+<% end %>
     
- <% end %></div> 
+ <% end %></div> </div>
 
- </div>
+  
 
   </div>
-   
-   <div class="clear"></div>  
+  <%= link_to 'View All Releases', releases_path, class: "btn btn-success " %>
+   <div class="clear"></div>   
  
+ 
+    
  </div>
- </div>  
+ <br />  <br /> 
+ 
+ <style> 
 
-<style>
+
+
+  .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+      .search-query button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+input.release-searching {    margin-top: -10px;
+    height: 32px;
+    line-height: 32px; width:90%;}
  .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+}
 .col-md-2{ padding:15px;}
 .col-md-10{  padding:15px;}
 .col-md-1{background-color:#767c60; padding:15px; height:181px;}
@@ -74,10 +123,40 @@ color:white;
 hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
 
 .page-title2 {border: 2px solid #767c60; text-align:center;}
+td.one {border-bottom:0px;}
+td.last {border-bottom:0px; padding-top: 33px;}
 
+select:focus {border:0; outline:0;}
+select {
+  margin: 5px; 
+}
 
+select.custom {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E");
+  padding-right: 25px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.custom::-ms-expand {
+  display: none;
+}
  </style>
 
+ <script>
 
+  // Calls the selectBoxIt method on your HTML select box
+  $("select").custom({
 
+    // Sets default text to appear for the drop down
+    defaultText: "Sample text here"
 
+  });
+            
+
+            </script>
+
+  

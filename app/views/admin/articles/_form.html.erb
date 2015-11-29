@@ -9,6 +9,9 @@
   <% end %>
   <img src="" class="image-preview" /><Br /><Br />
   <%= f.submit class: 'btn btn-primary' %>
+  <% if @article.persisted? %>
+    <%= link_to 'Publish', publish_admin_article_path(@article), method: :put, class: 'btn' %>
+  <% end %>
 <% end %> 
 
 <%= content_for :extra_footer do %>

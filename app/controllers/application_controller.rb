@@ -28,4 +28,7 @@ class ApplicationController < ActionController::Base
       search_path
     end
   end
+ 
+ 
+
 end

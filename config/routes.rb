@@ -18,13 +18,18 @@ resources :abouts
 resources :contact
 resources :composers
 resources :songwriters
+resources :tweets
 
 get '/search', to: 'search#index'
 
 
 namespace :admin do
      resource :home
-    resources :articles
+    resources :articles do
+      member do
+        put :publish
+      end
+    end
     resources :tracks
     resources :artists
     resources :awards

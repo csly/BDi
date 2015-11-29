@@ -23,13 +23,16 @@
 
 <div class="col-md-3">
 <%= image_tag @artist.photo.url, :class => 'img-responsive ' %><br />
-<h3 class="arttit">Genre(s): <small><% @artist.genres.each do |genre| %><%= genre.name %><% end %></small></h3><br />
+<h3 class="arttit">Genre(s): <small><% @artist.genres.each do |genre| %><%= genre.name %>, <% end %></small> <small><% @artist.types.each do |type| %><%= type.name %>, <% end %></small></h3><br />
 
 <% if @artist.biography.present? %>
  <h3 class="arttit">Download:<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h3><br />
 <% end %>
+<br />
+<h3 class="arttit">Listen:</h3>
+<div id="player"></div>
 
-</div>
+</div> 
 <div class="col-md-9 newsblur">
 <div class="mainblurb"> 
             <%= @artist.biog.html_safe %> 
@@ -48,7 +51,7 @@
  
  <%= link_to (image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), release_path(release) %>
 
-    <p class="morearticles"><%= link_to release.title, release_path(release), :class =>'artist-name' %></p>
+    <p class="morearticles"><%= link_to release.artpreview, release_path(release), :class =>'release-name' %></p>
  </p>
   </div> <% end %><% end %>
 </div>
@@ -108,7 +111,53 @@
 </div>
 
  
+<style>
+a.release-name{
+  color: #848f81;
+    font-size: 80%;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  .next {    background-color: transparent;}
+p.morearticles{padding-top:0px;} 
+   .td.player .tdicon-td_logo-link {display:none;}
+ .player-next.next {
+width: 10px;
+    height: 10px;}
+
+    .tdbody {background-color: white;
+    font-size: 100%;}
+    .track-info-name {font-size:12px;}
+    .td.player.shrink .playlist {max-height: 125px}
+ </style>
+
+ <script>
+   (function() {
+      var script = document.createElement('script');
+ 
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'http://sd.toneden.io/production/toneden.loader.js'
+ 
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+   }());
+ 
+   ToneDenReady = window.ToneDenReady || [];
+   ToneDenReady.push(function() {
+      // This is where all the action happens:
+      ToneDen.player.create({
+         dom: '#player',
+         urls: [
+            'https://soundcloud.com/edsheeran/i-see-fire',
+            'https://soundcloud.com/iamjakeisaac/home',
+            'https://soundcloud.com/edsheeran/sing',
+            'https://soundcloud.com/edsheeran/thinking-out-loud-20syl-remix'
+         ]
+      });
+   });
+</script>
 
 
-   
-    
+
+  

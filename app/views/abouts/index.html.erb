@@ -7,22 +7,37 @@
     <br /><br />
   </div>
 </div> 
-  <br />  <br />  
+ 
 
+<div class="main-page-header" style="background-color:#848f81;">
+  <div class="m-p-h"> 
+    <% @abouts.each do |about| %>
+<br />
 
-<div class="containernohome">
-<% @abouts.each do |about| %>
-<div class="col-md-12">
-     <p><%= about.body.html_safe %></p><br /><br /> 
-  </div>
+<center>
+<h1 class="ab">About BDi Music</h1>
+     <p class="aboutbdi"><%= about.body.html_safe %></p><br /><br /> 
+  </center>
+
+     
+
   <% end %>
 
+  </div>
+</div> 
+  <br />  <br />  
+<div class="containernohome aboutbdi">
 
+
+</div>
+<div class="containernohome">
   <div class="col-md-12">
+  <h1 class="wwa">Who We Are</h1><br />
    <% @staffs.each do |staff| %>
       <div class="col-md-4 col-xs-12">
         <div class="col-md-12 col-xs-12 new-image">
-           <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> <br />
+         
+           <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive img-circle' %> <br />
         </div>
          <div class="col-md-12">
            <h3 class="arttit">
@@ -30,7 +45,7 @@
            </h3>
            <div class="artp about">
              <div class="comment more"> 
-  <%= staff.biog.html_safe %> 
+        <%= staff.biog.html_safe %> 
 </div> 
             <br /><br /> 
            </div>
@@ -47,7 +62,16 @@
 
 </div>
     <div class="clear"></div>
-    <style>
+    <style> 
+     .img-circle {
+    border-radius: 50%;
+}
+h3.arttit {text-align:center;}
+
+    h1.wwa {text-transform:uppercase; text-align:center; }
+    .aboutbdi { background-color:#848f81; color:white !important;}
+    p.aboutbdi {text-align:center; width:60%;}
+    h1.ab {text-transform:uppercase;color:white !important; }
     .col-md-12 {padding:0px;}
     .about {text-align:justify;}
     hr { display: block;
@@ -69,7 +93,7 @@
 
 
   $(document).ready(function() {
-    var showChar = 600;
+    var showChar = 300;
     var ellipsestext = "...";
     var moretext = "Show More";
     var lesstext = "Show Less";

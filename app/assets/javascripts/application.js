@@ -18,10 +18,13 @@
 //= require ckeditor/init
      $(window).scroll(function() {
       if ($(document).scrollTop() > 27) {
-      $('.navbar').addClass('shrink');
+        $('.navbar').addClass('shrink');
+        $('#one').hide();
       }
       else {
-      $('.navbar').removeClass('shrink'); }
+        $('.navbar').removeClass('shrink');
+        $('#one').show();
+      }
       });
 
       /* affix the navbar after scroll below header */

@@ -94,7 +94,7 @@ a.btn-block {
 
 p {
       color: $dark-green; 
-      letter-spacing:1.5px; 
+      letter-spacing:1px; 
       font-size:100%; 
       padding-top:10px;
       }
@@ -1050,7 +1050,7 @@ h6.arttit {
       top: 0;
       bottom: 0;
       width: 100%;
-      max-height:386px; 
+      max-height:280px; 
       }
 
 .card .card-image .card-title {
@@ -1155,6 +1155,7 @@ h6.arttit {
       margin:0 auto; 
       margin-top:10px; 
       padding-left:15px;
+      color: #9d9d9d;
       a { color: #9d9d9d; }
       a:hover { color: $dark-green; }
       }
@@ -1415,7 +1416,9 @@ h3.md2right {
       }
 
 .sidebar {
-      padding:0px!important;
+      padding: 0px !important;
+      padding-left: 30px !important;
+      border-left: 1px solid #cecece;
       }
 
 .chip {
