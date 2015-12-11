@@ -3,7 +3,8 @@
   <%= f.input :oldtitle %> 
   <%= f.input :catalogue %> 
   <%= f.input :origin %> 
-  <%= f.input :track_composer %>  
+  <%= f.input :track_composer %> 
+  <%= f.input :url, collection: @unassigned_tracks, label_method: :pretty_name, value_method: :url %> 
   
   <%= f.association :styles, collection: Style.order('name ASC') %>
   <%= f.association :instrumentations, collection: Instrumentation.order('name ASC') %>
@@ -15,9 +16,7 @@
   <br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
-
-<br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br />
+ 
 
 
 

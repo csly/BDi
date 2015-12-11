@@ -32,7 +32,13 @@ class Release < ActiveRecord::Base
     title[0..18]  +  ".."
     end 
 
-     
+      def slug
+    title.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
     
    class << self
       def search(query, genre, artist, production)

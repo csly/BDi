@@ -10,10 +10,17 @@ def show
 
   def new
     @track = Track.new
+    @unassigned_tracks = UnassignedTrack.all
   end
+
+  def unassigned
+    @unassigned_tracks = UnassignedTrack.all
+  end
+  
 def edit
      
     @track = Track.find(params[:id])
+    @unassigned_tracks = UnassignedTrack.all
   end
 
 def create
@@ -48,7 +55,7 @@ def create
  
 
 def track_params
-    params.require(:track).permit(:title, :catalogue, :oldtitle, :origin, :track_composer, user_ids: [], style_ids: [], instrumentation_ids: [], mood_ids: [], production_ids: [])
+    params.require(:track).permit(:title, :url, :catalogue, :oldtitle, :origin, :track_composer, user_ids: [], style_ids: [], instrumentation_ids: [], mood_ids: [], production_ids: [])
   end
 
 

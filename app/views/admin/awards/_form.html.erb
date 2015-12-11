@@ -1,6 +1,7 @@
 <%= simple_form_for([:admin, @award], html: {multipart: true}) do |f| %>
   <%= f.input :title %>
     <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
+    <%= f.input :youtube, :hint => 'Youtube URLs ONLY' %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.file_field :image %><br />
   <%= f.submit class: 'btn btn-primary' %>

@@ -22,11 +22,11 @@
      $(window).scroll(function() {
       if ($(document).scrollTop() > 27) {
         $('.navbar').addClass('shrink');
-        $('#one').hide();
+        
       }
       else {
         $('.navbar').removeClass('shrink');
-        $('#one').show();
+        
       }
       });
 

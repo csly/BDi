@@ -1,4 +1,4 @@
- 
+<% content_for :title, "| Songwriters" %> 
 
 
 <div class="main-page-header">
@@ -21,7 +21,7 @@ Songwriters
 <ul class="grid-items">
   <% if defined?(@songwriter_artists) %>
   <% @songwriter_artists.each do |artist| %>
-<li class="col-md-2 ">
+<li class="col-md-3 col-xs-6 col-sm-3">
 <div class="artistmain">
 <%= link_to(artist_path(artist)) do %>
  <%= image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistimage' %> 

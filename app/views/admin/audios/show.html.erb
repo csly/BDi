@@ -1,0 +1,10 @@
+<h1><%= @audio.name %></h1>  
+    <%= @audio.artist.name %><br /><br />
+ 
+  
+<%= link_to "Back To Audio", admin_audios_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_audio_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>
+<%= render 'shared/adminnavfooter' %>

@@ -1,0 +1,42 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4>THIS IS FOR A PRIVATE PAGE</h4><%= link_to "+ New", new_admin_b_di_production_path, class: "btn btn-primary"  %>
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+
+  <th class="a-three"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
+<% @b_di_productions.each do |b_di_production| %>
+  <tr>  
+<td class="a-one">
+
+  <% if b_di_production.image.blank? %>
+  <% else %>
+  <%= image_tag b_di_production.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
+  
+  <td class="a-two" style="padding-right:10px;"><p><%= link_to b_di_production.name, b_di_production_path(b_di_production) %></p></td> 
+  
+  <td class="a-threes"><p><%= b_di_production.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_b_di_production_path(b_di_production), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_b_di_production_path(b_di_production), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table><br /><br />
+ 
+</div>
+</div> 
+
+
+
+
+<%= render 'shared/adminnavfooter' %>

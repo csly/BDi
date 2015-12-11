@@ -1,5 +1,6 @@
 <%= render 'shared/adminnav' %> 
-<div class="col-md-9">
+<div class="col-md-9"> 
+<%= flash_messages %> 
 <h4> Dashboard Quick Links</h4>
  <br />
 
@@ -17,7 +18,13 @@
 <% @articles.each do |article| %>
   <tr> 
   <td class="a-one"><p><%= article.id %></p></td>
-  <td class="a-one"> <%= image_tag article.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if article.image.blank? %>
+  <% else %>
+  <%= image_tag article.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+
   
   <td class="a-two"><p><%= link_to article.title, article_path(article) %></p></td> 
   <td class="a-two"><p><%= article.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
@@ -47,7 +54,13 @@
 <% @artists.each do |artist| %>
   <tr> 
   <td class="a-one"><p><%= artist.id %></p></td>
-  <td class="a-one"> <%= image_tag artist.photo.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if artist.photo.blank? %>
+  <% else %>
+  <%= image_tag artist.photo.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   
   <td class="a-two"><p><%= link_to artist.name, artist_path(artist) %></p></td> 
   
@@ -79,7 +92,13 @@
 <% @releases.each do |release| %>
   <tr> 
   <td class="a-one"><p><%= release.id %></p></td>
-  <td class="a-one"> <%= image_tag release.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if release.image.blank? %>
+  <% else %>
+  <%= image_tag release.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   
   <td class="a-two"><p><%= link_to release.title, release_path(release) %></p></td> 
   
@@ -113,7 +132,13 @@
 <% @awards.each do |award| %>
   <tr> 
   <td class="a-one"><p><%= award.id %></p></td>
-  <td class="a-one"> <%= image_tag award.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if award.image.blank? %>
+  <% else %>
+  <%= image_tag award.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+
   
   <td class="a-two"><p><%= link_to award.title, award_path(award) %></p></td> 
   
@@ -145,8 +170,13 @@
 <% @presses.each do |press| %>
   <tr> 
   <td class="a-one"><p><%= press.id %></p></td>
-  <td class="a-one"> <%= image_tag press.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
-  
+  <td class="a-one"> 
+
+    <% if press.image.blank? %>
+  <% else %>
+  <%= image_tag press.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   <td class="a-two"><p><%= link_to press.title, press_path(press) %></p></td> 
   
   <td class="a-two"><p><%= press.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>

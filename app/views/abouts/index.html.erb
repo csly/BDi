@@ -1,3 +1,5 @@
+<% content_for :title, "| About" %>
+
 <div class="main-page-header">
   <div class="m-p-h"> 
     <%= link_to 'Home', root_path %>  <span class="break">></span>  
@@ -15,7 +17,7 @@
 <br />
 
 <center>
-<h1 class="ab">About BDi Music</h1>
+<h2 class="ab">About BDi Music</h2>
      <p class="aboutbdi"><%= about.body.html_safe %></p><br /><br /> 
   </center>
 
@@ -31,13 +33,14 @@
 
 </div>
 <div class="containernohome">
-  <div class="col-md-12">
-  <h1 class="wwa">Who We Are</h1><br />
+  <div class="col-md-8 col-md-offset-2 col-xs-12" style="">
+  <h2 class="wwa">Who We Are</h2><br />
+  <div class="cent">
    <% @staffs.each do |staff| %>
-      <div class="col-md-4 col-xs-12">
+      <div class="col-md-4 col-xs-12 col-sm-4">
         <div class="col-md-12 col-xs-12 new-image">
          
-           <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive img-circle' %> <br />
+           <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> <br />
         </div>
          <div class="col-md-12">
            <h3 class="arttit">
@@ -52,7 +55,9 @@
           </div>
         <div class="clear"></div> 
       </div>
+    
     <% end %>
+      </div>
 
 
 
@@ -63,15 +68,15 @@
 </div>
     <div class="clear"></div>
     <style> 
-     .img-circle {
-    border-radius: 50%;
-}
+      
 h3.arttit {text-align:center;}
+h3.arttit small {text-transform: none}
 
-    h1.wwa {text-transform:uppercase; text-align:center; }
+    h2.wwa {text-transform:uppercase; text-align:center; }
     .aboutbdi { background-color:#848f81; color:white !important;}
-    p.aboutbdi {text-align:center; width:60%;}
-    h1.ab {text-transform:uppercase;color:white !important; }
+    p.aboutbdi {text-align:center; width:80%;  }
+    p.aboutbdi a{color:white !important;}
+    h2.ab {text-transform:uppercase;color:white !important; }
     .col-md-12 {padding:0px;}
     .about {text-align:justify;}
     hr { display: block;

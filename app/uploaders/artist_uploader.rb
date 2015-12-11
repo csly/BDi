@@ -1,6 +1,10 @@
 # encoding: utf-8
 class ArtistUploader < CarrierWave::Uploader::Base
 
+ def default_url(*args)
+    "https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png"
+  end
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -8,8 +12,7 @@ class ArtistUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog
-
-  process crop: :photo 
+ 
 
 
   # Override the directory where uploaded files will be stored.
@@ -27,14 +30,13 @@ class ArtistUploader < CarrierWave::Uploader::Base
   end
 
   version :artistmain do
-    process resize_and_crop: 200
+     process crop: :photo 
+    process resize_and_crop_home: 1200
   end
 
   version :photomain do
     process resize_and_crop_photo: 200
-  end
-
-
+  end 
   version :articlehome do
     process resize_and_crop_home: 1200
   end

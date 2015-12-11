@@ -13,8 +13,14 @@
 <% @releases.each do |release| %>
   <tr> 
   <td class="a-one"><p><%= release.id %></p></td>
-  <td class="a-one"> <%= image_tag release.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
-  
+  <td class="a-one"> 
+
+
+    <% if release.image.blank? %>
+  <% else %>
+  <%= image_tag release.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   <td class="a-two" style="padding-right:10px;"><p><%= link_to release.title, release_path(release) %></p></td> 
   
   <td class="a-threes"><p><%= release.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>

@@ -4,7 +4,9 @@ class Press < ActiveRecord::Base
 
   mount_uploader :image, PressUploader
   crop_uploaded :image
-
+   def titlepreviewnews
+    title[0..30]  +  ".."
+  end 
    def preview
       body[0..200]  +  "  "
     end 
@@ -16,8 +18,22 @@ class Press < ActiveRecord::Base
     def artistpreview
       body[0..100]  +  ".."
     end 
-     
+   
+    def slug
+    title.downcase.gsub(" ", "-")  
+  end
 
+  def to_param
+    "#{id}-#{slug}"
+  end
+  
+   def previous
+  Press.limit(1).order("id DESC").where("id < ?", id).first
+ end
+
+ def next
+  Press.limit(1).order("id ASC").where("id > ?", id).first
+ end
      class << self
       def search(query)
         query = (query && !query.empty?) ? "%#{query}%" : nil 

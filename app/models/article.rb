@@ -4,9 +4,10 @@ class Article < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   crop_uploaded :image
-  attr_accessor :query
+  attr_accessor :query 
 
   enum status: { drafted: 0, published: 1 }
+
 
   def self.default_scope
     where(status: 1)
@@ -21,7 +22,7 @@ class Article < ActiveRecord::Base
   end 
   
   def newspreview
-    body[0..300]  +  ".."
+    body[0..250]  +  ".."
   end 
 
   def artistpreview
@@ -44,6 +45,17 @@ class Article < ActiveRecord::Base
  def next
   Article.limit(1).order("id ASC").where("id > ?", id).first
  end
+def slug
+    title.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  def tweetlink
+    tweetlink = Article.request.original_url
+  end
 
 class << self
   def search(query)

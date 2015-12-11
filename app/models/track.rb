@@ -17,6 +17,14 @@ class Track < ActiveRecord::Base
   has_many :composer_tracks
   has_many :composers, through: :composer_tracks
 
+  def searchtrack 
+    if url.present?
+      searchtrack = url.tr(" ", "+")
+    end
+  end
+
+
+
   scope :for_company, -> (company) {
     if company
       includes(:production_companies).where('production_companies.id = ?', company.id).references(:production_companies)
@@ -24,6 +32,7 @@ class Track < ActiveRecord::Base
       all
     end
   }
+
 
 
   class << self

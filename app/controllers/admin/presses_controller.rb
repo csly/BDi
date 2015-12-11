@@ -59,7 +59,7 @@ def create
  
 
 def press_params
-    params.require(:press).permit(:title, :body, :image, :image_crop_x,
+    params.require(:press).permit(:title, :body, :youtube, :image, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
 

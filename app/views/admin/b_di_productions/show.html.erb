@@ -1,0 +1,11 @@
+<h1><%= @b_di_production.name %></h1> 
+  <%= image_tag @b_di_production.image.url %><br />
+    <%= @b_di_production.body %><br /><br /> 
+
+  
+<%= link_to "Back To Production Companies", admin_b_di_productions_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_b_di_production_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div>
+<%= render 'shared/adminnavfooter' %>

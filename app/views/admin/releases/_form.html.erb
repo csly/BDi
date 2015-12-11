@@ -5,6 +5,7 @@
   <%= f.input :links %>
   <%= f.input :amazon %>
   <%= f.input :itunes %>
+  <%= f.input :featured_text, label: 'Featured Text', hint: 'No.1 UK Album'  %>
   <%= f.input :chart_position, collection: 1..100, label: 'Highest Chart Position' %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>

@@ -1,5 +1,23 @@
+<div class="col-md-3 homesidebar">  
 <ul class='tweets'>
+  <h4>Tweets <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "width:35px; height:35px; float:right;"), 'http://' %></h4><br />
+ 
   <% @tweets.each do |tweet| %>
-    <li><%= tweet.text %></li>
-  <% end %>
+  <li><em><%= time_ago_in_words(tweet.created_at) %> ago</em>
+   <p class="tweets"><%= auto_link(tweet.text).html_safe %><br />
+    <%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %>
+    </p>  
+<% end %>
+
 </ul>
+<a class="tweet-box-button web-intent" href="https://twitter.com/intent/tweet?screen_name=bdimusic" data-scribe="element:timeline_permalink">
+ <div class="col-md-12 tweetus"> <span class="tweetto">Tweet to @bdimusic</span>
+</div></a>
+ 
+ </div>
+
+
+<style>
+
+
+<style>

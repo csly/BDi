@@ -1,0 +1,36 @@
+<div class="main-page-header">
+  <div class="m-p-h"> 
+    <%= link_to 'Home', root_path %>  <span class="break">></span>  
+    <%= link_to  'Our Clients', @page_title %>   
+    <br /><br /> 
+      <span class="artist-name-main">Our Clients</span> 
+    <br /><br />
+  </div>
+</div> 
+  <br />  <br />  
+<div class="containernohome">
+  <div class="col-md-12">
+   <% @b_di_productions.each do |b_di_production| %>
+      <div class="col-md-12 col-xs-12">
+        <div class="col-md-3 col-xs-12 new-image">
+            <%= image_tag b_di_production.image.articlehome.url, :class => 'img-responsive homepage' %>
+        </div>
+        <div class="col-md-9">
+           <h3 class="arttit">
+              
+            <%= b_di_production.name %>
+           </h3>
+           <div class="artp">
+            <%= b_di_production.body.html_safe  %>
+            <br /><br />
+             <%= link_to b_di_production.links,  b_di_production.links %>
+            </div>
+          </div>
+        <div class="clear"></div>
+        <br /><hr><br />
+      </div>
+    <% end %>
+
+    <div class="clear"></div>
+ </div>
+ </div>

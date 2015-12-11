@@ -53,7 +53,7 @@ def create
  
 
 def release_params
-    params.require(:release).permit(:title, :body, :image, :image_crop_x,
+    params.require(:release).permit(:title, :body, :featured_text, :image, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h, :date, :links,:amazon, :chart_position, :itunes, artist_ids: [], genre_ids: [], production_ids: [])
   end
 

@@ -9,40 +9,42 @@
           <% if current_user %>
           <li>
             <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => 'btn-flat' %>
-            </li>
+            </li><% if current_user.admin? %>
           <li>
             <%= link_to 'Admin', admin_path, :class => 'btn-flat' %>
-          </li>
+          </li><% end %>
           <% else %>
           <li>
             <%= link_to 'Login', new_user_session_path, :class => 'btn-flat ' %>
           </li> 
           <% end %>
           <li>
-            <a class="btn-flat">Support</a>
+            
+            <%= mail_to "info@bdimusic.com", "Support", cc: "csly-platz@bucksmusicgroup.co.uk",
+         subject: "Contact from BDiMusic.com", :class => 'btn-flat' %>
+
+
           </li>
         </ul> 
     </div>
      
     <div style="float:right">
      <section>
-      <ul class="social-buttons" id="demo3">
+      <ul class="social-buttons">
         <li class="social">
           <a href="https://www.facebook.com/BDiMusicUK/" target="_blank">
-          <div class="entypo-facebook"></div>
+          <img src="/uploads/ckeditor/pictures/4/content_facebooknav.png" width="30px" height="30px">
           </a>
         </li>
         <li class="social">
           <a href="https://twitter.com/bdimusic" target="_blank">
-          <div class="entypo-twitter"></div>
+          <img src="/uploads/ckeditor/pictures/6/content_twitternav.png" width="30px" height="30px">
           </a>
         </li>
         <li class="social">
-          <div class="entypo-vimeo"></div>
+         <img src="/uploads/ckeditor/pictures/5/content_themovementnav.png" width="30px" height="30px">
         </li>
-        <li class="social">
-          <div class="entypo-login"></div>
-        </li>
+        
       </ul>
     </section>
     </div>
@@ -58,7 +60,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><%= image_tag("http://www.remarquablerecords.com/bdilogo.png",  :class => "navbar-bra") %></a>
+<%= link_to root_url, :class => 'navbar-brand' do %>
+<%= image_tag("http://www.remarquablerecords.com/bdilogo.png",  :class => "navbar-bra") %>
+<% end %>
+
+ 
     </div>
 
 
@@ -69,17 +75,19 @@
         <ul class="nav navbar-nav">
         </ul> 
         <ul class="nav pull-right navbar-nav">
-          <li class="<%= 'active' if current_page?(root_path) %> cl-effect-17">
+          <li class="<%= 'active' if current_page?(root_path) %> cl-effect-17 main">
             <%= link_to 'Home', root_path %>
           </li>
-          <li class="<%= 'active' if current_page?(abouts_path) %>">
+          <li class="<%= 'active' if current_page?(abouts_path) %> main">
             <%= link_to 'About', abouts_path  %> 
           </li>
-          <li class="<%= 'active' if current_page?(articles_path) %>">
+          <li class="<%= 'active' if current_page?(articles_path) %> main">
             <%= link_to 'News', articles_path  %>  
           </li>
-          <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roster <span class="caret"></span></a>
+          <li class="dropdown main">
+
+          <%= link_to(raw("Roster" +("<span class= 'caret'></span>")), roster_index_path, { :class => 'dropdown-toggle disabled', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'true' }) %>
+ 
               <ul class="dropdown-menu" role="menu">
                 <li>
                 <%= link_to 'Artists', artists_path  %> 
@@ -87,19 +95,21 @@
                 <li class="divider"></li>
                 <li><%= link_to 'Composers', composers_path %></li>
                 <li class="divider"></li>
+                 <li><%= link_to 'Producers', producers_path %></li>
+                <li class="divider"></li>
                  <li><%= link_to 'Songwriters', songwriters_path %></li>
               </ul>
           </li>
-          <li class="<%= 'active' if current_page?(releases_path) %>">
+          <li class="<%= 'active' if current_page?(releases_path) %> main">
            <%= link_to 'Releases', releases_path  %> 
           </li>
-          <li class="<%= 'active' if current_page?(awards_path) %>">
+          <li class="<%= 'active' if current_page?(awards_path) %> main">
             <%= link_to 'Awards', awards_path %> 
           </li>
-          <li class="<%= 'active' if current_page?(presses_path) %>">
+          <li class="<%= 'active' if current_page?(presses_path) %> main">
             <%= link_to 'Press', presses_path  %>
           </li> 
-          <li class="<%= 'active' if current_page?(contact_index_path) %> last">
+          <li class="<%= 'active' if current_page?(contact_index_path) %> main last">
             <%= link_to 'Contact', contact_index_path %>
           </li> 
         </ul> 
@@ -114,7 +124,13 @@
 
     <style> 
 
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
  
 </style>

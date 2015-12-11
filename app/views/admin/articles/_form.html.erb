@@ -2,7 +2,7 @@
   <%= f.input :title %>
   <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :youtube, hint: 'Video: please use the video url. Youtube only'  %>
-  <%= f.association :artists, collection: Artist.order('name ASC') %>
+  <%= f.association :artists, collection: Artist.order('name ASC') %><br /> 
   <%= f.file_field :image %><br /> 
     <% if f.object.persisted? && f.object.image.present? %>
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>
@@ -13,12 +13,9 @@
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
-  </div>
-  <%= f.submit class: 'btn btn-primary' %>
-  <% if @article.persisted? %>
-    <%= link_to 'Publish', publish_admin_article_path(@article), method: :put, class: 'btn' %>
-    <% end %>
-  
+  </div><br /><br />
+  <%= f.submit 'Publish', name: "article[status]", class: 'btn btn-primary' %>
+  <%= f.submit 'Save/Schedule', class: 'btn btn-primary' %>
 <% end %> 
 
 <%= content_for :extra_footer do %>
@@ -45,6 +42,17 @@ function readURL(e) {
 
 
 </script>
-<% end %>
-  
 
+<% end %> 
+<style>
+#datetimepicker1{
+width: 200px;
+padding:0px;
+    line-height: 28px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    display: inline-block;
+    text-transform: uppercase;
+    border:0px;
+  }
+</style>

@@ -1,3 +1,4 @@
+<% content_for :title, "| Releases" %>
 <div class="main-page-header">
 <div class="m-p-h">
 <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <%= @release.title %> 
@@ -23,8 +24,8 @@
  </div>
 
  <div class="col-md-9"  style="padding-top:20px; padding-right:25px;">
- <% if @release.chart_position == 1 %>
-<div class="numberone">Chart Position: No.1</div> <% else %> <% end %>
+ <% if @release.featured_text.blank? %><% else %>
+<div class="numberone"><%= @release.featured_text %></div> <% end %>
 <h3 class="arttit"><%= @release.title %><br /><small>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></small> </h3> 
  
 <p><%= @release.body %></p>  

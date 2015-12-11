@@ -1,3 +1,4 @@
+<% content_for :title, "| Releases" %>
 <div class="main-page-header">
 <div class="m-p-h">
 <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>   
@@ -41,23 +42,23 @@ Releases</span>
 
  <div class="clear"></div>
 
-<div class="col-md-12" style="padding: 0px; margin-top:15px;margin-bottom:15px;">
+<div class="col-md-12 col-sm-12" style="padding: 0px; margin-top:15px;margin-bottom:15px;">
 <%= flash_messages %></div>
   <br />  <br /> 
 
  <div class='containernohome'> 
  
 <% @releases.each do |release| %>
-<div class="news" style="width:100%"> 
+<div class="news releasemedia" style="width:100%"> 
  
- <div class="col-md-3"> 
-<%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
+ <div class="col-md-3 col-sm-3"> 
+<%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; padding:10px;', :class => 'img-responsive releasemedia' %>
 
  </div>
 
- <div class="col-md-9"  style="padding-top:20px; padding-right:25px;">
- <% if release.chart_position == 1 %>
-<div class="numberone">Chart Position: No.1</div> <% else %> <% end %>
+ <div class="col-md-9 col-sm-9"  style="padding-top:20px; padding-right:25px;">
+ <% if release.featured_text.blank? %><% else %>
+<div class="numberone"><%= release.featured_text %></div>  <% end %>
 <h3 class="arttit"><%= release.title %><br /><small>Release Date: </b><%= release.date.strftime('%-d %B %Y ') %></small> </h3> 
  
 <p><%= release.body %></p>  
@@ -79,14 +80,14 @@ Releases</span>
  <div class="buylinks">
   <% if release.itunes.blank? %>
 <% else %>  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  release.itunes, target: "_blank" %> 
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:30px; padding-right:5px;"),  release.itunes, target: "_blank" %> 
 <% end %>
  <% if release.amazon.blank? %>
 <% else %> 
  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  release.amazon, target: "_blank" %> 
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:30px; padding-right:5px;"),  release.amazon, target: "_blank" %> 
 <% end %>
-    
+ 
  <% end %></div> </div>
 
   

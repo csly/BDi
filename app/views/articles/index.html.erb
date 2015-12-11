@@ -1,25 +1,31 @@
+<% content_for :title, "| News" %>
 <div class="main-page-header">
   <div class="m-p-h"> 
-    <%= link_to 'Home', root_path %>  <span class="break">></span>  
+    <%= link_to 'Home', root_path %>  
+    <span class="break">
+      >
+    </span>  
     <%= link_to  'News', @page_title %>   
     <br /><br /> 
-      <span class="artist-name-main">News</span> 
+    <span class="artist-name-main">
+      News
+    </span> 
     <br /><br />
   </div>
 </div> 
-  <br />  <br />  
+<br /><br />  
 <div class="containernohome">
-<div class="col-md-9" style="padding: 0px;">
-<%= flash_messages %></div>
-<div class="clear"></div>
+  <div class="col-md-9" style="padding: 0px;">
+  <%= flash_messages %> <br />
+  </div>
+  <div class="clear"></div>
   <div class="col-md-9 col-sm-12 col-xs-12">  
-
-   <% @articles.each do |article| %>
-      <div class="col-md-11 col-sm-6 col-xs-12">
-        <div class="col-md-4 col-xs-12 new-image">
+    <% @articles.each do |article| %>
+      <div class="col-md-11 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-xs-12 col-sm-6 new-image">
            <%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
         </div>
-        <div class="col-md-7 col-xs-12">
+        <div class="col-md-7 col-xs-12 col-sm-6">
            <h3 class="arttit">
            
            
@@ -29,7 +35,7 @@
             <%= article.newspreview.html_safe  %>
             <br /><br />
             
-            <p><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
+            <p class="readmoreart"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
             </div>
           </div>
         <div class="clear"></div>
@@ -41,11 +47,12 @@
 
     <div class="col-md-9"> 
     <div class="middle">
-      <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %>
+      <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>
     </div>
 </div>
-<div class="col-md-3 col-sm-12 sidebar">
+  </div>
+<div class="col-md-3 homesidebar">  
   <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
@@ -55,7 +62,9 @@
                     
         </div>
    </div>
- <%= render 'shared/mainpagesidebar' %>
-
-
+<br /><br />
+ <%= render 'shared/twittersidebar' %>
  
+</div>
+
+

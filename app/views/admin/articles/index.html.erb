@@ -18,8 +18,13 @@
 <% @articles.each do |article| %>
   <tr> 
   <td class="a-one"><p><%= article.id %></p></td>
-  <td class="a-one"> <%= image_tag article.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
-  
+  <td class="a-one"> 
+
+  <% if article.image.blank? %>
+  <% else %>
+  <%= image_tag article.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   <td class="a-two" style="padding-right:10px;"><p><%= link_to article.title, article_path(article) %></p></td> 
   
   <td class="a-threes"><p><%= article.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>

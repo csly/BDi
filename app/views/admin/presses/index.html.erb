@@ -13,7 +13,13 @@
 <% @presses.each do |press| %>
   <tr> 
   <td class="a-one"><p><%= press.id %></p></td>
-  <td class="a-one"> <%= image_tag press.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if press.image.blank? %>
+  <% else %>
+  <%= image_tag press.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   
   <td class="a-two" style="padding-right:10px;"><p><%= link_to press.title, press_path(press) %></p></td> 
   

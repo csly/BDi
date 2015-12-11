@@ -3,7 +3,9 @@
     <%= f.input :biog, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :links %>
   <%= f.input :facebook %>
-  <%= f.input :twitter %>  
+  <%= f.input :twitter %>   
+  <%= f.input :artisttag, label: 'Artist' %> 
+  <%= f.input :producer %>
   <%= f.input :composer %>
   <%= f.input :songwriter %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
@@ -14,31 +16,34 @@
   <% if f.object.persisted? && f.object.image.present? %>
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>
   <% end %>
-  <img src="" class="image-preview" /><Br /><Br />
+  <img src="" class="photo-preview" /><Br /><Br />
 
   <%= f.submit class: 'btn btn-primary' %>
 <% end %> 
 
+
 <%= content_for :extra_footer do %>
 <script>
 $(document).ready(function(){
-  $('input[type="file"]').change(readURL);
-});
+ 
 
 function readURL(e) {
   var input = e.target;
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
-      $('.image-preview')
+      $('.photo-preview')
         .attr('src', e.target.result)
         .width(150)
         .height(200);
-      $('.persisted-image-preview').hide();
+      $('.persisted-photo-preview').hide();
     };
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+
 </script>
-<% end %>
+
+<% end %> 
  

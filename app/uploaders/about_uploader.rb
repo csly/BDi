@@ -1,6 +1,8 @@
 # encoding: utf-8
 class AboutUploader < CarrierWave::Uploader::Base
-
+def default_url(*args)
+    "https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png"
+  end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick

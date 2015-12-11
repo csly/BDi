@@ -1,46 +1,69 @@
 <footer class="page-footer">
    <div class="containernohome">
       <div class="row">
-         <div class="col-md-3 first">
+         <div class="col-md-3 first col-sm-6">
          <h3 class="foot">Contact Us </h3>
-            <p class="footp">Onward House<br />
-            11 Uxbridge Street <br />
-            London<br />
-            W8 7TQ<br /><br />
+            <p class="footp">
+BDi Music Limited<br />
+Roundhouse <br />
+212 Regents Park Road <br />
+London<br />
+NW1 8AW<br /><br />
 
-            T: 0207 243 4101 <br />
-            E: info@bdimusic.com</p>
+T: 0207 243 4101<br /> 
+ </p>
          </div> 
-         <div class="col-md-3">
+         <div class="col-md-3 col-sm-6">
          <h3 class="foot">Quick Links </h3>
           <p class="footp">
-          News<br />
-          Roster<br />
-          Songwriters<br />
-          Composers<br />
-          Contact<br />
+          <%= link_to 'News', articles_path %><br />
+          <%= link_to 'Roster', roster_index_path %><br />
+          <%= link_to 'Songwriters', songwriters_path %><br />
+          <%= link_to 'Producers', producers_path %><br />
+          <%= link_to 'Composers', composers_path %><br /> 
+          <%= link_to 'Contact', contact_index_path %><br />
           </p>
          </div> 
-         <div class="col-md-3">
+         <div class="col-md-3 col-sm-6">
          <h3 class="foot">Be Social </h3>
           <p class="footp">
-          Facebook<br />
-          Twitter<br />
-          Instagram<br />
+          <%= link_to 'Facebook', 'https://www.facebook.com/BDiMusicUK/', target: '_blank' %><br />
+          <%= link_to 'Twitter', 'http://www.twitter.com/bdimusic', target: '_blank' %><br />
+         
 
           </p> 
            <h3 class="foot" style="padding-top: 0.5em !important;">The Movement </h3>
           <p class="footp">
-          Website<br />
-          Twitter<br />
+          <%= link_to 'Website', 'http://themovement.uk.com/', target: '_blank' %><br />
+          <%= link_to 'Twitter', 'https://twitter.com/TheMovementUK', target: '_blank' %><br />
           </p>
          </div> 
-         <div class="col-md-3 last">
+         <div class="col-md-3 col-sm-6 last">
          <h3 class="foot">newsletter sign up </h3>
           <p class="footp">
-          Join our mailing list for BDi and The Movement news <br /><br />
-  <input name="emailaddress" placeholder="Email Address" required="true"  %>    <br />
- <button class="btn-flat newsletter">Submit</button>
+          Join our mailing list <br />
+
+          <!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+
+<div id="mc_embed_signup">
+<form action="//bucksmusicgroup.us1.list-manage.com/subscribe/post?u=e13e447db422ec105302e666f&amp;id=e1cf1eaae3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll"> 
+<div class="mc-field-group"> 
+  <input type="email" value="" name="EMAIL" placeholder="Email Address.." class="required email " id="mce-EMAIL">
+</div>
+  <div id="mce-responses" class="clear">
+    <div class="response" id="mce-error-response" style="display:none"></div>
+    <div class="response" id="mce-success-response" style="display:none"></div>
+  </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e13e447db422ec105302e666f_e1cf1eaae3" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn-flat newsletter"></div>
+    </div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+
           </p>
          </div>
       </div>
@@ -48,7 +71,7 @@
     <div class="footer-copyright">
         <div class="containernohome">
           &copy;  <%= Time.now.year %> BDi Music Ltd. All Rights Reserved 
-           <div class="right">Privacy Policy</div>
+           <div class="right"><%= link_to 'Privacy Policy', privacy_index_path %></div>
         </div>
     </div>
 </footer>

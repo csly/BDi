@@ -1,3 +1,5 @@
+
+<% content_for :title, "| Press" %>
 <div class="main-page-header">
   <div class="m-p-h"> 
     <%= link_to 'Home', root_path %>  <span class="break">></span>  
@@ -9,23 +11,27 @@
 </div> 
   <br />  <br />  
 <div class="containernohome">
-  <div class="col-md-10">
+<div class="col-md-9" style="padding: 0px;">
+<%= flash_messages %> <br /></div>
+<div class="clear"></div>
+  <div class="col-md-9 col-sm-12 col-xs-12">  
+
    <% @presses.each do |press| %>
-      <div class="col-md-11 col-xs-12">
-        <div class="col-md-4 col-xs-12 new-image">
+      <div class="col-md-11 col-sm-12 col-xs-12">
+        <div class="col-md-4 col-xs-12 col-sm-4 new-image">
            <%= image_tag press.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 col-xs-12 col-sm-8">
            <h3 class="arttit">
-            <small><%= press.created_at.strftime('%-d %B %Y ') %></small>
-            <br /><br />
-            <%= link_to press.title, press_path(press) %>
+           
+           
+            <%= link_to press.title, press_path(press) %> <br /><br /> <small><%= press.created_at.strftime('%-d %B %Y ') %></small>
            </h3>
            <div class="artp">
             <%= press.newspreview.html_safe  %>
             <br /><br />
             
-            <p><a href="<%= press_path(press) %>" class="readmorenohome">Read More</a></p>
+            <p class="readmoreart"><a href="<%= press_path(press) %>" class="readmorenohome">Read More</a></p>
             </div>
           </div>
         <div class="clear"></div>
@@ -35,11 +41,14 @@
 
     <div class="clear"></div>
 
-    <div class="col-md-10">
-      <%= will_paginate @presses, :page_links => true %>
+    <div class="col-md-9"> 
+    <div class="middle">
+      <%= will_paginate @presses, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
+      </div>
     </div>
 </div>
-<div class="col-md-2 sidebar">
+  </div>
+<div class="col-md-3 homesidebar">  
   <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :press, url: url_for(presses_path), method: 'get' do |f| %>
@@ -49,5 +58,8 @@
                     
         </div>
    </div>
- <%= render 'shared/mainpagesidebar' %>
- 
+<br /><br />
+ <%= render 'shared/twittersidebar' %>
+  
+</div>
+

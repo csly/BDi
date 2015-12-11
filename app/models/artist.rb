@@ -32,6 +32,15 @@ class Artist < ActiveRecord::Base
       biog[0..50]  +  ".."
     end 
 
+    def slug
+    name.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+
   def count
     @artists = Artist.find(params[:id])
   end

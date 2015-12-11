@@ -1,3 +1,5 @@
+<% content_for :title, "| News" %>
+
 <div class="main-page-header">
 <div class="m-p-h">
 <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'News', articles_path %>  <span class="break">></span>  <span class="artname"> <%= @article.title %>
@@ -16,7 +18,7 @@
 
  <div class='containernohome news'>  
 
-<div class="col-md-3">
+<div class="col-md-3 col-sm-3">
 <%= image_tag @article.image.url, :class => 'img-responsive newsimage' %><br />
 <% if @article.artists.blank? %>
 <br />
@@ -25,7 +27,7 @@
  <h5>Related Artists:</h5></div>
 <br />
  <% @article.artists.each do |artist| %>
- <div class="col-md-6 relateartist" style="padding-left:0px;">
+ <div class="col-md-6 col-sm-6 relateartist" style="padding-left:0px;">
  
  <%= link_to (image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), artist_path(artist) %>
 
@@ -34,9 +36,16 @@
   </div> <% end %>
 <% end %>
 </div>
-<div class="col-md-9 newsblur">
+<div class="col-md-9 newsblur col-sm-9 ">
 <div class="mainblurb"> 
  <%= @article.body.html_safe %> 
+ <Br />
+ <% if @article.youtube.present? %> 
+<div class="embed-container"><%= embed(@article.youtube) %>  </div>
+ 
+  <% else %>
+                          <% end %>
+ 
 </div>
 </div>
 </div>
@@ -45,14 +54,18 @@
 <div class="bottom-news">
 <div class="col-md-12 extras">
 <div class="col-md-3 relateartist">
- 
+
 
   <h5>Share This News Story</h5>
     <ul class="sharesocial social-buttons">
-      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
-      <li class="social2"><div class="entypo-twitter"><span class="normalfont"> Twitter</span></div></li>
-      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
-    </ul>
+      <li class="social2">  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => "   width:25px; height:25px"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @article.title  %> Facebook</li>
+      <li class="social2"><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "   width:25px; height:25px"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %> Twitter </li>
+      <li class="social2"><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter", :style => "   width:25px; height:25px"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %> Email</li>
+    </ul> 
+ 
+ 
+
+
 </div>
  <% if @article.artists.blank? %>
  

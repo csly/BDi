@@ -1,8 +1,9 @@
-<div class="container-fluid main-body"><br /><br />
+<div class="container-fluid main-body"><br /><br /><br />
+<div class="col-md-9 col-xs-12">
 <div class="portfolio-items grid">
   <div class="row" style="margin:0px !important;">
   <% @articles.each do |article| %>
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="card"  >
         <div class="card-image waves-effect waves-block waves-light">
           <%= link_to(article_path(article), :class => 'hello') do %>
@@ -12,7 +13,7 @@
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">
             <h5><%= article.title %> <br /><small><%= article.created_at.strftime("%B  %d, %Y") %></small></h5> 
-            <i class="material-icons right">add</i>
+            <i class="material-icons right">add  </i>
           </span>
           <p>
             <a href="<%= article_path(article) %>" class="readmorehome">Read More</a>
@@ -49,6 +50,18 @@
 </div>
 <div class="clear"></div>
 </div>
+ <div class="col-md-3 homesidebar">   
+      <%= render 'shared/twittersidebar' %>
+   </div> 
+</div>
+   
+ 
+      
+</div>
+</div>
+
 <% content_for :extra_footer do %>
   <%= javascript_include_tag 'materialize' %>
 <% end %>
+ 
+

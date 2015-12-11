@@ -1,16 +1,20 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
+<h4> List Of Audio</h4><%= link_to "+ New", new_admin_audio_path, class: "btn btn-primary"  %>
 <table class="admin-table-news">
   <tbody> 
  <th class="a-one"><p>ID</p></th>
-  <th class="a-one"><p>Name</p></th>
-  <th class="a-one"><p>Arist</p></th>
+  <th class="a-two"><p>Name</p></th>
+  <th class="a-two"><p>Arist</p></th>
+  <th class="a-two"><p>Links</p></th>
   </tbody>
 <% @audios.each do |audio| %>
   <tr> 
   <td class="a-one"><p><%= audio.id %></p></td>
-  <td class="a-one"><p><%= audio.name %></p></td>
-  <td class="a-one"><p><%= audio.artist.name %></p></td>
+  <td class="a-two"><p><%= audio.name %></p></td>
+  <td class="a-two"><p><%= audio.artist.name %></p></td>
+  <td class="a-two">  
+   <%= link_to 'Delete', admin_audio_path(audio), method: :delete, class: "btn btn-primary"  %></td>
   </tr>
 
 <% end %>
@@ -19,3 +23,4 @@
 
 
 <%= render 'shared/adminnavfooter' %>
+

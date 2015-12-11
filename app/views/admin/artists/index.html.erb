@@ -13,7 +13,13 @@
 <% @artists.each do |artist| %>
   <tr> 
   <td class="a-one"><p><%= artist.id %></p></td>
-  <td class="a-one"> <%= image_tag artist.photo.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+    <% if artist.photo.blank? %>
+  <% else %>
+  <%= image_tag artist.photo.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   
   <td class="a-two" style="padding-right:10px;"><p><%= link_to artist.name, artist_path(artist) %></p></td> 
   

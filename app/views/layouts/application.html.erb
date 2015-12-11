@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BDi Music Ltd <%= content_for?(:title) ? content_for(:title) : " " %></title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
- 
+  <head>
+    <title>
+      BDi Music Ltd <%= content_for?(:title) ? content_for(:title) : " " %>
+    </title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-  <%= csrf_meta_tags %>
-   <%= yield(:head) %>
-</head>
-<body>
-
- <div class="wrapper">
-
-  <%= render 'shared/nav' %>
-  <div class="clear"></div>
-  
-  
-  <%= yield %> 
-    
-<br /><br />
-
-  <%= render 'shared/footer' %>
- 
-
-  <%= yield :extra_footer %>
-  
-
-</body>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+  </head>
+  <body> 
+   <div class="wrapper">
+    <%= render 'shared/nav' %>
+    <div class="clear"></div> 
+    <%= yield %> 
+    <br /><br />
+    <div class="clear"></div>
+    <%= render 'shared/footer' %>
+    <%= yield :extra_footer %>
+  </body>
 </html>

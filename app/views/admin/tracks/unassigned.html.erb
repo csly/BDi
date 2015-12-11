@@ -1,0 +1,7 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<%- @unassigned_tracks.each do |track| %>
+  <p><%= track.pretty_name %></p>
+<% end %>
+</div>
+<%= render 'shared/adminnavfooter' %>

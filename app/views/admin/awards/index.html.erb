@@ -13,7 +13,11 @@
 <% @awards.each do |award| %>
   <tr> 
   <td class="a-one"><p><%= award.id %></p></td>
-  <td class="a-one"> <%= image_tag award.image.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+  <% if award.image.blank? %>
+  <% else %>
+  <%= image_tag award.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
   
   <td class="a-two" style="padding-right:10px;"><p><%= link_to award.title, award_path(award) %></p></td> 
   

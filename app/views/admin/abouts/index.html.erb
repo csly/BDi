@@ -35,7 +35,14 @@
 <% @staffs.each do |staff| %>
   <tr> 
   <td class="a-one"><p><%= staff.id %></p></td>
-  <td class="a-one"> <%= image_tag staff.photo.thumbnail.url, :class =>  "imagethumb admin-artist" %></td>
+  <td class="a-one"> 
+
+
+    <% if staff.photo.blank? %>
+  <% else %>
+  <%= image_tag staff.photo.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
   
   <td class="a-two"><p><%= link_to staff.name, admin_staff_path(staff) %></p></td> 
   

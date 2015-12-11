@@ -20,7 +20,7 @@ def show
 
 
  def release_params
-   params.require(:release).permit(:title, :body, :image, :date, :amazon, :itunes, :links, :chart_position, artist_ids: [], genre_ids: [], production_ids: [])
+   params.require(:release).permit(:title, :body, :featured_text, :image, :date, :amazon, :itunes, :links, :chart_position, artist_ids: [], genre_ids: [], production_ids: [])
 end
 
 

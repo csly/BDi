@@ -1,86 +1,115 @@
-
-
-
+<% content_for :title, "| Awards" %>
 <div class="main-page-header">
 <div class="m-p-h">
 <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Awards', awards_path %>  <span class="break">></span>  <span class="artname"> <%= @award.title %>
 </span>
 <br /><br />
-<span class="artist-name-main">
-<%= @award.title %> 
-</span> <br /><br /></div>
+<span class="artist-name-main" style="float:left">
+<%= @award.title %>  
+   
+</span>  
+<span class="artist-name-main" style="float:right; padding-right:15px;">
+<small><%= @award.created_at.strftime('%-d %B %Y ') %></small>
+</span>
+<br /><br /></div>
 </div> 
   <br />  <br /> 
 
- <div class='containernohome'> 
-<div class="container" >
-<div class="col-md-3 imgmain"> 
- <%= image_tag @award.image.url, :style => 'width:100%; height:100%;', :class => 'img-responsive news-main' %> <br />  
- <div class="related">Recent News</div><br />
- <ul>
- <% @articles.each do |article| %>
- <li class="recent"><%= link_to article.title, article_path(article) %> 
- </li>
- <% end %>
- </ul>
- <br /> 
- <div class="related">Recent Press</div><br />
- <ul>
- <% @presses.each do |press| %>
- <li class="recent"><%= link_to press.title, press_path(press) %>
- </li>
- <% end %>
- </ul> 
-</div>
-<div class="col-md-9">
-  <%= @award.body.html_safe %> 
- <br />
- <% if @award.artists.blank? %>
+ <div class='containernohome news'>  
+
+<div class="col-md-3 col-sm-3">
+<%= image_tag @award.image.url, :class => 'img-responsive newsimage' %><br />
+<% if @award.artists.blank? %>
 <br />
  <% else %>
- <div class="related2">Related Artists:</div><br />
+<div class="extras relateartist">
+ <h5>Related Artists:</h5></div>
+<br />
  <% @award.artists.each do |artist| %>
- <div class="col-md-2  col-xs-6" style="padding-left:0px;">
+ <div class="col-md-6 col-sm-6 relateartist" style="padding-left:0px;">
  
- <%= link_to (image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive '), artist_path(artist) %>
+ <%= link_to (image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), artist_path(artist) %>
 
-    <%= link_to artist.name, artist_path(artist), :class =>'artist-name' %>
+    <p class="morearticles"><%= link_to artist.name, artist_path(artist), :class =>'artist-name' %></p>
  </p>
   </div> <% end %>
 <% end %>
-
-   </div>
-   </div> 
-
-   <div class="clear"></div>  
- 
-  <br />
-
-  <div class="newslist arti">
- 
- </div>
 </div>
-<div class="clear"></div>  
- <style>
- .imgmain{text-align:right; padding-left:0px;} 
-img.news-main {border:1em solid white;}
-.col-md-9 {background-color:white;} 
-</style>
+<div class="col-md-9 col-sm-9 newsblur">
+<div class="mainblurb"> 
+ <%= @award.body.html_safe %> 
+ <Br />
+ <% if @award.youtube.present? %> 
+<div class="embed-container"><%= embed(@award.youtube) %>  </div>
+ 
+  <% else %>
+                          <% end %>
+ 
+</div>
+</div>
+</div>
+<div class="clear"></div> 
+<div class="container-bottomnews">
+<div class="bottom-news">
+<div class="col-md-12 extras">
+<div class="col-md-3 relateartist">
+ 
+
+  <h5>Share This News Story</h5>
+    <ul class="sharesocial social-buttons">
+      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
+      <li class="social2"><div class="entypo-twitter"><span class="normalfont"> Twitter</span></div></li>
+      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
+    </ul>
+</div>
+ <% if @award.artists.blank? %>
+ 
+ <% else %>
+<div class="col-md-3 relateartist">
+  <h5>Related Stories</h5>
+    <ul class="sharesocial">
+      <% @awards.each do |award| %>
+      <li><%= link_to award.titlepreviewnews, award_path(award) %></li>
+      <% end %>
+    </ul>
+</div>
+<% end %>
 
 
+<div class="col-md-6">
+  <h5>More News</h5><br />
+    <div class="col-md-6">
+      <% if @award.previous %>
+        <%= link_to(award_path(@award.previous)) do %>
+          <div class="previous" style="background-image:url('<%= @award.previous.image.morenews.url %>'); background-size:cover; opacity: 0.3;"> </div>
+
+           <div class="arrow"></div>
+         <p class="morearticles"> <%= link_to @award.previous.title, award_path(@award.previous) %> </p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <% if @award.next %>
+        <%= link_to(award_path(@award.next)) do %>
+          <div class="next" style="background-image:url('<%= @award.next.image.morenews.url %>'); background-size:cover; opacity:0.3;"></div>
+
+           <div class="arrownext"></div>
+        <p class="morearticles"> <%= link_to @award.next.title, award_path(@award.next) %></p> 
+        <% end %>
+      <% end %>
+      </div>
+</div>
+
+
+
+</div>
+</div>
+ <div class="clear"></div> 
+
+  
+</div>
 
 
 
  
-
-
-
-
-
-
-
-
-
-
-
 
