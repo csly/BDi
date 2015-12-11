@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
 # error pages
-%w( 404 422 500 ).each do |code|
-  get code, :to => "errors#show", :code => code
-end
+
 
 root 'homepage#index'
 
