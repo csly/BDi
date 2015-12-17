@@ -24,19 +24,20 @@ Contact </span><br />  <br />
 
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Submit Demo</button>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close btn-primary" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Submit Demo</h4>
-      </div>
-      <div class="modal-body"> 
  
- <form>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                    </button>
+                     <h4 class="modal-title" id="myModalLabel" style="padding-top:0px;">Submit Demo</h4>
+
+                </div>
+                <div class="modal-body"><form>
   <p><fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1"  >
@@ -55,18 +56,17 @@ Contact </span><br />  <br />
   </p>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
- 
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+ </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-  </div>
-</div>
-</div>
+ </div></div>
 
    
    </div>
@@ -74,3 +74,27 @@ Contact </span><br />  <br />
  <% content_for :extra_footer do %>
  
  <% end %>
+
+ <style>
+
+ .vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events: all;
+}
+</style>
