@@ -16,7 +16,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require audiojs
-//= require jquery.jcrop 
+//= require jquery.jcrop  
 
 //= require ckeditor/init
      $(window).scroll(function() {

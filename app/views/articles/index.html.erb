@@ -15,11 +15,24 @@
 </div> 
 <br /><br />  
 <div class="containernohome">
+
   <div class="col-md-9" style="padding: 0px;">
   <%= flash_messages %> <br />
   </div>
   <div class="clear"></div>
-  <div class="col-md-9 col-sm-12 col-xs-12 articlesindex">  
+  <div class="col-md-9 col-sm-12 col-xs-12 articlesindex"> 
+
+
+
+  <div id="custom-search-input" style="width:90%">
+      <div class="input-group col-md-12">
+        <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
+           <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'search-query form-control'}, label: false, placeholder: 'Search...', required: false %>
+           
+        <% end %>
+                    
+        </div>
+   </div><br /><br />
     <% @articles.each do |article| %>
       <div class="col-md-11 col-sm-12 col-xs-12">
         <div class="col-md-4 col-xs-12 col-sm-6 new-image">
@@ -53,18 +66,9 @@
 </div>
 
 <div class="col-md-3 homesidebar">  
-  <div id="custom-search-input">
-      <div class="input-group col-md-12">
-        <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
-           <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'form-control input-md'}, label: false, placeholder: 'Search...', required: false %>
-            
-        <% end %>
-                    
-        </div>
-   </div>
-<br /><br />
+   
  <%= render 'shared/twittersidebar' %>
    </div>
 </div>
-
+ 
 

@@ -13,17 +13,64 @@ Contact </span><br />  <br />
 
  <div class='containernohome'> 
  
-<div class="col-md-9">
+<div class="col-md-9 nopadleft">
  
  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.3600668615713!2d-0.15706198369449334!3d51.54329621589807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761aef0e4eb55b%3A0xf67fb8f8dc169a64!2s212+Regent&#39;s+Park+Rd%2C+London+NW1!5e0!3m2!1sen!2suk!4v1449508396488" width="100%" height="450" frameborder="0" style="border:0 solid white" allowfullscreen></iframe>
 
    </div>
 <div class="col-md-3 contact" > 
-   <p>BDi Music is based in Camden on The Roundhouse's grounds  <br /><br />
-  BDi Music Limited<br />Roundhouse <br />212 Regents Park Road<br />London<br />NW1 8AW<br /><br />T: 0207 243 4101<br /> E: <%= mail_to 'info@bdimusic.com', 'info@bdimusic.com' %> </p>
+   <p>BDi Music Limited<br />Roundhouse <br />212 Regents Park Road<br />London<br />NW1 8AW<br /><br />T: 0207 243 4101<br /> E: <%= mail_to 'info@bdimusic.com', 'info@bdimusic.com' %> </p>
+<br />
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Submit Demo</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-primary" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Submit Demo</h4>
+      </div>
+      <div class="modal-body"> 
+ 
+ <form>
+  <p><fieldset class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1"  >
+    
+  </fieldset></p><p>
+  <fieldset class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1"  >
+    
+  </fieldset></p><p>
+  
+  <fieldset class="form-group">
+    <label for="exampleTextarea">Message</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </fieldset>
+  </p>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ 
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 
    
    </div>
    <div class="clear"></div>   
-  
+ <% content_for :extra_footer do %>
+ 
+ <% end %>

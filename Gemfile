@@ -17,9 +17,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 
 gem 'simple_form', '3.1.0.rc2'
-
+gem 'mail_form'
 gem 'aws-sdk', '~> 2'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass' 
 gem 'pry-rails'
 gem 'cancancan'   
 gem 'seed_dump'

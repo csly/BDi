@@ -9,37 +9,35 @@
     <br /><br />
   </div>
 </div> 
- 
-
-<div class="main-page-header" style="background-color:#848f81;">
-  <div class="m-p-h"> 
+<br /><br />  
+ <div class="containernohome">
+<div class="col-md-9 col-xs-12 nopadleft">  
     <% @abouts.each do |about| %>
  
- <p class="aboutbdi"><%= about.body.html_safe %></p><br /> 
+ <p class="aboutbdi"><%= about.body.html_safe %></p> 
  
 
      
 
   <% end %>
 
-  </div>
-</div> 
-  <br />  <br />  
- 
-<div class="containernohome">
   
-  <h2 class="wwa">Who We Are</h2><br />
+ 
+ 
+
+  <br />
+ <span class="artist-name-main">Who We Are</span><br /><br /><br />
 
   <% @staffs.each do |staff| %>
-    <div class="col-md-12 col-xs-12 aboutimage bored">
-  <div class="col-md-2 col-xs-12 col-sm-2 aboutimage">
+<div class="col-md-12 col-xs-12 aboutimage bored nopadleft">
+  <div class="col-md-3 col-xs-12 col-sm-3 aboutimage">
   <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
   </div>
-   <div class="col-md-10 col-xs-12 col-sm-10">
+   <div class="col-md-9 col-xs-12 col-sm-9">
    <h3 class="arttit">
             <%=  staff.name %></h3>
 
-          <p><%= staff.role %><br />E: <%= staff.email %> <br /> T: <%= staff.phone %>
+          <p class="role"><%= staff.role %><br />
           </p> 
            <div class="artp about">
              <div class="comment more"> 
@@ -50,18 +48,24 @@
             </div>
             </div><div class="clear"><br /><br /></div> 
             <% end %>
-            
+            </div>
+
+<div class="col-md-3 homesidebar">   
+      <%= render 'shared/twittersidebar' %>
+   </div> 
+</div>
             </div>
             
             </div>
     <style> 
+    .nopadleft {padding-left:0px;}
       .bored {border-bottom: 1px solid #cecece;}
+   
 h3.arttit small {text-transform: none}
-
+p.role {margin-top:-15px;}
     h2.wwa {text-transform:uppercase; }
-    .aboutbdi { background-color:#848f81; color:white !important;}
-    
-    p.aboutbdi a{color:white !important;}
+
+     p.aboutbdi {border-bottom: 1px solid #cecece; padding-bottom:25px;}
     h2.ab {text-transform:uppercase;color:white !important; }
     .col-md-12 {padding:0px;}
     .about {text-align:justify;}
@@ -84,7 +88,7 @@ h3.arttit small {text-transform: none}
 
 
   $(document).ready(function() {
-    var showChar = 450;
+    var showChar = 600;
     var ellipsestext = "...";
     var moretext = "Show More";
     var lesstext = "Show Less";

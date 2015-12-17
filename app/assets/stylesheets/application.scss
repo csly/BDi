@@ -1,5 +1,5 @@
-/*
-*= require jquery.jcrop
+/* 
+*= require jquery.jcrop 
 */
 
 $bdi-green: #848f81; 
@@ -105,20 +105,10 @@ p {
       }
      
 input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
-      background-color: transparent;
-      border: none;
-      border-bottom: 2px solid #cecece;
-      border-radius: 0;
-      outline: none;
-      height: 3rem;
-      width: 100%;
-      font-size: 1.5rem !important; 
-      padding: 0;
-      box-shadow: none;
-      -webkit-box-sizing: content-box;
-      -moz-box-sizing: content-box;
-      box-sizing: content-box;
-      transition: all .3s;
+       
+      outline: none; 
+      padding: 15px;
+      
       }
 
 .col-md-11 {
@@ -346,6 +336,11 @@ small  a:hover {
 
 
 /************************ Forms ************************/
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba(296, 98, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(206, 98, 0, 0.075) inset, 0 0 8px rgba(206, 98, 0, 0.6);
+    outline: 0 none;
+}
 
 #datetimepicker1 {
       text-transform: none !important;
@@ -384,10 +379,7 @@ input[type=text]:focus + label {
       color: $bdi-green !important;
       }
 
-input[type=text]:focus {
-      border-bottom: 2px solid $idea !important;
-      box-shadow: 0px !important;
-      }
+ 
 
 input[type=text].valid {
       border-bottom: 1px solid $idea !important;
@@ -852,24 +844,37 @@ p.tweets a {color:$bdi-green;}
 
 a.readmorehome {
       padding: 10px; 
-      background-color: #e5e7e4; 
+      background-color: #fff; 
       color: #848f81 !important;
-      left: 15px;
+      left: 0px;
       bottom: 15px;
       position: absolute;
       }
+
+.card-reveal a.readmorehome {
+      padding: 10px; 
+      background-color: $bdi-green; 
+      color: #fff !important;
+      left: 15px;
+      bottom: 15px;
+      position: absolute;
+      }      
 
 a.readmorenohome {
       padding: 10px; 
       background-color: #fff; 
       color: #848f81 !important; 
       }
+
+.card-reveal i.right {
+      right:15px;
+      }      
  
 i.right {
       font-size: 30px;
       float: right;
       bottom: 15px;
-      right: 15px;
+      right: 0px;
       position: absolute; 
       }
 
@@ -886,10 +891,10 @@ i.right {
       }
 
 .card .card-content {
-      padding: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       border-radius: 0 0 2px 2px;
-      height: 160px; 
-      background-color: white;
+      height: 160px;  
       }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, 
@@ -899,10 +904,10 @@ i.right {
 
 .card-title h5 {
       line-height: 20px !important;
-      color: $dark-green !important;
-      background-color: #fff;
-      text-transform: uppercase;
+      color: $dark-green !important; 
+      text-transform: capitalize;
       letter-spacing: 2px;  
+      font-size:0.6em !important;
       }
 
 .date, .main-title {    
@@ -946,18 +951,12 @@ h6.arttit {
 .card-content h5 {
       line-height:20px !important; 
       color: $dark-green !important; 
-      text-transform:uppercase; 
+      text-transform:capitalize; 
       font-size:0.7em;
       letter-spacing: 2px;  
       }
 
-.card-title h5 {
-      line-height:20px !important; 
-      color: $dark-green !important; 
-      text-transform:uppercase; 
-      letter-spacing: 2px;  
-      font-size:0.6em !important;
-      }
+ 
 
 .card-reveal h4 {
       padding-top:0px;
@@ -1100,7 +1099,8 @@ h6.arttit {
       }
 
 .card .card-content {
-      padding: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       border-radius: 0 0 2px 2px; 
       }
 
@@ -1174,7 +1174,7 @@ h6.arttit {
 
 
 /************************ About ************************/
-
+.nopadleft {padding-left:0px}
 .comment {
       color: $dark-green; 
       letter-spacing:1.5px; 
@@ -2085,7 +2085,9 @@ button:focus {outline:0 !important;}
   }
 
 
-
+ ul.grid-items li {padding-left:0px;}
+input.release-searching {   
+     width:100%; height:32px; margin-top:1px;}
 
 
 

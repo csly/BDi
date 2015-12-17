@@ -1,7 +1,7 @@
 <% content_for :title, "| Roster" %>
 <div class="main-page-header">
   <div class="m-p-h">
-    <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Artists', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
+    <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Roster', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
   </span>
   <br /><br />
   <span class="artist-name-main">
@@ -30,7 +30,7 @@
     <%= image_tag @artist.photo.url, :class => 'img-responsive ' %>
  
     <% if @artist.genres.present? %>
-    <h4><ul class="arttypes">Genres:<small>
+    <h4 class="artside"><ul class="arttypes">Genres:<small>
     
     <% @artist.genres.each do |genre|  %>
     <li><%= genre.name %></li>
@@ -40,7 +40,7 @@
     <% end %>
 
     <% if @artist.biography.present? %>
-  <h4>Download<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
+  <h4 class="artside">Download<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
     <% end %> 
 
     <% if @artist.audios.any? %>
@@ -58,6 +58,9 @@
   </div> 
   <div class="col-md-9 col-sm-9 newsblur">
     <div class="mainblurb"> 
+<span class="artist-name-main" style="font-size:120%"> Biography
+  </span> <br /><br />
+
       <%= @artist.biog.html_safe %> 
 
 
@@ -152,6 +155,8 @@
       font-size: 100%;}
       .track-info-name {font-size:12px;}
       .td.player.shrink .playlist {max-height: 125px}
+
+      h4.artside {padding-top:1em; }
     </style>
 
     <script>

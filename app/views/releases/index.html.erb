@@ -52,11 +52,11 @@ Releases</span>
 <div class="news releasemedia" style="width:100%"> 
  
  <div class="col-md-3 col-sm-3"> 
-<%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; padding:10px;', :class => 'img-responsive releasemedia' %>
+<%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive releasemedia' %>
 
  </div>
 
- <div class="col-md-9 col-sm-9"  style="padding-top:20px; padding-right:25px;">
+ <div class="col-md-9 col-sm-9" style="padding-right:0px">
  <% if release.featured_text.blank? %><% else %>
 <div class="numberone"><%= release.featured_text %></div>  <% end %>
 <h3 class="arttit"><%= release.title %><br /><small>Release Date: </b><%= release.date.strftime('%-d %B %Y ') %></small> </h3> 
@@ -140,7 +140,7 @@ Releases</span>
 input.release-searching { 
     height: 32px;
     line-height: 32px; width:90%;}
- .news { border-bottom: 1px solid #cecece; display:inline-block; padding-bottom:15px; margin-bottom:15px;}
+ .news { border-bottom: 1px solid #cecece; display:inline-block; padding-bottom:25px; margin-bottom:25px;}
 }
 .col-md-2{ padding:15px;}
 .col-md-10{  padding:15px;}

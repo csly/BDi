@@ -10,7 +10,7 @@ end
 root 'homepage#index'
 
 resources :articles, path: "news"
-resources :artists do
+resources :artists, path: 'roster'  do
   member do
     get :download
   end
@@ -19,11 +19,11 @@ resources :awards
 resources :presses, path: "press"
 resources :releases
 resources :abouts, path: "about"
-resources :contact
+resources :contact  
 resources :composers
 resources :songwriters
 resources :producers
-resources :roster
+resources :roster, path: 'artists'
 resources :tweets
 resources :privacy
 resources :b_di_productions, path: "bdiproductions"
