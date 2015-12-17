@@ -13,7 +13,7 @@
     <br /><br />
   </div>
 </div> 
-<br /><br />  
+<br /> 
 <div class="containernohome">
 
   <div class="col-md-9" style="padding: 0px;">
@@ -24,7 +24,7 @@
 
 
 
-  <div id="custom-search-input" style="width:90%">
+  <div id="custom-search-input" style="width:92%">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
            <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'search-query form-control'}, label: false, placeholder: 'Search...', required: false %>
@@ -33,28 +33,27 @@
                     
         </div>
    </div><br /><br />
-    <% @articles.each do |article| %>
-      <div class="col-md-11 col-sm-12 col-xs-12">
-        <div class="col-md-4 col-xs-12 col-sm-6 new-image">
-           <%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
-        </div>
-        <div class="col-md-7 col-xs-12 col-sm-6">
-           <h3 class="arttit">
-           
-           
-            <%= link_to article.title, article_path(article) %> <br /><br /> <small><%= article.created_at.strftime('%-d %B %Y ') %></small>
-           </h3>
-           <div class="artp">
-            <%= article.newspreview.html_safe  %>
-            <br /><br />
-            
-            <p class="readmoreart"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
-            </div>
-          </div>
-        <div class="clear"></div>
-        <br /><hr><br />
-      </div>
-    <% end %>
+   <% @articles.each do |article| %>
+  <div class="col-md-11 col-sm-12 col-xs-12">
+    <div class="col-md-4 col-xs-12 col-sm-6 new-image">
+      <%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
+    </div>
+    <div class="col-md-7 col-xs-12 col-sm-6 outer"> 
+      <div class="inner">
+      <h3 class="arttit">
+        <%= link_to article.title, article_path(article) %> 
+        <br /><br />
+        <small><%= article.created_at.strftime('%-d %B %Y ') %></small>
+      </h3>
+        <%= article.newspreview.html_safe  %>
+        <br /><br />
+        </div> 
+        <p class="readmoreart" style="margin-top:25px;"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
+    </div>
+    <div class="clear"></div>
+     <hr><br />
+  </div>
+<% end %>
 
     <div class="clear"></div>
 
@@ -71,4 +70,28 @@
    </div>
 </div>
  
+ <style>
+ div.outer {
+    margin-bottom: 32px;
+    display: inline-block;
+    vertical-align: top;
+} 
+@media (max-width: 400px) {
+  div.outer {
+      display: block;
+  }
+}
+</style>
+<script>
+var inners = document.getElementsByClassName("inner");
+var maxHeight = 0;
+for (var i = 0; i < inners.length; i++) {
+    if (inners[i].offsetHeight > maxHeight)
+        maxHeight = inners[i].offsetHeight;
+}
+for (var i = 0; i < inners.length; i++)
+    inners[i].style.height = maxHeight + 'px';
 
+</script>
+    
+  
