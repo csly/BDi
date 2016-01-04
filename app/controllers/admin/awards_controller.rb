@@ -52,7 +52,7 @@ def create
  
 
 def award_params
-    params.require(:award).permit(:title, :body, :image, :youtube, :image_crop_x,
+    params.require(:award).permit(:title, :body, :image, :created_at, :youtube, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
 

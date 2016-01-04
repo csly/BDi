@@ -32,7 +32,7 @@ class AwardsController < ApplicationController
     end
 
   def award_params
-    params.require(:award).permit(:title, :body, :image, :youtube, artist_ids: [])
+    params.require(:award).permit(:title, :body, :image, :youtube, :created_at, artist_ids: [])
   end
   
 end

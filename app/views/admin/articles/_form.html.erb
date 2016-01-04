@@ -2,7 +2,8 @@
   <%= f.input :title %>
   <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :youtube, hint: 'Video: please use the video url. Youtube only'  %>
-  <%= f.association :artists, collection: Artist.order('name ASC') %><br /> 
+  <%= f.association :artists, collection: Artist.order('name ASC') %><br />  
+  <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary', label: 'Created at' %> <br /><br />
   <%= f.file_field :image %><br /> 
     <% if f.object.persisted? && f.object.image.present? %>
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>
@@ -55,4 +56,15 @@ padding:0px;
     text-transform: uppercase;
     border:0px;
   }
+
+.date, .main-title {
+    width: auto;
+    padding: 0 0px;
+    line-height: auto;
+    font-size: auto;
+    letter-spacing: auto;
+    display: inline-block;
+    text-transform: capitalize;
+    border: solid 0px #848f81;
+}
 </style>

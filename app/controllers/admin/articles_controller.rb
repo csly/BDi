@@ -73,7 +73,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :scheduled_at, :status, :youtube, :image, :image_crop_x,
+    params.require(:article).permit(:title, :body, :scheduled_at, :created_at, :status, :youtube, :image, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h,
                                     artist_ids: [],)
   end

@@ -35,7 +35,7 @@ def show
 
 
  def press_params
-    params.require(:press).permit(:title, :body, :image, :youtube, artist_ids: [])
+    params.require(:press).permit(:title, :body, :image, :created_at, :youtube, artist_ids: [])
   end
 end
 

@@ -3,6 +3,21 @@
     <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
     <%= f.input :youtube, :hint => 'Youtube URLs ONLY' %>
   <%= f.association :artists, collection: Artist.order('name ASC') %>
+  <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary', label: 'Created at' %> <br /><br />
   <%= f.file_field :image %><br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+<style>
+
+.date, .main-title {
+    width: auto;
+    padding: 0 0px;
+    line-height: auto;
+    font-size: auto;
+    letter-spacing: auto;
+    display: inline-block;
+    text-transform: capitalize;
+    border: solid 0px #848f81;
+}
+</style>

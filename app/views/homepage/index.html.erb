@@ -25,7 +25,7 @@
             <h5><%= article.title %></h5>
           </span>
           <h4>
-            <small><%= article.created_at.strftime("%B  %d, %Y") %></small>
+            <small class="lowercase"><%= article.created_at.strftime("%B  %d, %Y") %></small>
           </h4>
           <%= article.homepreview2.html_safe %> <br /><br /><br />
             <% if article.artists.blank? %>
@@ -38,7 +38,7 @@
               </div>
             <% end %>
             <% end %>
-            <br /><br />
+            <br /><br /><div class="clear"></div>
           <p>
           <a href="<%= article_path(article) %>"  class="readmorehome">Read More</a>
           </p>

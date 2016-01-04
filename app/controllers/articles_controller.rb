@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :youtube, :image, artist_ids: [])
+    params.require(:article).permit(:title, :body, :youtube, :image, :created_at, artist_ids: [])
   end
 
   def pagetitle 
