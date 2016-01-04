@@ -1,3 +1,4 @@
+require 'open-uri'
 class PressesController < ApplicationController
 
 def index
@@ -30,12 +31,23 @@ def show
     @articles = Article.paginate(page: params[:page], per_page: 5).order('articles.created_at DESC')
     @presses = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
     @awards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
+end
+
+def pdfdown
+    @press = Press.find(params[:id])
+    data = open(@press.download.file.url).read
+    send_data(
+      data,
+        disposition: 'attachment',
+        filename: "#{@press.title}.pdf",
+        type: "application/pdf"
+      )
   end
 
 
 
  def press_params
-    params.require(:press).permit(:title, :body, :image, :created_at, :youtube, artist_ids: [])
+    params.require(:press).permit(:title, :body, :image, :link, :created_at, :youtube, artist_ids: [])
   end
 end
 

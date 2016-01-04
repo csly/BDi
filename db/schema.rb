@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204232500) do
+ActiveRecord::Schema.define(version: 20160104165644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,8 @@ ActiveRecord::Schema.define(version: 20151204232500) do
     t.datetime "photo_updated_at"
     t.string   "image"
     t.string   "youtube"
+    t.string   "link"
+    t.string   "download"
   end
 
   create_table "production_companies", force: :cascade do |t|

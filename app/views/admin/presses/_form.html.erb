@@ -2,6 +2,8 @@
   <%= f.input :title %>
     <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
     <%= f.input :youtube, :hint => 'Youtube URLs ONLY' %>
+    <%= f.input :link, :hint => 'If links to site, add link here' %>
+     PDF Upload:<%= f.file_field :download %><br />
   <%= f.association :artists, collection: Artist.order('name ASC') %>
   <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary', label: 'Created at' %> <br /><br />
   <%= f.file_field :image %><br />

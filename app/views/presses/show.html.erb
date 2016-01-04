@@ -39,6 +39,20 @@
 <div class="mainblurb"> 
  <%= @press.body.html_safe %> 
  <Br />
+ <% if @press.link.blank? %>
+ <% else %>
+ <%= link_to "Read More", "#{@press.link}", target: "_blank", class: "btn btn-large btn-primary" %>
+<br /><br />
+ <% end %>
+
+ <% if @press.download.blank? %> 
+ <% else %>
+ <%= link_to 'Download Press Story', pdfdown_press_path(@press), class: "btn btn-large btn-primary" %>
+ 
+ 
+<br /><br />
+ <% end %>
+
  <% if @press.youtube.present? %> 
 <div class="embed-container"><%= embed(@press.youtube) %>  </div>
  

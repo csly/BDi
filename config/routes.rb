@@ -16,7 +16,12 @@ resources :artists, path: 'roster'  do
   end
 end 
 resources :awards
-resources :presses, path: "press"
+resources :presses, path: 'press' do
+  member do
+    get :pdfdown
+  end
+end
+
 resources :releases
 resources :abouts, path: "about"
 resources :contact  

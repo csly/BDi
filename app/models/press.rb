@@ -3,6 +3,7 @@ class Press < ActiveRecord::Base
   has_many :artists, through: :press_artists
 
   mount_uploader :image, PressUploader
+  mount_uploader :download, PdfpressUploader
   crop_uploaded :image
    def titlepreviewnews
     title[0..30]  +  ".."
