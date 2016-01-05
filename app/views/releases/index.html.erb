@@ -97,7 +97,11 @@ Releases</span>
 <% end %>
  
    
- <%= will_paginate @releases, :page_links => false %>
+  <div class="col-md-12"> 
+    <div class="middle">
+      <%= will_paginate @releases, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
+      </div>
+    </div>
  </div>
  <br />  <br /> 
  
