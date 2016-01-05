@@ -80,12 +80,12 @@ Releases</span>
  <div class="buylinks">
   <% if release.itunes.blank? %>
 <% else %>  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:30px; padding-right:5px;"),  release.itunes, target: "_blank" %> 
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal"),  release.itunes, target: "_blank" %> 
 <% end %>
  <% if release.amazon.blank? %>
 <% else %> 
  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:30px; padding-right:5px;"),  release.amazon, target: "_blank" %> 
+ <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
 <% end %>
  
  <% end %></div> </div>
@@ -103,7 +103,10 @@ Releases</span>
  
  <style> 
 
-
+img.twittereal {
+  max-width:40px;
+  width:100%; padding-right:5px;
+}
 
   .search-query {
         padding-right: 3px;

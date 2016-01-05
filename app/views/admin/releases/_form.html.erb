@@ -1,16 +1,29 @@
 <%= simple_form_for([:admin, @release], html: {multipart: true}) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :body %>  
-  <%= f.input :date %>
-  <%= f.input :links %>
-  <%= f.input :amazon %>
-  <%= f.input :itunes %>
-  <%= f.input :featured_text, label: 'Featured Text', hint: 'No.1 UK Album'  %>
-  <%= f.input :chart_position, collection: 1..100, label: 'Highest Chart Position' %>
-  <%= f.association :artists, collection: Artist.order('name ASC') %>
-  <%= f.association :genres, collection: Genre.order('name ASC') %>
-  <%= f.association :productions, collection: Production.order('name ASC') %>
+  <%= f.input :title %><br />
+  <%= f.input :body %>  <br /><br />
+  <%= f.input :date, as: :date, html5: true, label: 'Release Date', class: 'btn btn-primary' %><br /><br />
+  <%= f.input :amazon %><br />
+  <%= f.input :itunes %><br /><br />
+  <%= f.input :featured_text, label: 'Featured Text' %><br />
+  <%= f.input :chart_position, collection: 1..100, label: 'Highest Chart Position' %><br />
+  <%= f.association :artists, collection: Artist.order('name ASC') %><br />
+  <%= f.association :genres, collection: Genre.order('name ASC') %><br />
+  <%= f.association :productions, collection: Production.order('name ASC') %><br />
   <%= f.file_field :image %> <br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 <br /><br />
+
+<style>
+
+.date, .main-title {
+    width: auto;
+    padding: 0 0px;
+    line-height: auto;
+    font-size: auto;
+    letter-spacing: auto;
+    display: inline-block;
+    text-transform: capitalize;
+    border: solid 0px #848f81;
+}
+</style>
