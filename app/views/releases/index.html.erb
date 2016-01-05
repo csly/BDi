@@ -77,6 +77,7 @@ Releases</span>
 <h5 class="arttit">Related Artists: 
  
  <small><%= artist_list_for(release.artists) %></small></h5>
+ <% end %>
  <div class="buylinks">
   <% if release.itunes.blank? %>
 <% else %>  
@@ -87,8 +88,7 @@ Releases</span>
  
  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
 <% end %>
- 
- <% end %></div> </div>
+ </div> </div>
 
   
 
