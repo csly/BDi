@@ -103,7 +103,7 @@
       <div class="col-md-3">
         <h5>Related Articles</h5>
         <ul class="sharesocial">
-          <% @artist.articles.each do |article| %>
+          <% @artist.articles.limit(5).each do |article| %>
           <li>
             <%= link_to article.title, article_path(article), :class =>'artist-name' %>
           </li>
