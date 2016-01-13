@@ -9,7 +9,7 @@ def index
     else
       params[:limit] ||= 10
       @releases = Release.paginate(page: params[:page], per_page: 15).order('releases.date DESC')
- 
+  
     end
   end
 
