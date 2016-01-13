@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby 
 
 gem 'devise'
-
+gem 'sanitize'
 gem 'simple_form', '3.1.0.rc2'
 gem 'mail_form'
 gem 'aws-sdk', '~> 2'

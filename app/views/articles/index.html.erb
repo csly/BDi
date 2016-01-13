@@ -45,7 +45,7 @@
         <br /><br />
         <small><%= article.created_at.strftime('%-d %B %Y ') %></small>
       </h3>
-        <%= article.newspreview.html_safe  %>
+        <p><%= sanitize article.newspreview, tags: %w(), attributes: %w(href)  %></p>
         <br /><br />
         </div> 
         <p class="readmoreart" style="margin-top: -2px;"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>

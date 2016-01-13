@@ -39,6 +39,7 @@ class Artist < ActiveRecord::Base
   def to_param
     "#{id}-#{slug}"
   end
+ 
 
 
   def count
@@ -51,6 +52,7 @@ class Artist < ActiveRecord::Base
       Artist.find(artist_ids)
     end
   end
+
 
   class << self
       def search(query, genre, type)

@@ -17,7 +17,7 @@ class Award < ActiveRecord::Base
       body[0..22]  +  ".."
     end 
     def newspreview
-    body[0..300]  +  ".."
+    body[0..300].strip  +  ".."
     end 
 
     def artistpreview

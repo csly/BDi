@@ -4,7 +4,7 @@
   <div class="row" style="margin:0px !important;">
   <% @articles.each do |article| %>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="card"  >
+      <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <%= link_to(article_path(article), :class => 'hello') do %>
             <%= image_tag article.image.articlehome.url, :class => 'img-responsive homepage' %>
@@ -26,8 +26,9 @@
           </span>
           <h4>
             <small class="lowercase"><%= article.created_at.strftime("%B  %d, %Y") %></small>
-          </h4>
-          <%= article.homepreview2.html_safe %> <br /><br /><br />
+          </h4>  
+          <%= sanitize article.homepreview2, tags: %w(p), attributes: %w(href)  %>
+          <br /><br /><br />
             <% if article.artists.blank? %>
             <% else %><h6 class="arttit">Related Artists:</h6>
             <% article.artists.each do |artist| %>
@@ -42,6 +43,8 @@
           <p>
           <a href="<%= article_path(article) %>"  class="readmorehome">Read More</a>
           </p>
+
+
         </div>
       </div>
     </div> 
@@ -67,6 +70,6 @@
 <style>
 .chip {margin-bottom:10px;}
 </style>
-}
+ 
  
 

@@ -45,7 +45,8 @@
         <br /><br />
         <small><%= award.created_at.strftime('%-d %B %Y ') %></small>
       </h3>
-        <%= award.newspreview.html_safe  %>
+      <p><%= sanitize award.newspreview, tags: %w(), attributes: %w(href)  %></p>
+         
         <br /><br />
         </div> 
         <p class="readmoreart" style="margin-top: -2px;"><a href="<%= award_path(award) %>" class="readmorenohome">Read More</a></p>

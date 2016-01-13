@@ -333,6 +333,9 @@ small  a:hover {
       color: $dark-green; 
       }
 
+.fright {
+      float:right;
+      }
 
 
 /************************ Forms ************************/
@@ -680,9 +683,20 @@ li.social  img {
       font-size: 1.5em;        
       text-align: center;
       line-height: 30px;  
-      transition: all 0.3s;
+      transition: all 0.3s; 
       }
 
+      li.social-tm  img { 
+      width: 96px;
+      height: 30px;
+      color: #848f81 !important;
+      font-size: 1.5em;        
+      text-align: center;
+      line-height: 30px;   
+      }
+li.social-tm {
+      width:96px;
+}
 li.social  img:hover {
       background-color: transparent !important;
       transform: rotate(360deg); 
@@ -1372,8 +1386,7 @@ p.morearticles {
       }
 
 .col-md-9.newsblur { 
-      background-color:white; 
-      padding-top:15px;
+      background-color:transparent;  
       }
 
 img.newsimage {  
@@ -1521,6 +1534,28 @@ h3.md2right {
 
 
 /************************ Roster ************************/
+
+a.release-name{
+    color: #848f81;
+    font-size: 80%;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  .next {    background-color: transparent;}
+  p.morearticles{padding-top:0px;} 
+  .td.player .tdicon-td_logo-link {display:none;}
+  .player-next.next {
+    width: 10px;
+    height: 10px;}
+
+    .tdbody {background-color: white;
+      font-size: 100%;}
+      .track-info-name {font-size:12px;}
+      .td.player.shrink .playlist {max-height: 125px}
+
+      h4.artside {padding-top:1em; }
+
+
 .artistimageetc {padding-left:0px}
 ul.arttypes {padding-top:10px;}
 ul.arttypes li {display:inline-block}
@@ -1956,23 +1991,37 @@ ul.grid-items .col-xs-6 {padding:5px;}
 .sidebar {
       display:none;
       } 
-
+      h3.arttit {padding-top:10px; padding-bottom:10px; text-align:left;}
+      .nopadleft {padding-right:0px !important;}
+      .nopadleft .col-xs-12 .col-sm-9 {padding:0px !important;}
+p.aboutbdi {padding-right:0px !important;}
 .card .card-content {
       padding: 10px;
+      padding-left: 0px;
       border-radius: 0 0 2px 2px;
-      text-align:center;
+      text-align:left;
       }
-
+      .buylinks {text-align:left;}
+i.right {display:none;}
 a.readmorehome {
-      left:10px;
-      width:93%;
+      left:0px;
+      width:100%;
       text-align:center;
       }
-
+.newsblur {padding-left:0px; padding-right:0px;}
 .m-p-h {
       padding-left:0px;
       }
-
+      p.morearticles a{display:none;}
+      .extras {text-align:left;}
+       footer {text-align:left;}
+.mainblurb {clear:both; display:block;margin-top: 20px;
+    text-align: left;}
+ span.artist-name-main small {clear:both; padding-top:10px;display:block;}  
+ ul.grid-items {    clear: both;}
+ #custom-search-input {width:100% !important;}
+ .input-group {width:100%;}   
+.main-page-header {padding: 5px 15px 5px 15px;}
 .col-md-4 {
       padding:0px
       }
@@ -2011,8 +2060,9 @@ footer .col-md-3 {
 
 
 footer .first {padding-left:15px !important;}
-p.footp {text-align:center;padding-bottom:10px;}
-footer.page-footer {text-align:center;}
+p.footp {padding-bottom:10px;} 
+h5.arttit {text-align:left;}
+.relfirst {padding:0px;}
 .col-md-3 {
     padding-left: 0px;
     padding-right: 0px;

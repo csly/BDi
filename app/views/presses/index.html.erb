@@ -45,7 +45,8 @@
         <br /><br />
         <small><%= press.created_at.strftime('%-d %B %Y ') %></small>
       </h3>
-        <%= press.newspreview.html_safe  %>
+      <p><%= sanitize press.newspreview, tags: %w(), attributes: %w(href)  %></p>
+        
         <br /><br />
         </div> 
         <p class="readmoreart" style="margin-top: -2px;"><a href="<%= press_path(press) %>" class="readmorenohome">Read More</a></p>

@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  
   has_many :article_artists, dependent: :destroy
   has_many :artists, through: :article_artists
 
@@ -7,7 +8,7 @@ class Article < ActiveRecord::Base
   attr_accessor :query 
 
   enum status: { drafted: 0, published: 1 }
-
+  
 
   def self.default_scope
     where(status: 1)
@@ -16,22 +17,22 @@ class Article < ActiveRecord::Base
   def self.to_publish(time = Time.now)
     unscoped.where('status = 0 AND scheduled_at < ?', time)    
   end
-
+def homepreview2
+    body[0..120].strip  +  "..."
+  end 
   def titlepreviewnews
     title[0..30]  +  ".."
   end 
   
   def newspreview
-    body[0..250]  +  ".."
+    body[0..250].strip  +  ".."
   end 
 
   def artistpreview
     body[0..100]  +  ".."
   end 
 
-  def homepreview2
-    body[0..120]  +  "..."
-  end 
+  
 
   def embed(youtube)
    youtube_id = youtube.split("=").last
@@ -56,7 +57,7 @@ def slug
   def tweetlink
     tweetlink = Article.request.original_url
   end
-
+ 
 class << self
   def search(query)
     query = (query && !query.empty?) ? "%#{query}%" : nil 

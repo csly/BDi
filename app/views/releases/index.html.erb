@@ -1,111 +1,120 @@
 <% content_for :title, "| Releases" %>
 <div class="main-page-header">
-<div class="m-p-h">
-<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>   
-<br /><br /> 
-<span class="artist-name-main">
-Releases</span> 
-
-<br />  <br />
-
- </div>
-</div> 
-<div class="main-page-header-search col-md-12">
- <div class="m-p-h-s">
-<%= simple_form_for :release, url: url_for(releases_path),  
-     method: 'get' do |f| %>
-
-<table class="releases-search" >
-
-<tr>
-<td class="one keywords" style="padding-left:0px">
-  <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, label: "Keywords", placeholder: 'Search...', required: false, label: false  %>
-  </td>
-<td class="one genre">
-  <%= f.input :genre, input_html: {name: 'genre', selected: 'sup', class: 'form-control custom'},  collection: Genre.order('name ASC').used, include_blank: 'Genre', required: false, label: false %> 
-  </td>
-<td class="one artist">
-  <%= f.input :artist, input_html: {name: 'artist',   class: 'form-control custom'},  collection: Artist.order('name ASC').used, include_blank: 'Artist', required: false, label: false  %> 
-  </td>
- <td class="one production">
-  <%= f.input :production, input_html: {name: 'production', class: 'form-control custom'},  collection: Production.order('name ASC').used, include_blank: 'Production', required: false, label: false  %> 
-  </td>
-  <td class="last search" style="padding-right:0px;">
-  <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
-
-  </td></tr></table>
-<% end %>
- </div>
-
-</div>
-
-
- <div class="clear"></div>
-
-<div class="col-md-12 col-sm-12" style="padding: 0px; margin-top:15px;margin-bottom:15px;">
-<%= flash_messages %></div>
-  <br />  <br /> 
-
- <div class='containernohome'> 
- 
-<% @releases.each do |release| %>
-<div class="news releasemedia" style="width:100%"> 
- 
- <div class="col-md-3 col-sm-3"> 
-<%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive releasemedia' %>
-
- </div>
-
- <div class="col-md-9 col-sm-9" style="padding-right:0px">
- <% if release.featured_text.blank? %><% else %>
-<div class="numberone"><%= release.featured_text %></div>  <% end %>
-<h3 class="arttit"><%= release.title %><br /><small>Release Date: </b><%= release.date.strftime('%-d %B %Y ') %></small> </h3> 
- 
-<p><%= release.body %></p>  
-<h5 class="arttit">Genres:<small> <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small></h5>  
- <% if release.chart_position.blank? %>
-<% else %>
-<h5 class="arttit">Highest Chart Position: 
- 
- <small><%= release.chart_position %></small></h5>
-
-<% end %>
-
-  <% if release.artists.blank? %>
-<br />
- <% else %>
-<h5 class="arttit">Related Artists: 
- 
- <small><%= artist_list_for(release.artists) %></small></h5>
- <% end %>
- <div class="buylinks">
-  <% if release.itunes.blank? %>
-<% else %>  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal"),  release.itunes, target: "_blank" %> 
-<% end %>
- <% if release.amazon.blank? %>
-<% else %> 
- 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
-<% end %>
- </div> </div>
-
-  
-
+  <div class="m-p-h">
+    <%= link_to 'Home', root_path %>  
+    <span class="break">></span> 
+    <%= link_to 'Releases', releases_path %> 
+    <br /><br />
+    <span class="artist-name-main">
+    Releases
+    </span>
+    <br /><br />
   </div>
-   <div class="clear"></div>  
-<% end %>
- 
-   
+</div> 
+<br /><br />
+<div class="containernohome">  
   <div class="col-md-12"> 
+    
+      <%= simple_form_for :release, url: url_for(releases_path),  
+     method: 'get' do |f| %>
+     <div class="artists">
+     <ul class="grid-items"> 
+      <li class="col-md-3 col-xs-6 col-sm-3">
+      <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, label: "Keywords", placeholder: 'Search...', required: false, label: false  %>
+      </li>
+
+      <li class="col-md-2 col-xs-6 col-sm-2">
+      <%= f.input :genre, input_html: {name: 'genre',  class: 'form-control custom'},  collection: Genre.order('name ASC').used, include_blank: 'Genre', required: false, label: false %> 
+      </li>
+
+      <li class="col-md-2 col-xs-6 col-sm-2">
+      <%= f.input :artist, input_html: {name: 'artist',   class: 'form-control custom'},  collection: Artist.order('name ASC').used, include_blank: 'Artist', required: false, label: false  %> 
+      </li>
+
+      <li class="col-md-2 col-xs-6 col-sm-2">
+      <%= f.input :production, input_html: {name: 'production', class: 'form-control custom'},  collection: Production.order('name ASC').used, include_blank: 'Production', required: false, label: false  %> 
+      </li>
+
+      <li class="col-md-3 col-xs-6 col-sm-3">
+      <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
+      </li>
+ 
+</ul>
+      <% end %>
+    </div>
+    <br /><br /><br /><br />
+
+    <div class="clear"></div>
+    <% @releases.each do |release| %>
+
+    <div class="news releasemedia" style="width:100%">
+      <div class="col-md-3 col-sm-3"> 
+      <%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive releasemedia' %>
+      </div>
+
+      <div class="col-md-9 col-sm-9" style="padding-right:0px">
+
+      <% if release.featured_text.blank? %>
+      <% else %>
+      <div class="numberone">
+      <%= release.featured_text %>
+      </div>  
+      <% end %>
+
+      <h3 class="arttit">
+      <%= release.title %><br />
+      <small>Release Date: </b>
+      <%= release.date.strftime('%-d %B %Y ') %></small> 
+      </h3> 
+
+      <p><%= release.body %></p> 
+
+      <h5 class="arttit">Genres:<small> 
+      <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small>
+      </h5>  
+      
+      <% if release.chart_position.blank? %>
+      <% else %>
+      <h5 class="arttit">Highest Chart Position: 
+      <small><%= release.chart_position %></small>
+      </h5>
+      <% end %>
+
+      <% if release.artists.blank? %>
+      <br />
+      <% else %>
+      <h5 class="arttit">Related Artists: 
+      <small><%= artist_list_for(release.artists) %></small>
+      </h5>
+      <% end %>
+
+        <div class="buylinks">
+          <% if release.itunes.blank? %>
+          <% else %>  
+          <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal"),  release.itunes, target: "_blank" %> 
+          <% end %>
+          <% if release.amazon.blank? %>
+          <% else %> 
+          <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
+          <% end %>
+        </div>
+
+
+    </div>
+  </div>
+
+    <div class="clear"></div>
+    <% end %>
+
+    <div class="col-md-12"> 
     <div class="middle">
       <%= will_paginate @releases, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>
     </div>
- </div>
- <br />  <br /> 
- 
- <style> 
+     <br />  <br /> 
+</div>
+</div>
+<style> 
 
 img.twittereal {
   max-width:40px;
@@ -120,6 +129,7 @@ img.twittereal {
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
  
         margin-bottom: 0;
+
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
@@ -146,12 +156,11 @@ img.twittereal {
     }
 input.release-searching { 
     height: 32px;
-    line-height: 32px; width:90%;}
+    line-height: 32px; width:100%;}
  .news { border-bottom: 1px solid #cecece; display:inline-block; padding-bottom:25px; margin-bottom:25px;}
 }
 .col-md-2{ padding:15px;}
-.col-md-10{  padding:15px;}
-.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-10{  padding:15px;} 
 .col-md-1 a {display:block;
   -webkit-transform: rotate(270deg);
 -moz-transform: rotate(270deg);
@@ -171,7 +180,7 @@ select:focus {border:0; outline:0;}
 select {
   margin: 5px; 
 }
-
+.relfirst {padding-left:0px; margin-top:5px;} .rellast {padding-right:0px;margin-top:5px;}
 select.custom {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E");
   padding-right: 25px;
@@ -185,7 +194,7 @@ select.custom {
 select.custom::-ms-expand {
   display: none;
 }
- </style>
- 
 
-  
+ul.grid-items li.col-md-2 { margin-top:-5px; }
+ </style>
+
