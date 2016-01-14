@@ -29,7 +29,7 @@
  <span class="artist-name-main">Who We Are</span><br /><br /><br />
 
   <% @staffs.each do |staff| %>
-<div class="col-md-12 col-xs-12 aboutimage bored nopadleft">
+<div class="col-md-12 col-xs-12 aboutimage bored nopadleft nopadright">
   <div class="col-md-3 col-xs-12 col-sm-3 aboutimage">
   <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
   </div>
@@ -60,8 +60,7 @@
     <style> 
     ul.tweets {height:980px;}
     .nopadleft {padding-left:0px;}
-      .bored {border-bottom: 1px solid #cecece;}
-   p.aboutbdi {padding-right:30px;}
+      .bored {border-bottom: 1px solid #cecece;} 
 h3.arttit small {text-transform: none}
 p.role {margin-top:-15px;}
     h2.wwa {text-transform:uppercase; }

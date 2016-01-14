@@ -1106,7 +1106,6 @@ h6.arttit {
       top: 0;
       bottom: 0;
       width: 100%;
-      max-height:280px; 
       }
 
 .card .card-image .card-title {
@@ -1193,6 +1192,7 @@ h6.arttit {
 
 /************************ About ************************/
 .nopadleft {padding-left:0px}
+.nopadright {padding-right:0px}
 .comment {
       color: $dark-green; 
       letter-spacing:1.5px; 
@@ -1200,6 +1200,8 @@ h6.arttit {
       }
 
 a.morelink {color: $idea}
+
+.aboutimage .col-md-9 {padding-right:0px;}
 /************************ News/Awards/Press ************************/
  
  .articlesindex {padding:0px;}
@@ -1534,7 +1536,7 @@ h3.md2right {
 
 
 /************************ Roster ************************/
-
+.mainblurb {margin-top:-4px;}
 a.release-name{
     color: #848f81;
     font-size: 80%;
@@ -1871,16 +1873,16 @@ table.admin-table {
 
 /************************ Media Queries ************************/
 .nopadright {padding-right:0px;}
-
+@media (max-width: 990px) {.homesidebar {
+            display:none;
+      }}
 @media (max-width: 1025px) { 
 
 footer .col-md-3 {padding-left:15px; }
 .releasemedia {padding-bottom:15px;}
-img.releasemedia {padding-top:15px; padding-left:15px;}
+img.releasemedia { padding-left:15px;}
        .container-bottomnews {display:none;}
-      .homesidebar {
-            display:none;
-      }
+      
     .navbar-header {
         float: none;
     }
@@ -1963,12 +1965,7 @@ img.releasemedia {padding-top:15px; padding-left:15px;}
       }
 }   
 
-@media (min-width: 750px) and (max-width: 1000px) and (orientation:landscape) {
-      .navbar-collapse.collapse {
-    display:block;
- }
- .card .card-image img {max-height:100%;}
-}
+
 
 @media (min-width: 750px) and (max-width: 1000px)  and (orientation:portrait) {
 .sidebar {display:none;}
@@ -1976,15 +1973,17 @@ img.releasemedia {padding-top:15px; padding-left:15px;}
     display:none !important;
  }
  .loginsection {display:block}
-  .navbar-collapse.collapse.in {
+  .navbar-collapse.collapse.in{
     display:block !important;
- }
+ } 
  .card .card-image img {max-height:100%;}
+ .input-group {width:100%;}
+ #custom-search-input {width:100%!important}
 }
 
+
  
- @media (max-width: 750px) {
-img.releasemedia {padding:15px;}
+ @media (max-width: 750px) { 
 p.aboutbdi {width:100% !important;}
 ul.grid-items .col-xs-6 {padding:5px;}
 .socart {margin-top:-62px;}
@@ -2147,5 +2146,77 @@ input.release-searching {
      width:100%; height:32px; margin-top:1px;}
 
 
+
+@media (min-width: 750px) and (max-width: 1000px) and (orientation:landscape) {
+     
+ .card .card-image img {max-height:100%;}
+
+}
+
+     @media (max-width: 1100px) and (orientation:landscape) {
+      
+     .navbar-collapse.collapse {
+    display:block !important;
+ } 
+  .navbar-collapse.collapse.in{
+    display:none !important;
+}
+    .navbar .in .nav li {
+   display: block;
+   float: none;
+   width:100%;
+}
+
+     
+}
+
+@media (max-width: 1050px) {
+    ul.pull-right{  margin-top: 1em !important;}
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse { 
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important; 
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    .navtest {background-color:white}
+    .navbar-collapse {width:100%;
+        background-color:white; 
+      padding:0px !important;}
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: $bdi-green;
+        background-color: $bdi-green; 
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+}
 
 
