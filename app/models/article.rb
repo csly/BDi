@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
     unscoped.where('status = 0 AND scheduled_at < ?', time)    
   end
 def homepreview2
-    body[0..120].strip  +  "..."
+    body[0..100].strip  +  "..."
   end 
   def titlepreviewnews
     title[0..30]  +  ".."
