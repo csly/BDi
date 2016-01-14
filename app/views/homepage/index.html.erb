@@ -30,7 +30,7 @@
           <%= sanitize article.homepreview2, tags: %w(p), attributes: %w(href)  %> 
             <% if article.artists.blank? %>
             <br />
-            <% elsif article.artists.count < 2  %>
+            <% elsif article.artists.count <= 2  %>
             <h6 class="arttit">Related Artists:</h6>
             <% article.artists.each do |artist| %>
               <div class="chip">
