@@ -88,7 +88,7 @@
 
  <% if @artist.releases.blank? %>
  <br />
- <% elsif @artist.releases.count < 12 %>
+ <% elsif @artist.releases.count < 1 %>
  <div class="extras"><br />
       <span class="artist-name-main" style="font-size:120%"> Discograpy
   </span> </div> <br />
@@ -101,7 +101,7 @@
      </p>
    </div>
  <% end %>
- <% elsif @artist.releases.count > 12 %>
+ <% elsif @artist.releases.count > 1 %>
  <div class="extras"><br />
       <span class="artist-name-main" style="font-size:120%"> Discograpy
   </span> </div><br />
@@ -115,7 +115,7 @@
    </div>
 
  <% end %><div class="clear"></div>
- <%= link_to "Show More Releases", "http://localhost:3000/releases?utf8=%E2%9C%93&q=&genre=&artist=#{@artist.id}&production=&commit=Search", class: "btn btn-primary" %> 
+ <%= link_to "Show More Releases", "#{root_path}releases?utf8=%E2%9C%93&q=&genre=&artist=#{@artist.id}&production=&commit=Search", class: "btn btn-primary" %> 
  <% end %>
 
 
