@@ -1669,7 +1669,7 @@ span.artist-name-main {
 
 .socart {
       float: right !important;
-      margin-top: -5%;
+      margin-top: -6%;
       margin-right:10px;
       } 
 
@@ -1678,13 +1678,15 @@ span.artist-name-main {
  
 
 .numberone {
-      float:right; 
-      background-color: $idea; 
-      color: white; font-size: 140%; 
-      padding:5px;
-      letter-spacing:1.5px; 
-      font-size:100%; 
-      text-transform:uppercase
+      background-color: #ce6200;
+    color: white;
+    font-size: 140%;
+    padding: 5px;
+    letter-spacing: 1.5px;
+    font-size: 100%;
+    text-transform: uppercase;
+    position: absolute;
+    right: 0px;
       }
 
 .main-page-header-search  {

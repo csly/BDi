@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121133615) do
+ActiveRecord::Schema.define(version: 20160121143011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -327,6 +327,9 @@ ActiveRecord::Schema.define(version: 20160121133615) do
     t.integer  "chart_position"
     t.string   "featured_text"
     t.string   "media"
+    t.string   "pformat"
+    t.string   "partist"
+    t.string   "rlabel"
   end
 
   create_table "staffs", force: :cascade do |t|
