@@ -11,6 +11,8 @@ class Artist < ActiveRecord::Base
   has_many :types, through: :artist_types 
   has_many :press_artists, dependent: :destroy
   has_many :presses, through: :press_artists
+  has_many :artist_formats, dependent: :destroy
+  has_many :formats, through: :artist_formats
   has_many :audios
 
   mount_uploader :photo, ArtistUploader

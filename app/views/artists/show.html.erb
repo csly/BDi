@@ -28,9 +28,19 @@
  
 
     <%= image_tag @artist.photo.url, :class => 'img-responsive ' %>
- 
+ <% if @artist.formats.present? %>
+    <h4 class="artside"><ul class="mediastyle">Media Style:
+    <small class="notsomuch">
+    
+    <% @artist.formats.each do |format|  %>
+    <li><%= format.name %></li>
+    <% end %>
+    </ul></small></h4>
+<% end %>
+
+
     <% if @artist.genres.present? %>
-    <h4 class="artside"><ul class="arttypes">Genres:<small>
+    <h4 class="artside"><ul class="mediastyle">Genres:<small class="notsomuch">
     
     <% @artist.genres.each do |genre|  %>
     <li><%= genre.name %></li>
@@ -39,12 +49,15 @@
     <% else %>
     <% end %>
 
+
+    
     <% if @artist.biography.present? %>
-  <h4 class="artside">Download:<small> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
+  <h4 class="artside">Download:<small class="notsomuch"> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
     <% end %> 
 
     <% if @artist.audios.any? %>
-<h4 style="padding:10px 0px;  border-bottom: 1px solid #848f81; line-height:20px;">Listen:</h4>
+<h4 style="padding:10px 0px;  border-bottom: 1px solid #848f81; line-height:20px; text-transform: capitalize;
+    font-size: 100%;">Listen:</h4>
     <audio preload=""></audio>
     <ol class="audioplayer">
      

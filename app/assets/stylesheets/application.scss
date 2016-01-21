@@ -1555,16 +1555,23 @@ a.release-name{
       .track-info-name {font-size:12px;}
       .td.player.shrink .playlist {max-height: 125px}
 
-      h4.artside {padding-top:1em; }
-
+      h4.artside {padding-top:0.5em; text-transform:capitalize; font-size:100%; line-height:auto; }
+small.notsomuch {font-size:90%;}
 
 .artistimageetc {padding-left:0px}
-ul.arttypes {padding-top:10px;}
+ul.arttypes {padding-top:10px; }
 ul.arttypes li {display:inline-block}
 ul.arttypes li:after {
     content: " /\00a0";  
 } 
 ul.arttypes li:last-child:after {
+    content: "";
+}
+ul.mediastyle li {display:inline-block}
+ul.mediastyle li:after {
+    content: " /\00a0";  
+} 
+ul.mediastyle li:last-child:after {
     content: "";
 }
 ol.audioplayer {

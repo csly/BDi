@@ -10,8 +10,9 @@
   <%= f.input :songwriter %>
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :types, collection: Type.order('name ASC') %>
+    <%= f.association :formats, collection: Format.order('name ASC'), label: 'Media Style' %><br />
   PDF Upload:<%= f.file_field :biography %><br />
-  <%= f.check_box :remove_biography %>
+  <%= f.check_box :remove_biography %><br />
   Main Image Upload:
   <%= f.file_field :photo %><br />
   <% if f.object.persisted? && f.object.image.present? %>
