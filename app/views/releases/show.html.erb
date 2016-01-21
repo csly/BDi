@@ -26,10 +26,18 @@
  <div class="col-md-9"  style="padding-top:20px; padding-right:25px;">
  <% if @release.featured_text.blank? %><% else %>
 <div class="numberone"><%= @release.featured_text %></div> <% end %>
-<h3 class="arttit"><%= @release.title %><br /><small>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></small> </h3> 
+<h3 class="arttit"><%= @release.title %><br />
+<% if @release.date.blank? %>
+      <% else %>
+      <small>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></small> 
+      <% end %>
+      </h3> 
  
 <p><%= @release.body %></p>  
-<h5 class="arttit">Genres:<small> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small></h5>  
+<% if @release.genres.blank? %>
+      <% else %>
+<h5 class="arttit">Genres:<small> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small></h5> 
+<% end %> 
  <% if @release.chart_position.blank? %>
 <% else %>
 <h5 class="arttit">Highest Chart Position: 
@@ -41,7 +49,7 @@
   <% if @release.artists.blank? %>
 <br />
  <% else %>
-<h5 class="arttit">Related Artists: 
+<h5 class="arttit">Related BDi Songwriter: 
  
  <small><%= artist_list_for(@release.artists) %></small></h5>
  <div class="buylinks">

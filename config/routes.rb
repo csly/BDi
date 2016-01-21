@@ -56,7 +56,8 @@ namespace :admin do
   resources :releases
   resources :abouts    
   resources :users
-  resources :genres    
+  resources :genres  
+  resources :formats   
   resources :staffs
   resources :types
   resources :productions  

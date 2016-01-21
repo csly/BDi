@@ -11,6 +11,7 @@
   <%= f.association :genres, collection: Genre.order('name ASC') %>
   <%= f.association :types, collection: Type.order('name ASC') %>
   PDF Upload:<%= f.file_field :biography %><br />
+  <%= f.check_box :remove_biography %>
   Main Image Upload:
   <%= f.file_field :photo %><br />
   <% if f.object.persisted? && f.object.image.present? %>

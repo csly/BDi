@@ -8,7 +8,7 @@
   <%= f.input :chart_position, collection: 1..100, label: 'Highest Chart Position' %><br />
   <%= f.association :artists, collection: Artist.order('name ASC') %><br />
   <%= f.association :genres, collection: Genre.order('name ASC') %><br />
-  <%= f.association :productions, collection: Production.order('name ASC') %><br />
+  <%= f.association :formats, collection: Format.order('name ASC') %><br />
   <%= f.file_field :image %> <br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

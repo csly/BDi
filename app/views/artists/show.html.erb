@@ -44,11 +44,11 @@
     <% end %> 
 
     <% if @artist.audios.any? %>
-<h4 style="   padding:10px 0px;  border-bottom: 1px solid #848f81; line-height:20px;">Listen:</h4>
+<h4 style="padding:10px 0px;  border-bottom: 1px solid #848f81; line-height:20px;">Listen:</h4>
     <audio preload=""></audio>
     <ol class="audioplayer">
      
-    <% @artist.audios.each do |audio| %>
+    <% @artist.audios.order('created_at ASC').each do |audio| %>
 
       <li class="audioli"><a href="#" data-src=<%= audio.track.url %>><%= audio.name %></a></li>
     <% end %>

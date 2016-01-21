@@ -5,11 +5,13 @@ class Release < ActiveRecord::Base
   has_many :genres, through: :release_genres
   has_many :release_productions, dependent: :destroy
   has_many :productions, through: :release_productions
+  has_many :release_formats, dependent: :destroy
+  has_many :formats, through: :release_formats
 
   mount_uploader :image, ReleaseUploader
   crop_uploaded :image
 
-  attr_accessor :query, :genre, :artist
+  attr_accessor :query, :genre, :artist, :format
 
 
 
@@ -41,12 +43,12 @@ class Release < ActiveRecord::Base
   end
     
    class << self
-      def search(query, genre, artist, production)
+      def search(query, genre, artist, format)
         query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
-        releases = Release.includes(:genres, :artists, :productions)  
+        releases = Release.includes(:genres, :artists, :formats)  
         releases = releases.where(genres: {id: genre}) if !genre.empty?
         releases = releases.where(artists: {id: artist}) if !artist.empty?        
-        releases = releases.where(productions: {id: production}) if !production.empty?    
+        releases = releases.where(formats: {id: format}) if !format.empty?    
         releases = releases.where('lower(title) LIKE ? or lower(body) LIKE ?', query, query) if query
         releases
       end

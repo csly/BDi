@@ -32,7 +32,7 @@
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2">
-      <%= f.input :production, input_html: {name: 'production', class: 'form-control custom'},  collection: Production.order('name ASC').used, include_blank: 'Production', required: false, label: false  %> 
+      <%= f.input :format, input_html: {name: 'format', class: 'form-control custom'},  collection: Format.order('name ASC').used, include_blank: 'Media', required: false, label: false  %> 
       </li>
 
       <li class="col-md-3 col-xs-6 col-sm-3">
@@ -63,8 +63,11 @@
 
       <h3 class="arttit">
       <%= release.title %><br />
+      <% if release.date.blank? %>
+      <% else %>
       <small>Release Date: </b>
       <%= release.date.strftime('%-d %B %Y ') %></small> 
+      <% end %>
       </h3> 
 
       <p><%= release.body %></p> 
@@ -75,7 +78,14 @@
       <%= release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small>
       </h5>  
       <% end %>
-      
+
+      <% if release.formats.blank? %>
+      <% else %>
+      <h5 class="arttit">Media:<small> 
+      <%= release.formats.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small>
+      </h5>  
+      <% end %>
+
       <% if release.chart_position.blank? %>
       <% else %>
       <h5 class="arttit">Highest Chart Position: 
@@ -86,7 +96,7 @@
       <% if release.artists.blank? %>
       <br />
       <% else %>
-      <h5 class="arttit">Related Artists: 
+      <h5 class="arttit">Related BDi Songwriter: 
       <small><%= artist_list_for(release.artists) %></small>
       </h5>
       <% end %>

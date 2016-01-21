@@ -2,7 +2,7 @@ class ReleasesController < ApplicationController
 
 def index
   if params[:q]
-      @releases = Release.search(params[:q], params[:genre], params[:artist], params[:production]).paginate(page: params[:page], per_page: 15).order('releases.date DESC') 
+      @releases = Release.search(params[:q], params[:genre], params[:artist], params[:format]).paginate(page: params[:page], per_page: 15).order('releases.date DESC') 
       if @releases.blank?
               redirect_to releases_path(@release), notice: "There are no Releases that match your search requirements. Please try again"
       end
@@ -20,7 +20,7 @@ def show
 
 
  def release_params
-   params.require(:release).permit(:title, :body, :featured_text, :image, :date, :amazon, :itunes, :links, :chart_position, artist_ids: [], genre_ids: [], production_ids: [])
+   params.require(:release).permit(:title, :body, :featured_text, :image, :date, :amazon, :itunes, :links, :chart_position, artist_ids: [], genre_ids: [], format_ids: [], production_ids: [])
 end
 
 

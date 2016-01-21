@@ -1,0 +1,18 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Media Tags</h4><%= link_to "+ New", new_admin_format_path, class: "btn btn-primary"  %>
+ <br /><br />
+<% @formats.each do |format| %>
+   <div class="col-md-2" style="padding-left:0px; padding-top:10px;">
+   <%= link_to format.name, admin_formats_path(format) %> <br />
+   <%= link_to 'Delete', admin_format_path(format), method: :delete, class: "btn btn-primary"  %> 
+   </div> 
+<% end %>
+ 
+</div>
+
+
+
+
+</div>
+<%= render 'shared/adminnavfooter' %>

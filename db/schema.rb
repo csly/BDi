@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104165644) do
+ActiveRecord::Schema.define(version: 20160121093145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,12 @@ ActiveRecord::Schema.define(version: 20160104165644) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "formats", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -195,6 +201,13 @@ ActiveRecord::Schema.define(version: 20160104165644) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.string   "media"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "moods", force: :cascade do |t|
@@ -260,11 +273,25 @@ ActiveRecord::Schema.define(version: 20160104165644) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "release_formats", force: :cascade do |t|
+    t.integer  "release_id"
+    t.integer  "format_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "release_genres", force: :cascade do |t|
     t.integer  "genre_id"
     t.integer  "release_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "release_medias", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "release_id"
+    t.integer  "media_id"
   end
 
   create_table "release_productions", force: :cascade do |t|
@@ -292,6 +319,7 @@ ActiveRecord::Schema.define(version: 20160104165644) do
     t.string   "highest_chart"
     t.integer  "chart_position"
     t.string   "featured_text"
+    t.string   "media"
   end
 
   create_table "staffs", force: :cascade do |t|
