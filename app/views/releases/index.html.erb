@@ -15,24 +15,23 @@
 <div class="containernohome">  
   <div class="col-md-12"> 
     
-      <%= simple_form_for :release, url: url_for(releases_path),  
-     method: 'get' do |f| %>
+      <%= search_form_for @q, url: url_for(releases_path) do |f| %>
      <div class="artists">
      <ul class="grid-items"> 
       <li class="col-md-3 col-xs-6 col-sm-3">
-      <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, label: "Keywords", placeholder: 'Search...', required: false, label: false  %>
+        <%= f.search_field :title_or_partist_cont, class: 'form-control custom' %>
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2">
-      <%= f.input :genre, input_html: {name: 'genre',  class: 'form-control custom'},  collection: Genre.order('name ASC').used, include_blank: 'Genre', required: false, label: false %> 
+        <%= f.collection_select :genres_id_eq, Genre.used.order('name asc'), :id, :name, {include_blank: 'Genre Style'}, class: 'form-control custom' %>
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2">
-      <%= f.input :artist, input_html: {name: 'artist',   class: 'form-control custom'},  collection: Artist.order('name ASC').used, include_blank: 'Artist', required: false, label: false  %> 
+        <%= f.collection_select :artists_id_eq, Artist.used.order('name asc'), :id, :name, {include_blank: 'Artist'}, class: 'form-control custom' %>
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2">
-      <%= f.input :format, input_html: {name: 'format', class: 'form-control custom'},  collection: Format.order('name ASC').used, include_blank: 'Media', required: false, label: false  %> 
+        <%= f.collection_select :formats_id_eq, Format.used.order('name asc'), :id, :name, { include_blank: 'Media Type'}, class: 'form-control custom' %> 
       </li>
 
       <li class="col-md-3 col-xs-6 col-sm-3">
@@ -45,7 +44,9 @@
     <br /><br /><br /><br />
 
     <div class="clear"></div>
-   
+    <% if @releases.empty? %>
+    <h1> Bob </h1>
+    <% else %>
     <% @releases.each do |release| %>
     <div class="news releasemedia" style="width:100%">
       <div class="col-md-3 col-sm-3"> 
@@ -138,19 +139,25 @@
       <% if release.artists.blank? %>
       <% else %>
       <tr width="100%">
-      <td class="rel-one">
-      <p><b>BDi Songwriter:</b></p> </td><td class="rel-two"><p><%= artist_list_for(release.artists) %></p></td>
+      <td class="rel-one"> 
+       
+      <p><b>BDi Artist:</b></p>  
+      </td><td class="rel-two"><p><%= artist_list_for(release.artists) %></p></td>
       </tr>
       <% end %> 
-      </table>
+     
      
 
       <% if release.body.blank? %>
       <% else %> 
-      <p class="body-rel"><%= release.body %></p>
-       
+
+      <tr width="100%" class="nohover">
+      <td class="rel-one">
+      <p><b>Additional Infomation:</b></p></td><td class="rel-two"><p class="body-rel"><%= release.relbody %> <%= link_to 'Read More', release_path(release) %></p>
+       </p></td>
+      </tr>
       <% end %>
-      
+       </table>
       </div>
       <div class="buylinks">
       <% if release.itunes.blank? %>
@@ -165,6 +172,7 @@
       </div>
       </div>
     </div>
+    <% end %>
 
 
 
@@ -184,11 +192,12 @@
 </div>
 <style>  
 .table-condensed > tbody > tr > td {padding:5px 0px 5px 0px;}
-
+tr.nohover:hover {background-color: transparent !important;}
 table.rel-table {margin-top:-6px;}
  table.rel-table tr {border:0px;}
  .table > tbody > tr:hover {width:auto;}
- 
+ .buylinks {position: absolute;
+    bottom: -19px;}
 .table > tbody > tr > td {border:0px;}
 .table {margin-bottom:5px;}
 p.body-rel {line-height: 20px !important; min-height:50px;}

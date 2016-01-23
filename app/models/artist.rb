@@ -50,13 +50,10 @@ class Artist < ActiveRecord::Base
 
   class << self
     def used
-      artist_ids = ReleaseArtist.pluck(:artist_id).uniq
-      Artist.find(artist_ids)
+      artist_ids = ReleaseArtist.distinct(:artist_id).pluck(:artist_id)
+      Artist.where(id: artist_ids)
     end
-  end
 
-
-  class << self
       def search(query, genre, type)
         query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
         artists = Artist.includes(:genres, :types)  

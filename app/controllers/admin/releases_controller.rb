@@ -1,7 +1,8 @@
 class Admin::ReleasesController < Admin::BaseController
   before_action :require_admin 
   def index
-    @releases = Release.paginate(page: params[:page], per_page: 20).order('releases.created_at DESC')
+    @q = Release.ransack(params[:q])
+    @releases = @q.result(distinct: true).paginate(page: params[:page], per_page: 10).order('releases.date DESC')
   end
 def show
     @release = Release.find(params[:id])
@@ -54,7 +55,7 @@ def create
 
 def release_params
     params.require(:release).permit(:title, :body, :featured_text,  :image, :image_crop_x,
-                                    :image_crop_y, :image_crop_w, :image_crop_h, :date, :links,:amazon, :chart_position, :pformat, :partist, :rlabel, :itunes, artist_ids: [], genre_ids: [], format_ids: [], production_ids: [])
+                                    :image_crop_y, :image_crop_w, :image_crop_h, :date, :links, :amazon, :chart_position, :pformat, :partist, :rlabel, :itunes, artist_ids: [], genre_ids: [], format_ids: [])
   end
 
 

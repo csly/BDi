@@ -24,7 +24,7 @@ class Admin::AudiosController < Admin::BaseController
 
     
 
-    redirect_to admin_audio_path
+    redirect_to admin_audios_path
 
   end
 

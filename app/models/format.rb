@@ -6,8 +6,8 @@ class Format < ActiveRecord::Base
 
   class << self
     def used
-      format_ids = ReleaseFormat.pluck(:format_id).uniq
-      Format.find(format_ids)
+      format_ids = ReleaseFormat.distinct(:format_id).pluck(:format_id)
+      Format.where(id: format_ids)
     end
   end
 

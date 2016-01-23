@@ -6,17 +6,9 @@ class Genre < ActiveRecord::Base
 
   class << self
     def used
-      genre_ids = ReleaseGenre.pluck(:genre_id).uniq
-      Genre.find(genre_ids)
+      genre_ids = ReleaseGenre.distinct(:genre_id).pluck(:genre_id)
+      Genre.where(id: genre_ids)
     end
   end
-
-  class << self
-    def used
-      genre_ids = ArtistGenre.pluck(:genre_id).uniq
-      Genre.find(genre_ids)
-    end
-  end
-
 end
  

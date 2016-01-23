@@ -1,10 +1,10 @@
 <% content_for :title, "| Releases" %>
 <div class="main-page-header">
 <div class="m-p-h">
-<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <%= @release.title %> 
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Releases', releases_path %>  <span class="break">></span>  <%= @release.partist %> - <%= @release.title %>
 <br /><br /> 
 <span class="artist-name-main">
- <%= @release.title %></span> 
+ <%= @release.partist %> - <%= @release.title %></span> 
 
 <br />  <br />
 
@@ -16,70 +16,143 @@
 
  <div class='containernohome'> 
  
-<div class="news" style="width:100%"> 
- 
- <div class="col-md-3"> 
-<%= image_tag @release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
+<div class="news releasemedia" style="width:100%">
+      <div class="col-md-3 col-sm-3"> 
+      <%= image_tag @release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive releasemedia' %>
+      </div>
 
- </div>
-
- <div class="col-md-9"  style="padding-top:20px; padding-right:25px;">
- <% if @release.featured_text.blank? %><% else %>
-<div class="numberone"><%= @release.featured_text %></div> <% end %>
-<h3 class="arttit"><%= @release.title %><br />
-<% if @release.date.blank? %>
+      <div class="col-md-9 col-sm-9 releases" style="padding-right:0px">
+      <div class="release-info">
+      <% if @release.featured_text.blank? %>
       <% else %>
-      <small>Release Date: </b><%= @release.date.strftime('%-d %B %Y ') %></small> 
+      <div class="numberone">
+      <%= @release.featured_text %>
+      </div>  
       <% end %>
-      </h3> 
- 
-<p><%= @release.body %></p>  
-<% if @release.genres.blank? %>
+
+      <table width="100%" class="rel-table table table-hover table-condensed">
+
+      
+      <% if @release.title.blank? %>
       <% else %>
-<h5 class="arttit">Genres:<small> <%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></small></h5> 
-<% end %> 
- <% if @release.chart_position.blank? %>
-<% else %>
-<h5 class="arttit">Highest Chart Position: 
- 
- <small><%= @release.chart_position %></small></h5>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Product Title:</b></p> </td><td class="rel-two"><p><%= @release.title %></p></td>
+      </tr>
+      <% end %>
+      
 
-<% end %>
+      
+      <% if @release.partist.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Artist:</b></p> </td><td class="rel-two"><p><%= @release.partist %></p></td>
+      </tr>
+      <% end %>
+      
 
-  <% if @release.artists.blank? %>
-<br />
- <% else %>
-<h5 class="arttit">Related BDi Songwriter: 
- 
- <small><%= artist_list_for(@release.artists) %></small></h5>
- <div class="buylinks">
-  <% if @release.itunes.blank? %>
-<% else %>  
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  @release.itunes, target: "_blank" %> 
-<% end %>
- <% if @release.amazon.blank? %>
-<% else %> 
- 
- <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal", :style => "width:45px; padding-right:5px;"),  @release.amazon, target: "_blank" %> 
-<% end %>
-    
- <% end %></div> </div>
+       
+      <% if @release.pformat.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Product Format:</b></p> </td><td class="rel-two"><p><%= @release.pformat %></p></td>
+      </tr>
+      <% end %>
+      
 
-  
+      
+      <% if @release.rlabel.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Record Label:</b> </p> </td><td class="rel-two"><p><%= @release.rlabel %></p></td>
+      </tr>
+      <% end %>
+      
 
-  </div>
-  <%= link_to 'View All Releases', releases_path, class: "btn btn-success " %>
-   <div class="clear"></div>   
- 
- 
-    
+      
+      <% if @release.date.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Release Date:</b></p> </td><td class="rel-two"><p><%= @release.date.strftime('%-d %B %Y ') %></p></td>
+      </tr>
+      <% end %> 
+
+      
+      <% if @release.chart_position.blank? %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Chart Position:</b></p> </td><td class="rel-two"><p>Not Applicable</p></td>
+      </tr>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Chart Position:</b></p> </td><td class="rel-two"><p><%= @release.chart_position %></p></td>
+      </tr>
+      <% end %> 
+
+       
+      <% if @release.genres.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>Genre Style:</b></p> </td><td class="rel-two"><p><%= @release.genres.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p></td>
+      </tr>
+      <% end %> 
+
+      
+      <% if @release.artists.blank? %>
+      <% else %>
+      <tr width="100%">
+      <td class="rel-one">
+      <p><b>BDi Songwriter:</b></p> </td><td class="rel-two"><p><%= artist_list_for(@release.artists) %></p></td>
+      </tr>
+      <% end %> 
+      </table>
+     
+
+      <% if @release.body.blank? %>
+      <% else %> 
+      <p class="body-rel"><%= @release.body %></p>
+       
+      <% end %>
+      
+      </div>
+      <div class="buylinks">
+      <% if @release.itunes.blank? %>
+      <% else %>  
+      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal"),  @release.itunes, target: "_blank" %> 
+      <% end %>
+
+      <% if @release.amazon.blank? %>
+      <% else %> 
+      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  @release.amazon, target: "_blank" %> 
+      <% end %>
+      </div>
+      </div>
+    </div>
  </div>
- <br />  <br /> 
+ <style>  
+.table-condensed > tbody > tr > td {padding:5px 0px 5px 0px;}
+
+table.rel-table {margin-top:-6px;}
+ table.rel-table tr {border:0px;}
+ .table > tbody > tr:hover {width:auto;}
  
- <style> 
-
-
-
+.table > tbody > tr > td {border:0px;}
+.table {margin-bottom:5px;}
+p.body-rel {line-height: 20px !important; min-height:50px;}
+.releases p {margin-bottom:9px; padding-top:0px; margin: 0px; line-height: 16px;}
+img.twittereal {
+  max-width:40px;
+  width:100%; padding-right:5px;
+} 
+table.rel-table td {text-align:left;  }
+table.rel-table td.rel-one {width:22%; padding-right:1em;}
+table.rel-table td.rel-two {width:78%;} 
   .search-query {
         padding-right: 3px;
         padding-right: 4px \9;
@@ -88,6 +161,7 @@
         /* IE7-8 doesn't have border-radius, so don't indent the padding */
  
         margin-bottom: 0;
+
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px;
@@ -112,14 +186,13 @@
     .search-query:focus + button {
         z-index: 3;   
     }
-input.release-searching {    margin-top: -10px;
+input.release-searching { 
     height: 32px;
-    line-height: 32px; width:90%;}
- .news {background-color:white !important;display:inline-block; margin-bottom:15px;}
+    line-height: 32px; width:100%;}
+ .news { border-bottom: 1px solid #cecece; display:inline-block; padding-bottom:25px; margin-bottom:25px;}
 }
 .col-md-2{ padding:15px;}
-.col-md-10{  padding:15px;}
-.col-md-1{background-color:#767c60; padding:15px; height:181px;}
+.col-md-10{  padding:15px;} 
 .col-md-1 a {display:block;
   -webkit-transform: rotate(270deg);
 -moz-transform: rotate(270deg);
@@ -139,7 +212,7 @@ select:focus {border:0; outline:0;}
 select {
   margin: 5px; 
 }
-
+.relfirst {padding-left:0px; margin-top:5px;} .rellast {padding-right:0px;margin-top:5px;}
 select.custom {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E");
   padding-right: 25px;
@@ -153,7 +226,11 @@ select.custom {
 select.custom::-ms-expand {
   display: none;
 }
+
+ul.grid-items li.col-md-2 { margin-top:-5px; }
  </style>
+
+
 
  <script>
 

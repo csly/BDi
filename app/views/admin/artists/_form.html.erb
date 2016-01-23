@@ -12,7 +12,10 @@
   <%= f.association :types, collection: Type.order('name ASC') %>
     <%= f.association :formats, collection: Format.order('name ASC'), label: 'Media Style' %><br />
   PDF Upload:<%= f.file_field :biography %><br />
-  <%= f.check_box :remove_biography %><br />
+  <% if f.object.read_attribute(:biography).present? %>
+    <%= f.object.biography.url %>
+    <%= f.check_box :remove_biography %><br />
+  <% end %>
   Main Image Upload:
   <%= f.file_field :photo %><br />
   <% if f.object.persisted? && f.object.image.present? %>

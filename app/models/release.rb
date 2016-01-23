@@ -11,46 +11,58 @@ class Release < ActiveRecord::Base
   mount_uploader :image, ReleaseUploader
   crop_uploaded :image
 
-  attr_accessor :query, :genre, :artist, :format
+  attr_accessor :query, :genre, :artist
 
 
 
    def preview
       body[0..200]  +  "  "
     end 
+
     def titlepreview
       title[0..11]  +  ".."
     end 
+
     def bodypreview
       body[0..22]  +  ".."
     end 
+
     def newspreview
       body[0..465] + ".."
     end
+
     def artistpreview
       body[0..100] + ".."
     end
+
+    def relbody
+      body[0..140] + ".."
+    end
+
     def artpreview
     title[0..14]  +  ".."
     end 
 
-      def slug
-    title.downcase.gsub(" ", "-")  
-  end
+    def slug
+      title.downcase.gsub(" ", "-")  
+    end
 
   def to_param
     "#{id}-#{slug}"
   end
-    
+   
+
    class << self
       def search(query, genre, artist, format)
         query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
-        releases = Release.includes(:genres, :artists, :formats)  
-        releases = releases.where(genres: {id: genre}) if !genre.empty?
-        releases = releases.where(artists: {id: artist}) if !artist.empty?        
-        releases = releases.where(formats: {id: format}) if !format.empty?    
-        releases = releases.where('lower(title) LIKE ? or lower(body) LIKE ?', query, query) if query
+        releases = Release.includes(:genres, :artists, :formats) 
+        releases = releases.where(genres: {id: genre}) if genre.present?
+        releases = releases.where(artists: {id: artist}) if artist.present?
+        releases = releases.where(formats: {id: format}) if format.present?
+        releases = releases.where('lower(title) ILIKE ? or lower(body) ILIKE ?', query, query) if query
         releases
       end
     end
+
+ 
 end
