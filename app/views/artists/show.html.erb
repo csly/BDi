@@ -6,7 +6,7 @@
   <br /><br />
   <span class="artist-name-main">
     <%= @artist.name %> <br /><% if @artist.types.blank? %> <% else %>
-    <small style="font-size:65%"> <ul class="arttypes"><% @artist.types.each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
+    <small style="font-size:65%"> <ul class="arttypes"><% @artist.types.order('name ASC').each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
   </span> 
   <div class="socart">
     
@@ -28,26 +28,7 @@
  
 
     <%= image_tag @artist.photo.url, :class => 'img-responsive ' %>
- <% if @artist.formats.present? %>
-    <h4 class="artside"><ul class="mediastyle">Media Type:
-    <small class="notsomuch">
-    
-    <% @artist.formats.each do |format|  %>
-    <li><%= format.name %></li>
-    <% end %>
-    </ul></small></h4>
-<% end %>
-
-
-    <% if @artist.genres.present? %>
-    <h4 class="artside"><ul class="mediastyle">Genre Style:<small class="notsomuch">
-    
-    <% @artist.genres.each do |genre|  %>
-    <li><%= genre.name %></li>
-    <% end %>
-    </ul></small></h4>
-    <% else %>
-    <% end %>
+  
 
 
     
@@ -97,29 +78,29 @@
 </div> 
 
 
-    </div><Br /><hr>
+    </div><hr class="artbiog">
    
 
 
-
+<div class="col-md-12 artdisco">
  <% if @artist.releases.blank? %>
  <br />
  <% elsif @artist.releases.count < 12 %>
- <div class="extras"><br />
-      <span class="artist-name-main" style="font-size:120%"> Discograpy
+ <div class="extras"> 
+      <span class="artist-name-main" style="font-size:120%"> Discography
   </span> </div> <br />
  <% @artist.releases.order('releases.date DESC').each do |release| %>
       <div class="col-md-2 col-xs-3 col-sm-3" style="padding-left:0px;">
 
        <%= link_to (image_tag release.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), release_path(release) %>
 
-       <p class="morearticles"><%= link_to release.artpreview, release_path(release), :class =>'release-name' %></p>
+       <!--<p class="morearticles"><%= link_to release.artpreview, release_path(release), :class =>'release-name' %></p>-->
      </p>
    </div>
  <% end %>
  <% elsif @artist.releases.count == 12 %>
- <div class="extras"><br />
-      <span class="artist-name-main" style="font-size:120%"> Discograpy
+ <div class="extras"> 
+      <span class="artist-name-main" style="font-size:120%"> Discography
   </span> </div> <br />
  <% @artist.releases.order('releases.date DESC').each do |release| %>
       <div class="col-md-2 col-xs-3 col-sm-3" style="padding-left:0px;">
@@ -131,8 +112,8 @@
    </div>
  <% end %>
  <% elsif @artist.releases.count > 12 %>
- <div class="extras"><br />
-      <span class="artist-name-main" style="font-size:120%"> Discograpy
+ <div class="extras"> 
+      <span class="artist-name-main" style="font-size:120%"> Discography
   </span> </div><br />
  <% @artist.releases.order('releases.date DESC').limit(12).each do |release| %>
       <div class="col-md-2 col-xs-3 col-sm-3" style="padding-left:0px;">
@@ -143,11 +124,12 @@
      </p>
    </div>
 
- <% end %><div class="clear"></div>
+ <% end %>
+<div class="clear"></div>
  <%= link_to "Show More Releases", "#{root_path}releases?utf8=✓&q%5Btitle_or_partist_cont%5D=&q%5Bgenres_id_eq%5D=&q%5Bartists_id_eq%5D=#{@artist.id}&q%5Bformats_id_eq%5D=&commit=Search", class: "btn btn-primary" %> 
  <% end %>
 
-
+ </div>
 
 
  </div>

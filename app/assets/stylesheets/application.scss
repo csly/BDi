@@ -1536,6 +1536,9 @@ h3.md2right {
 
 
 /************************ Roster ************************/
+ 
+.nopadtop {padding-top:0px;}
+hr.artbiog {margin-top:1.5em;margin-bottom:1.5em;}
 .mainblurb {margin-top:-4px;}
 a.release-name{
     color: #848f81;
@@ -1886,10 +1889,11 @@ table.admin-table {
             display:none;
       }}
 @media (max-width: 1025px) { 
-
+.numberone {width:44%; position:relative; text-align:center; margin-bottom: 1em !important;}
+.releasemedia table.rel-table {margin-top:1em;}
+.releasemedia .buylinks {position:relative !important; bottom:0px !important}
 footer .col-md-3 {padding-left:15px; }
-.releasemedia {padding-bottom:15px;}
-img.releasemedia { padding-left:15px;}
+.releasemedia {padding-bottom:15px;} 
        .container-bottomnews {display:none;}
       
     .navbar-header {
@@ -1986,6 +1990,7 @@ img.releasemedia { padding-left:15px;}
   .navbar-collapse.collapse.in{
     display:block !important;
  } 
+
  .card .card-image img {max-height:100%;}
  .input-group {width:100%;}
  #custom-search-input {width:100%!important}
@@ -1993,9 +1998,11 @@ img.releasemedia { padding-left:15px;}
 
 
  
- @media (max-width: 750px) { 
-      table.rel-table td {display:block !important; width:100% !important;} 
-      table.rel-table {min-height:auto !important;}
+ @media (max-width: 750px) {  
+.col-md-12 {padding:0px;}
+      .releases {padding: 0px !important;}
+      table.rel-table td { width:100% !important;} 
+      table.rel-table {min-height:auto !important; text-align:left}
       .releases {min-height:auto !important;}
 p.aboutbdi {width:100% !important;}
 ul.grid-items .col-xs-6 {padding:5px;}
@@ -2013,7 +2020,11 @@ p.aboutbdi {padding-right:0px !important;}
       border-radius: 0 0 2px 2px;
       text-align:left;
       }
-      .buylinks {text-align:left;}
+
+.releasemedia table.rel-table td.rel-one {width:auto !important; padding-right:1em;}
+.releasemedia table.rel-table td.rel-two {width:auto !important;} 
+
+      .buylinks {text-align:left; position:relative !important;}
 i.right {display:none;}
 a.readmorehome {
       left:0px;
@@ -2079,7 +2090,7 @@ h5.arttit {text-align:left;}
     padding-left: 0px;
     padding-right: 0px;
     }
-
+.artists {margin-top: -1em;}
     .col-md-4 {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -2088,12 +2099,18 @@ h5.arttit {text-align:left;}
     padding-left: 0px;
     padding-right: 0px;
     }
+input.release-searching {margin-bottom:1em;}
+    select#q_artists_id_eq {margin-left:0px;}
 
     ul.sharesocial {margin-bottom:3em;}
     .relateartist {display:none;}
     .col-md-12.extras {padding:15px;}
     .buylinks {padding-bottom:1em;}
-    .numberone {float:none; margin-bottom:1em;}
+    .numberone { position:relative;
+    width: 100%;
+    float: none;
+    margin-bottom: 1em !important;
+    clear: both;}
     .col-md-9 {text-align:center; small {margin-top:1em;}}
 
     .card .card-image img {max-height:100%;}
@@ -2185,6 +2202,8 @@ input.release-searching {
 
 @media (max-width: 1050px) {
 
+  .releasemedia table.rel-table td.rel-one { width: 35% !important}
+.releasemedia table.rel-table td.rel-two {width:65% !important}
 
     ul.pull-right{  margin-top: 1em !important;}
     .navbar-header {
