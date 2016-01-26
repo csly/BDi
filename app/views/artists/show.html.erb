@@ -71,7 +71,9 @@
     <h4 class="artside">Share This Artist:</h4>
       <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @artist.name  %> 
       <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %>
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %>
+
+      <%= mail_to "", image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), subject: "BDi Music Artist", body: "Check out " + @artist.name + "'s profile on BDi Music: " + request.original_url %>
+
     </div> 
   <div class="col-md-9 col-sm-9 newsblur">
     <div class="mainblurb"> 
