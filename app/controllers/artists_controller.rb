@@ -1,9 +1,9 @@
 require 'open-uri'
 class ArtistsController < ApplicationController
 
-  def index
+  def index 
     @q = Artist.ransack(params[:q])
-    @artists = @q.result(distinct: true).paginate(page: params[:page], per_page: 10).order('artists.name ASC')
+    @artists = @q.result(distinct: true).order('artists.name ASC')
   end
 
   def show
@@ -27,4 +27,6 @@ class ArtistsController < ApplicationController
   end
   
 end
+
+  
 
