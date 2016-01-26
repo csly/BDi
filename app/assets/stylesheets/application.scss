@@ -1972,6 +1972,7 @@ img.releasemedia { padding-left:15px;}
         background-color: $bdi-green;
         color:white;
       }
+
 }   
 
 
@@ -1993,6 +1994,9 @@ img.releasemedia { padding-left:15px;}
 
  
  @media (max-width: 750px) { 
+      table.rel-table td {display:block !important; width:100% !important;} 
+      table.rel-table {min-height:auto !important;}
+      .releases {min-height:auto !important;}
 p.aboutbdi {width:100% !important;}
 ul.grid-items .col-xs-6 {padding:5px;}
 .socart {margin-top:-62px;}
@@ -2180,6 +2184,8 @@ input.release-searching {
 }
 
 @media (max-width: 1050px) {
+
+
     ul.pull-right{  margin-top: 1em !important;}
     .navbar-header {
         float: none;

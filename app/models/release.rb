@@ -40,7 +40,7 @@ class Release < ActiveRecord::Base
     end
 
     def artpreview
-    title[0..14]  +  ".."
+    title[0..11]  +  ".."
     end 
 
     def slug

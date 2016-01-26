@@ -13,29 +13,33 @@ Roster
  <br /><br /></div>
 </div> 
  <div class='containernohome'>  <br /><br />
- <div class="col-md-12">
-
-<%= simple_form_for :artist, url: url_for(artists_path),  
-     method: 'get' do |f| %>
-<div class="artists"> 
-<ul class="grid-items"> 
-<li class="col-md-3 col-xs-6 col-sm-3">
-
-  <%= f.input :query, input_html: {name: 'q', class: 'search-query'}, placeholder: 'Search...', required: false, label: false  %>
-</li>
-<li class="col-md-3 col-xs-6 col-sm-3">
-  <%= f.input :genre, input_html: {name: 'genre', class: 'form-control custom'},  collection: Genre.order('name ASC').used, include_blank: 'All', include_blank: 'Genre', required: false, label: false  %> 
-</li>
-<li class="col-md-3 col-xs-6 col-sm-3">
-  <%= f.input :type, input_html: {name: 'type', class: 'form-control custom'},  collection: Type.order('name ASC').used, include_blank: 'All', include_blank: 'Type', required: false, label: false  %> 
-</li>
-<li class="col-md-3 col-xs-6 col-sm-3">
-  <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
-</li>
-</ul>
-<% end %>
- </div>
  
+   <div class="col-md-12"> 
+    
+      <%= search_form_for @q, url: url_for(artists_path) do |f| %>
+     <div class="artists">
+     <ul class="grid-items"> 
+      <li class="col-md-3 col-xs-6 col-sm-3">
+        <%= f.search_field :name_cont, class: 'form-control custom', placeholder: 'Search...' %>
+      </li>
+
+      <li class="col-md-3 col-xs-6 col-sm-3">
+        <%= f.collection_select :genres_id_eq, Genre.order('name asc').used, :id, :name, {include_blank: 'Genre Style'}, class: 'form-control custom' %>
+      </li>
+
+      <li class="col-md-3 col-xs-6 col-sm-3">
+        <%= f.collection_select :types_id_eq, Type.order('name asc').used, :id, :name, {include_blank: 'Type'}, class: 'form-control custom' %>
+      </li>
+
+      <li class="col-md-3 col-xs-6 col-sm-3">
+      <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
+      </li>
+ 
+</ul>
+      <% end %>
+    </div>
+
+
 
  <br /><br ><br /><br >
 

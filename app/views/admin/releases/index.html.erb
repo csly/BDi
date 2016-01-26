@@ -1,13 +1,16 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
 <h4> List Of Releases</h4><%= link_to "+ New", new_admin_release_path, class: "btn btn-primary"  %>
-
+<br /><br />
 <div id="custom-search-input" style="width:92%">
       <div class="input-group col-md-12">
       <%= search_form_for @q, url: url_for(admin_releases_path) do |f| %>
-        <%= f.label 'Search' %>
+         <div class="col-md-11">
         <%= f.search_field :title_or_partist_cont, class: 'search-query form-control' %>
-        <%= f.submit 'Search' %>
+        </div>
+        <div class="col-md-1">
+        <%= f.submit 'Search', class: 'btn btn-primary' %>  
+        </div>
         <% end %>
                     
         </div>
