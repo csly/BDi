@@ -44,11 +44,15 @@ class Release < ActiveRecord::Base
     end 
 
     def slug
-      title.downcase.gsub(" ", "-")  
+     title.to_s.downcase.gsub(" ", "-")
+    end
+
+    def slug2
+      partist.to_s.downcase.gsub(" ", "-")
     end
 
   def to_param
-    "#{id}-#{slug}"
+    "#{id}-#{slug}-#{slug2}"
   end
    
 
