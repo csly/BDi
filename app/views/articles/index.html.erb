@@ -27,8 +27,12 @@
   <div id="custom-search-input" style="width:92%">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
+          <div class="col-md-10">
            <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'search-query form-control'}, label: false, placeholder: 'Search...', required: false %>
-           
+           </div>
+           <div class="col-md-2 searchhid">
+           <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
+           </div>
         <% end %>
                     
         </div>
@@ -57,7 +61,7 @@
 
     <div class="clear"></div>
 
-    <div class="col-md-9"> 
+    <div class="col-md-11"> 
     <div class="middle">
       <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>

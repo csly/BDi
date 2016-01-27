@@ -1536,7 +1536,7 @@ h3.md2right {
 
 
 /************************ Roster ************************/
- 
+
 .nopadtop {padding-top:0px;}
 hr.artbiog {margin-top:1.5em;margin-bottom:1.5em;}
 .mainblurb {margin-top:-4px;}
@@ -1661,7 +1661,7 @@ span.artist-name-main {
       letter-spacing:2px; 
       font-size:160%; 
       text-transform:uppercase; 
-      color: $dark-green;
+      color: $dark-green; 
       }
 
 .mainblurb p {
@@ -1990,7 +1990,8 @@ footer .col-md-3 {padding-left:15px; }
   .navbar-collapse.collapse.in{
     display:block !important;
  } 
-
+ .searchhid {display:none;}
+ul.dropdown-menu {left: 20px;}
  .card .card-image img {max-height:100%;}
  .input-group {width:100%;}
  #custom-search-input {width:100%!important}
@@ -1999,6 +2000,9 @@ footer .col-md-3 {padding-left:15px; }
 
  
  @media (max-width: 750px) {  
+      .pagination a {margin-top: 10px;}
+      .searchhid {display:none;}
+      ul.dropdown-menu {left: 20px;}
 .col-md-12 {padding:0px;}
       .releases {padding: 0px !important;}
       table.rel-table td { width:100% !important;} 
@@ -2111,7 +2115,7 @@ input.release-searching {margin-bottom:1em;}
     float: none;
     margin-bottom: 1em !important;
     clear: both;}
-    .col-md-9 {text-align:center; small {margin-top:1em;}}
+    .col-md-9 {text-align:left; small {margin-top:1em;}}
 
     .card .card-image img {max-height:100%;}
 
@@ -2180,11 +2184,12 @@ input.release-searching {
 @media (min-width: 750px) and (max-width: 1000px) and (orientation:landscape) {
      
  .card .card-image img {max-height:100%;}
+ ul.dropdown-menu {left: 20px;}
 
 }
 
      @media (max-width: 1100px) and (orientation:landscape) {
-      
+       ul.dropdown-menu {left: 20px;}
      .navbar-collapse.collapse {
     display:block !important;
  } 
@@ -2252,5 +2257,6 @@ input.release-searching {
         background-color: white;
     }
 }
+
 
 
