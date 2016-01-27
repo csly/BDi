@@ -30,5 +30,4 @@ class Admin::InstrumentationsController < ApplicationController
     params.require(:instrumentation).permit(:name)
   end
 
-
 end

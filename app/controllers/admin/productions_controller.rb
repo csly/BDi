@@ -30,5 +30,4 @@ class Admin::ProductionsController < ApplicationController
     params.require(:production).permit(:name)
   end
 
-
 end

@@ -1,24 +1,23 @@
 class Admin::ArtistsController < Admin::BaseController
   before_action :require_admin 
+
   def index
     @artists = Artist.paginate(page: params[:page], per_page: 20).order('artists.created_at DESC')
   end
-def show
+
+  def show
     @artist = Artist.find(params[:id])
   end
- 
 
   def new
     @artist = Artist.new
   end
 
-def edit
+  def edit
     @artist = Artist.find(params[:id])
   end
  
-
-
-def create
+  def create
     @artist = Artist.new(artist_params)
     if @artist.save
       if params[:artist][:photo].present?
@@ -41,28 +40,18 @@ def create
     end
   end
 
- 
-  
-
  def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
 
-    
-
     redirect_to admin_artist_path
-
   end
  
-
-def artist_params
+  def artist_params
     params.require(:artist).permit(:name, :biog, :photo, :photo, :biography, :remove_biography, :photo_crop_x,
-                                    :photo_crop_y, :photo_crop_w, :photo_crop_h, :links,
-                                    :composer, :songwriter, :artisttag, :producer, :twitter, :facebook,  article_ids: [], 
-                                    award_ids: [], genre_ids: [], type_ids: [], format_ids: []
-                                    )
+                                    :photo_crop_y, :photo_crop_w, :photo_crop_h, :links, :composer, :songwriter, :artisttag, :producer, :twitter, :facebook,  article_ids: [], 
+                                    award_ids: [], genre_ids: [], type_ids: [], format_ids: [])
   end
-
 
 end
 

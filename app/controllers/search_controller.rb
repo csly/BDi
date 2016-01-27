@@ -29,4 +29,5 @@ class SearchController < ApplicationController
     end
     data
   end
+  
 end

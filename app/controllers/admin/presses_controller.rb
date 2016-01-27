@@ -3,20 +3,20 @@ class Admin::PressesController < Admin::BaseController
   def index
     @presses = Press.paginate(page: params[:page], per_page: 20).order('presses.created_at DESC')
   end
-def show
+
+  def show
     @press = Press.find(params[:id])
   end
- 
 
   def new
     @press = Press.new
   end
-def edit
+
+  def edit
     @press = Press.find(params[:id])
   end
 
-
-def create
+  def create
     @press = Press.new(press_params)
     if @press.save
       if params[:press][:image].present?
@@ -39,30 +39,17 @@ def create
     end
   end
 
-  
- 
- 
-
-
-
-  
-
- def destroy
+  def destroy
     @press = Press.find(params[:id])
     @press.destroy
 
-    
-
     redirect_to admin_presses_path
-
   end
  
-
-def press_params
+  def press_params
     params.require(:press).permit(:title, :body, :youtube, :created_at, :link, :download, :image, :image_crop_x,
                                     :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
-
 
 end
 

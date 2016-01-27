@@ -30,5 +30,4 @@ class Admin::TypesController < ApplicationController
     params.require(:type).permit(:name)
   end
 
-
 end

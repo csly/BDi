@@ -7,8 +7,8 @@ class Admin::AudiosController < Admin::BaseController
     @audio = Audio.new
   end
    
-   def show
-   end
+  def show
+  end
 
   def create
     @audio = Audio.new(audio_params)
@@ -18,20 +18,17 @@ class Admin::AudiosController < Admin::BaseController
     end
   end
 
-   def destroy
+  def destroy
     @audio = Audio.find(params[:id])
     @audio.destroy
-
-    
-
+  
     redirect_to admin_audios_path
-
   end
-
 
   private
 
   def audio_params
     params.require(:audio).permit(:name, :track, :artist_id)
   end
+  
 end

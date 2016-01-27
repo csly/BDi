@@ -1,5 +1,6 @@
 class Admin::HomesController < Admin::BaseController
-    before_action :require_admin 
+  before_action :require_admin 
+  
   def show
         @articles = Article.paginate(page: params[:page], per_page: 3).order('articles.created_at DESC')
         @abouts = About.paginate(page: params[:page], per_page: 3).order('abouts.created_at DESC')

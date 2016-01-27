@@ -1,23 +1,23 @@
 class Admin::StaffsController < Admin::BaseController
   before_action :require_admin 
+
   def index
     @staffs = Staff.all
   end
-def show
+
+  def show
     @staff = Staff.find(params[:id])
   end
- 
 
   def new
     @staff = Staff.new
   end
-def edit
+
+  def edit
     @staff = Staff.find(params[:id])
   end
 
- 
-
-def create
+  def create
     @staff = Staff.new(staff_params)
     if @staff.save
       if params[:staff][:photo].present?
@@ -40,24 +40,15 @@ def create
     end
   end
 
-
-  
-
- def destroy
+  def destroy
     @staff = Staff.find(params[:id])
     @staff.destroy
 
-    
-
     redirect_to admin_staffs_path
-
-  end
- 
-
-def staff_params
-    params.require(:staff).permit(:name, :biog, :photo,  :photo_crop_x,
-                                    :photo_crop_y, :photo_crop_w, :photo_crop_h, :role, :email, :phone)
   end
 
+  def staff_params
+    params.require(:staff).permit(:name, :biog, :photo,  :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :role, :email, :phone)
+  end
 
 end

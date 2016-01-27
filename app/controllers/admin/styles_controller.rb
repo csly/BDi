@@ -30,7 +30,4 @@ class Admin::StylesController < ApplicationController
     params.require(:style).permit(:name)
   end
 
-  
-
-
 end

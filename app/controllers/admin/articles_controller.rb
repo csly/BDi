@@ -51,17 +51,11 @@ class Admin::ArticlesController < Admin::BaseController
     end
   end
 
-
-
-  
-
   def destroy
     @article = Article.unscoped.find(params[:id])
     @article.destroy
     
-
     redirect_to admin_articles_path
-
   end
 
   private
@@ -73,8 +67,7 @@ class Admin::ArticlesController < Admin::BaseController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :scheduled_at, :created_at, :status, :youtube, :image, :image_crop_x,
-                                    :image_crop_y, :image_crop_w, :image_crop_h,
-                                    artist_ids: [],)
+    params.require(:article).permit(:title, :body, :scheduled_at, :created_at, :status, :youtube, :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [],)
   end
+  
 end

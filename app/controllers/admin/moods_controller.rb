@@ -30,5 +30,4 @@ class Admin::MoodsController < ApplicationController
     params.require(:mood).permit(:name)
   end
 
-
 end

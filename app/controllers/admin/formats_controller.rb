@@ -17,7 +17,7 @@ class Admin::FormatsController < ApplicationController
     @format = Format.new
   end
 
-def destroy
+  def destroy
     @format = Format.find(params[:id])
     if @format.destroy
       redirect_to admin_formats_path
@@ -29,6 +29,5 @@ def destroy
   def format_params
     params.require(:format).permit(:name)
   end
-
 
 end
