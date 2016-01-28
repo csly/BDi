@@ -81,9 +81,9 @@
 <% end %>
 
 
-<div class="col-md-6">
+<div class="col-md-6 morenews">
   <h5>More News</h5><br />
-    <div class="col-md-6">
+    <div class="col-md-6 nopadleft">
       <% if @article.previous %>
         <%= link_to(article_path(@article.previous)) do %>
           <div class="previous" style="background-image:url('<%= @article.previous.image.morenews.url %>'); background-size:cover; opacity: 0.3;"> </div>
@@ -93,7 +93,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 nopadright">
       <% if @article.next %>
         <%= link_to(article_path(@article.next)) do %>
           <div class="next" style="background-image:url('<%= @article.next.image.morenews.url %>'); background-size:cover; opacity:0.3;"></div>

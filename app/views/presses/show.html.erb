@@ -90,9 +90,9 @@
 <% end %>
 
 
-<div class="col-md-6">
+<div class="col-md-6 morenews">
   <h5>More Press</h5><br />
-    <div class="col-md-6">
+    <div class="col-md-6 nopadleft">
       <% if @press.previous %>
         <%= link_to(press_path(@press.previous)) do %>
           <div class="previous" style="background-image:url('<%= @press.previous.image.morenews.url %>'); background-size:cover; opacity: 0.3;"> </div>
@@ -102,7 +102,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 nopadright">
       <% if @press.next %>
         <%= link_to(press_path(@press.next)) do %>
           <div class="next" style="background-image:url('<%= @press.next.image.morenews.url %>'); background-size:cover; opacity:0.3;"></div>

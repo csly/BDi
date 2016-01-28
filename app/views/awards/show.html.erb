@@ -76,9 +76,9 @@
 <% end %>
 
 
-<div class="col-md-6">
+<div class="col-md-6 morenews">
   <h5>More Awards</h5><br />
-    <div class="col-md-6">
+    <div class="col-md-6 nopadleft">
       <% if @award.previous %>
         <%= link_to(award_path(@award.previous)) do %>
           <div class="previous" style="background-image:url('<%= @award.previous.image.morenews.url %>'); background-size:cover; opacity: 0.3;"> </div>
@@ -88,7 +88,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 nopadright">
       <% if @award.next %>
         <%= link_to(award_path(@award.next)) do %>
           <div class="next" style="background-image:url('<%= @award.next.image.morenews.url %>'); background-size:cover; opacity:0.3;"></div>
