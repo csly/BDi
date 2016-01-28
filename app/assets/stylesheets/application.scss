@@ -303,6 +303,7 @@ ul a:hover {
 
 p.morearticles a {
       color: $bdi-green; 
+      font-size:90%;
       }
 
 p.morearticles a:hover {
@@ -1665,8 +1666,7 @@ a.release-name{
     letter-spacing: 1px;
     text-align: left;
   }
-  .next {    background-color: transparent;}
-  p.morearticles{padding-top:0px;} 
+  .next {    background-color: transparent;} 
   .td.player .tdicon-td_logo-link {display:none;}
   .player-next.next {
     width: 10px;
