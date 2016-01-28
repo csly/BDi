@@ -4,27 +4,32 @@ class Award < ActiveRecord::Base
 
   mount_uploader :image, AwardUploader
   crop_uploaded :image
- def titlepreviewnews
+
+  def titlepreviewnews
     title[0..30]  +  ".."
   end 
-   def preview
-      body[0..200]  +  "  "
-    end 
-      def titlepreview
-      title[0..11]  +  ".."
-    end 
-    def bodypreview
-      body[0..22]  +  ".."
-    end 
-    def newspreview
+
+  def preview
+    body[0..200]  +  "  "
+  end 
+
+  def titlepreview
+    title[0..11]  +  ".."
+  end 
+
+  def bodypreview
+    body[0..22]  +  ".."
+  end 
+
+  def newspreview
     body[0..300].strip  +  ".."
-    end 
+  end 
 
-    def artistpreview
-      body[0..100]  +  ".."
-    end 
+  def artistpreview
+    body[0..100]  +  ".."
+  end 
 
-     def slug
+  def slug
     title.downcase.gsub(" ", "-")  
   end
 
@@ -32,28 +37,27 @@ class Award < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
-
-    def embed(youtube)
-   youtube_id = youtube.split("=").last
-   content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
+  def embed(youtube)
+    youtube_id = youtube.split("=").last
+    content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{youtube_id}")
   end
 
-   def previous
-  Award.limit(1).order("id DESC").where("id < ?", id).first
- end
+  def previous
+    Award.limit(1).order("id DESC").where("id < ?", id).first
+  end
 
- def next
-  Award.limit(1).order("id ASC").where("id > ?", id).first
- end
+  def next
+    Award.limit(1).order("id ASC").where("id > ?", id).first
+  end
 
-    class << self
-      def search(query)
-        query = (query && !query.empty?) ? "%#{query}%" : nil 
-        awards = Award.all
-        awards = awards.where('title ILIKE ? or body ILIKE ?', query, query) if query
-        awards
-      end
+  class << self
+    def search(query)
+      query = (query && !query.empty?) ? "%#{query}%" : nil 
+      awards = Award.all
+      awards = awards.where('title ILIKE ? or body ILIKE ?', query, query) if query
+      awards
     end
+  end
 
 end
 

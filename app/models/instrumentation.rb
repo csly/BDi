@@ -5,4 +5,5 @@ class Instrumentation < ActiveRecord::Base
   scope :for_tracks, -> (tracks) {
     find(TrackInstrumentation.where(track_id: tracks.pluck(:id)).distinct(:instrumentation_id).pluck(:instrumentation_id))
   }
+  
 end

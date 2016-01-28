@@ -10,5 +10,6 @@ class Genre < ActiveRecord::Base
       Genre.where(id: genre_ids)
     end
   end
+  
 end
  

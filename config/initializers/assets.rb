@@ -9,6 +9,7 @@ Rails.application.config.assets.precompile += %w( ckeditor/* releases.js )
 Rails.application.config.assets.precompile += %w( ckeditor/* awards.js )
 Rails.application.config.assets.precompile += %w( ckeditor/* presses.js )
 Rails.application.config.assets.precompile += %w( ckeditor/* materialize.js )
+Rails.application.config.assets.precompile += %w( ckeditor/* artawrpre.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

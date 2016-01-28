@@ -8,7 +8,6 @@ class Media < ActiveRecord::Base
       Media.find(media_ids)
     end
   end
- 
 
 end
  

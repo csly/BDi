@@ -5,120 +5,99 @@
     <%= link_to 'Home', root_path %>  <span class="break">></span>  
     <%= link_to  'About', @page_title %>   
     <br /><br /> 
-      <span class="artist-name-main">About</span> 
+    <span class="artist-name-main">
+      About
+    </span> 
     <br /><br />
   </div>
 </div> 
+
 <br /><br />  
- <div class="containernohome">
-<div class="col-md-9 col-xs-12 nopadleft">  
+
+<div class="containernohome">
+  <div class="col-md-9 col-xs-12 nopadleft">  
     <% @abouts.each do |about| %>
- 
- <p class="aboutbdi"><%= about.body.html_safe %></p> 
- 
+      <p class="aboutbdi">
+        <%= about.body.html_safe %>
+      </p> 
+    <% end %>
+    <br />
+    <span class="artist-name-main">
+    Who We Are
+    </span>
+    <br /><br /><br />
 
-     
-
-  <% end %>
-
-  
- 
- 
-
-  <br />
- <span class="artist-name-main">Who We Are</span><br /><br /><br />
-
-  <% @staffs.each do |staff| %>
-<div class="col-md-12 col-xs-12 aboutimage bored nopadleft nopadright">
-  <div class="col-md-3 col-xs-12 col-sm-3 aboutimage">
-  <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
-  </div>
-   <div class="col-md-9 col-xs-12 col-sm-9">
-   <h3 class="arttit">
-            <%=  staff.name %></h3>
-
-          <p class="role"><%= staff.role %><br />
+    <% @staffs.each do |staff| %>
+      <div class="col-md-12 col-xs-12 aboutimage bored nopadleft nopadright">
+        <div class="col-md-3 col-xs-12 col-sm-3 aboutimage">
+          <%= image_tag staff.photo.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %>
+        </div>
+        <div class="col-md-9 col-xs-12 col-sm-9">
+          <h3 class="arttit">
+            <%=  staff.name %>
+          </h3>
+          <p class="role">
+          <%= staff.role %>
+          <br />
           </p> 
-           <div class="artp about">
-             <div class="comment more"> 
-        <%= staff.biog.html_safe %> 
-</div> 
-            <br /><br />
+            <div class="artp about">
+              <div class="comment more"> 
+                <%= staff.biog.html_safe %> 
+              </div> 
+              <br /><br />
             </div>
-            </div>
-            </div><div class="clear"><br /><br /></div> 
-            <% end %>
-            </div>
+        </div>
+      </div>
+      <div class="clear">
+      <br /><br />
+      </div> 
+    <% end %>
+  </div>
 
-<div class="col-md-3 homesidebar">   
-      <%= render 'shared/twittersidebar' %>
-   </div> 
+  <div class="col-md-3 homesidebar about">   
+    <%= render 'shared/twittersidebar' %>
+  </div> 
 </div>
-            </div>
-            <div class="clear"><br /> </div> 
-            </div>
-    <style> 
-    ul.tweets {height:980px;}
-    .nopadleft {padding-left:0px;}
-      .bored {border-bottom: 1px solid #cecece;} 
-h3.arttit small {text-transform: none}
-p.role {margin-top:-15px;}
-    h2.wwa {text-transform:uppercase; }
+           
+<div class="clear">
+  <br /> 
+</div> 
 
-     p.aboutbdi {margin-top: -15px;border-bottom: 1px solid #cecece; padding-bottom:25px;}
-    h2.ab {text-transform:uppercase;color:white !important; }
-     
-    .about {text-align:justify;}
-    hr { display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #cecece;
-    margin: 1em 0;
-    padding: 0; }
-    .col-md-4 {padding-right:40px; padding-left:0px;}
-    .aboutimage {padding-left:0px;}
- 
-.morecontent span {
-    display: none;
-} 
-    </style>
+<% content_for :extra_footer do %>
   <script>
+    $(document).ready(function() {
+      var showChar = 600;
+      var ellipsestext = "...";
+      var moretext = "Show More";
+      var lesstext = "Show Less";
+      $('.more').each(function() {
+          var content = $(this).html();
+   
+          if(content.length > showChar) {
+   
+              var c = content.substr(0, showChar);
+              var h = content.substr(showChar, content.length - showChar);
+   
+              var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span><a href="" class="morelink">' + moretext + '</a></span>';
+   
+              $(this).html(html);
+          }
  
-
-
-
-  $(document).ready(function() {
-    var showChar = 600;
-    var ellipsestext = "...";
-    var moretext = "Show More";
-    var lesstext = "Show Less";
-    $('.more').each(function() {
-        var content = $(this).html();
- 
-        if(content.length > showChar) {
- 
-            var c = content.substr(0, showChar);
-            var h = content.substr(showChar, content.length - showChar);
- 
-            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span><a href="" class="morelink">' + moretext + '</a></span>';
- 
-            $(this).html(html);
-        }
- 
+      });
+   
+      $(".morelink").click(function(){
+          if($(this).hasClass("less")) {
+              $(this).removeClass("less");
+              $(this).html(moretext);
+          } else {
+              $(this).addClass("less");
+              $(this).html(lesstext);
+          }
+          $(this).parent().prev().toggle();
+          $(this).prev().toggle();
+          return false;
+      });
     });
- 
-    $(".morelink").click(function(){
-        if($(this).hasClass("less")) {
-            $(this).removeClass("less");
-            $(this).html(moretext);
-        } else {
-            $(this).addClass("less");
-            $(this).html(lesstext);
-        }
-        $(this).parent().prev().toggle();
-        $(this).prev().toggle();
-        return false;
-    });
-});
   </script>
+<% end %>
  

@@ -1,5 +1,6 @@
 class UnassignedTrack
   URL = 'https://s3-eu-west-1.amazonaws.com/bdi-music/'
+  
   def self.all
     uploaded_tracks
   end

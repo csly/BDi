@@ -2,7 +2,7 @@ class BDiProductionsController < ApplicationController
 before_filter :authenticate
 
   def index  
-    @b_di_productions = BDiProduction.all     
+    @b_di_productions = BDiProduction.all.order('name ASC')   
   end
 
   protected

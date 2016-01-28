@@ -15,20 +15,17 @@
 </div> 
 <br /> 
 <div class="containernohome">
-
   <div class="col-md-9" style="padding: 0px;">
-  <%= flash_messages %> <br />
+    <%= flash_messages %> <br />
   </div>
   <div class="clear"></div>
   <div class="col-md-9 col-sm-12 col-xs-12 articlesindex"> 
-
-
-
-  <div id="custom-search-input" style="width:92%">
+    <div id="custom-search-input" style="width:92%">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
           <div class="col-md-10">
-           <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'search-query form-control'}, label: false, placeholder: 'Search...', required: false %>
+           <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'form-control custom'}, label: false, placeholder: 'Search...', required: false %>
+ 
            </div>
            <div class="col-md-2 searchhid">
            <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
@@ -73,29 +70,10 @@
  <%= render 'shared/twittersidebar' %>
    </div>
 </div>
- 
- <style>
- div.outer {
-    margin-bottom: 32px;
-    display: inline-block;
-    vertical-align: top;
-} 
-@media (max-width: 400px) {
-  div.outer {
-      display: block;
-  }
-}
-</style>
-<script>
-var inners = document.getElementsByClassName("inner");
-var maxHeight = 0;
-for (var i = 0; i < inners.length; i++) {
-    if (inners[i].offsetHeight > maxHeight)
-        maxHeight = inners[i].offsetHeight;
-}
-for (var i = 0; i < inners.length; i++)
-    inners[i].style.height = maxHeight + 'px';
+  
 
-</script>
-    
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'artawrpre' %>
+<% end %>
+ 
   

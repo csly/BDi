@@ -4,7 +4,7 @@
     <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Roster', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
   </span>
   <br /><br />
-  <span class="artist-name-main">
+  <span class="artist-name-main artistmm">
     <%= @artist.name %> <br /><% if @artist.types.blank? %> <% else %>
     <small style="font-size:65%"> <ul class="arttypes"><% @artist.types.order('name ASC').each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
   </span> 
@@ -50,10 +50,10 @@
     </ol>
     <% end %>
     <h4 class="artside">Share This Artist:</h4>
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @artist.name  %> 
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %>
+      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @artist.name  %> 
+      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %>
 
-      <%= mail_to "", image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter", :style => "width:40px; padding-right:0.4em;"), subject: "BDi Music Artist", body: "Check out " + @artist.name + "'s profile on BDi Music: " + request.original_url %>
+      <%= mail_to "", image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), subject: "BDi Music Artist", body: "Check out " + @artist.name + "'s profile on BDi Music: " + request.original_url %>
 
     </div> 
   <div class="col-md-9 col-sm-9 newsblur">
