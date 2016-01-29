@@ -320,7 +320,9 @@ button:focus {
     display:none;
     visibility: none;
 }
-
+.lowercase {
+    text-transform: capitalize !important;
+}
 /********************************* NAV ********************************/
 
 .navbar li.main a:hover {
@@ -1429,6 +1431,10 @@ hr.artbiog {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
+hr.artbiog2 {
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
 .mainblurb {
     margin-top: -4px;
 }
@@ -2189,6 +2195,7 @@ footer.page-footer .footer-copyright {
 }
 
 @media (min-width: 750px) and (max-width: 1000px) and (orientation: portrait) {
+    
     .contact {
         padding-left: 0px
     }
@@ -2239,6 +2246,9 @@ footer.page-footer .footer-copyright {
 }
 
 @media (max-width: 750px) {
+    .artdisco .col-xs-3 {
+        padding-bottom:10px !important;
+    }
     p.readmoreart {
         margin-top: -30px !important;
     }
