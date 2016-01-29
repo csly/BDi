@@ -40,9 +40,9 @@
     <% else %>
     <% @videos.each do |video| %>
     <%= link_to(video_path(video)) do %>
-      <div class="col-md-3 col-sm-3 videobox nopadleft"> 
+      <div class="col-md-3 col-sm-3 videobox nopadleft" style="padding-bottom:20px;"> 
       <%= image_tag video.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi' %> 
-      <span></span> <p><%= video.title %><br /><br /></p>
+      <span></span> <p><%= video.title %></p>
        </div>
 <% end %>
       <% end %> <% end %>
@@ -52,7 +52,7 @@
   
 
 
- 
+
 
 
  
