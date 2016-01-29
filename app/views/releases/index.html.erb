@@ -22,15 +22,15 @@
         <%= f.search_field :title_or_partist_cont, class: 'form-control custom', placeholder: 'Search...' %>
       </li>
 
-      <li class="col-md-2 col-xs-6 col-sm-2">
+      <li class="col-md-2 col-xs-6 col-sm-2 lirel">
         <%= f.collection_select :genres_id_eq, Genre.used.order('name asc'), :id, :name, {include_blank: 'Genre Style'}, class: 'form-control custom' %>
       </li>
 
-      <li class="col-md-2 col-xs-6 col-sm-2">
+      <li class="col-md-2 col-xs-6 col-sm-2 lirel">
         <%= f.collection_select :artists_id_eq, Artist.used.order('name asc'), :id, :name, {include_blank: 'Artist'}, class: 'form-control custom' %>
       </li>
 
-      <li class="col-md-2 col-xs-6 col-sm-2">
+      <li class="col-md-2 col-xs-6 col-sm-2 lirel">
         <%= f.collection_select :formats_id_eq, Format.used.order('name asc'), :id, :name, { include_blank: 'Media Type'}, class: 'form-control custom' %> 
       </li>
 
@@ -50,7 +50,7 @@
     <% @releases.each do |release| %>
     <div class="news releasemedia" style="width:100%">
       <div class="col-md-3 col-sm-3"> 
-      <%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive releasemedia' %>
+      <%= image_tag release.image.artistmain.url, :style => 'width:100%; height:100%; ', :class => 'img-responsive' %>
       </div>
 
       <div class="col-md-9 col-sm-9 releases" style="padding-right:0px">
@@ -190,102 +190,5 @@
      <br />  <br /> 
 </div>
 </div>
-<style>  
-.releasemedia .table-condensed > tbody > tr > td {padding:5px 0px 5px 0px;}
-.releasemedia tr.nohover:hover {background-color: transparent !important;}
-.releasemedia table.rel-table {margin-top:-6px; width:100%;}
-.releasemedia table.rel-table td {display:inline-block;}
-.releasemedia table.rel-table {min-height:260px;}
-.releases {min-height: 268px;}
-.releasemedia table.rel-table tr {border:0px;}
-.releasemedia .table > tbody > tr:hover {width:auto;}
-.releasemedia .buylinks {position: absolute;
-    bottom: -19px;}
-.releasemedia .table > tbody > tr > td {border:0px;}
-.releasemedia .table {margin-bottom:5px;}
-.releasemedia p.body-rel {line-height: 20px !important; min-height:50px;}
-.releases p {margin-bottom:9px; padding-top:0px; margin: 0px; line-height: 16px;}
-.releasemedia img.twittereal {
-  max-width:40px;
-  width:100%; padding-right:5px;
-} 
-.releasemedia table.rel-table td {text-align:left;  }
-.releasemedia table.rel-table td.rel-one {width:22%; padding-right:1em;}
-.releasemedia table.rel-table td.rel-two {width:78%;} 
-  .search-query {
-        padding-right: 3px;
-        padding-right: 4px \9;
-        padding-left: 3px;
-        padding-left: 4px \9;
-        /* IE7-8 doesn't have border-radius, so don't indent the padding */
- 
-        margin-bottom: 0;
 
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
- 
-      .search-query button {
-        border: 0;
-        background: none;
-        /** belows styles are working good */
-        padding: 2px 5px;
-        margin-top: 2px;
-        position: relative;
-        left: -28px;
-        /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        margin-bottom: 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        color:#D9230F;
-    }
- 
-    .search-query:focus + button {
-        z-index: 3;   
-    }
-input.release-searching { 
-    height: 32px;
-    line-height: 32px; width:100%;}
- .news { border-bottom: 1px solid #cecece; display:inline-block; padding-bottom:25px; margin-bottom:25px;}
-}
-.col-md-2{ padding:15px;}
-.col-md-10{  padding:15px;} 
-.col-md-1 a {display:block;
-  -webkit-transform: rotate(270deg);
--moz-transform: rotate(270deg);
--o-transform: rotate(270deg);
-writing-mode: lr-tb;
-font-size:120%;
-margin-top:80px;
-color:white;
- }   
-.releasemedia hr {margin-bottom:10px;   border-top: 1px solid #d3d5c9;}
-
-.page-title2 {border: 2px solid #767c60; text-align:center;}
-td.one {border-bottom:0px;}
-td.last {border-bottom:0px; padding-top: 33px;}
-
-select:focus {border:0; outline:0;}
-select {
-  margin: 5px; 
-}
-.relfirst {padding-left:0px; margin-top:5px;} .rellast {padding-right:0px;margin-top:5px;}
-select.custom {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20fill%3D%22%23555555%22%20%0A%09%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%22-261%20145.2%2024%2024%22%20style%3D%22enable-background%3Anew%20-261%20145.2%2024%2024%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpath%20d%3D%22M-245.3%2C156.1l-3.6-6.5l-3.7%2C6.5%20M-252.7%2C159l3.7%2C6.5l3.6-6.5%22%2F%3E%0A%3C%2Fsvg%3E");
-  padding-right: 25px;
-  background-repeat: no-repeat;
-  background-position: right center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-select.custom::-ms-expand {
-  display: none;
-}
-
-ul.grid-items li.col-md-2 { margin-top:-5px; }
- </style>
 

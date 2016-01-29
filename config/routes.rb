@@ -23,8 +23,9 @@ resources :presses, path: 'press' do
 end
 
 resources :releases
+resources :videos
 resources :abouts, path: "about"
-resources :contact  
+resources :contact   
 resources :composers
 resources :songwriters
 resources :producers
@@ -54,6 +55,7 @@ namespace :admin do
   resources :audios
   resources :presses
   resources :releases
+  resources :videos
   resources :abouts    
   resources :users
   resources :genres  

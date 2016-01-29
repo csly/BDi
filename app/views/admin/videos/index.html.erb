@@ -1,0 +1,44 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Videos</h4><%= link_to "+ New", new_admin_video_path, class: "btn btn-primary"  %>
+<br /><br />
+
+
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+  <th class="a-three"><p>Created At</p></th>  
+  </tbody>
+<% @videos.each do |video| %>
+  <tr> 
+  <td class="a-one"><p><%= video.id %></p></td>
+  <td class="a-one"> 
+
+
+    <% if video.image.blank? %>
+  <% else %>
+  <%= image_tag video.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
+  <td class="a-two" style="padding-right:10px;"><p><%= link_to video.title, video_path(video) %></p></td> 
+  
+  <td class="a-threes"><p><%= video.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_video_path(video), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_video_path(video), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table><br /><br />
+ 
+</div>
+</div> 
+
+
+
+
+<%= render 'shared/adminnavfooter' %>

@@ -1,0 +1,9 @@
+<%= simple_form_for([:admin, @video], html: {multipart: true}) do |f| %>
+  <%= f.input :title %><br />
+  <%= f.input :url, label: 'YouTube URL' %><br />
+  <%= f.association :artists, collection: Artist.order('name ASC') %><br />
+  <%= f.file_field :image %> <br />
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+<br /><br />
+

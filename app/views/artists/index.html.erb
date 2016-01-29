@@ -48,6 +48,9 @@ Roster
  
  
 <ul class="grid-items"> 
+<% if @artists.empty? %>
+    <h1><center>We currently have no Artists matching your search criteria<br /><br />Please try again</center></h1>
+    <% else %>
 <% @artists.each do |artist| %> 
 <li class="col-md-3 col-xs-6 col-sm-3">
 <div class="artistmain">
@@ -58,7 +61,7 @@ Roster
   <% end %>
   </div>
 </li> 
- <% end %>
+ <% end %> <% end %>
 </ul> 
  </div> 
 </div>

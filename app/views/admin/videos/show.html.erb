@@ -1,0 +1,10 @@
+<h1><%= @video.title %></h1> 
+  <%= image_tag @video.photo.url %><br />
+    <%= @video.url %><br /><br />
+<p><b>Artist:</b> <%= @video.artists.pluck(:name).map{|n| n.split(' ').map!(&:capitalize).join(' ')}.join(', ') %></p>
+
+<%= link_to "Back To video", admin_videos_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_video_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div><%= render 'shared/adminnavfooter' %>

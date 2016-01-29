@@ -6,7 +6,7 @@
 
 <div class="related">Latest News Posts (showing latest 3 of <%= @articles.count %>)</div> <br />
 
-
+<%= link_to "+ New", new_admin_article_path, class: "btn btn-primary"  %><br />
 <table class="admin-table">
   <tbody> 
  <th class="a-one"><p>ID</p></th>
@@ -42,6 +42,7 @@
  
  <br /> <br />
 <div class="related">Latest Artists Added (showing latest 3 of <%= @artists.count %>)</div> <br />
+<%= link_to "+ New", new_admin_artist_path, class: "btn btn-primary"  %>
 <table class="admin-table">
   <tbody> 
  <th class="a-one"><p>ID</p></th>
@@ -78,7 +79,7 @@
 
 <div class="related">Latest Releases Added (showing latest 3 of <%= @releases.count %>)</div> <br />
  
-
+<%= link_to "+ New", new_admin_release_path, class: "btn btn-primary"  %><br />
 
 <table class="admin-table">
   <tbody> 
@@ -119,7 +120,7 @@
 
 <div class="related">Latest Awards Added (showing latest 3 of <%= @awards.count %>)</div> <br />
  
-
+<%= link_to "+ New", new_admin_award_path, class: "btn btn-primary"  %><Br />
 <table class="admin-table">
   <tbody> 
  <th class="a-one"><p>ID</p></th>
@@ -156,7 +157,7 @@
 
 <div class="related">Latest Press Added (showing latest 3 of <%= @presses.count %>)</div> <br />
  
-
+<%= link_to "+ New", new_admin_press_path, class: "btn btn-primary"  %>
 
 <table class="admin-table">
   <tbody> 
