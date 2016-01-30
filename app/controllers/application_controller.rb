@@ -33,9 +33,10 @@ class ApplicationController < ActionController::Base
   $client.instance_eval do
     def user_timeline(username, options)
       begin
-        super
+        @cached_tweets = super
+        @cached_tweets
       rescue
-        []
+        @cached_tweets
       end
     end
   end
