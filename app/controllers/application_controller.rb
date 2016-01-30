@@ -29,5 +29,15 @@ class ApplicationController < ActionController::Base
       search_path
     end
   end
+
+  $client.instance_eval do
+    def user_timeline(username, options)
+      begin
+        super
+      rescue
+        []
+      end
+    end
+  end
   
 end
