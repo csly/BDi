@@ -38,8 +38,15 @@ Contact </span><br />  <br />
 
                 </div>
                 <div class="modal-body">
+
+<%= simple_form_for @contact, url: deliver_contact_index_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :name %>
+  <%= f.input :message %>
+  <%= f.submit 'Send' %>
+<% end %>
  
-                <form>
+<!--                 <form>
   <p><fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1"  >
@@ -57,7 +64,7 @@ Contact </span><br />  <br />
   </fieldset>
   </p>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> -->
 
 
 

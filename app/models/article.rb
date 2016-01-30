@@ -57,6 +57,8 @@ class Article < ActiveRecord::Base
   def tweetlink
     tweetlink = Article.request.original_url
   end
+
+   
  
   class << self
     def search(query)

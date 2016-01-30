@@ -2084,6 +2084,12 @@ footer.page-footer .footer-copyright {
 }
 
 @media (max-width: 1025px) {
+    .videobox p {
+        display:none;
+    }
+    .videobox span {
+        bottom:0 !important;
+    }
     .numberone {
         width: 44%;
         position: relative;
@@ -2438,7 +2444,7 @@ footer.page-footer .footer-copyright {
     }
     .relateartist {
         display: none;
-    }
+    } 
     .col-md-12.extras {
         padding: 15px;
     }
@@ -2584,7 +2590,7 @@ footer.page-footer .footer-copyright {
   position: absolute; 
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 60px;
   right: 0;
   z-index: 1;
   background: url(https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/video/image/5/videoplay.png) no-repeat center center;
@@ -2596,8 +2602,8 @@ footer.page-footer .footer-copyright {
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 15px;
   z-index: 1;
   background: url(https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/video/image/5/videoplay.png) no-repeat center center;
-  background-size: 50px 50px;
+  background-size: 30% 30%;
 }

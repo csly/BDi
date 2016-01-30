@@ -2,8 +2,12 @@ class Video < ActiveRecord::Base
   has_many :video_artists, dependent: :destroy
   has_many :artists, through: :video_artists
 
-  mount_uploader :image, ReleaseUploader
+  mount_uploader :image, VideoUploader
   crop_uploaded :image
+
+  def preview
+    title[0..34]  +  ".."
+  end 
 
   def embed(youtube)
    youtube_id = url.split("=").last

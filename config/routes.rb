@@ -25,7 +25,11 @@ end
 resources :releases
 resources :videos
 resources :abouts, path: "about"
-resources :contact   
+resources :contact, only: [:index] do
+  collection do
+    post :deliver
+  end
+end   
 resources :composers
 resources :songwriters
 resources :producers

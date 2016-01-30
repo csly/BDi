@@ -18,7 +18,10 @@
   <body> 
    <div class="wrapper">
     <%= render 'shared/nav' %>
-    <div class="clear"></div> 
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    <div class="clear"></div>    
     <%= yield %> 
     <br /><br />
     <div class="clear"></div>
