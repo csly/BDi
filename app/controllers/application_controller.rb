@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
         @cached_tweets = super
         @cached_tweets
       rescue
-        @cached_tweets
+        @cached_tweets || []
       end
     end
   end
