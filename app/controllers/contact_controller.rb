@@ -6,7 +6,7 @@ class ContactController < ApplicationController
 
   def deliver
     Contact.new(params["contact"]).deliver
-    redirect_to contact_index_path, notice: 'Thanks for submitting your shitty demo'
+    redirect_to contact_index_path, notice: 'Thanks for submitting your demo'
   end
 
   private

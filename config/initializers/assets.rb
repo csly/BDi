@@ -3,14 +3,14 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( ckeditor/* articles.js ) 
-Rails.application.config.assets.precompile += %w( ckeditor/* staffs.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* artists.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* releases.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* awards.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* videos.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* presses.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* materialize.js )
-Rails.application.config.assets.precompile += %w( ckeditor/* artawrpre.js )
+Rails.application.config.assets.precompile += %w( staffs.js )
+Rails.application.config.assets.precompile += %w( artists.js )
+Rails.application.config.assets.precompile += %w( releases.js )
+Rails.application.config.assets.precompile += %w( awards.js )
+Rails.application.config.assets.precompile += %w( videos.js )
+Rails.application.config.assets.precompile += %w( presses.js )
+Rails.application.config.assets.precompile += %w( materialize.js )
+Rails.application.config.assets.precompile += %w( artawrpre.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
