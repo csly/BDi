@@ -9,6 +9,8 @@ end
 
 root 'homepage#index'
 
+get 'loaderio-e85c09dfa65bcd2736be73c21b6715c4', to: 'loader#index'
+
 resources :articles, path: "news"
 resources :artists, path: 'roster'  do
   member do
