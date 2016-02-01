@@ -27,7 +27,7 @@
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2 lirel">
-        <%= f.collection_select :artists_id_eq, Artist.used.order('name asc'), :id, :name, {include_blank: 'Artist'}, class: 'form-control custom' %>
+        <%= f.collection_select :artists_id_eq, Artist.used.order('name asc'), :id, :name, {include_blank: 'Songwriter'}, class: 'form-control custom' %>
       </li>
 
       <li class="col-md-2 col-xs-6 col-sm-2 lirel">

@@ -65,6 +65,11 @@ class Artist < ActiveRecord::Base
         artists = artists.where('lower(name) LIKE ? or lower(biog) LIKE ?', query, query) if query
         artists  
     end
+
+    def inuse
+      artist_ids = VideoArtist.distinct(:artist_id).pluck(:artist_id)
+      Artist.where(id: artist_ids)
+    end
   end
 
   def composer_artist(artist)

@@ -2,7 +2,7 @@ class Admin::VideosController < Admin::BaseController
   before_action :require_admin 
 
   def index
-    @videos = Video.all 
+    @videos = Video.unscoped.all.paginate(page: params[:page], per_page: 20).order('videos.created_at DESC')
   end
 
   def show
