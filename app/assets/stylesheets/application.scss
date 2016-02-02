@@ -618,7 +618,12 @@ li.social2 span.normalfont {
 }
 
 /********************************* FORMS ********************************/
-
+abbr[title], abbr[data-original-title]{
+    border:0px;
+}
+label {
+    color: $dark-green;
+}
 input[type=text],
 input[type=password],
 input[type=email],

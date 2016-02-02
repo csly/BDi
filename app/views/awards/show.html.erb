@@ -55,12 +55,12 @@
 <div class="col-md-3 relateartist">
  
 
-  <h5>Share This News Story</h5>
+ <h5>Share This Awards Story</h5>
     <ul class="sharesocial social-buttons">
-      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
-      <li class="social2"><div class="entypo-twitter"><span class="normalfont"> Twitter</span></div></li>
-      <li class="social2"><div class="entypo-facebook"><span class="normalfont"> Facebook</span></div></li>
-    </ul>
+      <li class="social2">  <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => "   width:25px; height:25px"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @award.title  %> Facebook</li>
+      <li class="social2"><%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "   width:25px; height:25px"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %> Twitter </li>
+      <li class="social2"><%= mail_to "", image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter arttwitteri", :style => "width:25px; height:25px"), subject: "BDi Music Awards Story", body: "Check out '" + @award.title + "' via BDi Music: " + request.original_url %> Email</li>
+    </ul> 
 </div>
  <% if @award.artists.blank? %>
  

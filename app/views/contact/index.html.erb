@@ -12,7 +12,10 @@ Contact </span><br />  <br />
   <br />  <br /> 
 
  <div class='containernohome'> 
- 
+ <div class="col-md-12" style="padding: 0px;">
+  <%= flash_messages %> <br />
+ </div>
+ <div class="clear"></div>
 <div class="col-md-9 nopadleft">
  
  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.3600668615713!2d-0.15706198369449334!3d51.54329621589807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761aef0e4eb55b%3A0xf67fb8f8dc169a64!2s212+Regent&#39;s+Park+Rd%2C+London+NW1!5e0!3m2!1sen!2suk!4v1449508396488" width="100%" height="450" frameborder="0" style="border:0 solid white" allowfullscreen></iframe>
@@ -40,34 +43,12 @@ Contact </span><br />  <br />
                 <div class="modal-body">
 
 <%= simple_form_for @contact, url: deliver_contact_index_path do |f| %>
-  <%= f.input :email %>
-  <%= f.input :name %>
-  <%= f.input :message %>
-  <%= f.submit 'Send' %>
+  <%= f.input :name, class: "form-control custom" %><br />
+  <%= f.input :email, class: "form-control custom" %><br />
+  <%= f.input :message, class: "form-control custom", :as => :text, input_html: { :style=> 'width: 100%;', :rows => 4} %><br />
+  <%= f.submit 'Send', class: "btn btn-primary" %>
 <% end %>
  
-<!--                 <form>
-  <p><fieldset class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1"  >
-    
-  </fieldset></p><p>
-  <fieldset class="form-group">
-    <label for="exampleInputEmail1">Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1"  >
-    
-  </fieldset></p><p>
-  
-  <fieldset class="form-group">
-    <label for="exampleTextarea">Message</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </fieldset>
-  </p>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> -->
-
-
-
  </div>
             </div>
         </div>
