@@ -3,4 +3,3 @@ class DropBootsyImageGalleries < ActiveRecord::Migration
     drop_table :bootsy_image_galleries
   end
 end
- 

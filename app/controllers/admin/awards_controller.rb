@@ -1,13 +1,13 @@
 class Admin::AwardsController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
   def index
     @awards = Award.paginate(page: params[:page], per_page: 20).order('awards.created_at DESC')
-  end 
+  end
 
   def show
     @award = Award.find(params[:id])
   end
- 
+
   def new
     @award = Award.new
   end
@@ -20,40 +20,34 @@ class Admin::AwardsController < Admin::BaseController
     @award = Award.new(award_params)
     if @award.save
       if params[:award][:image].present?
-        render :crop  ## Render the view for cropping
+        render :crop ## Render the view for cropping
       else
         redirect_to admin_awards_path(@award), notice: 'award was successfully created.'
       end
     else
       render :new
     end
-  end  
-  
+  end
+
   def update
-    @award = Award.find(params[:id]) 
+    @award = Award.find(params[:id])
     @award.update(award_params)
     if params[:award][:image].present?
-      render :crop  ## Render the view for cropping
+      render :crop ## Render the view for cropping
     else
       redirect_to admin_awards_path(@award)
     end
   end
 
- def destroy
+  def destroy
     @award = Award.find(params[:id])
     @award.destroy
 
     redirect_to admin_awards_path
-  end
+   end
 
   def award_params
     params.require(:award).permit(:title, :body, :image, :created_at, :youtube, :image_crop_x,
-                                    :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
+                                  :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
-
 end
-
-
-
-
-

@@ -12,7 +12,4 @@ class User < ActiveRecord::Base
   def client?
     client
   end
-  
 end
-
-  

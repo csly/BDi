@@ -10,5 +10,4 @@ class Format < ActiveRecord::Base
       Format.where(id: format_ids)
     end
   end
-
 end

@@ -8,7 +8,7 @@ class CreateBootsyImages < ActiveRecord::Migration
     end
   end
 
-   def down
+  def down
     drop_table :bootsy_images
-  end
+ end
 end

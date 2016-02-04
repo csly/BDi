@@ -11,7 +11,4 @@ class Production < ActiveRecord::Base
       Production.find(production_ids)
     end
   end
-
 end
-
-

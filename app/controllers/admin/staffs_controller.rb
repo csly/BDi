@@ -1,5 +1,5 @@
 class Admin::StaffsController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
 
   def index
     @staffs = Staff.all
@@ -21,20 +21,20 @@ class Admin::StaffsController < Admin::BaseController
     @staff = Staff.new(staff_params)
     if @staff.save
       if params[:staff][:photo].present?
-        render :crop  ## Render the view for cropping
+        render :crop ## Render the view for cropping
       else
         redirect_to admin_staffs_path(@staff), notice: 'staff was successfully created.'
       end
     else
       render :new
     end
-  end  
-  
+  end
+
   def update
-    @staff = Staff.find(params[:id]) 
+    @staff = Staff.find(params[:id])
     @staff.update(staff_params)
     if params[:staff][:photo].present?
-      render :crop  ## Render the view for cropping
+      render :crop ## Render the view for cropping
     else
       redirect_to admin_staffs_path(@staff)
     end
@@ -48,7 +48,6 @@ class Admin::StaffsController < Admin::BaseController
   end
 
   def staff_params
-    params.require(:staff).permit(:name, :biog, :photo,  :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :role, :email, :phone)
+    params.require(:staff).permit(:name, :biog, :photo, :photo_crop_x, :photo_crop_y, :photo_crop_w, :photo_crop_h, :role, :email, :phone)
   end
-
 end

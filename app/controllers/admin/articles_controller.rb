@@ -1,5 +1,5 @@
 class Admin::ArticlesController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
   before_action :publish?, only: [:create, :update]
 
   def index
@@ -20,7 +20,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   def draft
     @article = Article.unscoped.find(params[:id])
-    @article.update_attributes({status: :draft, scheduled_at: nil})
+    @article.update_attributes(status: :draft, scheduled_at: nil)
     redirect_to admin_articles_path(@article)
   end
 
@@ -28,24 +28,24 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
     if @article.save
       if params[:article][:image].present?
-        render :crop  ## Render the view for cropping
+        render :crop ## Render the view for cropping
       else
         redirect_to admin_articles_path(@article), notice: 'Article was successfully created.'
       end
     else
       render :new
     end
-  end  
-  
+  end
+
   def update
-    @article = Article.unscoped.find(params[:id]) 
-    if (article_params[:scheduled_at].present?)
-      params[:article][:scheduled_at] = DateTime.strptime(article_params[:scheduled_at], "%m/%d/%Y %l:%M %p")
+    @article = Article.unscoped.find(params[:id])
+    if article_params[:scheduled_at].present?
+      params[:article][:scheduled_at] = DateTime.strptime(article_params[:scheduled_at], '%m/%d/%Y %l:%M %p')
     end
-    
+
     @article.update(article_params)
     if params[:article][:image].present?
-      render :crop  ## Render the view for cropping
+      render :crop ## Render the view for cropping
     else
       redirect_to admin_articles_path(@article)
     end
@@ -54,20 +54,17 @@ class Admin::ArticlesController < Admin::BaseController
   def destroy
     @article = Article.unscoped.find(params[:id])
     @article.destroy
-    
+
     redirect_to admin_articles_path
   end
 
   private
 
   def publish?
-    if (article_params[:status])
-      params[:article][:status] = :published
-    end
+    params[:article][:status] = :published if article_params[:status]
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :scheduled_at, :created_at, :status, :youtube, :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [],)
+    params.require(:article).permit(:title, :body, :scheduled_at, :created_at, :status, :youtube, :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
-  
 end

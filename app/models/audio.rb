@@ -9,5 +9,4 @@ class Audio < ActiveRecord::Base
       NullArtist.new
     end
   end
-  
 end

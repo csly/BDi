@@ -1,6 +1,6 @@
 class Admin::TypesController < ApplicationController
-  before_action :require_admin 
-  
+  before_action :require_admin
+
   def index
     @types = Type.all
     @type = Type.new
@@ -8,9 +8,7 @@ class Admin::TypesController < ApplicationController
 
   def create
     @type = Type.new(type_params)
-    if @type.save
-      redirect_to admin_types_path
-    end
+    redirect_to admin_types_path if @type.save
   end
 
   def new
@@ -19,9 +17,7 @@ class Admin::TypesController < ApplicationController
 
   def destroy
     @type = Type.find(params[:id])
-    if @type.destroy
-      redirect_to admin_types_path
-    end
+    redirect_to admin_types_path if @type.destroy
   end
 
   private
@@ -29,5 +25,4 @@ class Admin::TypesController < ApplicationController
   def type_params
     params.require(:type).permit(:name)
   end
-
 end

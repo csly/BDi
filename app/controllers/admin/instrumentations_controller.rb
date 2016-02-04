@@ -1,6 +1,6 @@
 class Admin::InstrumentationsController < ApplicationController
-  before_action :require_admin 
-  
+  before_action :require_admin
+
   def index
     @instrumentations = Instrumentation.all
     @instrumentation = Instrumentation.new
@@ -8,9 +8,7 @@ class Admin::InstrumentationsController < ApplicationController
 
   def create
     @instrumentation = Instrumentation.new(instrumentation_params)
-    if @instrumentation.save
-      redirect_to admin_instrumentations_path
-    end
+    redirect_to admin_instrumentations_path if @instrumentation.save
   end
 
   def new
@@ -19,9 +17,7 @@ class Admin::InstrumentationsController < ApplicationController
 
   def destroy
     @instrumentation = Instrumentation.find(params[:id])
-    if @instrumentation.destroy
-      redirect_to admin_instrumentations_path
-    end
+    redirect_to admin_instrumentations_path if @instrumentation.destroy
   end
 
   private
@@ -29,5 +25,4 @@ class Admin::InstrumentationsController < ApplicationController
   def instrumentation_params
     params.require(:instrumentation).permit(:name)
   end
-
 end

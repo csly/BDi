@@ -6,7 +6,8 @@ class CreateBootsyImageGalleries < ActiveRecord::Migration
       t.timestamps
     end
   end
-    def down
+
+  def down
     drop_table :bootsy_image_galleries
-  end
+end
 end

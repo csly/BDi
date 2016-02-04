@@ -14,13 +14,11 @@ class Track < ActiveRecord::Base
   has_many :composers, through: :composer_tracks
   belongs_to :publisher
 
-  def searchtrack 
-    if url.present?
-      searchtrack = url.tr(" ", "+")
-    end
+  def searchtrack
+    searchtrack = url.tr(' ', '+') if url.present?
   end
 
-  scope :for_company, -> (company) {
+  scope :for_company, lambda { |company|
     if company
       includes(:production_companies).where('production_companies.id = ?', company.id).references(:production_companies)
     else
@@ -50,5 +48,4 @@ class Track < ActiveRecord::Base
       Track.find(track_ids)
     end
   end
-
 end

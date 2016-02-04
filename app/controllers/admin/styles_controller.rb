@@ -1,6 +1,6 @@
 class Admin::StylesController < ApplicationController
-  before_action :require_admin 
-  
+  before_action :require_admin
+
   def index
     @styles = Style.all
     @style = Style.new
@@ -8,9 +8,7 @@ class Admin::StylesController < ApplicationController
 
   def create
     @style = Style.new(style_params)
-    if @style.save
-      redirect_to admin_styles_path
-    end
+    redirect_to admin_styles_path if @style.save
   end
 
   def new
@@ -19,9 +17,7 @@ class Admin::StylesController < ApplicationController
 
   def destroy
     @style = Style.find(params[:id])
-    if @style.destroy
-      redirect_to admin_styles_path
-    end
+    redirect_to admin_styles_path if @style.destroy
   end
 
   private
@@ -29,5 +25,4 @@ class Admin::StylesController < ApplicationController
   def style_params
     params.require(:style).permit(:name)
   end
-
 end

@@ -1,5 +1,5 @@
 class Admin::PressesController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
   def index
     @presses = Press.paginate(page: params[:page], per_page: 20).order('presses.created_at DESC')
   end
@@ -20,20 +20,20 @@ class Admin::PressesController < Admin::BaseController
     @press = Press.new(press_params)
     if @press.save
       if params[:press][:image].present?
-        render :crop  ## Render the view for cropping
+        render :crop ## Render the view for cropping
       else
         redirect_to admin_presses_path(@press), notice: 'press was successfully created.'
       end
     else
       render :new
     end
-  end  
-  
+  end
+
   def update
-    @press = Press.find(params[:id]) 
+    @press = Press.find(params[:id])
     @press.update(press_params)
     if params[:press][:image].present?
-      render :crop  ## Render the view for cropping
+      render :crop ## Render the view for cropping
     else
       redirect_to admin_presses_path(@press)
     end
@@ -45,14 +45,9 @@ class Admin::PressesController < Admin::BaseController
 
     redirect_to admin_presses_path
   end
- 
+
   def press_params
     params.require(:press).permit(:title, :body, :youtube, :created_at, :link, :download, :image, :image_crop_x,
-                                    :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
+                                  :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
-
 end
-
-
-
-

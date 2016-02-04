@@ -4,7 +4,7 @@ class ArticleWorker
 
   recurrence { minutely }
 
-  def perform(*args)
+  def perform(*_args)
     articles = Article.to_publish
     articles.update_all(status: 1, scheduled_at: nil)
   end

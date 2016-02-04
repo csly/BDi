@@ -1,8 +1,8 @@
 # encoding: utf-8
 class ProductionUploader < CarrierWave::Uploader::Base
-def default_url(*args)
-    "https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png"
-  end
+  def default_url(*_args)
+    'https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png'
+    end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -11,29 +11,20 @@ def default_url(*args)
   # storage :file
   storage :fog
 
- 
-
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
- 
 
   version :thumbnail do
-    process :resize_to_fit => [50, 50]
+    process resize_to_fit: [50, 50]
   end
-
-
 
   version :articlehome do
     process resize_and_crop_home: 1200
   end
-  
 
-  
-  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -67,18 +58,17 @@ def default_url(*args)
   # end
   private
 
-    def resize_and_crop_home(size)  
-    manipulate! do |image|                 
+  def resize_and_crop_home(size)
+    manipulate! do |image|
       if image[:width] < image[:height]
-        remove = ((image[:height] - image[:width])/2).round 
-        image.shave("0x#{remove}") 
-      elsif image[:width] > image[:height] 
-        remove = ((image[:width] - image[:height])/2).round
+        remove = ((image[:height] - image[:width]) / 2).round
+        image.shave("0x#{remove}")
+      elsif image[:width] > image[:height]
+        remove = ((image[:width] - image[:height]) / 2).round
         image.shave("#{remove}x0")
       end
       image.resize("#{size}x#{size}")
       image
     end
-  end
-    
+    end
 end

@@ -14,51 +14,50 @@ class Release < ActiveRecord::Base
   attr_accessor :query, :genre, :artist
 
   def preview
-    body[0..200]  +  "  "
-  end 
+    body[0..200]  +  '  '
+  end
 
   def titlepreview
-    title[0..11]  +  ".."
-  end 
+    title[0..11]  +  '..'
+  end
 
   def bodypreview
-    body[0..22]  +  ".."
-  end 
+    body[0..22]  + '..'
+  end
 
   def newspreview
-    body[0..465] + ".."
+    body[0..465] + '..'
   end
 
   def artistpreview
-    body[0..100] + ".."
+    body[0..100] + '..'
   end
 
   def relbody
-    body[0..140] + ".."
+    body[0..140] + '..'
   end
 
   def artpreview
-    title[0..11]  +  ".."
-  end 
+    title[0..11] + '..'
+  end
 
   def slug
-    title.to_s.downcase.gsub(" ", "-")
+    title.to_s.downcase.tr(' ', '-')
   end
 
   def to_param
     "#{id}-#{slug}"
   end
-   
+
   class << self
     def search(query, genre, artist, format)
       query = (query && !query.empty?) ? "%#{query.downcase}%" : nil
-      releases = Release.includes(:genres, :artists, :formats) 
-      releases = releases.where(genres: {id: genre}) if genre.present?
-      releases = releases.where(artists: {id: artist}) if artist.present?
-      releases = releases.where(formats: {id: format}) if format.present?
+      releases = Release.includes(:genres, :artists, :formats)
+      releases = releases.where(genres: { id: genre }) if genre.present?
+      releases = releases.where(artists: { id: artist }) if artist.present?
+      releases = releases.where(formats: { id: format }) if format.present?
       releases = releases.where('lower(title) ILIKE ? or lower(body) ILIKE ?', query, query) if query
       releases
     end
   end
- 
 end

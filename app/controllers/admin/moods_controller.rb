@@ -1,6 +1,6 @@
 class Admin::MoodsController < ApplicationController
-  before_action :require_admin 
-  
+  before_action :require_admin
+
   def index
     @moods = Mood.all
     @mood = Mood.new
@@ -8,9 +8,7 @@ class Admin::MoodsController < ApplicationController
 
   def create
     @mood = Mood.new(mood_params)
-    if @mood.save
-      redirect_to admin_moods_path
-    end
+    redirect_to admin_moods_path if @mood.save
   end
 
   def new
@@ -19,9 +17,7 @@ class Admin::MoodsController < ApplicationController
 
   def destroy
     @mood = Mood.find(params[:id])
-    if @mood.destroy
-      redirect_to admin_moods_path
-    end
+    redirect_to admin_moods_path if @mood.destroy
   end
 
   private
@@ -29,5 +25,4 @@ class Admin::MoodsController < ApplicationController
   def mood_params
     params.require(:mood).permit(:name)
   end
-
 end

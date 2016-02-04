@@ -7,4 +7,3 @@ class RenameReleaseMedia < ActiveRecord::Migration
     rename_table :release_medias, :release_media
   end
 end
-

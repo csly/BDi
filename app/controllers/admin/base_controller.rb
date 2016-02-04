@@ -1,5 +1,5 @@
 class Admin::BaseController < AdminController
-before_action :require_admin
+  before_action :require_admin
 
   def after_update_path_for(resource)
     DeviseUsageLog.log(resource, DeviseAction::Edit)
@@ -7,5 +7,4 @@ before_action :require_admin
   end
 
   private
-  
 end

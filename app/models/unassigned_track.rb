@@ -1,6 +1,6 @@
 class UnassignedTrack
-  URL = 'https://s3-eu-west-1.amazonaws.com/bdi-music/'
-  
+  URL = 'https://s3-eu-west-1.amazonaws.com/bdi-music/'.freeze
+
   def self.all
     uploaded_tracks
   end
@@ -31,7 +31,7 @@ class UnassignedTrack
   end
 
   def fetch_uploaded_tracks
-    Rails.cache.fetch("uploaded_tracks", expires_in: 24.hours) do
+    Rails.cache.fetch('uploaded_tracks', expires_in: 24.hours) do
       contents = s3.list_objects(bucket: 'bdi-music', prefix: 'tracks').contents
       contents.drop(1).map do |track|
         new(track.key)

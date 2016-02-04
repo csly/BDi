@@ -1,8 +1,8 @@
 # encoding: utf-8
 class TrackUploader < CarrierWave::Uploader::Base
-def default_url(*args)
-    "https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png"
-  end
+  def default_url(*_args)
+    'https://s3-eu-west-1.amazonaws.com/bdi-music/uploads/article/default.png'
+    end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -19,5 +19,5 @@ def default_url(*args)
 
   def extension_white_list
     %w(mp3)
-  end 
+  end
 end

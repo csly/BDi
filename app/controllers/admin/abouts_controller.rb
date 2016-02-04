@@ -1,5 +1,5 @@
 class Admin::AboutsController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
 
   def index
     @abouts = About.all
@@ -13,18 +13,18 @@ class Admin::AboutsController < Admin::BaseController
   def new
     @about = About.new
   end
-  
+
   def edit
     @about = About.find(params[:id])
   end
 
   def create
     @about = About.new(about_params)
-      if @about.save
-        redirect_to admin_about_path(@about)
-      else
-        render :new
-    end
+    if @about.save
+      redirect_to admin_about_path(@about)
+    else
+      render :new
+  end
   end
 
   def update
@@ -37,5 +37,4 @@ class Admin::AboutsController < Admin::BaseController
   def about_params
     params.require(:about).permit(:body, :photo)
   end
-
 end

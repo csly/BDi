@@ -1,5 +1,5 @@
 class Admin::ArtistsController < Admin::BaseController
-  before_action :require_admin 
+  before_action :require_admin
 
   def index
     @artists = Artist.paginate(page: params[:page], per_page: 20).order('artists.created_at DESC')
@@ -16,44 +16,40 @@ class Admin::ArtistsController < Admin::BaseController
   def edit
     @artist = Artist.find(params[:id])
   end
- 
+
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
       if params[:artist][:photo].present?
-        render :crop  ## Render the view for cropping
+        render :crop ## Render the view for cropping
       else
         redirect_to admin_artists_path(@artist), notice: 'artist was successfully created.'
       end
     else
       render :new
     end
-  end  
-  
+  end
+
   def update
-    @artist = Artist.find(params[:id]) 
+    @artist = Artist.find(params[:id])
     @artist.update(artist_params)
     if params[:artist][:photo].present?
-      render :crop  ## Render the view for cropping
+      render :crop ## Render the view for cropping
     else
       redirect_to admin_artists_path(@artist)
     end
   end
 
- def destroy
+  def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
 
     redirect_to admin_artist_path
-  end
- 
+   end
+
   def artist_params
     params.require(:artist).permit(:name, :biog, :photo, :photo, :biography, :remove_biography, :photo_crop_x,
-                                    :photo_crop_y, :photo_crop_w, :photo_crop_h, :links, :composer, :songwriter, :artisttag, :producer, :twitter, :facebook,  article_ids: [], 
-                                    award_ids: [], genre_ids: [], type_ids: [], format_ids: [])
+                                   :photo_crop_y, :photo_crop_w, :photo_crop_h, :links, :composer, :songwriter, :artisttag, :producer, :twitter, :facebook,  article_ids: [],
+                                                                                                                                                             award_ids: [], genre_ids: [], type_ids: [], format_ids: [])
   end
-
 end
-
-
-

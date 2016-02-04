@@ -8,5 +8,4 @@ module ArtistHelper
     end
     safe_join(list, ', ')
   end
-    
 end

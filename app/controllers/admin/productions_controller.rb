@@ -1,6 +1,6 @@
 class Admin::ProductionsController < ApplicationController
-  before_action :require_admin 
-  
+  before_action :require_admin
+
   def index
     @productions = Production.all
     @production = Production.new
@@ -8,20 +8,16 @@ class Admin::ProductionsController < ApplicationController
 
   def create
     @production = Production.new(production_params)
-    if @production.save
-      redirect_to admin_productions_path
-    end
+    redirect_to admin_productions_path if @production.save
   end
 
-   def new
+  def new
     @production = Production.new
-  end
+ end
 
   def destroy
     @production = Production.find(params[:id])
-    if @production.destroy
-      redirect_to admin_productions_path
-    end
+    redirect_to admin_productions_path if @production.destroy
   end
 
   private
@@ -29,5 +25,4 @@ class Admin::ProductionsController < ApplicationController
   def production_params
     params.require(:production).permit(:name)
   end
-
 end

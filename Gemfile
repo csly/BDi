@@ -1,29 +1,28 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0' 
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby 
+# gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
 gem 'sanitize'
 gem 'simple_form', '3.1.0.rc2'
 gem 'mail_form'
 gem 'aws-sdk', '~> 2'
-gem 'bootstrap-sass' 
+gem 'bootstrap-sass'
 gem 'pry-rails'
-gem 'cancancan'   
+gem 'cancancan'
 gem 'seed_dump'
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'carrierwave'
 gem 'carrierwave-crop'
 gem 'fog'
@@ -32,13 +31,13 @@ gem 'active_model_serializers'
 gem 'responders'
 gem 'dotenv'
 gem 'twitter'
-gem 'twitter-text' 
+gem 'twitter-text'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'sidekiq'
 gem 'sidetiq'
-gem 'sinatra', :require => nil
-gem 'ransack' 
+gem 'sinatra', require: nil
+gem 'ransack'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -64,7 +63,7 @@ gem 'audiojs-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "letter_opener", :group => :development
+gem 'letter_opener', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -86,4 +85,3 @@ end
 group :production do
   gem 'rails_12factor'
 end
-

@@ -1,5 +1,4 @@
 class TrackStyle < ActiveRecord::Base
   belongs_to :track
-  belongs_to :style 
-  
+  belongs_to :style
 end
