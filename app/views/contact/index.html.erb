@@ -45,7 +45,7 @@ Contact </span><br />  <br />
 <%= simple_form_for @contact, url: deliver_contact_index_path do |f| %>
   <%= f.input :name, class: "form-control custom" %><br />
   <%= f.input :email, class: "form-control custom" %><br />
-  <%= f.input :message, class: "form-control custom", :as => :text, input_html: { :style=> 'width: 100%;', :rows => 4} %><br />
+  <%= f.input :message, hint: "Please include a link to your Soundcloud or website", class: "form-control custom", :as => :text, input_html: { :style=> 'width: 100%;', :rows => 4} %><br />
   <%= f.submit 'Send', class: "btn btn-primary" %>
 <% end %>
  
