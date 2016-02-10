@@ -4,6 +4,7 @@
   <%= f.input :youtube, hint: 'Video: please use the video url. Youtube only'  %>
   <%= f.association :artists, collection: Artist.order('name ASC') %><br />  
   <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary', label: 'Created at' %> <br /><br />
+  
   <%= f.file_field :image %><br /> 
     <% if f.object.persisted? && f.object.image.present? %>
     <%= image_tag f.object.image, class: 'persisted-image-preview' %>

@@ -24,7 +24,7 @@
 
 
 
-  <div id="custom-search-input" style="width:92%">
+  <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :press, url: url_for(presses_path), method: 'get' do |f| %>
         <div class="col-md-10">
@@ -38,7 +38,7 @@
         </div>
    </div><br /><br />
    <% @presses.each do |press| %>
-  <div class="col-md-11 col-sm-12 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12"  style="padding:0px;">
     <div class="col-md-4 col-xs-12 col-sm-6 new-image">
       <%= image_tag press.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
     </div>
@@ -62,17 +62,19 @@
 
     <div class="clear"></div>
 
-    <div class="col-md-11"> 
+    
+</div>
+
+<div class="col-md-3 homesidebar newsside">  
+   
+ <%= render 'shared/twittersidebar' %>
+   </div>
+
+   <div class="col-md-11"> 
     <div class="middle">
       <%= will_paginate @presses, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>
     </div>
-</div>
-
-<div class="col-md-3 homesidebar">  
-   
- <%= render 'shared/twittersidebar' %>
-   </div>
 </div>
  
 <% content_for :extra_footer do %>

@@ -38,6 +38,7 @@ gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', require: nil
 gem 'ransack'
+gem 'owlcarousel-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

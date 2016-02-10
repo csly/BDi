@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   has_many :artists, through: :article_artists
 
   mount_uploader :image, ImageUploader
-  crop_uploaded :image
+  crop_uploaded :image 
 
   attr_accessor :query
 

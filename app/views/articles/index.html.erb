@@ -20,7 +20,7 @@
   </div>
   <div class="clear"></div>
   <div class="col-md-9 col-sm-12 col-xs-12 articlesindex"> 
-    <div id="custom-search-input" style="width:92%">
+    <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
           <div class="col-md-10">
@@ -35,7 +35,7 @@
         </div>
    </div><br /><br />
    <% @articles.each do |article| %>
-  <div class="col-md-11 col-sm-12 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
     <div class="col-md-4 col-xs-12 col-sm-6 new-image">
       <%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
     </div>
@@ -52,25 +52,27 @@
         <p class="readmoreart" style="margin-top: -12px;"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
     </div>
     <div class="clear"></div>
-     <hr><br />
+     <br /><hr><br />
   </div>
 <% end %>
 
     <div class="clear"></div>
 
-    <div class="col-md-11"> 
+    
+</div>
+
+<div class="col-md-3 homesidebar newsside">  
+   
+ <%= render 'shared/twittersidebar' %>
+   </div>
+
+   <div class="col-md-12"> 
     <div class="middle">
       <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>
     </div>
 </div>
 
-<div class="col-md-3 homesidebar">  
-   
- <%= render 'shared/twittersidebar' %>
-   </div>
-</div>
-  
 
 <% content_for :extra_footer do %>
   <%= javascript_include_tag 'artawrpre' %>

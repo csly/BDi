@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
       @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
       @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
       username = 'bdimusic'
-      options = { count: 22, include_rts: true }
+      options = { count: 30, include_rts: true }
       @tweets = $client.user_timeline(username, options)
       if @articles.blank?
         redirect_to articles_path(@article), notice: 'There are no News Articles that match your search requirements. Please try again'
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
       @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
       @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
       username = 'bdimusic'
-      options = { count: 22, include_rts: true }
+      options = { count: 30, include_rts: true }
       @tweets = $client.user_timeline(username, options)
     end
   end

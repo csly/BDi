@@ -7,7 +7,7 @@ class PressesController < ApplicationController
       @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
       @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
       username = 'bdimusic'
-      options = { count: 20, include_rts: true }
+      options = { count: 30, include_rts: true }
       @tweets = $client.user_timeline(username, options)
       if @presses.blank?
         redirect_to presses_path(@press), notice: 'There are no Stories that match your search requirements. Please try again'
@@ -19,7 +19,7 @@ class PressesController < ApplicationController
       @recentpress = Press.paginate(page: params[:page], per_page: 5).order('presses.created_at DESC')
       @recentawards = Award.paginate(page: params[:page], per_page: 5).order('awards.created_at DESC')
       username = 'bdimusic'
-      options = { count: 20, include_rts: true }
+      options = { count: 30, include_rts: true }
       @tweets = $client.user_timeline(username, options)
     end
   end
