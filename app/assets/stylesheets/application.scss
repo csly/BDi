@@ -1148,13 +1148,7 @@ a.morelink {
 }
 
 /********************************* NEWS/PRESS/AWARDS ********************************/
-
-.awardsside ul.tweets {
-    height: 2486px;
-}
-.newsside ul.tweets {
-    height: 3564px;
-}
+ 
 .featuredbanner {
     width:100%;
 }
@@ -1167,6 +1161,14 @@ div.outer {
 }
 .articlesindex {
     padding: 0px;
+    border-right: 1px solid #cecece;
+}
+hr.pressit {padding-bottom: 1.5em; } 
+.newsside {
+    border: 0px;
+}
+.awardsside {
+    border: 0px;
 }
 .articlesindex #custom-search-input {
     padding-right:15px;
