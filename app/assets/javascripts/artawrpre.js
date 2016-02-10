@@ -5,4 +5,4 @@
             maxHeight = inners[i].offsetHeight;
     }
     for (var i = 0; i < inners.length; i++)
-        inners[i].style.height = maxHeight + 'px';
+        inners[i].style.height = '240' + 'px';
