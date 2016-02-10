@@ -15,7 +15,7 @@ class Press < ActiveRecord::Base
   end
 
   def newspreview
-    body[0..300].strip + ' '
+    body[0..300].strip + '..'
   end
 
   def artistpreview
