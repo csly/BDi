@@ -37,8 +37,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', require: nil
-gem 'ransack'
-gem 'owlcarousel-rails'
+gem 'ransack' 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

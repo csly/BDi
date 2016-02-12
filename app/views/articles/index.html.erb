@@ -15,11 +15,13 @@
 </div> 
 <br /> 
 <div class="containernohome">
+
   <div class="col-md-9" style="padding: 0px;">
     <%= flash_messages %> <br />
   </div>
-  <div class="clear"></div>
+  <div class="clear"></div> 
   <div class="col-md-9 col-sm-12 col-xs-12 articlesindex"> 
+  <div class="inside inside-full-height">
     <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
@@ -35,7 +37,7 @@
         </div>
    </div><br /><br />
    <% @articles.each do |article| %>
-  <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+  <div class="col-md-12 col-sm-12 col-xs-12 testing" style="padding:0px;">
     <div class="col-md-4 col-xs-12 col-sm-6 new-image">
       <%= image_tag article.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
     </div>
@@ -49,42 +51,30 @@
         <p><%= sanitize article.newspreview, tags: %w(), attributes: %w(href)  %></p>
         <br /><br />
         </div> 
-        <p class="readmoreart" style="margin-top: -12px;"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
+        <p class="readmoreart" style="margin-top: 13px;"><a href="<%= article_path(article) %>" class="readmorenohome">Read More</a></p>
     </div>
     <div class="clear"></div>
-     <br /><hr><br />
+     <br /><hr class="pressit"> 
   </div>
 <% end %>
 
     <div class="clear"></div>
-
-    
+ 
 </div>
-
-<div class="col-md-3 homesidebar newsside">  
-   
+</div> 
+<div class="col-md-3 homesidebar newsside">   
  <%= render 'shared/twittersidebar' %>
-   </div>
-
+ 
+ 
+</div>
    <div class="col-md-12"> 
     <div class="middle">
       <%= will_paginate @articles, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>
     </div>
 </div>
-
+ 
 
 <% content_for :extra_footer do %>
-<script>
-   var inners = document.getElementsByClassName("inner");
-    var maxHeight = 0;
-    for (var i = 0; i < inners.length; i++) {
-        if (inners[i].offsetHeight > maxHeight)
-            maxHeight = inners[i].offsetHeight;
-    }
-    for (var i = 0; i < inners.length; i++)
-        inners[i].style.height = '240' + 'px';
-</script>
+<%= javascript_include_tag 'artawrpre' %>
 <% end %>
-  
-  

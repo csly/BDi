@@ -53,7 +53,7 @@
          
         <br /><br />
         </div> 
-        <p class="readmoreart" style="margin-top: 10px;"><a href="<%= award_path(award) %>" class="readmorenohome">Read More</a></p>
+        <p class="readmoreart" style="margin-top: 11px;"><a href="<%= award_path(award) %>" class="readmorenohome">Read More</a></p>
     </div>
     <div class="clear"></div>
     <br /><hr><br />
@@ -77,15 +77,6 @@
     </div>
 </div>
 <% content_for :extra_footer do %>
-<script>
-   var inners = document.getElementsByClassName("inner");
-    var maxHeight = 0;
-    for (var i = 0; i < inners.length; i++) {
-        if (inners[i].offsetHeight > maxHeight)
-            maxHeight = inners[i].offsetHeight;
-    }
-    for (var i = 0; i < inners.length; i++)
-        inners[i].style.height = '240' + 'px';
-</script>
+<%= javascript_include_tag 'artawrpre' %>
 <% end %>
   

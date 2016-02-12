@@ -1,6 +1,4 @@
-/* 
-*= require owl.carousel
-*= require owl.theme
+/*  
 *= require jquery.jcrop 
 */
 
@@ -1163,6 +1161,9 @@ div.outer {
     padding: 0px;
     border-right: 1px solid #cecece;
 }
+.articlesindex .col-md-12:last-child hr:last-child  {
+    background:black;
+} 
 hr.pressit {padding-bottom: 1.5em; } 
 .newsside {
     border: 0px;
