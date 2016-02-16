@@ -21,7 +21,6 @@
   </div>
   <div class="clear"></div> 
   <div class="col-md-9 col-sm-12 col-xs-12 articlesindex"> 
-  <div class="inside inside-full-height">
     <div id="custom-search-input">
       <div class="input-group col-md-12">
         <%= simple_form_for :article, url: url_for(articles_path), method: 'get' do |f| %>
@@ -59,8 +58,7 @@
 <% end %>
 
     <div class="clear"></div>
- 
-</div>
+  
 </div> 
 <div class="col-md-3 homesidebar newsside">   
  <%= render 'shared/twittersidebar' %>
@@ -78,3 +76,13 @@
 <% content_for :extra_footer do %>
 <%= javascript_include_tag 'artawrpre' %>
 <% end %>
+
+<style>
+.reply:last-child hr {
+    display:none;
+}
+
+.containernohome .articlesindex .col-md-12:first-child {
+     background-color:black !important;
+}
+</style> 
