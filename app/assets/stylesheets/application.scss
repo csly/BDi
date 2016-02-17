@@ -619,6 +619,9 @@ li.social2 span.normalfont {
 
 /********************************* FORMS ********************************/
 
+.date {
+    border: 0px !important;
+}
 table.admin-table td {
     padding:7px;
 }
@@ -1625,6 +1628,7 @@ ul#grid-items li.col-md-4 {
 }
 span.artname {
     color: #9d9d9d;
+    text-transform: capitalize;
 }
 span.artist-name-main {
     line-height: 20px;
