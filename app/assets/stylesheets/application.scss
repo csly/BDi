@@ -249,6 +249,7 @@ ul a:hover {
 p.morearticles a {
     color: $bdi-green;
     font-size: 90%;
+    text-transform: capitalize;
 }
 p.morearticles a:hover {
     color: $dark-green;
@@ -276,6 +277,9 @@ small a:hover {
 }
 .fright {
     float: right;
+}
+.fleft {
+    float: left;
 }
 .lowercase {
       text-transform: capitalize;
@@ -643,7 +647,7 @@ input[type=number],
 input[type=search],
 textarea.materialize-textarea {
     outline: none;
-    padding: 15px;
+    /**padding: 15px;**/
 }
 
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
@@ -694,8 +698,8 @@ input[type=text].invalid {
     height: 32px;
 }
 .form-control {
-    line-height: inherit;
-    height: 32px;
+    /**line-height: inherit;**/
+    /**height: 32px;**/
 }
 .input-group .form-control:last-child {
     box-sizing: content-box;
@@ -1904,6 +1908,18 @@ table.admin-table-news {
     }
     th.a-four {
         width: 20%;
+    }
+    th.a-threefive {
+        width: 35%;
+    }
+    th.a-halve {
+        width: 35%;
+    }
+    td.a-halve {
+        width: 15%;
+    }
+    td.a-threefive {
+        width: 35%;
     }
     td.a-one {
         width: 5%;

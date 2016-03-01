@@ -1,10 +1,19 @@
 class Admin::AudiosController < Admin::BaseController
-  def index
-    @audios = Audio.all
-  end
+  def index 
+    @search = Audio.search(params[:q]) 
+    if params[:q].nil?
+       @audios = @search.result(:distinct => true).order('created_at DESC')
+      else
+       @audios = @search.result(:distinct => true).order('created_at DESC')
+    end
+  end 
 
   def new
     @audio = Audio.new
+  end
+
+  def edit
+    @audio = Audio.find(params[:id])
   end
 
   def show
@@ -15,16 +24,27 @@ class Admin::AudiosController < Admin::BaseController
     redirect_to admin_audios_path if @audio.save
   end
 
+  def update
+    @audio = Audio.find(params[:id])
+    @audio.update(audio_params)
+
+    redirect_to admin_audios_path(@audio)
+  end
+
   def destroy
     @audio = Audio.find(params[:id])
     @audio.destroy
 
     redirect_to admin_audios_path
-  end
+  end 
+
+  
 
   private
 
   def audio_params
-    params.require(:audio).permit(:name, :track, :artist_id)
+    params.require(:audio).permit(:name, :track, :arrange, :artist_id)
   end
 end
+
+ 

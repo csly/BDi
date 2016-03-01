@@ -47,6 +47,8 @@ class Artist < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
+  
+
   def count
     @artists = Artist.find(params[:id])
   end
@@ -70,6 +72,8 @@ class Artist < ActiveRecord::Base
       artist_ids = VideoArtist.distinct(:artist_id).pluck(:artist_id)
       Artist.where(id: artist_ids)
     end
+
+
   end
 
   def composer_artist(artist)

@@ -1,6 +1,7 @@
 <%= simple_form_for([:admin, @audio]) do |f| %>
   <%= f.input :name %>
   <%= f.association :artist, collection: Artist.order('name ASC') %>
+  <%= f.input :arrange, collection: 1..10, label: 'Order' %> 
   <%= f.file_field :track %><br />
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

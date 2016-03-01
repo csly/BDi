@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
   crop_uploaded :image
 
   def preview
-    title[0..34] + '..'
+    title[0..30] + '..'
   end
 
   def embed(_youtube)

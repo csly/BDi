@@ -1,26 +1,58 @@
 <%= render 'shared/adminnav' %>
 <div class="col-md-9">
-<h4> List Of Audio</h4><%= link_to "+ New", new_admin_audio_path, class: "btn btn-primary"  %>
-<table class="admin-table-news">
-  <tbody> 
- <th class="a-one"><p>ID</p></th>
-  <th class="a-two"><p>Name</p></th>
-  <th class="a-two"><p>Arist</p></th>
-  <th class="a-two"><p>Links</p></th>
-  </tbody>
+<h4> List Of Audio</h4><%= link_to "+ New", new_admin_audio_path, class: "btn btn-primary"  %><br /><br />
+
+ 
+ 
+   <div id="custom-search-input" style="width:92%">
+      <div class="input-group col-md-12">
+      <%= search_form_for @search, url: url_for(admin_audios_path) do |f| %>
+         <div class="col-md-11">
+        <%= f.search_field :name_cont, class: 'search-query form-control' %>
+        </div>
+        <div class="col-md-1">
+        <%= f.submit 'Search', class: 'btn btn-primary' %>  
+        </div>
+        <% end %>
+                    
+        </div>
+   </div><br /><br />
+
+<div class="col-md-9"> 
+  <%= flash_messages %> 
+    </div>
+
+  <table class="admin-table-news">
+    <tr> 
+    <th class="a-one">Order</th>
+    <th class="a-two">Name</th>
+    <th class="a-two"><%= sort_link(@search, :artist_id, 'Artist', default_order: :desc) %></th>
+    <th class="a-halve">Created At</th>
+    <th class="a-threefive">Links</th>
+    </tr>
+   <tbody>  
 <% @audios.each do |audio| %>
+
   <tr> 
-  <td class="a-one"><p><%= audio.id %></p></td>
+  <td class="a-one"><p><%= audio.arrange %></p></td>
   <td class="a-two"><p><%= audio.name %></p></td>
   <td class="a-two"><p><%= audio.artist.name %></p></td>
-  <td class="a-two">  
-   <%= link_to 'Delete', admin_audio_path(audio), method: :delete, class: "btn btn-primary"  %></td>
+  <td class="a-halve"><p><%= audio.created_at.strftime('%m-%e-%y' ' at ' '%H:%M') %></p></td>
+  <td class="a-threefive">  
+   <%= link_to 'Delete', admin_audio_path(audio), method: :delete, class: "btn btn-primary"  %>
+   <%= link_to 'Edit', edit_admin_audio_path(audio), :class =>  "btn btn-primary", :method => :get  %> 
+   </td>
   </tr>
 
 <% end %>
+</tbody>
 </table>
 </div>
 
 
 <%= render 'shared/adminnavfooter' %>
 
+ 
+
+
+ 

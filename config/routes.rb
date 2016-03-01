@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     resources :artists
     resources :awards
     resources :audios
+    resources :audio_artists
     resources :presses
     resources :releases
     resources :videos

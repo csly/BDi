@@ -43,10 +43,11 @@
     <audio preload=""></audio>
     <ol class="audioplayer">
      
-    <% @artist.audios.order('created_at ASC').each do |audio| %>
+    <% @artist.audios.order('arrange ASC').each do |audio| %>
 
       <li class="audioli"><a href="#" data-src=<%= audio.track.url %>><%= audio.name %></a></li>
     <% end %>
+     
     </ol>
     <% end %>
     <h4 class="artside">Share This Artist:</h4>
