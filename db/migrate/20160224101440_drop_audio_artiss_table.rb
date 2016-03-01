@@ -1,4 +1,4 @@
-class DropAudioArtistsTable < ActiveRecord::Migration
+class DropAudioArtissTable < ActiveRecord::Migration
   def change
   end
    def down
