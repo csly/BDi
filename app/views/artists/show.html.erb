@@ -13,10 +13,10 @@
 
     <% if @artist.facebook.blank? %>
     <% else %>
-    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook %> <% end %>
+    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook, :target => "_blank" %> <% end %>
 <% if @artist.twitter.blank? %>
     <% else %>
-    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter %> <% end %>
+    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter, :target => "_blank" %> <% end %>
   </div>  </div>
 </div> 
 <br />  <br /> 
@@ -50,11 +50,8 @@
      
     </ol>
     <% end %>
-    <h4 class="artside">Share This Artist:</h4>
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), 'http://www.facebook.com/sharer.php?u=' + request.original_url + '&t=' + @artist.name  %> 
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), 'https://twitter.com/intent/tweet?url=' + request.original_url + '&via=BDiMusic' %>
 
-      <%= mail_to "", image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/12/email.png", :class => "twitter arttwitteri", :style => "width:40px; padding-right:0.4em;"), subject: "BDi Music Artist", body: "Check out " + @artist.name + "'s profile on BDi Music: " + request.original_url %>
+     
 
     </div> 
   <div class="col-md-9 col-sm-9 newsblur">

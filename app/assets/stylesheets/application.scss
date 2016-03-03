@@ -2145,6 +2145,7 @@ footer.page-footer .footer-copyright {
     .articlesindex {
         border: 0px !important;
     }
+
 }
 
 @media (max-width: 1025px) {
@@ -2266,6 +2267,7 @@ footer.page-footer .footer-copyright {
 
 @media (min-width: 750px) and (max-width: 1000px) and (orientation: portrait) {
     
+
     .contact {
         padding-left: 0px
     }
@@ -2316,6 +2318,7 @@ footer.page-footer .footer-copyright {
 }
 
 @media (max-width: 750px) {
+    .container-fluid{margin-top:-3em !important;}
     .artdisco .col-xs-3 {
         padding-bottom:10px !important;
     }
