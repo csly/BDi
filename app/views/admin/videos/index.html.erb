@@ -33,12 +33,14 @@
   </tr>
 
 <% end %>
-</table><br /><br />
- 
+</table>
+<br /><br />
+<div class="col-md-10"> 
+    <div class="middle">
+      <%= will_paginate @artists, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %>
+      </div>
+    </div>
 </div>
 </div> 
-
-
-
-
+ 
 <%= render 'shared/adminnavfooter' %>

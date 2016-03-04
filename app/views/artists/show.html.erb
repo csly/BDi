@@ -125,8 +125,10 @@
  </div>
 <div class="clear"></div>
 
- 
+<% if @artist.videos.present? %>
 <hr class="artbiog2">
+<% else %>
+<% end %>
 
 <div class="col-md-12 artdisco">
  <% if @artist.videos.blank? %>
