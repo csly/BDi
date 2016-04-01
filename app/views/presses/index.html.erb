@@ -36,9 +36,9 @@
         <% end %>
                     
         </div>
-   </div><br /><br />
+   </div><br />
    <% @presses.each do |press| %>
-  <div class="col-md-12 col-sm-12 col-xs-12"  style="padding:0px;">
+  <div class="col-md-12 col-sm-12 col-xs-12"  style="padding:2.5em 0px; border-right: 1px solid #cecece; border-bottom: 1px solid #cecece;">
     <div class="col-md-4 col-xs-12 col-sm-6 new-image">
       <%= image_tag press.image.articlehome.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
     </div>
@@ -55,8 +55,7 @@
         </div> 
         <p class="readmoreart" style="margin-top: -7px;"><a href="<%= press_path(press) %>" class="readmorenohome">Read More</a></p>
     </div>
-    <div class="clear"></div>
-    <br /><hr class="pressit"> 
+    <div class="clear"></div> 
   </div>
 <% end %>
 
@@ -70,7 +69,7 @@
  <%= render 'shared/twittersidebar' %>
    </div>
 
-   <div class="col-md-11"> 
+   <div class="col-md-12"> 
     <div class="middle">
       <%= will_paginate @presses, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
       </div>

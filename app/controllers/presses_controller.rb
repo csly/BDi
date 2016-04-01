@@ -46,3 +46,6 @@ class PressesController < ApplicationController
     params.require(:press).permit(:title, :body, :image, :link, :created_at, :youtube, artist_ids: [])
   end
 end
+
+
+

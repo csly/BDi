@@ -37,6 +37,7 @@ class Press < ActiveRecord::Base
   def next
     Press.limit(1).order('id ASC').where('id > ?', id).first
   end
+  
 
   class << self
     def search(query)

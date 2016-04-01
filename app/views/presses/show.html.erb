@@ -40,7 +40,7 @@
  <%= @press.body.html_safe %> 
  <Br />
  <% if @press.link.blank? %>
- <% else %>
+ <% else %> 
  <%= link_to "Read More", "#{@press.link}", target: "_blank", class: "btn btn-large btn-primary" %>
 <br /><br />
  <% end %>
@@ -123,6 +123,29 @@
 
   
 </div>
+
+<script>
+
+$(document).ready(function() {
+  $("#url-submit").on('click', function() {
+    var link = $("#url");
+    setTimeout(function() {
+      var text = $(link).val();
+      // send url to service for parsing
+      $.ajax('/linkpreview', {
+        type: 'POST',
+        dataType:'json',
+        data: { url: text },
+        success: function(data, textStatus, jqXHR) {
+          $("#item_title").val(data['title']);
+        },
+        error: function() { alert("error"); }
+      }); 
+    }, 100);
+  });
+});
+
+</script>
 
 
 
