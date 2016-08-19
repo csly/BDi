@@ -1,0 +1,66 @@
+<% content_for :title, "| Products" %>
+
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Products', products_path %> 
+</span>
+<br /><br />
+<span class="artist-name-main">
+Products  
+</span>
+
+ </div>
+</div> 
+
+<div class="containernohome"><br /><br /><br />
+
+
+  <div class="clear"><br /></div>
+<div class="col-md-9 col-xs-12">
+<div class="portfolio-items grid">
+  <div class="row">
+   <% @products.each do |product| %>
+        <div class="col-md-3">
+          <div class="card product">
+            <div class="card-image"> 
+              <%= link_to (image_tag product.image.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive artistmi'), product_path(product) %>
+            </div>
+            <div class="card-content">
+              <p><b><%= link_to product.title, product_path(product) %></b><Br /><%= product.description.html_safe %></p>
+              <% if product.artists.blank? %>
+      <% else %> 
+      <p><%= artist_list_for(product.artists) %></p>
+      <% end %> 
+            </div>
+            <div class="card-action">
+               
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <style>
+      .product .card-content {
+        height:auto;
+      }
+      </style>
+</div>
+<div class="clear"></div>
+</div>
+ <div class="col-md-3 homesidebar">   
+      <%= render 'shared/twittersidebar' %>
+   </div> 
+</div>
+   
+
+      
+</div>
+</div>
+
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'materialize' %>
+<% end %>
+ 
+
+   

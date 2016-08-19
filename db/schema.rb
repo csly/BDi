@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224115340) do
+ActiveRecord::Schema.define(version: 20160818113844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,6 +267,13 @@ ActiveRecord::Schema.define(version: 20160224115340) do
     t.string   "download"
   end
 
+  create_table "product_artists", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "production_companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -281,6 +288,16 @@ ActiveRecord::Schema.define(version: 20160224115340) do
   end
 
   add_index "productions", ["production_company_id"], name: "index_productions_on_production_company_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.string   "link"
+    t.string   "image"
+    t.text     "description"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "price",       precision: 8, scale: 2
+  end
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
@@ -452,8 +469,10 @@ ActiveRecord::Schema.define(version: 20160224115340) do
     t.string   "title"
     t.string   "url"
     t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "youtube",    default: true
+    t.boolean  "vimeo"
   end
 
 end

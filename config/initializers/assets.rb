@@ -8,11 +8,12 @@ Rails.application.config.assets.precompile += %w( artists.js )
 Rails.application.config.assets.precompile += %w( releases.js )
 Rails.application.config.assets.precompile += %w( awards.js )
 Rails.application.config.assets.precompile += %w( videos.js )
+Rails.application.config.assets.precompile += %w( vimeos.js )
 Rails.application.config.assets.precompile += %w( presses.js )
 Rails.application.config.assets.precompile += %w( materialize.js )
 Rails.application.config.assets.precompile += %w( artawrpre.js )
 Rails.application.config.assets.precompile += %w( jquery.js ) 
-
+Rails.application.config.assets.precompile += %w( products.js ) 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

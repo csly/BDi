@@ -16,10 +16,20 @@
 
  <div class='containernohome'> 
  
+<% if @video.youtube == true %>
 <div class="news" style="width:100%">
       <div class="col-md-12 col-sm-12"> 
       <div class="embed-container"><%= embed(@video.url) %>  </div>
       </div>
+
+<% elsif @video.vimeo == true %>
+<div class="news" style="width:100%">
+<div class="videoWrapper">
+<iframe src="https://player.vimeo.com/video/<%= @video.vimeoid %>" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+</div> 
+<% end %>
+
+
 <div class="clear"></div>
 <h4>Related Artists:</h4></div>
 
@@ -31,9 +41,8 @@
     <p class=""><%= link_to artist.name, artist_path(artist), :class =>'artist-name' %></p>
  </p>
   </div> 
+
 <% end %>
-
-
 
 
 

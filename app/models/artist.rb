@@ -15,7 +15,11 @@ class Artist < ActiveRecord::Base
   has_many :formats, through: :artist_formats
   has_many :video_artists, dependent: :destroy
   has_many :videos, through: :video_artists
+  has_many :vimeo_artists, dependent: :destroy
+  has_many :vimeos, through: :vimeo_artists
   has_many :audios
+  has_many :product_artists, dependent: :destroy
+  has_many :products, through: :product_artists
 
   mount_uploader :photo, ArtistUploader
   mount_uploader :biography, PDFUploader

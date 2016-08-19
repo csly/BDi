@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   end
 
   resources :releases
-  resources :videos
+  resources :products
+  resources :videos 
   resources :abouts, path: 'about'
   resources :contact, only: [:index] do
     collection do
@@ -58,10 +59,11 @@ Rails.application.routes.draw do
     resources :artists
     resources :awards
     resources :audios
+    resources :products
     resources :audio_artists
     resources :presses
     resources :releases
-    resources :videos
+    resources :videos 
     resources :abouts
     resources :users
     resources :genres

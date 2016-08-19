@@ -1,0 +1,13 @@
+<%= simple_form_for([:admin, @product], html: {multipart: true}) do |f| %>
+  <%= f.input :title %>
+    <%= f.input :description, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %> 
+    <%= f.input :link %> 
+     <%= f.input :price,  :label => false do %>
+    <%= content_tag :span, "£", :class => "add-on" %>
+    <%= f.input_field :price %>
+  <% end %>
+    <%= f.association :artists, collection: Artist.order('name ASC') %>
+  <%= f.file_field :image %><br />
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+ 

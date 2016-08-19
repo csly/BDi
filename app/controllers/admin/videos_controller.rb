@@ -48,7 +48,7 @@ class Admin::VideosController < Admin::BaseController
   end
 
   def video_params
-    params.require(:video).permit(:title, :url,  :created_at, :image, :image_crop_x,
+    params.require(:video).permit(:title, :url, :youtube, :vimeo, :created_at, :image, :image_crop_x,
                                   :image_crop_y, :image_crop_w, :image_crop_h, artist_ids: [])
   end
 end

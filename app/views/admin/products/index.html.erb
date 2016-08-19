@@ -1,0 +1,46 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Products</h4><%= link_to "+ New", new_admin_product_path, class: "btn btn-primary"  %>
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+
+  <th class="a-three"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
+<% @products.each do |product| %>
+  <tr> 
+  <td class="a-one"><p><%= product.id %></p></td>
+  <td class="a-one"> 
+
+    <% if product.image.blank? %>
+  <% else %>
+  <%= image_tag product.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
+  
+  <td class="a-two" style="padding-right:10px;"><p><%= link_to product.title, product_path(product) %></p></td> 
+  
+  <td class="a-threes"><p><%= product.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_product_path(product), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_product_path(product), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table><br /><br />
+ 
+</div>
+</div> 
+
+
+
+
+<%= render 'shared/adminnavfooter' %>
+
+
+

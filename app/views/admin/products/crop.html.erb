@@ -1,0 +1,9 @@
+<%= form_for [:admin, @product] do |f| %>
+  <%= f.cropbox :image %>
+  <%= f.previewbox :image %>
+  <%= f.submit 'Crop' %>
+<% end %>
+
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'products' %>
+<% end %>
