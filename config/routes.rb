@@ -24,8 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :releases
-  resources :products
+  resources :releases 
   resources :videos 
   resources :abouts, path: 'about'
   resources :contact, only: [:index] do
@@ -58,8 +57,7 @@ Rails.application.routes.draw do
     resources :b_di_productions
     resources :artists
     resources :awards
-    resources :audios
-    resources :products
+    resources :audios 
     resources :audio_artists
     resources :presses
     resources :releases
