@@ -51,16 +51,7 @@
     </ol>
     <% end %>
 
-
-    <% if @artist.products.blank? %>
-    <% else %>
-    <h4 style="padding-top: 10px;
-    padding-bottom: 0px;text-transform: capitalize;
-    font-size: 100%;">Products:</h4><hr style="margin-top: 0em;">
-    <% @artist.products.order('products.created_at DESC').each do |product| %>
-    <%= link_to (image_tag product.image.artistmain.url, :style => 'width:50%; height:50%;', :class => 'img-responsive artistmi'), product_path(product) %>
-    <% end %>
-    <% end %>
+ 
      
 
     </div> 
