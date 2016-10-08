@@ -1,0 +1,60 @@
+<%= simple_form_for([:admin, @artist_shop], html: {multipart: true}) do |f| %>
+ 
+  <%= f.input :description, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
+  
+<%= f.file_field :image %><br /> 
+     
+
+  <%= f.submit 'Publish', class: 'btn btn-primary' %>
+<% end %> 
+ 
+
+<%= content_for :extra_footer do %>
+<script>
+$(document).ready(function(){
+  $('input[type="file"]').change(readURL);
+   $('#datetimepicker1').datetimepicker();
+});
+
+function readURL(e) {
+  var input = e.target;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('.image-preview')
+        .attr('src', e.target.result)
+        .width(150)
+        .height(200);
+      $('.persisted-image-preview').hide();
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+</script>
+
+<% end %> 
+<style>
+#datetimepicker1{
+width: 200px;
+padding:0px;
+    line-height: 28px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    display: inline-block;
+    text-transform: uppercase;
+    border:0px;
+  }
+
+.date, .main-title {
+    width: auto;
+    padding: 0 0px;
+    line-height: auto;
+    font-size: auto;
+    letter-spacing: auto;
+    display: inline-block;
+    text-transform: capitalize;
+    border: solid 0px #848f81;
+}
+</style>

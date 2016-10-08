@@ -13,7 +13,11 @@ Rails.application.config.assets.precompile += %w( presses.js )
 Rails.application.config.assets.precompile += %w( materialize.js )
 Rails.application.config.assets.precompile += %w( artawrpre.js )
 Rails.application.config.assets.precompile += %w( jquery.js ) 
+Rails.application.config.assets.precompile += %w( jquery-1.12.1.js ) 
 Rails.application.config.assets.precompile += %w( products.js ) 
+Rails.application.config.assets.precompile += %w( items.js )
+Rails.application.config.assets.precompile += %w( k1.jpg )
+Rails.application.config.assets.precompile += %w( kizzy.png )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

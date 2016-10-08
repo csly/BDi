@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :articles, path: 'news'
   resources :artists, path: 'roster' do
     member do
+      get :shop, to: 'artist_shops#show'
       get :download
     end
   end
@@ -23,6 +24,11 @@ Rails.application.routes.draw do
       get :pdfdown
     end
   end
+
+  get 'checkout/:id', to: 'purchases#checkout', as: 'checkout'
+  post 'purchase_complete', to: 'purchases#create', as: 'purchase_complete'
+
+  resources :purchases, only: [:show]
 
   resources :releases 
   resources :videos 
@@ -55,6 +61,8 @@ Rails.application.routes.draw do
       end
     end
     resources :b_di_productions
+    resources :shop_items 
+    resources :artist_shops
     resources :artists
     resources :awards
     resources :audios 

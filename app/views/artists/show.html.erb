@@ -9,7 +9,9 @@
     <small style="font-size:65%"> <ul class="arttypes"><% @artist.types.order('name ASC').each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
   </span> 
   <div class="socart">
-    
+    <% if @artist.has_shop? %>
+    <%= link_to 'Sheet Music Shop', shop_artist_path(@artist), :class => 'btn btn-primary sheetbutton' %>
+    <% end %>
 
     <% if @artist.facebook.blank? %>
     <% else %>
@@ -28,8 +30,9 @@
  
 
     <%= image_tag @artist.photo.url, :class => 'img-responsive ' %>
-  
+ 
 
+    
 
     
     <% if @artist.biography.present? %>

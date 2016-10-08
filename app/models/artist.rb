@@ -20,12 +20,19 @@ class Artist < ActiveRecord::Base
   has_many :audios
   has_many :product_artists, dependent: :destroy
   has_many :products, through: :product_artists
+  has_one :shop, class_name: 'ArtistShop'
 
   mount_uploader :photo, ArtistUploader
   mount_uploader :biography, PDFUploader
   crop_uploaded :photo
 
   attr_accessor :query, :genre, :type
+
+  after_create :create_shop
+
+  def create_shop
+    ArtistShop.create!(artist: self)
+  end
 
   def namepreview
     name[0..11] + '..'
@@ -76,8 +83,6 @@ class Artist < ActiveRecord::Base
       artist_ids = VideoArtist.distinct(:artist_id).pluck(:artist_id)
       Artist.where(id: artist_ids)
     end
-
-
   end
 
   def composer_artist(artist)
@@ -86,5 +91,9 @@ class Artist < ActiveRecord::Base
 
   def genre_artist(artist)
     ''.html_safe if artist.genre
+  end
+
+  def has_shop?
+    shop.items.any?
   end
 end

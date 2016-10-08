@@ -842,6 +842,31 @@ a.readmorenohome {
     background-color: #fff;
     color: #848f81 !important;
 }
+a.readmorehome2 {
+    padding: 10px;
+    background-color: #fff;
+    color: $idea !important;  
+}
+.shop-link a {
+    display:inline-block;
+    width:100%; 
+    padding:15px;
+    font-weight: bold;
+    font-size:120%;
+    text-transform: capitalize;
+}
+ 
+.extrap {padding:20px;}
+
+img.shopimage {
+    width:100%;
+    max-width:1250px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.nomargtop {
+    margin-top:0px;
+}
 .card-reveal i.right {
     right: 15px;
 }

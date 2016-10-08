@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818113844) do
+ActiveRecord::Schema.define(version: 20161005092240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 20160818113844) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "artist_shops", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image"
+    t.text     "description"
+  end
+
+  add_index "artist_shops", ["artist_id"], name: "index_artist_shops_on_artist_id", unique: true, using: :btree
 
   create_table "artist_types", force: :cascade do |t|
     t.integer  "artist_id"
@@ -305,6 +315,24 @@ ActiveRecord::Schema.define(version: 20160818113844) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.text     "notification_params"
+    t.string   "status"
+    t.integer  "shop_item_id"
+    t.string   "buyers_name"
+    t.string   "buyers_email"
+    t.string   "address_name"
+    t.string   "address_street"
+    t.string   "address_city"
+    t.string   "address_state"
+    t.string   "address_zip"
+    t.string   "address_country"
+    t.datetime "purchased_at"
+    t.float    "total_amount"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "release_artists", force: :cascade do |t|
     t.integer  "artist_id"
     t.integer  "release_id"
@@ -363,6 +391,18 @@ ActiveRecord::Schema.define(version: 20160818113844) do
     t.string   "partist"
     t.string   "rlabel"
   end
+
+  create_table "shop_items", force: :cascade do |t|
+    t.integer  "artist_shop_id"
+    t.string   "name",           null: false
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "image"
+  end
+
+  add_index "shop_items", ["artist_shop_id"], name: "index_shop_items_on_artist_shop_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"

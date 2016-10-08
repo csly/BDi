@@ -1,0 +1,49 @@
+
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Shop Items</h4><%= link_to "+ New", new_admin_shop_item_path, class: "btn btn-primary"  %>
+ 
+
+
+
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+
+  <th class="a-three"><p>Created At</p></th> 
+  <th class="a-four"><p>Links</p></th>
+  </tbody>
+ <% @shop_items.each do |shop_item| %>
+  <tr> 
+  <td class="a-one"><p><%= shop_item.id %></p></td>
+  <td class="a-one"> 
+<% if shop_item.image.blank? %>
+  <% else %>
+  <%= image_tag shop_item.image.thumbnail.url, :class =>  "imagethumb admin-artist"  %>
+  <% end %></td>
+ 
+  <td class="a-two" style="padding-right:10px;"><p><%= shop_item.name %></p></td> 
+  
+  <td class="a-threes"><p><%= shop_item.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_shop_item_path(shop_item), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_shop_item_path(shop_item), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table><br /><br />
+<div class="col-md-10"> 
+    <div class="middle">
+      
+      </div>
+    </div>
+</div>
+</div> 
+
+<%= render 'shared/adminnavfooter' %>
+
+

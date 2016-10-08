@@ -1,0 +1,11 @@
+<h1><%= @shop_item.name %></h1> 
+  <%= image_tag @shop_item.image.url %><br />
+    <%= @shop_item.description %><br /><br />
+ 
+  
+<%= link_to "Back To News", admin_shop_items_path, :class =>  "btn-primary", :method => :get  %> 
+<%= link_to "Edit", edit_admin_shop_item_path, :class =>  "btn-primary", :method => :get  %> 
+
+
+</div> 
+<%= render 'shared/adminnavfooter' %>

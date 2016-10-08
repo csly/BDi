@@ -1,0 +1,164 @@
+<% content_for :title, "| Roster" %>
+<div class="main-page-header">
+  <div class="m-p-h">
+    <%= link_to 'Home', root_path %>  
+    <span class="break">></span>  
+    <%= link_to 'Roster', artists_path %> 
+    <span class="break">></span>  <span class="artname"> 
+    <%= link_to @shop.artist.name, artist_path(@shop.artist) %>
+  </span>
+  <br /><br />
+  <span class="artist-name-main artistmm">
+    <%= @shop.artist.name %> <br /><% if @shop.artist.types.blank? %> <% else %>
+    <small style="font-size:65%"> <ul class="arttypes"><% @shop.artist.types.order('name ASC').each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
+  </span> 
+  <div class="socart">
+
+  <span class='btn btn-primary' style='margin-right:15px;'> online shop</span>
+    
+
+  </div> 
+    </div>
+</div> 
+<br />  <br /> 
+
+ 
+
+
+<div class="containernohome"> 
+ 
+<div class="col-md-3 col-sm-3 artistimageetc">
+ 
+ 
+
+    <%= image_tag @shop.artist.photo.url, :class => 'img-responsive ' %>
+ 
+
+    
+
+    
+     
+
+    <% if @shop.artist.audios.any? %>
+<h4 style="padding-top: 10px;
+    padding-bottom: 0px;text-transform: capitalize;
+    font-size: 100%;">Listen:</h4><hr style="margin-top: 0em;">
+    <audio preload=""></audio>
+    <ol class="audioplayer">
+     
+    <% @shop.artist.audios.order('arrange ASC').each do |audio| %>
+
+      <li class="audioli"><a href="#" data-src=<%= audio.track.url %>><%= audio.name %></a></li>
+    <% end %>
+     
+    </ol>
+    <% end %>
+
+ 
+     
+
+    </div> 
+  <div class="col-md-9 col-sm-9 newsblur">
+     
+
+<div class="portfolio-items grid">
+  <div class="row" style="margin:0px !important;">
+  <% @shop.items.each do |item| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= link_to('#', :class => 'hello') do %>
+            <%= image_tag 'k1.jpg', :class => 'img-responsive homepage' %>
+          <% end %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <h5><%= item.name %> <br /> <%= number_to_currency(item.price, unit: '£') %></h5>  
+            <i class="material-icons right">add  </i>
+          </span>
+          <p>
+          <%= link_to 'Buy now', checkout_path(item), :class => 'readmorehome' %>
+             
+          </p>
+        </div>
+        <div class="card-reveal" id="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <i class="material-icons right">close</i>
+            <h5><%= item.name %></h5>
+          </span> 
+          <%= sanitize item.description %>
+            <br /><br /><div class="clear"></div>
+          <p>
+          <%= number_to_currency(item.price, unit: '£') %>
+          <%= link_to 'Buy now', checkout_path(item), :class => 'readmorehome' %>
+            
+          </p>
+
+
+        </div>
+      </div>
+    </div>  
+  <% end %>
+  </div>
+</div>
+<div class="clear"></div>
+</div>
+  
+   
+
+      
+</div>
+</div>
+
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'materialize' %>
+   <script>
+     $(document).ready(function() {
+
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = $('ol li.playing').next();
+            if (!next.length) next = $('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', next).attr('data-src'));
+            audio.play();
+          }
+        }); 
+        // Load in the first track
+        var audio = a[0];
+        first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        $('ol li').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('playing').siblings().removeClass('playing');
+          audio.load($('a', this).attr('data-src'));
+          audio.play();
+        });
+        // Keyboard shortcuts
+        $(document).keydown(function(e) {
+          var unicode = e.charCode ? e.charCode : e.keyCode;
+             // right arrow
+             if (unicode == 39) {
+              var next = $('li.playing').next();
+              if (!next.length) next = $('ol li').first();
+              next.click();
+            // back arrow
+          } else if (unicode == 37) {
+            var prev = $('li.playing').prev();
+            if (!prev.length) prev = $('ol li').last();
+            prev.click();
+            // spacebar
+          } else if (unicode == 32) {
+            audio.playPause();
+          }
+        })
+      });
+
+
+</script>
+<% end %>
+  
