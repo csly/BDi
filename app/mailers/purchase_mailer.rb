@@ -6,6 +6,6 @@ class PurchaseMailer < ApplicationMailer
 
   def admin_purchase_complete_email(purchase)
     @purchase = purchase
-    mail(to: 'csly-platz@bucksmusicgroup.co.uk', subject: 'Ca$h Money')
+    mail(to: 'csly-platz@bucksmusicgroup.co.uk', subject: 'Order via the BDi Music Website')
   end
 end

@@ -8,7 +8,7 @@ class PurchasesController < ApplicationController
 
     PurchaseMailer.purchase_complete_email(purchase).deliver_now
     PurchaseMailer.admin_purchase_complete_email(purchase).deliver_now
-    redirect_to artist_path(purchase.shop_item.artist), notice: 'Thanks for your order'
+    redirect_to shop_artist_path(purchase.shop_item.artist), notice: 'Thank you for your order. We will email you once your order has been dispatched.'
   end
 
   def show
