@@ -62,7 +62,6 @@ GEM
       momentjs-rails (>= 2.8.1)
     buftok (0.2.0)
     builder (3.2.2)
-    byebug (6.0.2)
     cancancan (1.12.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -441,7 +440,6 @@ DEPENDENCIES
   aws-sdk (~> 2)
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.37)
-  byebug
   cancancan
   carrierwave
   carrierwave-crop
