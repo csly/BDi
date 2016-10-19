@@ -8,16 +8,16 @@ class PurchasesController < ApplicationController
 
     PurchaseMailer.purchase_complete_email(purchase).deliver_now
     PurchaseMailer.admin_purchase_complete_email(purchase).deliver_now
-    redirect_to shop_artist_path(purchase.shop_item.artist), notice: 'Thank you for your order. We will email you once your order has been dispatched.'
+    render nothing: true, status: :ok, content_type: "text/html"
   end
-
+  
   def show
     @purchase = Purchase.find(params[:id])
   end
 
   def checkout
     purchase = Purchase.create!(shop_item: @item)
-    redirect_to Purchase.paypal_url(@item, purchase, purchase_complete_path)
+    redirect_to Purchase.paypal_url(@item, purchase, shop_artist_path(@item.artist))
   end
 
   private
