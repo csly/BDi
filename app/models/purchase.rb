@@ -2,7 +2,7 @@ class Purchase < ActiveRecord::Base
   belongs_to :shop_item
   def self.paypal_url(item, purchase, return_path)
     values = {
-        business: "carasly-facilitator@me.com",
+        business: "info@bdimusic.com",
         cmd: "_xclick",
         currency_code: "GBP",
         upload: 1,

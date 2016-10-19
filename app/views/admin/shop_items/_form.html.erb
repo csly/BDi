@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :description, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :price %>  
-  <%= f.association :artist_shop, collection: Artist.order('name ASC') %><br /> 
+  <%= f.association :artist_shop, label_method: :artist_name, value_method: :id %><br />    
   <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary', label: 'Created at' %> <br /><br />
   
 <%= f.file_field :image %><br /> 
