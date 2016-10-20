@@ -12,7 +12,7 @@ class Purchase < ActiveRecord::Base
         item_name: item.name,
         item_number: item.id,
         quantity: '1',
-        notify_url: "#{Rails.application.secrets.app_host}/purchase_complete"
+        notify_url: "#{ENV["APP_HOST"]}/purchase_complete"
     }
     "#{ENV["PAYPAL_HOST"]}/cgi-bin/webscr?" + values.to_query
   end

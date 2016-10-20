@@ -2190,7 +2190,11 @@ footer.page-footer .footer-copyright {
         display: block;
     }
 }
+@media (max-width: 760px) {
+    a.sheetbutton2 {display:none;}
 
+    a.sheetbutton {display:none;}
+}
 @media (max-width: 990px) {
     .homesidebar {
         display: none;
@@ -2198,8 +2202,7 @@ footer.page-footer .footer-copyright {
     .articlesindex {
         border: 0px !important;
     }
-    .testing {border-right:0px !important;}
-
+    .testing {border-right:0px !important;} 
 }
 
 @media (max-width: 1025px) {
