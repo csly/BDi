@@ -28,7 +28,7 @@ class ReleaseUploader < CarrierWave::Uploader::Base
   end
 
   version :artistmain do
-    process resize_and_crop: 200
+    process resize_and_crop: 500
   end
 
   version :photomain do
