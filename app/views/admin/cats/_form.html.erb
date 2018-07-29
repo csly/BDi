@@ -1,0 +1,4 @@
+<%= simple_form_for([:admin, @cat], html: {multipart: true}) do |f| %>
+  <%= f.input :link %> 
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

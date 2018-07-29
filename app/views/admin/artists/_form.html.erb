@@ -4,6 +4,7 @@
   <%= f.input :links %>
   <%= f.input :facebook %>
   <%= f.input :twitter %>   
+  <%= f.input :spotify, label: 'Spotify Playlist Embed' %>
   <%= f.input :artisttag, label: 'Artist' %> 
   <%= f.input :producer %>
   <%= f.input :composer %>
@@ -18,8 +19,8 @@
   <% end %>
   Main Image Upload:
   <%= f.file_field :photo %><br />
-  <% if f.object.persisted? && f.object.image.present? %>
-    <%= image_tag f.object.image, class: 'persisted-image-preview' %>
+  <% if f.object.persisted? && f.object.photo.present? %>
+    <%= image_tag f.object.photo, class: 'persisted-image-preview' %>
   <% end %>
   <img src="" class="photo-preview" /><Br /><Br />
 

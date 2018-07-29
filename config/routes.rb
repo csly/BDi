@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     resources :styles
     resources :instrumentations
     resources :moods
+    resources :cats
   end
   get 'admin' => 'admin/homes#show'
 end

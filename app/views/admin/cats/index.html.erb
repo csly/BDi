@@ -1,0 +1,30 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Videos</h4><%= link_to "+ New", new_admin_cat_path, class: "btn btn-primary"  %>
+<table>
+  <tr>
+  <th class="id">ID</th>
+  <th class="title">Link</th> 
+  <th class="created"> Created at</th>
+  <th class="updated">Updated at</th> 
+  <th class="edit"></th>
+  </tr>
+<% @cats.each do |cat| %>
+  <tr>
+  <td class="id"><%= cat.id %></td> 
+  <td class="title"><%= cat.link %></td>
+  <td class="created"> <%= cat.created_at.strftime('%d-%m-%Y') %></td>
+  <td class="updated"><%= cat.updated_at.strftime('%d-%m-%Y') %></td> 
+  <td class="edit"> <%= link_to "Edit", edit_admin_cat_path(cat), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_cat_path(cat), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table> 
+</div>
+
+
+
+</div>
+<%= render 'shared/adminnavfooter' %>

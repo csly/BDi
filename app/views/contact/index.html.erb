@@ -42,15 +42,25 @@ Contact </span><br />  <br />
                 </div>
                 <div class="modal-body">
 
-<%= simple_form_for @contact, url: deliver_contact_index_path do |f| %>
-  <%= f.input :name, class: "form-control custom" %><br />
-  <%= f.input :email, class: "form-control custom" %><br />
-  <%= f.input :message, hint: "Please include a link to your Soundcloud or website", class: "form-control custom", :as => :text, input_html: { :style=> 'width: 100%;', :rows => 4} %><br />
-  <%= f.submit 'Send', class: "btn btn-primary" %>
-   
-<% end %>
+                  <form accept-charset="UTF-8" action="https://formkeep.com/f/8bcfd6203c4b" method="POST">
+                    <input type="hidden" name="utf8" value="✓">
+
+                    <input type="hidden" name="utf8" value="✓"> 
+                    <label for="name" class="label-lg">Name</label>
+                    <input type="text" id="name" name="name" class="form-control custom input-lg"><br /> 
+                      
  
- </div>
+                    <label for="email-address" class="label-lg">Email Address</label>
+                    <input type="email" id="email-address" name="email" class="form-control custom input-lg"><br /> 
+ 
+                    <label for="message" class="label-lg">Message</label>
+                    <textarea id="message" name="message" class="form-control custom input-lg" rows="4" cols="50"></textarea> 
+                    <i style="color:#848f81;">Please include a link to your Soundcloud or Website where we can listen to your music</i><br /> 
+
+                    <br />
+                    <button type="submit" class='btn btn-primary'>Submit</button>
+                  </form>
+              </div>
             </div>
         </div>
     </div>

@@ -39,8 +39,12 @@
   <h4 class="artside">Download:<small class="notsomuch"> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
     <% end %> 
 
+    <% if @artist.spotify.present? %>
+     <br /> 
+      <%= @artist.spotify.html_safe %>
+    <% else %>
     <% if @artist.audios.any? %>
-<h4 style="padding-top: 10px;
+    <h4 style="padding-top: 10px;
     padding-bottom: 0px;text-transform: capitalize;
     font-size: 100%;">Listen:</h4><hr style="margin-top: 0em;">
     <audio preload=""></audio>
@@ -53,9 +57,25 @@
      
     </ol>
     <% end %>
+    <% end %>
+
+    
 
  
-     
+     <% if @artist.articles.present? %>
+     <h4 style="padding-top: 10px;
+    padding-bottom: 0px;text-transform: capitalize;
+    font-size: 100%;">Recent News:</h4><hr style="margin-top: 0em;">
+     <ul>
+      <% @artist.articles.limit(10).each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %><Br /> <br />
+      </li>
+      <% end %>
+    </ul>
+      <% else %>
+      <% end %>
+
 
     </div> 
   <div class="col-md-9 col-sm-9 newsblur">
@@ -66,7 +86,7 @@
  
 <div>
   <% if @artist.biog.html_safe.length > 2000 %>
-    <%= truncate(@artist.biog.html_safe, length: 2000, escape: false) %>
+    <%= truncate(@artist.biog.html_safe, length: 1000, escape: false) %>
     <%= link_to '...Read more', '', class: "read-more-#{@artist.id}" %>
     <script>
       $('.read-more-<%= @artist.id %>').on('click', function(e) {
@@ -80,7 +100,7 @@
 </div> 
 
 
-    </div><hr class="artbiog">
+    </div><hr class="artbiog" style='margin-top:1.3em;'>
    
 
 
