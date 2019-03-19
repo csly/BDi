@@ -51,7 +51,9 @@ Roster
 <% if @artists.empty? %>
     <h1><center>We currently have no Artists matching your search criteria<br /><br />Please try again</center></h1>
     <% else %>
-<% @artists.each do |artist| %> 
+
+<% @artists.each do |artist| %>  
+ 
 <li class="col-md-3 col-xs-6 col-sm-3">
 <div class="artistmain">
 <%= link_to(artist_path(artist)) do %>
@@ -60,7 +62,7 @@ Roster
   <br />
   <% end %>
   </div>
-</li> 
+</li>  
  <% end %> <% end %>
 </ul> 
  </div> 

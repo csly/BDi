@@ -1,0 +1,13 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Production Companies</h4><%= link_to "+ New", new_admin_production_company_path, class: "btn btn-primary"  %>
+<br /><br />
+<% @production_companies.each do |production_company| %>
+   <div class="col-md-2" style="padding-left:0px; padding-top:10px;">
+   <%= link_to production_company.name, admin_production_company_path(production_company) %> <br /> 
+   <%= link_to 'Delete', admin_production_company_path(production_company), method: :delete, class: "btn btn-primary"  %><%= link_to "Edit", edit_admin_production_company_path(production_company), :class =>  "btn btn-primary", :method => :get  %>
+   </div> 
+<% end %>
+ 
+</div>
+<%= render 'shared/adminnavfooter' %>

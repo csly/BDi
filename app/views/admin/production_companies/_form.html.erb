@@ -1,0 +1,6 @@
+<%= simple_form_for([:admin, @production_company], html: {multipart: true}) do |f| %>
+  <%= f.input :name %>
+  <%= f.association :users, label_method: :email, collection: User.order('id ASC') %>
+  <%= f.association :productions, collection: Production.order('id ASC') %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

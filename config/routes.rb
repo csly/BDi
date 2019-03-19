@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resources :songwriters
   resources :producers
   resources :roster, path: 'artists'
+  resources :catalogue
   resources :tweets
   resources :privacy
   resources :b_di_productions, path: 'bdiproductions'
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
         get :unassigned
       end
     end
+    resources :production_companies
     resources :b_di_productions
     resources :shop_items 
     resources :artist_shops

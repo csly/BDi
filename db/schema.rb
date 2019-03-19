@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180625092820) do
+ActiveRecord::Schema.define(version: 20190319134541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20180625092820) do
     t.boolean  "artisttag"
     t.boolean  "producer"
     t.text     "spotify"
+    t.boolean  "catalogue"
   end
 
   create_table "audio_artists", force: :cascade do |t|
@@ -295,6 +296,11 @@ ActiveRecord::Schema.define(version: 20180625092820) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "production_company_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "production_company_id"
   end
 
   create_table "productions", force: :cascade do |t|

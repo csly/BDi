@@ -12,6 +12,7 @@
 
   <%= f.association :moods, collection: Mood.order('name ASC') %>
   <%= f.association :productions, collection: Production.order('name ASC') %>
+  
 
   <br />
   <%= f.submit class: 'btn btn-primary' %>

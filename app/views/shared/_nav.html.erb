@@ -52,6 +52,11 @@
           <img src="https://s3-eu-west-1.amazonaws.com/bdi-music/spotifynavt.png" width="30px" height="30px">
           </a>
         </li>
+        <li class="social">
+          <a href="https://www.instagram.com/bdimusic/" target="_blank">
+          <img src="https://s3-eu-west-1.amazonaws.com/bdi-music/instagramnavt.png" width="30px" height="30px">
+          </a>
+        </li>
         
         
       </ul>
@@ -107,6 +112,8 @@
                  <li><%= link_to 'Producers', producers_path %></li>
                 <li class="divider"></li>
                  <li><%= link_to 'Songwriters', songwriters_path %></li>
+                 <li class="divider"></li>
+                 <li><%= link_to 'Catalogue', catalogue_index_path %></li>
               </ul>
           </li>
           <li class="<%= 'active' if current_page?(releases_path) %> main">

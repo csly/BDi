@@ -1,9 +1,10 @@
 require 'open-uri'
 class ArtistsController < ApplicationController
   def index
-    @q = Artist.ransack(params[:q])
+    @q = Artist.where(catalogue: false).ransack(params[:q])
     @artists = @q.result(distinct: true).order('artists.name ASC')
   end
+ 
 
   def show
     @artist = Artist.find(params[:id])
@@ -22,6 +23,6 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:name, :biog, :photo, :links, :composer, :songwriter, :artisttag, :producer, :twitter, :facebook, article_ids: [], award_ids: [], genre_ids: [], type_ids: [], release_ids: [], video_ids: [], vimeo_ids: [], product_ids: [])
+    params.require(:artist).permit(:name, :biog, :photo, :links, :composer, :songwriter, :artisttag, :producer, :twitter, :catalogue, :facebook, article_ids: [], award_ids: [], genre_ids: [], type_ids: [], release_ids: [], video_ids: [], vimeo_ids: [], product_ids: [])
   end
 end

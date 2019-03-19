@@ -1,7 +1,7 @@
   <div class='containernohome'>  
  
 
-<h4>Welcome Company</h4>
+<h4>Welcome!</h4>
 
 <%= link_to 'Reset', search_path  %> 
  
@@ -18,24 +18,22 @@
   <%= f.submit "Search" %> 
 <% end %>
   
-<div id="tracks">
-<table width="100%">
-<tr>
-<td width="20%">Catalogue No.</td>
+<div id="tracks"> 
+<table width="100%" class='table-striped table'>
+  <tr>
+<td width="15%">Catalogue No.</td>
 <td width="20%">Title</td>
 <td width="20%">Origin</td>
 <td width="20%">Composer(s)</td> 
-<td width="20%">Buttons</td>
+<td width="25%">Buttons</td>
 </tr>
-</table>
-<table width="100%">
 <% @tracks.each do |track| %>
 <tr>
-  <td width="20%" class="tracktable"><%= track.catalogue %></td>
+  <td width="15%" class="tracktable"><%= track.catalogue %></td>
   <td width="20%" class="tracktable"><%= track.title %></td>
   <td width="20%" class="tracktable"><%= track.origin %></td>
-  <td width="20%" class="tracktable"><% track.composers.each do |production| %><%= production.name %></td>
-  <td width="20%" class="tracktable">  
+  <td width="20%" class="tracktable"><%= track.track_composer %></td>
+  <td width="25%" class="tracktable">  
 <% if track.url.blank? %> <% else %>
  
     <audio preload=""></audio>
@@ -45,58 +43,12 @@
       <li class="audioli"><a href="#" data-src=<%= track.searchtrack %>
 </a></li>
 
- <script>
-     $(document).ready(function() {
-
-        // Setup the player to autoplay the next track
-        var a = audiojs.createAll({
-          trackEnded: function() {
-            var next = $('ol li.playing').next();
-            if (!next.length) next = $('ol li').first();
-            next.addClass('playing').siblings().removeClass('playing');
-            audio.load($('a', next).attr('data-src'));
-            audio.play();
-          }
-        }); 
-        // Load in the first track
-        var audio = a[0];
-        first = $('ol a').attr('data-src');
-        $('ol li').first().addClass('playing');
-        audio.load(first);
-
-        // Load in a track on click
-        $('ol li').click(function(e) {
-          e.preventDefault();
-          $(this).addClass('playing').siblings().removeClass('playing');
-          audio.load($('a', this).attr('data-src'));
-          audio.play();
-        });
-        // Keyboard shortcuts
-        $(document).keydown(function(e) {
-          var unicode = e.charCode ? e.charCode : e.keyCode;
-             // right arrow
-             if (unicode == 39) {
-              var next = $('li.playing').next();
-              if (!next.length) next = $('ol li').first();
-              next.click();
-            // back arrow
-          } else if (unicode == 37) {
-            var prev = $('li.playing').prev();
-            if (!prev.length) prev = $('ol li').last();
-            prev.click();
-            // spacebar
-          } else if (unicode == 32) {
-            audio.playPause();
-          }
-        })
-      });
-</script>
-    <% end %>
+ 
     </ol>
   
+    <% end %>
 
-  </td>
-  <% end %>
+  </td>  
   </tr>
 <% end %>
 </table>
@@ -104,6 +56,100 @@
 </div>
 </div>
 <%= content_for :extra_footer do %>
+
+<script>
+     $(function() {
+
+  var a = audiojs.createAll({
+    trackEnded: function() {
+      var el = $(this.element);
+      var next = el.closest(".audiojs").next('ol').find("li.playing").next();
+      if (!next.length) next = el.closest(".audiojs").next("ol").find("li").first();
+      next.parent().find(".playing").removeClass("playing");
+      next.addClass('playing');
+      el.attr("src", $('> a', next).attr('data-src'));
+      el.on("canplay", function() {
+        this.play()
+      })
+    }
+  });
+  // Load in the first track
+  var audio = a;
+  $.each(audio, function(index, el) {
+    var first = $(el.wrapper).next("ol").find("li:first")
+      .addClass("playing").find("a").attr("data-src");
+    el.load(first);
+  });
+  // Load in a track on click
+  $('ol li').click(function(e) {
+    var index = $(this).closest("ol").index("ol");
+    e.preventDefault();
+    $(this).addClass('playing').siblings()
+      .removeClass('playing');
+      var el = $('> a', this);
+      el.attr("src", el.attr('data-src'));
+      el.on("canplay", function() {
+        this.play()
+      })
+  });
+  // Keyboard shortcuts
+  $(document).keydown(function(e) {
+    var unicode = e.charCode ? e.charCode : e.keyCode;
+    var elems = $('li.playing');
+    elems.each(function(i, el) {
+      var curr = $(el);
+      // right arrow
+      if (unicode == 39) {
+        var next = curr.next();
+        if (!next.length) {
+          next = curr.closest("ol").find("li").first();
+          next.click();
+        }
+        // back arrow
+      } else if (unicode == 37) {
+        var prev = curr.prev();
+        if (!prev.length) {
+          prev = curr.closest("ol").find("li").last();
+          prev.click();
+        }
+        // spacebar
+      } else if (unicode == 32) {
+        $.each(audio, function(i, media) {
+          media.playPause();
+        })
+      }
+    })
+  })
+});
+
+</script>
+
+<% @tracks.each do |track| %>
+<tr>
+  <td width="15%" class="tracktable"><%= track.catalogue %></td>
+  <td width="20%" class="tracktable"><%= track.title %></td>
+  <td width="20%" class="tracktable"><%= track.origin %></td>
+  <td width="20%" class="tracktable"><%= track.track_composer %></td>
+  <td width="25%" class="tracktable">  
+<% if track.url.blank? %> <% else %>
+ 
+    <audio preload=""></audio>
+    <ol class="audioplayer">
+      
+
+      <li class="audioli"><a href="#" data-src=<%= track.searchtrack %>
+</a></li>
+
+ 
+    </ol>
+  
+    <% end %>
+
+  </td>  
+  </tr>
+<% end %>
+
+
   <script>
 
     $(document).ready(function() {
@@ -129,10 +175,12 @@
           });
           trackData = [
           
-            '<table width="100%"><tr><td width="20%" class="tracktable">' + track.catalogue + '</td>',
-            '<td width="20%" class="tracktable">'+track.title+'</td>',
-            '<td width="20%" class="tracktable">' + track.oldtitle + '</td>',
-            '<td width="20%" class="tracktable">' + track.composers + '</td></tr></table>'
+            '<table width="100%" class="table-striped table"><tr>',
+            '<td width="15%" class="tracktable">'+ track.catalogue +'</td>',
+            '<td width="20%" class="tracktable">'+ track.title +'</td>', 
+            '<td width="20%" class="tracktable">'+ track.origin +'</td>',
+            '<td width="20%" class="tracktable">'+ track.track_composer +'</td>',
+            '<td width="25%" class="tracktable"><audio preload=""></audio><ol class="audioplayer"><li class="audioli"><a href="#" data-src="'+ track.url +'"></a></li></ol></td></tr></table>'
           
           ]
           trackView = trackData.concat(productions).join('\n');
@@ -179,7 +227,17 @@
 
   </script>
 
-  
+  <style>
+
+  ol.audioplayer li {
+    margin: 5px 0px;
+    background-color: transparent; 
+    list-style-type: none;
+    padding: 0px; 
+    /* font-size: 80%; */
+    /* text-transform: capitalize; */
+
+  </style>
 
 
 

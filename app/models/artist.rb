@@ -56,6 +56,9 @@ class Artist < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
+  def catartist
+      @catartist = Artist.where(catalogue: true) 
+      end
   
 
   def count
