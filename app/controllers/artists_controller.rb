@@ -1,7 +1,8 @@
 require 'open-uri'
 class ArtistsController < ApplicationController
   def index
-    @q = Artist.ransack(params[:q])
+    @finals = Artist.where(catalogue: false)
+    @q = @finals.ransack(params[:q])
     @artists = @q.result(distinct: true).order('artists.name ASC')
   end
 
