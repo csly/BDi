@@ -1,5 +1,5 @@
-<%= simple_form_for([:admin, @article], html: {multipart: true}) do |f| %>
-  <%= f.input :title %>
+<%= simple_form_for([:admin, @article], html: {multipart: true}) do |f| %>  
+  <%= f.input :title, input_html: { maxlength: 70 } %>
   <%= f.input :body, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} } %>
   <%= f.input :youtube, hint: 'Video: please use the video url. Youtube only'  %>
   <%= f.association :artists, collection: Artist.order('name ASC') %><br />  
@@ -41,10 +41,10 @@ function readURL(e) {
     reader.readAsDataURL(input.files[0]);
   }
 }
-
+ 
 
 </script>
-
+ 
 <% end %> 
 <style>
 #datetimepicker1{

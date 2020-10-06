@@ -1,21 +1,20 @@
 <h4 class="tweetheader" style='margin-top:-39px;'>Featured Video</h4>
 <div class="embed-container" style='height:287.5px;'>
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLFsIOC_7oSHrlfDV2T-2-B0EFjpEJ78Sy" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>  <br />
-    
-
-   
-  <h4 class="tweetheader">Join Us On Twitter <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "width:25px; height:25px; margin-top:-2px;float:right;"), 'http://www.twitter.com/bdimusic', target: '_blank' %></h4> 
- <ul class='tweets'>
+  <iframe src="https://www.youtube.com/embed/videoseries?list=PLFsIOC_7oSHrlfDV2T-2-B0EFjpEJ78Sy" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<br />
+<h4 class="tweetheader">Join Us On Twitter <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => "width:25px; height:25px; margin-top:-2px;float:right;"), 'http://www.twitter.com/bdimusic', target: '_blank' %></h4>
+<ul class='tweets'>
   <% @tweets.each do |tweet| %>
-  <li><span class="twitdate"><%= time_ago_in_words(tweet.created_at) %> ago</span>
-   <p class="tweets"><%= auto_link(tweet.text).html_safe %><br />
-    <!--<%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %>-->
-    </p>  
-<% end %>
-
+    <li>  
+      <p class="tweets"><%= auto_link(tweet.text).html_safe %><br />
+      </p>
+      <!--<%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %>-->
+    </li>
+  <% end %>
 </ul>
 <a class="tweet-box-button web-intent" href="https://twitter.com/intent/tweet?screen_name=bdimusic" data-scribe="element:timeline_permalink" target="_blank">
- <div class="col-md-12 tweetus"> <span class="tweetto">Tweet to @bdimusic</span>
-</div></a>
+  <div class="col-md-12 tweetus"> <span class="tweetto">Tweet to @bdimusic</span>
+  </div>
+</a>
 <div class="clear"></div>

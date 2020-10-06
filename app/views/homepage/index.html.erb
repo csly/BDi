@@ -1,25 +1,27 @@
-<div class="container-fluid main-body"><br /><br /><br />
-
-
-<div class="clear"><br /></div>
-<div class="col-md-9 col-xs-12">
-<div class="portfolio-items grid">
-  <div class="row" style="margin:0px !important;">
-  <% @articles.each do |article| %>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= link_to(article_path(article), :class => 'hello') do %>
-            <%= image_tag article.image.articlehome.url, :class => 'img-responsive homepage' %>
-          <% end %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">
-            <h5><%= article.title %> <br /><small><%= article.created_at.strftime("%B  %d, %Y") %></small></h5> 
-            <i class="material-icons right">add  </i>
-          </span>
-          <p>
-            <a href="<%= article_path(article) %>" class="readmorehome">Read More</a>
+<div class="container-fluid main-body"><br />
+  <br />
+  <br />
+  <div class="clear"><br />
+  </div>
+  <div class="col-md-9 col-xs-12">
+    <div class="portfolio-items grid">
+      <div class="row" style="margin:0px !important;">
+        <% @articles.each do |article| %>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <%= link_to(article_path(article), :class => 'hello') do %>
+                  <%= image_tag article.image.articlehome.url, :class => 'img-responsive homepage' %>
+                <% end %>
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                  <h5><%= article.title %> <br />
+                    <small><%= article.created_at.strftime("%B  %d, %Y") %></small></h5>
+                  <i class="material-icons right">add  </i>
+                </span>
+                <p>
+                  <a href="<%= article_path(article) %>" class="readmorehome">Read More</a>
           </p>
         </div>
         <div class="card-reveal" id="card-reveal">
@@ -33,57 +35,45 @@
           <%= sanitize article.homepreview2, tags: %w(p), attributes: %w(href)  %> 
             <% if article.artists.blank? %>
             <br />
-            <% elsif article.artists.count <= 2  %>
-            <h6 class="arttit">Related Artists:</h6>
-            <% article.artists.each do |artist| %>
-              <div class="chip">
-              <%= link_to(artist_path(artist)) do %>
-              <%= image_tag artist.photo.articlehome.url %>
-              <%= artist.name %><% end %> 
+                <% elsif article.artists.count <= 2  %>
+                  <h6 class="arttit">Related Artists:</h6>
+                  <% article.artists.each do |artist| %>
+                    <div class="chip">
+                      <%= link_to(artist_path(artist)) do %>
+                        <%= image_tag artist.photo.articlehome.url %>
+                        <%= artist.name %><% end %>
+                    </div>
+                  <% end %>
+                <% elsif article.artists.count > 2  %>
+                  <h6 class="arttit">Related Artists:</h6>
+                  <% article.artists.each do |artist| %>
+                    <%= link_to(artist_path(artist)) do %>
+                      <%= artist.name %><br />
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <br />
+                <br />
+                <div class="clear"></div>
+                <p>
+                  <a href="<%= article_path(article) %>"  class="readmorehome">Read More</a>
+                </p>
               </div>
-            <% end %>
-            <% elsif article.artists.count > 2  %>
-            <h6 class="arttit">Related Artists:</h6>
-            <% article.artists.each do |artist| %> 
-              <%= link_to(artist_path(artist)) do %> 
-              <%= artist.name %><br />
-              <% end %> 
-
-            <% end %>
-            <% end %>
-            <br /><br /><div class="clear"></div>
-          <p>
-          <a href="<%= article_path(article) %>"  class="readmorehome">Read More</a>
-          </p>
-
-
-        </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>  
-  <% end %>
+    </div>
+    <div class="clear"></div>
   </div>
-</div>
-<div class="clear"></div>
-</div>
-
-<div class="col-md-3">   
-
-  
-
+  <div class="col-md-3">
     <div class='homesidebar2'>
       <%= render 'shared/twitterhomesidebar' %>
     </div>
-   </div> 
-</div>
-   
-
-      
+  </div>
 </div>
 </div>
-
+</div>
 <% content_for :extra_footer do %>
   <%= javascript_include_tag 'materialize' %>
 <% end %>
- 
- 
-

@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.6.6'
  
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.8'
 
 gem 'pg'
 # Use SCSS for stylesheets
@@ -14,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'devise'
+gem 'devise', '~> 4.4.0'
 gem 'sanitize'
 gem 'simple_form', '3.1.0.rc2'
 gem 'mail_form'
@@ -38,7 +39,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', require: nil
-gem 'ransack'   
+gem 'ransack'
+gem 'xmlrpc' 
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
