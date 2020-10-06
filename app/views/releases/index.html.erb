@@ -162,12 +162,12 @@
       <div class="buylinks">
       <% if release.itunes.blank? %>
       <% else %>  
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/itunes.png", :class => "twittereal"),  release.itunes, target: "_blank" %> 
+      <%= link_to image_tag("itunes.png", :class => "twittereal"),  release.itunes, target: "_blank" %> 
       <% end %>
 
       <% if release.amazon.blank? %>
       <% else %> 
-      <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/03/amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
+      <%= link_to image_tag("amazon.png", :class => "twittereal"),  release.amazon, target: "_blank" %> 
       <% end %>
       </div>
       </div>

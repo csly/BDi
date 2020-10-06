@@ -33,7 +33,7 @@
       <ul class="social-buttons">
       <li class="social social-tm">
          <a href="http://themovement.uk.com/" target="_blank">
-         <img src="http://www.bucksmusicgroup.com/wp-content/uploads/2016/01/tmlogo.png"  width="96px" height="30px" style="transition: none;">
+          <%= image_tag 'tmlogo.png', :class => 'tmlogoo' %> 
          </a>
         </li>
         <li class="social">
@@ -148,7 +148,11 @@
     display: block;
 }
 
- 
+.tmlogoo {
+  width:96px;
+  height: 30px;
+  transition: none !important;
+}
 </style>
 
 

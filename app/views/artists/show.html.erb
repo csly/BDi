@@ -15,10 +15,10 @@
 
     <% if @artist.facebook.blank? %>
     <% else %>
-    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/facebook1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.facebook, :target => "_blank" %> <% end %>
+    <%= link_to image_tag("/uploads/ckeditor/pictures/4/content_facebooknav.png", :class => "twitter", :style => " padding:0.3em; width:40px; height:40px"), 'http://' + @artist.facebook, :target => "_blank" %> <% end %>
 <% if @artist.twitter.blank? %>
     <% else %>
-    <%= link_to image_tag("http://www.bucksmusicgroup.com/wp-content/uploads/2015/05/twitter1.png", :class => "twitter", :style => " padding:0.2em; width:45px; height:45px"), 'http://' + @artist.twitter, :target => "_blank" %> <% end %>
+    <%= link_to image_tag("/uploads/ckeditor/pictures/6/content_twitternav.png", :class => "twitter", :style => " padding:0.3em; width:40spx; height:40px"), 'http://' + @artist.twitter, :target => "_blank" %> <% end %>
   </div>  </div>
 </div> 
 <br />  <br /> 

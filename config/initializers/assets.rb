@@ -18,6 +18,9 @@ Rails.application.config.assets.precompile += %w( products.js )
 Rails.application.config.assets.precompile += %w( items.js )
 Rails.application.config.assets.precompile += %w( k1.jpg )
 Rails.application.config.assets.precompile += %w( kizzy.png )
+Rails.application.config.assets.precompile += %w( tmlogo.png )
+Rails.application.config.assets.precompile += %w( amazon.png )
+Rails.application.config.assets.precompile += %w( itunes.png )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
