@@ -1,0 +1,12 @@
+<%= simple_form_for([:admin, @placement], html: {multipart: true}) do |f| %>
+  <%= f.input :title %><br />
+  <%= f.input :url %><br /> 
+  <%= f.association :artists, collection: Artist.order('name ASC') %><br />
+  <%= f.input :created_at, as: :date, html5: true, class: 'btn btn-primary noborder', label: 'Created at' %> <br /><br />
+  <%= f.file_field :image %> <br />
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+<br /><br />
+
+
+

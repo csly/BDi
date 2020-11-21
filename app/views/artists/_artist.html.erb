@@ -1,0 +1,15 @@
+ 
+<li class="col-md-3 col-xs-6 col-sm-3 p-0 overflow-hidden  bg-white overflow-hidden content">
+  <%= link_to artist_path(artist) do %>
+    <div class="content-overlay"></div>
+     <%= image_tag artist.photo.artistmain.url, :class => 'w-full object-cover content-image'  %> 
+    <div class="content-details fadeIn-top viewwidthrost">
+     <h4 class=''>
+       <%= artist.name %></h4> 
+      </div>
+  <% end %>
+</li>  
+
+
+      
+ 

@@ -1,0 +1,14 @@
+<div class="containernohome">
+<div class="col-md-12 cropit">
+<h4>Crop Your Image </h4>
+<%= form_for [:admin, @placement] do |f| %>
+  <%= f.cropbox :image %>
+  <%= f.previewbox :image %>
+  <%= f.submit 'Crop' %>
+<% end %>
+</div>
+</div>
+<div class="clear"></div>
+<% content_for :extra_footer do %>
+  <%= javascript_include_tag 'placements' %>
+<% end %>

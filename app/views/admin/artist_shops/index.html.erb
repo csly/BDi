@@ -19,10 +19,10 @@
   <tr> 
   <td class="a-one"><p><%= artist_shop.artist.id %> </p></td>
   <td class="a-one"> </td>
-  <td class='a-two'><%= artist_shop.artist.name %> </td>
+  <td class='a-two'><%= artist_shop.artist.name %></td>
   <td class='a-three'><%= artist_shop.artist.created_at.strftime('%d/%m/%Y at %H:%m%p')  %> </td>
  
-  <td class="a-four"> <%= link_to "Edit", edit_admin_artist_shop_path(artist_shop), :class =>  "btn btn-primary", :method => :get  %>  </td>
+  <td class="a-four"> <%= link_to "Edit", edit_admin_artist_shop_path(artist_shop), :class =>  "btn btn-primary", :method => :get  %> <%= link_to 'Delete', admin_artist_shop_path(artist_shop), method: :delete, class: "btn btn-primary"  %> </td>
 
   </tr>
 

@@ -16,29 +16,140 @@ Roster
  
    
 
+
+<div class="list-news  m-0" >
+  
+
+
+
  
  
  
 <ul class="grid-items"> 
 <% if @all_artists.empty? %>
     <h1><center>We currently have no Artists matching your search criteria<br /><br />Please try again</center></h1>
-    <% else %>
+    <% else %> 
 
-<% @all_artists.each do |artist| %>  
+     <% @all_artists.each do |artist| %>  
  
-<li class="col-md-3 col-xs-6 col-sm-3">
-<div class="artistmain">
+<li class="col-md-3 col-xs-6 col-sm-3 overflow-hidden overflow-hidden content">
+ 
 <%= link_to(artist_path(artist)) do %>
- <%= image_tag artist.photo.artistmain.url, :style => 'width:100%; height:100%;', :class => 'img-responsive' %> 
-  <h5 style="font-size:120%"><%= artist.name %></h5>
-  <br />
-  <% end %>
-  </div>
+<div class="content-overlay hidemob"></div>
+ <%= image_tag artist.photo.artistmain.url, :class => 'img-responsive w-full object-cover content-image' %> 
+  <div class="content-details fadeIn-top viewwidthrost hidemob">
+            <h4 class=''>
+              <%= artist.name %></h4> 
+          </div>
+          <h5 style="font-size:120%" class="dispmob"><%= artist.name %></h5>
+ 
+  <% end %> 
 </li>  
- <% end %> <% end %>
+ <% end %> <% end %> 
 </ul> 
  </div> 
 </div>
 
   <div class="clear"></div><br /><br >
+
+ 
+      
+
+
+  <style> 
+
+.viewwidthrost { 
+  font-size: 120%;
+}
+.p-0 { padding: 0px; margin:10px;}
+.overflow-hidden {
+  overflow: hidden;
+} 
+.w-full {
+  width: 100%;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.content {
+  position: relative;  
+  overflow: hidden;
+  float: left;
+}
+
+.content .content-overlay {
+  background: rgba(132,143,129,0.9);
+  position: absolute; 
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  margin-right: 15px;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.content:hover .content-overlay{
+  opacity: 1;
+}
+   
+ 
+.content-details {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.content:hover .content-details{
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+
+.content-details h4{
+  color: white !important;
+  font-weight: 500;
+  letter-spacing: 0.15em; 
+  text-transform: uppercase;
+  padding-top:0px !important;
+}
+
+.content-details p{
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.fadeIn-bottom{
+  top: 80%;
+}
+
+.fadeIn-top{
+  top: 20%;
+}
+
+.fadeIn-left{
+  left: 20%;
+}
+
+.fadeIn-right{
+  left: 80%;
+}
+
+</style>
+
  

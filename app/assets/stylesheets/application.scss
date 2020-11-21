@@ -879,6 +879,8 @@ a.readmorehome2 {
 
 .sheetbutton2 {
     margin-right: 10px;
+    font-size: 120%;
+    background-color: #ce6200 !important;
 }
 
 img.shopimage {
@@ -2197,6 +2199,7 @@ footer.page-footer .footer-copyright {
     width: 100%;
 }
 
+.dispmob { display: none; }
 /********************************* MOBILE ********************************/
 
 @media (max-width: 400px) {
@@ -2208,8 +2211,24 @@ footer.page-footer .footer-copyright {
     a.sheetbutton2 {display:none;}
 
     a.sheetbutton {display:none;}
+    .withtfeed {
+        width: 100% !important;
+    }
+    .hidemob {
+        display:none;
+    }
+    .dispmob {
+        display: inline-block;
+    }
 }
 @media (max-width: 990px) {
+
+    .twitterfeed {
+        display:none;
+    }
+    .withtfeed {
+        width: 75%;
+    }
     .homesidebar {
         display: none;
     }

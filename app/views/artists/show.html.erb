@@ -1,42 +1,56 @@
 <% content_for :title, "| Roster" %>
+
 <div class="main-page-header">
   <div class="m-p-h">
-    <%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Roster', artists_path %>  <span class="break">></span>  <span class="artname"> <%= @artist.name %>
-  </span>
-  <br /><br />
-  <span class="artist-name-main artistmm">
-    <%= @artist.name %> <br /><% if @artist.types.blank? %> <% else %>
-    <small style="font-size:65%"> <ul class="arttypes"><% @artist.types.order('name ASC').each do |type| %><li><%= type.name %></li><% end %></ul></small><% end %>
-  </span> 
-  <div class="socart">
-    <% if @artist.has_shop? %>
-    <%= link_to 'Sheet Music Shop', shop_artist_path(@artist), :class => 'btn btn-primary sheetbutton2' %>
-    <% end %>
+    <%= link_to 'Home', root_path %>  
+    <span class="break">></span>  
+    <%= link_to 'Roster', artists_path %>  
+    <span class="break">></span>  
+    <span class="artname"> <%= @artist.name %></span>
 
-    <% if @artist.facebook.blank? %>
-    <% else %>
-    <%= link_to image_tag("/uploads/ckeditor/pictures/4/content_facebooknav.png", :class => "twitter", :style => " padding:0.3em; width:40px; height:40px"), 'http://' + @artist.facebook, :target => "_blank" %> <% end %>
-<% if @artist.twitter.blank? %>
-    <% else %>
-    <%= link_to image_tag("/uploads/ckeditor/pictures/6/content_twitternav.png", :class => "twitter", :style => " padding:0.3em; width:40spx; height:40px"), 'http://' + @artist.twitter, :target => "_blank" %> <% end %>
-  </div>  </div>
+    <br /><br />
+
+    <span class="artist-name-main artistmm">
+      <%= @artist.name %> 
+      <br />
+      <% if @artist.types.blank? %> 
+        <% else %>
+        <small style="font-size:65%"> 
+          <ul class="arttypes">
+            <% @artist.types.order('name ASC').each do |type| %>
+              <li><%= type.name %></li>
+            <% end %>
+          </ul>
+        </small>
+      <% end %>
+    </span> 
+
+    <div class="socart">
+      <% if @artist.has_shop? %>
+        <%= link_to 'Sheet Music Shop', shop_artist_path(@artist), :class => 'btn btn-primary sheetbutton2' %>
+      <% end %>
+
+      <% if @artist.facebook.blank? %>
+      <% else %>
+        <%= link_to image_tag("/uploads/ckeditor/pictures/4/content_facebooknav.png", :class => "twitter", :style => " padding:0.3em; width:40px; height:40px"), 'http://' + @artist.facebook, :target => "_blank" %> 
+      <% end %>
+      <% if @artist.twitter.blank? %>
+      <% else %>
+        <%= link_to image_tag("/uploads/ckeditor/pictures/6/content_twitternav.png", :class => "twitter", :style => " padding:0.3em; width:40spx; height:40px"), 'http://' + @artist.twitter, :target => "_blank" %> 
+      <% end %>
+    </div>  
+  </div>
 </div> 
-<br />  <br /> 
+
+<br /><br /> 
+
+
 
 <div class='containernohome'>  
-
   <div class="col-md-3 col-sm-3 artistimageetc">
- 
- 
-
     <%= image_tag @artist.photo.url, :class => 'img-responsive ' %>
- 
-
-    
-
-    
     <% if @artist.biography.present? %>
-  <h4 class="artside">Download:<small class="notsomuch"> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
+      <h4 class="artside">Download:<small class="notsomuch"> <%= link_to 'Biography', download_artist_path(@artist) %></small></h4> 
     <% end %> 
 
     <% if @artist.spotify.present? %>
@@ -59,7 +73,6 @@
     <% end %>
     <% end %>
 
-    
 
  <!--
      <% if @artist.articles.present? %>
@@ -78,10 +91,14 @@
 -->
 
     </div> 
+
+    <% if @artist.feed.present? %>
+      <div class="col-md-6 col-sm-12 newsblur withtfeed">
+        <% else %>
   <div class="col-md-9 col-sm-12 newsblur">
+    <% end %>
     <div class="mainblurb"> 
-<span class="artist-name-main" style="font-size:120%"> Biography
-  </span> <br /><br />  
+ 
  
 <div>
   <% if @artist.biog.html_safe.length > 2000 %>
@@ -103,7 +120,7 @@
    
 
 
-<div class="col-md-12 artdisco">
+<div class="col-md-12 artdisco nopadright">
  <% if @artist.releases.blank? %>
  <br />
  <% elsif @artist.releases.count < 6 %>
@@ -164,7 +181,7 @@
 <% else %>
 <% end %>
 
-<div class="col-md-12 artdisco">
+<div class="col-md-12 artdisco nopadright">
  <% if @artist.videos.blank? %>
  <br />
  <% elsif @artist.videos.count < 6 %>
@@ -209,6 +226,9 @@
  
  <br /><br />
 
+
+
+
 <div class="clear"> <br /></div>
  <%= link_to "Show More Videos", "#{root_path}videos?utf8=%E2%9C%93&q%5Btitle_cont%5D=&q%5Bartists_id_eq%5D=#{@artist.id}&commit=Search", class: "btn btn-primary lowercase" %>  <br /><br />
  <% end %>
@@ -216,8 +236,30 @@
 <div class="clear"></div>
   
 
- </div>
+
+
+
  
+ 
+ </div>
+
+<% if @artist.feed.present? %>
+  <div class="col-md-3 col-sm-3 twitterfeed" style="padding-left:15px; padding-right:0px; margin-top:-5px;">
+
+  
+  <div  style="" >
+
+    <%= @artist.feed.html_safe %><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+   <!--<a class="twitter-timeline" data-height="810" data-dnt="true" data-theme="light" href="https://twitter.com/<%= @artist.feed %>?ref_src=twsrc%5Etfw">Tweets by <%= @artist.feed %></a>-->  
+ </div>
+  
+
+    
+
+
+  </div>
+ <% else %>
+  <% end %> 
 
  </div>
 

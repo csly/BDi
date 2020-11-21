@@ -1,0 +1,39 @@
+<%= render 'shared/adminnav' %>
+<div class="col-md-9">
+<h4> List Of Placements</h4><%= link_to "+ New", new_admin_placement_path, class: "btn btn-primary"  %>
+<br /><br />
+
+
+<table class="admin-table-news">
+  <tbody> 
+ <th class="a-one"><p>ID</p></th>
+  <th class="a-one"><p>Image</p></th>
+  <th class="a-two"><p>Title</p></th> 
+  <th class="a-three"><p>Created At</p></th>  
+  </tbody>
+<% @placements.each do |placement| %>
+  <tr> 
+  <td class="a-one"><p><%= placement.id %></p></td>
+  <td class="a-one"> 
+
+
+    </td>
+ 
+  <td class="a-two" style="padding-right:10px;"><p><%= link_to placement.title, edit_admin_placement_path(placement) %></p></td> 
+  
+  <td class="a-threes"><p><%= placement.created_at.strftime('%d/%m/%Y at %H:%m%p') %></p>
+   
+  </td> 
+  <td class="a-four"> <%= link_to "Edit", edit_admin_placement_path(placement), :class =>  "btn btn-primary", :method => :get  %> 
+   <%= link_to 'Delete', admin_placement_path(placement), method: :delete, class: "btn btn-primary"  %></td>
+
+  </tr>
+
+<% end %>
+</table>
+<br /><br />
+ 
+</div>
+</div> 
+ 
+<%= render 'shared/adminnavfooter' %>

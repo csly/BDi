@@ -18,7 +18,7 @@ class Admin::ArtistShopsController < Admin::BaseController
     @artist_shop = ArtistShop.new(artist_shop_params)
     if @artist_shop.save
       if params[:artist_shop][:photo].present?
-        render :crop ## Render the view for cropping
+        render :crop  
       else
         redirect_to admin_artist_shops_path(@artist_shop), notice: 'artist was successfully created.'
       end
@@ -31,11 +31,20 @@ class Admin::ArtistShopsController < Admin::BaseController
     @artist_shop = ArtistShop.find(params[:id])
     @artist_shop.update(artist_shop_params)
     if params[:artist_shop][:photo].present?
-      render :crop ## Render the view for cropping
+      render :crop  
     else
       redirect_to admin_artist_shops_path(@artist_shop)
     end
-  end
+  end 
+
+  def destroy
+    @artist_shop = ArtistShop.find(params[:id])
+    @artist_shop.destroy
+
+    redirect_to admin_artist_shop_path
+   end
+
+
 
   private
 

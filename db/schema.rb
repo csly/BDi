@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190319185200) do
+ActiveRecord::Schema.define(version: 20201119153010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 20190319185200) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "artist_placements", force: :cascade do |t|
+    t.integer  "artist_id"
+    t.integer  "placement_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "artist_releases", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,6 +121,8 @@ ActiveRecord::Schema.define(version: 20190319185200) do
     t.boolean  "producer"
     t.text     "spotify"
     t.boolean  "catalogue",          default: false, null: false
+    t.string   "feed"
+    t.string   "shopplayer"
   end
 
   create_table "audio_artists", force: :cascade do |t|
@@ -261,6 +270,14 @@ ActiveRecord::Schema.define(version: 20190319185200) do
     t.datetime "updated_at", null: false
     t.string   "title"
     t.text     "body"
+  end
+
+  create_table "placements", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "press_artists", force: :cascade do |t|

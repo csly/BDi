@@ -41,6 +41,8 @@ before_action :require_admin
     redirect_to admin_shop_items_path
   end
 
+   private
+
   def shop_item_params
     params.require(:shop_item).permit(:name, :link, :image, :description, :price, :image_crop_x,
                                   :image_crop_y, :image_crop_w, :image_crop_h,  :artist_shop, :artist_shop_id, artist_shop_ids: [], artist_ids: [])

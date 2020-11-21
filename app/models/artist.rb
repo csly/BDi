@@ -15,6 +15,8 @@ class Artist < ActiveRecord::Base
   has_many :formats, through: :artist_formats
   has_many :video_artists, dependent: :destroy
   has_many :videos, through: :video_artists
+  has_many :artist_placements, dependent: :destroy
+  has_many :placements, through: :artist_placements
   has_many :audios
   has_many :product_artists, dependent: :destroy
   has_many :products, through: :product_artists
