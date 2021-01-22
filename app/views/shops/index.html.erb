@@ -1,0 +1,61 @@
+<% content_for :title, "| Shop" %>
+<div class="main-page-header">
+<div class="m-p-h">
+<%= link_to 'Home', root_path %>  <span class="break">></span>  <%= link_to 'Shop', shops_path %>   
+<br /><br /> 
+<span class="artist-name-main">
+Sheet Music Shop </span><br />  <br />
+
+ </div>
+</div> 
+ 
+  <br />  <br /> 
+
+ 
+
+
+<div class="containernohome"> 
+ <div class="col-md-12" style="padding: 0px;">
+    <%= flash_messages %> <br />
+  </div> 
+
+<div class='col-md-3 col-sm-3 col-xs-12'>
+
+<iframe src="https://open.spotify.com/embed/playlist/5uD3UuG5jUQ6mCBxXDQIeg" width="100%" height="410" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> <br /><br /> 
+</div>
+
+<div class='col-md-9 col-sm-9 col-xs-12'>
+ <div class="portfolio-items grid">
+  <div class="row" style="margin:0px !important;">
+  <% @shop_items.each do |shop_item| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= link_to('#', :class => 'hello') do %>
+            <%= image_tag shop_item.image.url, :class => 'img-responsive homepage' %>
+          <% end %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <h5><%= shop_item.artist.name %>  <br /><%= shop_item.name %><br /><br /> <%= number_to_currency(shop_item.price, unit: '£') %></h5>   
+          </span>
+          <p>
+          <%= link_to 'Buy now', checkout_path(shop_item), :class => 'readmorehome' %>
+             
+          </p>
+        </div>
+         
+      </div>
+    </div>  
+  <% end %> <br /><br />
+  </div>
+</div>
+
+</div>
+
+
+
+
+      
+</div>
+</div>  

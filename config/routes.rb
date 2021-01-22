@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post 'purchase_complete', to: 'purchases#create', as: 'purchase_complete'
 
   resources :purchases, only: [:show]
-
+  resources :shops, path: 'shop'
   resources :releases 
   resources :videos 
   resources :abouts, path: 'about'

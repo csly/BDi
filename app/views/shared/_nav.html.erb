@@ -119,12 +119,15 @@
           <li class="<%= 'active' if current_page?(releases_path) %> main">
            <%= link_to 'Releases', releases_path  %> 
           </li>
+
           <li class="<%= 'active' if current_page?(awards_path) %> main">
             <%= link_to 'Awards', awards_path %> 
           </li>
           <li class="<%= 'active' if current_page?(presses_path) %> main">
             <%= link_to 'Press', presses_path  %>
           </li> 
+           
+ 
           <li class="<%= 'active' if current_page?(contact_index_path) %> main last">
             <%= link_to 'Contact', contact_index_path %>
           </li> 
