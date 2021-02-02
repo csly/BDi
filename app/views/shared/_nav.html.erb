@@ -31,6 +31,9 @@
     <div style="float:right">
      <section>
       <ul class="social-buttons">
+        <li class='social hidemob2' style='width:150px; margin:0px;'> 
+            <%= link_to 'Sheet Music Shop', shops_path, :class => 'btn-flat', :style => 'margin-top:0px; color:#ce6200 !important' %> 
+        </li>
       <li class="social social-tm">
          <a href="http://themovement.uk.com/" target="_blank">
           <%= image_tag 'tmlogo.png', :class => 'tmlogoo' %> 
@@ -125,9 +128,11 @@
           </li>
           <li class="<%= 'active' if current_page?(presses_path) %> main">
             <%= link_to 'Press', presses_path  %>
-          </li> 
-           
- 
+          </li>
+          <li class="<%= 'active' if current_page?(shops_path) %> main hideifnotmob">
+            <%= link_to 'Sheet Music Shop', shops_path  %>
+          </li>
+          
           <li class="<%= 'active' if current_page?(contact_index_path) %> main last">
             <%= link_to 'Contact', contact_index_path %>
           </li> 

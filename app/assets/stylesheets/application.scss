@@ -2204,6 +2204,9 @@ footer.page-footer .footer-copyright {
 }
 
 .dispmob { display: none; }
+.hideifnotmob {
+        display: none !important;
+    }
 /********************************* MOBILE ********************************/
 
 @media (max-width: 400px) {
@@ -2220,6 +2223,14 @@ footer.page-footer .footer-copyright {
     }
     .hidemob {
         display:none;
+    }
+    .hidemob2 {
+        display:none !important;
+    }
+
+    .hideifnotmob {
+        display: block !important;
+        width: inherit;
     }
     .dispmob {
         display: inline-block;

@@ -19,12 +19,27 @@ Sheet Music Shop </span><br />  <br />
     <%= flash_messages %> <br />
   </div> 
 
-<div class='col-md-3 col-sm-3 col-xs-12'>
+<div class='col-md-3 col-sm-3 col-xs-12 nopadleft'>
 
 <iframe src="https://open.spotify.com/embed/playlist/5uD3UuG5jUQ6mCBxXDQIeg" width="100%" height="410" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> <br /><br /> 
 </div>
 
 <div class='col-md-9 col-sm-9 col-xs-12'>
+  <div id="custom-search-input">
+      <div class="input-group col-md-12 col-sm-12 hidemob2">
+        <%= simple_form_for :shop_item, url: url_for(shops_path), method: 'get' do |f| %>
+          <div class="col-md-10 col-sm-12">
+           <%= f.input :query, input_html: {name: 'q', id: 'search', class: 'form-control custom'}, label: false, placeholder: 'Search...', required: false %>
+ 
+           </div>
+           <div class="col-md-2 searchhid nopadleft">
+           <%= f.submit 'Search', class: 'btn btn-primary release-searching' %>
+           </div>
+        <% end %>
+                    
+        </div>
+        <br /><br />
+
  <div class="portfolio-items grid">
   <div class="row" style="margin:0px !important;">
   <% @shop_items.each do |shop_item| %>
@@ -58,4 +73,9 @@ Sheet Music Shop </span><br />  <br />
 
       
 </div>
+<div class="col-md-12"> 
+    <div class="middle"><br /><br />
+      <%= will_paginate @shop_items, :page_links => true, :previous_label => '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', :next_label => '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' %> <br /><br />
+      </div>
+    </div>
 </div>  
