@@ -63,7 +63,7 @@
 
 <div class="portfolio-items grid">
   <div class="row" style="margin:0px !important;">
-  <% @shop.items.each do |item| %>
+  <% @shop.items.order('LOWER(shop_items.name) asc').each do |item| %>
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
