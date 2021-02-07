@@ -8,7 +8,7 @@ class PurchasesController < ApplicationController
 
     PurchaseMailer.purchase_complete_email(purchase).deliver_now
     PurchaseMailer.admin_purchase_complete_email(purchase).deliver_now
-    render nothing: true, status: :ok, content_type: "text/html"
+    head :ok
   end
   
   def show
