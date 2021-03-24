@@ -6,8 +6,8 @@ class PurchasesController < ApplicationController
     purchase = Purchase.find(params[:invoice])
     purchase.update_from_params(params)
 
-    PurchaseMailer.purchase_complete_email(purchase).deliver_now
-    PurchaseMailer.admin_purchase_complete_email(purchase).deliver_now
+    # PurchaseMailer.purchase_complete_email(purchase).deliver_now
+    # PurchaseMailer.admin_purchase_complete_email(purchase).deliver_now
     head :ok
   end
   
