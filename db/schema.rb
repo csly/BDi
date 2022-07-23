@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201119153010) do
+ActiveRecord::Schema.define(version: 20220408155608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,10 @@ ActiveRecord::Schema.define(version: 20201119153010) do
     t.boolean  "catalogue",          default: false, null: false
     t.string   "feed"
     t.string   "shopplayer"
+    t.string   "instagram"
+    t.string   "tiktok"
+    t.string   "website"
+    t.string   "youtube"
   end
 
   create_table "audio_artists", force: :cascade do |t|

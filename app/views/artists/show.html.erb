@@ -38,6 +38,14 @@
       <% else %>
         <%= link_to image_tag("/uploads/ckeditor/pictures/6/content_twitternav.png", :class => "twitter", :style => " padding:0.3em; width:40spx; height:40px"), 'http://' + @artist.twitter, :target => "_blank" %> 
       <% end %>
+      <% if @artist.instagram.blank? %>
+      <% else %>
+        <%= link_to image_tag("https://bdi-music.s3.amazonaws.com/uploads/ckeditor/pictures/48/content_instagramnav.png", :class => "twitter", :style => " padding:0.3em; width:40px; height:40px"), 'http://' + @artist.instagram, :target => "_blank" %> 
+      <% end %>
+      <% if @artist.tiktok.blank? %>
+      <% else %>
+        <%= link_to image_tag("https://bdi-music.s3.amazonaws.com/uploads/ckeditor/pictures/49/content_tiktoknav.png", :class => "twitter", :style => " padding:0.3em; width:40px; height:40px"), 'http://' + @artist.tiktok, :target => "_blank" %> 
+      <% end %> 
     </div>  
   </div>
 </div> 
